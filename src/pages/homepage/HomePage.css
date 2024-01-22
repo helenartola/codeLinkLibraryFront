@@ -1,0 +1,23 @@
+.inicio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.asideIzquierdo,
+.asidederecho {
+  width: 15%;
+  height: 100vh;
+  padding: 10px;
+  background-color: hsl(0, 0%, 19%);
+}
+.asidederecho {
+  border-left: solid 1px white;
+}
+.asideIzquierdo {
+  border-right: solid 1px white;
+}
+.main-content {
+  flex: 1;
+  padding: 10px;
+}

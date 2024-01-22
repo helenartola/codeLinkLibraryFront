@@ -1,0 +1,24 @@
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+}
+h1 {
+  margin-bottom: 20px;
+}
+
+.home-link {
+  color: #05856e;
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid #05856e;
+  padding: 25px;
+}
+
+.home-link:hover {
+  border: 1px solid white;
+  color: white;
+  padding: 25px;
+}
