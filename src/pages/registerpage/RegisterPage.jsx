@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Navigate } from 'react-router-dom'
 import { useUser } from '../../components/UserContext'
-//import { useUserActions } from '../../hooks/api'
+import { useUserActions } from '../../hooks/api'
 import './RegisterPage.css' 
 
 const RegisterPage = () => {
@@ -9,7 +9,7 @@ const RegisterPage = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  //const userActions = useUserActions()
+  const userActions = useUserActions()
   const [user, setUser] = useUser()
 
   const handleSubmit = e => {

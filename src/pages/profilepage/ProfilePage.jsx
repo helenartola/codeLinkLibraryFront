@@ -1,8 +1,15 @@
+import "./ProfilePage.css"
+
 const ProfilePage = () => {
     return (
       <section>
-        <h1>Post</h1>
-        <p>Aquí ira el permalink</p>
+        <h1>Perfil de Usuario</h1>
+        <nav>
+          <ul>
+            <li>Mi cuenta</li>
+            <li>Guardado</li>
+          </ul>
+        </nav>
       </section>
     );
   };
