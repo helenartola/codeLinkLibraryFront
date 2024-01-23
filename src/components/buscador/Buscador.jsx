@@ -1,11 +1,12 @@
+import "./Buscador.css";
 // Importado useState desde 'react' para gestionar el estado del componente
-import { useState } from 'react';
+import { useState } from "react";
 
 // Definir el componente funcional Buscador que toma un prop "data"
 const Buscador = ({ data }) => {
   // Estado para almacenar el término de búsqueda
-  const [searchTerm, setSearchTerm] = useState('');
-  
+  const [searchTerm, setSearchTerm] = useState("");
+
   // Estado para almacenar los resultados de la búsqueda
   const [searchResults, setSearchResults] = useState([]);
 
@@ -13,12 +14,12 @@ const Buscador = ({ data }) => {
   const handleSearch = (e) => {
     // Obtener el término de búsqueda del evento
     const term = e.target.value;
-    
+
     // Actualizar el estado con el nuevo término de búsqueda
     setSearchTerm(term);
 
     // Filtrar los resultados basados en el término de búsqueda
-    const filteredResults = data.filter(item =>
+    const filteredResults = data.filter((item) =>
       item.toLowerCase().includes(term.toLowerCase())
     );
 
@@ -36,7 +37,7 @@ const Buscador = ({ data }) => {
         value={searchTerm}
         onChange={handleSearch}
       />
-      
+
       {/* Lista de resultados de la búsqueda */}
       <ul>
         {searchResults.map((result, index) => (

@@ -13,6 +13,12 @@ body {
   min-height: 100vh;
 }
 
+/* Estilos para el modo claro */
+body.dark-mode {
+  background-color: #ffffff;
+  color: #303030;
+}
+
 .logo {
   width: 200px;
 }
@@ -20,6 +26,10 @@ body {
 .description {
   border-bottom: 1px solid white;
   padding: 20px 0 20px 0;
+}
+
+.dark-mode .description {
+  border-bottom: 1px solid #303030; /* Color del borde en modo claro */
 }
 .description h2 {
   font-weight: 700;

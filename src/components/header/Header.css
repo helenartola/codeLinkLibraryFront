@@ -1,26 +1,33 @@
 .header {
-  background-color: #303030;
   padding: 10px;
   border-bottom: 1px solid white;
+  border-top: 1px solid white;
 }
 
-.nav {
+.dark-mode .header {
+  border-top: 1px solid #303030;
+  border-bottom: 1px solid #303030;
+}
+
+.navbar {
+  overflow: hidden;
+  padding: 10px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-}
-
-.logo-container {
-  width: 30%;
+  align-items: center;
 }
 
 .logo {
-  width: 100%;
   width: 200px;
 }
 
-.auth-container {
-  width: 70%;
-  display: flex;
-  justify-content: flex-end;
+.auth-container,
+.theme-switcher-container {
+  padding: 0 10px;
+}
+
+.auth-container a,
+.theme-switcher-container a {
+  color: white;
+  text-decoration: none;
 }

@@ -2,16 +2,16 @@ import "./HomePage.css";
 const HomePage = () => {
   return (
     <section className="inicio">
-      <aside className="asideIzquierdo">
+      {/* <aside className="asideIzquierdo">
         <p>esto es una barra lateral</p>
-      </aside>
+      </aside> */}
       <div className="main-content">
         <h1>HOME | ÚLTIMOS POSTS</h1>
         <p>Aquí tiene que ir la lista de posts publicados</p>
       </div>
-      <aside className="asidederecho">
+      {/* <aside className="asidederecho">
         <p>esto es una barra lateral</p>
-      </aside>
+      </aside> */}
     </section>
   );
 };

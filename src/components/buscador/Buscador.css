@@ -1,0 +1,21 @@
+.search-bar {
+  flex-grow: 1;
+  text-align: center;
+  padding: 0 20px;
+}
+.search-bar input {
+  width: 80%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #05856e;
+  border-radius: 50px;
+  background-color: #05856e;
+  color: white;
+  font-family: jost, sans-serif;
+  padding-left: 20px;
+}
+
+.search-bar input::placeholder {
+  color: white;
+  font-size: 15px;
+}

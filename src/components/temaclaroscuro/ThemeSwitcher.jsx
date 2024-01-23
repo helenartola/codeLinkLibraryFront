@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import './ThemeSwitcher.css';
+import { useState, useEffect } from "react";
+import "./ThemeSwitcher.css";
 
 const ThemeSwitcher = () => {
   // Estado para el modo claro/oscuro
@@ -13,19 +13,19 @@ const ThemeSwitcher = () => {
   // Efecto para aplicar los estilos según el modo claro/oscuro
   useEffect(() => {
     // Modifica la clase del body para aplicar estilos a toda la página
-    document.body.classList.toggle('dark-mode', isDarkMode);
+    document.body.classList.toggle("dark-mode", isDarkMode);
   }, [isDarkMode]);
 
   return (
     // Botón para cambiar entre modos claro y oscuro
     <button
       onClick={toggleDarkMode}
-      className={`theme-switcher ${isDarkMode ? 'dark' : 'light'} small-icon`}
+      className={`theme-switcher ${isDarkMode ? "dark" : "light"} small-icon`}
     >
       {/* Sustituidos los emoji por imágenes con lógica invertida */}
       <img
-        src={isDarkMode ? '/luna.png' : '/sol.png'}
-        alt={isDarkMode ? 'luna' : 'sol'}
+        src={isDarkMode ? "/luna.png" : "/sol.png"}
+        alt={isDarkMode ? "luna" : "sol"}
         className="small-icon"
       />
     </button>
@@ -33,8 +33,3 @@ const ThemeSwitcher = () => {
 };
 
 export default ThemeSwitcher;
-
-
-
-
-
