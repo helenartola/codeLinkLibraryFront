@@ -9,6 +9,7 @@ import RegisterPage from "./pages/registerpage/RegisterPage";
 import LoginPage from "./pages/loginpage/LoginPage";
 import PostPage from "./pages/postpage/PostPage";
 import NotFoundPage from "./pages/notfoundpage/NotFoundPage";
+import ProfilePage from "./pages/profilepage/ProfilePage";
 
 function App() {
   // Datos para la búsqueda
@@ -34,6 +35,7 @@ function App() {
           <Route path="/registro" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/post/:id" element={<PostPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Footer />

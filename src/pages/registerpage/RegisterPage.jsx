@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Navigate } from 'react-router-dom'
 import { useUser } from '../../components/UserContext'
 //import { useUserActions } from '../../hooks/api'
-import './RegisterPage.css'  // Asegúrate de tener el archivo CSS correspondiente
+import './RegisterPage.css' 
 
 const RegisterPage = () => {
   const [name, setName] = useState('')
@@ -14,7 +14,7 @@ const RegisterPage = () => {
 
   const handleSubmit = e => {
     e.preventDefault()
-    userActions.register(name, email, password)  // Ajusta el método de registro
+    userActions.register(name, email, password) 
       .then(data => {
         setUser(data.data)
       })
