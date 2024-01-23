@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Navigate } from 'react-router-dom'
 import { useUser } from '../../components/UserContext'
-import { useUserActions } from '../../hooks/api'
+//import { useUserActions } from '../../hooks/api'
 import './RegisterPage.css' 
 
 const RegisterPage = () => {
