@@ -1,5 +1,14 @@
 import "./HomePage.css";
+import usePosts from "../../hooks/usePosts";
 const HomePage = () => {
+  const { posts, loading, error } = usePosts();
+
+  //Si está cargando, hacemos un return cargando posts
+  if (loading) return <p>Cargando posts...</p>;
+  //Si hay un error, retorna error
+  if (error) return <p>{error}</p>;
+
+  console.log(posts);
   return (
     <section className="inicio">
       {/* <aside className="asideIzquierdo">
