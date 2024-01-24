@@ -1,10 +1,14 @@
-/* import Post from "./Post";
+import Post from "./Post";
 
 const Postlist = ({ posts }) => {
+  if (!posts || !Array.isArray(posts)) {
+    return <p>No hay posts todavía</p>;
+  }
+
   return posts.length ? (
     <ul>
       {posts.map((post) => (
-        <li key={post.postId}>
+        <li key={post.title}>
           <Post post={post} />
         </li>
       ))}
@@ -14,4 +18,3 @@ const Postlist = ({ posts }) => {
   );
 };
 export default Postlist;
- */

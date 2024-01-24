@@ -1,7 +1,7 @@
 import "./HomePage.css";
 import usePosts from "../../hooks/usePosts";
-/* import ListaDePosts from "../../components/listaPosts/ListaDePosts";
- */
+import ListaDePosts from "../../components/listaPosts/ListaDePosts";
+
 const HomePage = () => {
   const { posts, loading, error } = usePosts();
 
@@ -18,8 +18,7 @@ const HomePage = () => {
       </aside> */}
       <div className="main-content">
         <h1>HOME | ÚLTIMOS POSTS</h1>
-        {/*         <ListaDePosts post={posts} />
-         */}{" "}
+        <ListaDePosts post={posts} />
       </div>
       {/* <aside className="asidederecho">
         <p>esto es una barra lateral</p>
