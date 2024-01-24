@@ -56,3 +56,30 @@ export const registroUsuarioService = async ({
     throw new Error(json.message);
   }
 };
+
+
+export const loginUsuarioService = async ({ email, password }) => {
+  try {
+    const response = await fetch(`${import.meta.env.VITE_BACKEND}/user/login`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        email, 
+        password,
+      }),
+    });
+
+    const json = await response.json();
+
+    if (!response.ok) {
+      throw new Error(json.message);
+    }
+
+    return json.data;
+  } catch (error) {
+    console.error("Error al iniciar sesión desde el frontend:", error);
+    throw new Error("Error al iniciar sesión desde el frontend");
+  }
+};
