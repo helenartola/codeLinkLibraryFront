@@ -3,11 +3,12 @@ import { Routes, Route } from "react-router-dom";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import HomePage from "./pages/homepage/HomePage";
-import RegisterPage from "./pages/registerpage/RegisterPage";
-import LoginPage from "./pages/loginpage/LoginPage";
+/* import RegisterPage from "./pages/registerpage/RegisterPage";
+ */ import LoginPage from "./pages/loginpage/LoginPage";
 import PostPage from "./pages/postpage/PostPage";
 import NotFoundPage from "./pages/notfoundpage/NotFoundPage";
 import ProfilePage from "./pages/profilepage/ProfilePage";
+import PaginaRegistro from "./pages/paginaregistro/PaginaRegistro";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
         </div>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/registro" element={<RegisterPage />} />
+          <Route path="/registro" element={<PaginaRegistro />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/post/:id" element={<PostPage />} />
           <Route path="/profile" element={<ProfilePage />} />

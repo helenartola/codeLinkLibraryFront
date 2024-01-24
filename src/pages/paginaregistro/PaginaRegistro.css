@@ -1,0 +1,52 @@
+fieldset {
+  border: 0px solid;
+  padding: 10px;
+  border-radius: 5px;
+}
+h1 {
+  text-align: center;
+  padding-top: 20px;
+}
+.cajaFormulario {
+  background-color: #05856e;
+  border-radius: 30px;
+  width: 500px;
+  z-index: 1;
+}
+label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 1px;
+  box-sizing: border-box;
+  color: #05856e;
+  font-family: jost, sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.botonRegistro {
+  background-color: #303030;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: jost, sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+
+button:hover {
+  background-color: #303030;
+  color: white;
+}
