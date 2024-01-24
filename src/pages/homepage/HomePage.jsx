@@ -18,7 +18,7 @@ const HomePage = () => {
       </aside> */}
       <div className="main-content">
         <h1>HOME | ÚLTIMOS POSTS</h1>
-        {/*         <ListaDePosts />
+        {/*         <ListaDePosts post={posts} />
          */}{" "}
       </div>
       {/* <aside className="asidederecho">

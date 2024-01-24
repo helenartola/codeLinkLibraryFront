@@ -3,15 +3,21 @@
 //Servicio que se encarga de la comunicación con la base de datos
 
 export const getAllPostsService = async () => {
-  const response = await fetch(`${import.meta.env.VITE_BACKEND}`);
+  try {
+    const response = await fetch(`${import.meta.env.VITE_BACKEND}/posts`, {
+      method: "GET",
+    });
+    const json = await response.json();
 
-  const json = await response.json();
-
-  if (!response.ok) {
-    throw new Error(json.message);
+    if (!response.ok) {
+      throw new Error(json.message);
+    }
+    //mirar el backend, lo que devuelve
+    return json.data;
+  } catch (error) {
+    console.error("Error al obtener los posts desde el frontend:", error);
+    throw new Error("Error al obtener los posts desde el frontend");
   }
-  //mirar el backend, lo que devuelve
-  return json.data;
 };
 
 //Creamos un servicio para el registro de usuarios
