@@ -5,10 +5,7 @@ export const PaginaRegistro = () => {
   //hacemos que todos los campos esten controlados por un estado
   //creamos un estado para cada uno de los campos del formulario
   const [name, setName] = useState("");
-  const [lastName, setLastName] = useState("");
   const [birthDate, setBirthDate] = useState("");
-  const [userName, setUserName] = useState("");
-  const [bio, setBio] = useState("");
   const [email, setEmail] = useState("");
   const [pass1, setPass1] = useState("");
   const [pass2, setPass2] = useState("");
@@ -49,16 +46,6 @@ export const PaginaRegistro = () => {
         </fieldset>
 
         <fieldset>
-          <label htmlFor="apellido">Apellido</label>
-          <input
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-            type="text"
-            required
-          />
-        </fieldset>
-
-        <fieldset>
           <label htmlFor="fechaNacimiento">Fecha de Nacimiento</label>
           <input
             value={birthDate}
@@ -68,28 +55,6 @@ export const PaginaRegistro = () => {
             required
             onChange={(e) => setBirthDate(e.target.value)}
           />
-        </fieldset>
-
-        <fieldset>
-          <label htmlFor="userName">Nombre de Usuario</label>
-          <input
-            value={userName}
-            type="text"
-            id="userName"
-            name="userName"
-            required
-            onChange={(e) => setUserName(e.target.value)}
-          />
-        </fieldset>
-
-        <fieldset>
-          <label htmlFor="bio">Biografía</label>
-          <textarea
-            value={bio}
-            id="bio"
-            name="bio"
-            onChange={(e) => setBio(e.target.value)}
-          ></textarea>
         </fieldset>
 
         <fieldset>
