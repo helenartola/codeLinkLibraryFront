@@ -1,9 +1,6 @@
 import Post from "./Post";
 
-const Postlist = ({ posts }) => {
-  if (!posts || !Array.isArray(posts)) {
-    return <p>No hay posts todavía</p>;
-  }
+const ListaDePosts = ({ posts }) => {
 
   return posts.length ? (
     <ul>
@@ -17,4 +14,4 @@ const Postlist = ({ posts }) => {
     <p>No hay posts todavía</p>
   );
 };
-export default Postlist;
+export default ListaDePosts;
