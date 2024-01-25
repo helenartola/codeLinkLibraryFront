@@ -6,6 +6,7 @@ const Post = ({ post }) => {
   return (
     <article>
       <p>{post.title}</p>
+      <p>{post.description}</p>
     </article>
   );
 };
