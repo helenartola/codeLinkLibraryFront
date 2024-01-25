@@ -4,8 +4,7 @@ import { registroUsuarioService } from "../../services";
 export const PaginaRegistro = () => {
   //hacemos que todos los campos esten controlados por un estado
   //creamos un estado para cada uno de los campos del formulario
-  const [name, setName] = useState("");
-  const [birthDate, setBirthDate] = useState("");
+  const [userName, setName] = useState("");
   const [email, setEmail] = useState("");
   const [pass1, setPass1] = useState("");
   const [pass2, setPass2] = useState("");
@@ -23,7 +22,7 @@ export const PaginaRegistro = () => {
 
     //Hacemos un try catch porque nos vamos a comunicar con la base de datos y así controlamos nosotros los errores que puedan surgir
     try {
-      await registroUsuarioService({ name, email, password: pass1 });
+      await registroUsuarioService({ userName, email, password: pass1 });
     } catch (error) {
       setError(error.message);
     }
@@ -35,25 +34,13 @@ export const PaginaRegistro = () => {
       {/* Gestionamos el envio con el evento handleForm */}
       <form onSubmit={handleForm}>
         <fieldset>
-          <label htmlFor="nombre">Nombre</label>
+          <label htmlFor="Nombre de usuario">Nombre de usuario</label>
           {/* Creamos un evento dentro de cada uno de los inputs para que cuando se actualicen los campos, actualice el estado */}
           <input
-            value={name}
+            value={userName}
             onChange={(e) => setName(e.target.value)}
             type="text"
             required
-          />
-        </fieldset>
-
-        <fieldset>
-          <label htmlFor="fechaNacimiento">Fecha de Nacimiento</label>
-          <input
-            value={birthDate}
-            type="date"
-            id="fechaNacimiento"
-            name="fechaNacimiento"
-            required
-            onChange={(e) => setBirthDate(e.target.value)}
           />
         </fieldset>
 

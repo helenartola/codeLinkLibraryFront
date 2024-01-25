@@ -23,13 +23,11 @@ export const getAllPostsService = async () => {
 //Creamos un servicio para el registro de usuarios
 
 export const registroUsuarioService = async ({
-  name,
-  lastName,
-  birthDate,
+
   userName,
-  bio,
   email,
   password,
+
 }) => {
   const response = await fetch(
     `${import.meta.env.VITE_BACKEND}/user/register`,
@@ -39,11 +37,7 @@ export const registroUsuarioService = async ({
         "Content-type": "application/json",
       },
       body: JSON.stringify({
-        name,
-        lastName,
-        birthDate,
         userName,
-        bio,
         email,
         password,
       }),
