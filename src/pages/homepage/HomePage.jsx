@@ -18,6 +18,10 @@ const HomePage = () => {
       </aside> */}
       <div className="main-content">
         <h1>HOME | ÚLTIMOS POSTS</h1>
+        {/*  <div className="description">
+          <h2>Elevate your web development journey </h2>
+          <h3>Share, learn, and collaborate seamlessly</h3>
+        </div> */}
         <ListaDePosts posts={posts} />
       </div>
       {/* <aside className="asidederecho">

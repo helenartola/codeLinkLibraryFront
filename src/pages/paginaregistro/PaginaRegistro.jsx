@@ -1,90 +1,19 @@
 import "./PaginaRegistro.css";
-import { useState } from "react";
-import { registroUsuarioService } from "../../services";
-export const PaginaRegistro = () => {
-  //hacemos que todos los campos esten controlados por un estado
-  //creamos un estado para cada uno de los campos del formulario
-  const [userName, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [pass1, setPass1] = useState("");
-  const [pass2, setPass2] = useState("");
-  const [error, setError] = useState("");
+import FormularioRegistro from "../../components/registro/FormularioRegistro";
 
-  const handleForm = async (e) => {
-    //cancelamos el evento de envio con preventDefault
-    e.preventDefault();
-    setError("");
-    //comprobamos que las password sean iguales
-    if (pass1 !== pass2) {
-      setError("Las contraseñas no coinciden");
-      return;
-    }
-
-    //Hacemos un try catch porque nos vamos a comunicar con la base de datos y así controlamos nosotros los errores que puedan surgir
-    try {
-      await registroUsuarioService({ userName, email, password: pass1 });
-    } catch (error) {
-      setError(error.message);
-    }
-  };
-
+const PaginaRegistro = () => {
   return (
-    <section className="cajaFormulario">
-      <h1>REGISTRO</h1>
-      {/* Gestionamos el envio con el evento handleForm */}
-      <form onSubmit={handleForm}>
-        <fieldset>
-          <label htmlFor="Nombre de usuario">Nombre de usuario</label>
-          {/* Creamos un evento dentro de cada uno de los inputs para que cuando se actualicen los campos, actualice el estado */}
-          <input
-            value={userName}
-            onChange={(e) => setName(e.target.value)}
-            type="text"
-            required
-          />
-        </fieldset>
-
-        <fieldset>
-          <label htmlFor="email">Correo electrónico</label>
-          <input
-            value={email}
-            type="email"
-            id="email"
-            name="email"
-            required
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </fieldset>
-
-        <fieldset>
-          <label htmlFor="pass1">Contraseña</label>
-          <input
-            value={pass1}
-            type="password"
-            id="pass1"
-            name="pass1"
-            required
-            onChange={(e) => setPass1(e.target.value)}
-          />
-        </fieldset>
-
-        <fieldset>
-          <label htmlFor="pass2">Repite la contraseña</label>
-          <input
-            value={pass2}
-            type="password"
-            id="pass2"
-            name="pass2"
-            required
-            onChange={(e) => setPass2(e.target.value)}
-          />
-        </fieldset>
-
-        <button className="botonRegistro">REGISTRAR</button>
-        {error ? <p>{error}</p> : null}
-      </form>
+    <section className="contenedorFormularioRegistro">
+      <div className="textoRegistro">
+        <h1 className="tituloRegistro">CodeLinkLibrary</h1>
+        <p className="parrafoRegistro">
+          Registrate para poder acceder a todos los contenidos.
+        </p>
+      </div>
+      <div className="cajaRegistro">
+        <FormularioRegistro />
+      </div>
     </section>
   );
 };
-
 export default PaginaRegistro;
