@@ -37,6 +37,7 @@ input {
 }
 
 .botonLogin {
+  margin-top: 30px;
   background-color: #303030;
   color: white;
   padding: 10px 15px;
