@@ -1,25 +1,25 @@
-import { createContext, useContext, useState } from "react"
+import { createContext, useContext, useState } from "react";
 
-const UserContext = createContext()
+const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('session')))
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("session")));
 
   const betterSetUser = (user) => {
-    setUser(user)
+    setUser(user);
     if (user) {
-      localStorage.setItem('session', JSON.stringify(user))
+      localStorage.setItem("session", JSON.stringify(user));
     } else {
-      localStorage.removeItem('session')
+      localStorage.removeItem("session");
     }
-  }
+  };
 
   return (
     <UserContext.Provider value={[user, betterSetUser]}>
       {children}
     </UserContext.Provider>
-  )
-}
+  );
+};
 
 // const [user, setUser] = useUser()
-export const useUser = () => useContext(UserContext)
+export const useUser = () => useContext(UserContext);

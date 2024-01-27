@@ -5,9 +5,8 @@
 
 html,
 body {
-  background-color: #303030;
+  /*   background-color: #303030; */
   font-family: Jost, sans-serfi;
-  color: white;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -17,10 +16,10 @@ body {
 } */
 
 /* Estilos para el modo claro */
-body.dark-mode {
+/* body.dark-mode {
   background-color: #ffffff;
   color: #303030;
-}
+} */
 
 .logo {
   width: 200px;
@@ -31,9 +30,9 @@ body.dark-mode {
   padding: 20px 0 20px 0;
 }
 
-.dark-mode .description {
-  border-bottom: 1px solid #303030; /* Color del borde en modo claro */
-}
+/* .dark-mode .description {
+  border-bottom: 1px solid #303030; 
+} */
 .description h2 {
   font-weight: 700;
   text-align: center;

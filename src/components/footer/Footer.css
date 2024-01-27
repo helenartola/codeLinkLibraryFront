@@ -4,12 +4,19 @@
   width: 100%;
   text-align: center;
   padding: 10px;
-  border-top: 1px solid white;
+  border-top: 1px solid var(--border-color);
   font-size: 13px;
   letter-spacing: 0.1em;
-  background-color: #303030;
 }
 
-.dark-mode .footer {
-  border-top: 1px solid #303030; /* Color del borde en modo claro */
+.light {
+  background-color: var(--background-light);
+  color: var(--text-light);
+  --border-color: #303030;
+}
+
+.dark {
+  background-color: var(--background-dark);
+  color: var(--text-dark);
+  --border-color: white;
 }
