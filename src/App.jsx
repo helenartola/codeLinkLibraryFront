@@ -1,4 +1,4 @@
-import "./App.css";
+// Importar las librerías necesarias
 import { Routes, Route } from "react-router-dom";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
@@ -14,11 +14,16 @@ function App() {
     <>
       <Header />
       <main className="main-container">
+       
+        {/* Configurar las rutas */}
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/registro" element={<PaginaRegistro />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/post/:id" element={<PostPage />} />
+
+          {/* Ruta para mostrar los detalles del post */}
+          <Route path="/post/:postId" element={<PostPage />} />
+
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

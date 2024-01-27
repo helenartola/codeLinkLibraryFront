@@ -1,27 +1,35 @@
 import "./Buscador.css";
 import { useState, useEffect } from "react";
 import { searchService } from "../../services";
+import { Link } from "react-router-dom"; // Importar Link de React Router*
 
 const Buscador = () => {
-  const [searchTerm, setSearchTerm] = useState(""); // Estado para almacenar el término de búsqueda
-  const [searchResults, setSearchResults] = useState([]); // Estado para almacenar los resultados de la búsqueda
+  // Estado para almacenar el término de búsqueda
+  const [searchTerm, setSearchTerm] = useState("");
+
+  // Estado para almacenar los resultados de la búsqueda
+  const [searchResults, setSearchResults] = useState([]);
 
   // Efecto que se ejecuta cuando el término de búsqueda cambia
   useEffect(() => {
     const search = async () => {
       // Ejecutar la función de búsqueda cuando el término de búsqueda no está vacío
       if (searchTerm.trim() !== "") {
-        
+        // Llamar al servicio de búsqueda y obtener los resultados
         const data = await searchService(searchTerm);
+
         // Actualizar el estado con los resultados de la búsqueda
-        setSearchResults(data); // Ajusta según la estructura de la respuesta
+        setSearchResults(data);
       } else {
         // Si el término de búsqueda está vacío, limpiar los resultados
         setSearchResults([]);
       }
-    }
+    };
+
+    // Llamar a la función de búsqueda
     search();
 
+    // Dependencia del efecto: se ejecutará cada vez que searchTerm cambie
   }, [searchTerm]);
 
   return (
@@ -38,8 +46,12 @@ const Buscador = () => {
       <ul>
         {searchResults.map((result) => (
           <li key={result.postId}>
-            <p>{result.title}</p>
-            <p>{result.description}</p>
+            {/* Enlace a la página del post utilizando Link */}
+            <Link to={`/post/${result.postId}`}>
+              {/* Mostrar la información del post */}
+              <p>Title: {result.title}</p>
+              <p>Description: {result.description}</p>
+            </Link>
           </li>
         ))}
       </ul>
