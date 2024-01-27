@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import "./Header.css";
 import ThemeSwitcher from "../temaclaroscuro/ThemeSwitcher";
 import Buscador from "../buscador/Buscador";
+import { useTheme } from "../../context/ThemeContext";
 
 const Header = () => {
+  const { isDarkMode } = useTheme();
   return (
-    <header className="header">
+    <header className={`header ${isDarkMode ? "dark" : "light"}`}>
       <nav className="navbar">
         <Link to="/" className="logo-container">
           <img className="logo" src="/CodeLinkLibrary-verde.png" alt="Logo" />

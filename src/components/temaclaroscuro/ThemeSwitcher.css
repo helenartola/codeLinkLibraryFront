@@ -10,7 +10,29 @@
 }
 
 .small-icon {
-  /* Tamaño más pequeño para las imágenes en el botón */
   width: 20px;
   height: 20px;
+}
+
+:root {
+  --background-light: #ffffff;
+  --text-light: #303030;
+
+  --background-dark: #303030;
+  --text-dark: #ffffff;
+}
+
+.dark-mode {
+  --background: var(--background-dark);
+  --text: var(--text-dark);
+}
+
+.light-mode {
+  --background: var(--background-light);
+  --text: var(--text-light);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text);
 }

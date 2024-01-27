@@ -1,11 +1,6 @@
 .header {
   padding: 10px;
-  border-bottom: 1px solid white;
-  border-top: 1px solid white;
-}
-
-.dark-mode .header {
-  border-bottom: 1px solid #303030;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .navbar {
@@ -20,13 +15,14 @@
   width: 200px;
 }
 
-.auth-container,
-.theme-switcher-container {
-  padding: 0 10px;
+.light {
+  background-color: var(--background-light);
+  color: var(--text-light);
+  --border-color: #303030;
 }
 
-.auth-container a,
-.theme-switcher-container a {
-  color: white;
-  text-decoration: none;
+.dark {
+  background-color: var(--background-dark);
+  color: var(--text-dark);
+  --border-color: white;
 }
