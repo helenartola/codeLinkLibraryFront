@@ -77,3 +77,27 @@ export const loginUsuarioService = async ({ email, password }) => {
     throw new Error("Error al iniciar sesión desde el frontend");
   }
 };
+
+// Función que realiza la búsqueda en el backend
+export const searchService = async (term) => {
+  try {
+    // Codificar el término de búsqueda antes de incluirlo en la URL
+    const encodedTerm = encodeURIComponent(term);
+
+    // Realizar la solicitud GET al backend
+    const response = await fetch(`${import.meta.env.VITE_BACKEND}/post/search?filter=${encodedTerm}`, {
+      method: "GET", // Método de la solicitud
+    });
+
+    // Verificar si la respuesta es exitosa 
+    if (!response.ok) {
+      throw new Error(`Error al buscar. Código ${response.status}`);
+    }
+
+    // Convertir la respuesta a formato JSON
+    const json = await response.json();
+    return json.data;
+  } catch (error) {
+    console.error("Error al buscar:", error);
+  }
+};
