@@ -13,20 +13,10 @@ const HomePage = () => {
   console.log(posts);
   return (
     <section className="inicio">
-      {/* <aside className="asideIzquierdo">
-        <p>esto es una barra lateral</p>
-      </aside> */}
       <div className="main-content">
         <h1>HOME | ÚLTIMOS POSTS</h1>
-        {/*  <div className="description">
-          <h2>Elevate your web development journey </h2>
-          <h3>Share, learn, and collaborate seamlessly</h3>
-        </div> */}
         <ListaDePosts posts={posts} />
       </div>
-      {/* <aside className="asidederecho">
-        <p>esto es una barra lateral</p>
-      </aside> */}
     </section>
   );
 };

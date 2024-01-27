@@ -1,28 +1,45 @@
+/* Estilos base para dispositivos móviles */
 .header {
   padding: 10px;
   border-bottom: 1px solid var(--border-color);
+}
+
+.theme-switcher-container {
+  margin-top: 10px;
 }
 
 .navbar {
   overflow: hidden;
   padding: 10px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
 }
 
 .logo {
-  width: 200px;
+  width: 100%;
+  max-width: 200px;
+  margin-bottom: 10px;
 }
 
-.light {
+.light .navbar {
   background-color: var(--background-light);
   color: var(--text-light);
-  --border-color: #303030;
 }
 
-.dark {
+.dark .navbar {
   background-color: var(--background-dark);
   color: var(--text-dark);
-  --border-color: white;
+}
+
+@media screen and (min-width: 768px) {
+  .navbar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .theme-switcher-container {
+    margin-top: 0;
+  }
 }

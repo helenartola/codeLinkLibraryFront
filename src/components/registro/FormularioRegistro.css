@@ -3,13 +3,30 @@ fieldset {
   padding-bottom: 10px;
   width: 400px;
 }
+.dark {
+  --background: var(--background-dark);
+  --text: var(--text-dark);
+}
 
+.light {
+  --background: var(--background-light);
+  --text: var(--text-light);
+}
+
+.light input {
+  color: #303030;
+  border-bottom: 1px solid #303030;
+}
+
+.dark input {
+  color: white;
+  border-bottom: 1px solid white;
+}
 .cajaFormulario {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #303030;
   border: 1px solid #05856e;
   width: 500px;
   padding-top: 15px;
@@ -18,6 +35,7 @@ fieldset {
 .cajaFormulario h1 {
   font-size: 16px;
 }
+
 label {
   display: flex;
   align-items: flex-start;
@@ -31,14 +49,11 @@ input {
   width: 100%;
   padding: 8px;
   box-sizing: border-box;
-  color: white;
   font-family: jost, sans-serif;
   font-weight: 300;
   font-size: 13px;
   letter-spacing: 0.1em;
   border: none;
-  border-bottom: 1px solid white;
-  background-color: transparent;
   outline: none;
 }
 
@@ -57,6 +72,7 @@ input {
 }
 .botonRegistro:hover {
   background-color: #05856e;
+  border: 1px solid #05856e;
 }
 
 .errorMensaje {

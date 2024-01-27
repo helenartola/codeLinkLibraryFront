@@ -10,3 +10,8 @@
   border: 1px solid #05856e;
   background-color: transparent;
 }
+
+.light .auth-button:hover {
+  color: #303030;
+  border-bottom: 1px solid #05856e;
+}

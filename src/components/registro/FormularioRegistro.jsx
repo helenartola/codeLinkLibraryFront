@@ -2,6 +2,7 @@ import "./FormularioRegistro.css";
 import { useState } from "react";
 import { registroUsuarioService } from "../../services";
 import { Link } from "react-router-dom";
+import { useTheme } from "../../context/ThemeContext";
 
 export const FormularioRegistro = () => {
   //hacemos que todos los campos esten controlados por un estado
@@ -11,6 +12,7 @@ export const FormularioRegistro = () => {
   const [pass1, setPass1] = useState("");
   const [pass2, setPass2] = useState("");
   const [error, setError] = useState("");
+  const { isDarkMode } = useTheme();
 
   const handleForm = async (e) => {
     //cancelamos el evento de envio con preventDefault
@@ -31,10 +33,10 @@ export const FormularioRegistro = () => {
   };
 
   return (
-    <section>
+    <section className={`cajaFormulario ${isDarkMode ? "dark" : "light"}`}>
       {/* Gestionamos el envio con el evento handleForm */}
 
-      <form onSubmit={handleForm} className="cajaFormulario">
+      <form onSubmit={handleForm}>
         <h1>FORMULARIO DE REGISTRO</h1>
         <fieldset>
           <label htmlFor="Nombre de usuario">NOMBRE DE USUARIO</label>

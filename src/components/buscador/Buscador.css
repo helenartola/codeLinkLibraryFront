@@ -15,7 +15,20 @@
   padding-left: 20px;
 }
 
-.search-bar input::placeholder {
+.dark .search-bar input::placeholder {
   color: white;
   font-size: 15px;
+}
+
+.light .search-bar input::placeholder {
+  color: #303030;
+  font-size: 15px;
+}
+.light .search-bar input {
+  border: 1px solid #303030;
+  background-color: transparent;
+}
+.dark .search-bar input {
+  border: 1px solid #05856e;
+  background-color: transparent;
 }

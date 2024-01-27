@@ -3,13 +3,25 @@ fieldset {
   padding-bottom: 10px;
   width: 400px;
 }
+.light {
+  background-color: var(--background-light);
+  color: var(--text-light);
+}
+
+.dark {
+  background-color: var(--background-dark);
+  color: var(--text-dark);
+}
 
 .cajaFormulario {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #303030;
+  background-color: transparent;
+}
+.cajaFormulario .light {
+  background-color: transparent;
 }
 
 label {
@@ -25,7 +37,6 @@ input {
   width: 100%;
   padding: 8px;
   box-sizing: border-box;
-  color: white;
   font-family: jost, sans-serif;
   font-weight: 300;
   font-size: 13px;
@@ -36,10 +47,18 @@ input {
   outline: none;
 }
 
+.light input {
+  color: #303030;
+  border-bottom: 1px solid #303030;
+}
+
+.dark input {
+  color: white;
+  border-bottom: 1px solid white;
+}
+
 .botonLogin {
   margin-top: 30px;
-  background-color: #303030;
-  color: white;
   padding: 10px 15px;
   border: 1px solid white;
   cursor: pointer;

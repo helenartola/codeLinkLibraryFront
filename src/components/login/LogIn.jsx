@@ -1,5 +1,6 @@
 import "./LogIn.css";
 import { useState } from "react";
+import { useTheme } from "../../context/ThemeContext";
 import { loginUsuarioService } from "../../services";
 import { Link } from "react-router-dom";
 
@@ -7,7 +8,7 @@ export const FormularioLogin = ({ onLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
+  const { isDarkMode } = useTheme();
   const handleLogin = async (e) => {
     e.preventDefault();
     setError("");
@@ -22,7 +23,7 @@ export const FormularioLogin = ({ onLogin }) => {
   };
 
   return (
-    <section className="cajaFormulario">
+    <section className={`cajaFormulario ${isDarkMode ? "dark" : "light"}`}>
       <h1>INICIO DE SESIÓN</h1>
       <form onSubmit={handleLogin}>
         <fieldset>

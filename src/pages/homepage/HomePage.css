@@ -3,35 +3,3 @@
   align-items: center;
   justify-content: center;
 }
-
-.asideIzquierdo,
-.asidederecho {
-  width: 15%;
-  height: 100vh;
-  padding: 10px;
-  background-color: hsl(0, 0%, 19%);
-}
-.asidederecho {
-  border-left: solid 1px white;
-}
-.asideIzquierdo {
-  border-right: solid 1px white;
-}
-
-.description {
-  border-bottom: 1px solid white;
-  padding: 20px 0 20px 0;
-}
-
-.dark-mode .description {
-  border-bottom: 1px solid #303030; /* Color del borde en modo claro */
-}
-.description h2 {
-  font-weight: 700;
-  text-align: center;
-}
-
-.description h3 {
-  font-weight: 400;
-  text-align: center;
-}
