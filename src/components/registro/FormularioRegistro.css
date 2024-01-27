@@ -12,7 +12,7 @@ fieldset {
   background-color: #303030;
   border: 1px solid #05856e;
   width: 500px;
-  padding-top: 20px;
+  padding-top: 15px;
   padding-bottom: 30px;
 }
 .cajaFormulario h1 {
@@ -72,7 +72,7 @@ input {
 .yaTienesCuenta {
   display: flex;
   align-items: center;
-  padding-top: 40px;
+  padding-top: 20px;
   letter-spacing: 1px;
 }
 

@@ -10,10 +10,11 @@ body {
   color: white;
   display: flex;
   flex-direction: column;
-}
-.main-container {
   min-height: 100vh;
 }
+/* .main-container {
+  min-height: 100vh;
+} */
 
 /* Estilos para el modo claro */
 body.dark-mode {
