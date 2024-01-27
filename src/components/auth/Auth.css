@@ -6,3 +6,7 @@
   color: white;
   margin: 5px;
 }
+.auth-button:hover {
+  border: 1px solid #05856e;
+  background-color: transparent;
+}

@@ -10,8 +10,14 @@ fieldset {
   align-items: center;
   justify-content: center;
   background-color: #303030;
+  border: 1px solid #05856e;
+  width: 500px;
+  padding-top: 20px;
+  padding-bottom: 30px;
 }
-
+.cajaFormulario h1 {
+  font-size: 16px;
+}
 label {
   display: flex;
   align-items: flex-start;
@@ -36,7 +42,7 @@ input {
   outline: none;
 }
 
-.botonLogin {
+.botonRegistro {
   margin-top: 30px;
   background-color: #303030;
   color: white;
@@ -49,7 +55,7 @@ input {
   text-align: center;
   letter-spacing: 0.1em;
 }
-.botonLogin:hover {
+.botonRegistro:hover {
   background-color: #05856e;
 }
 
@@ -61,4 +67,26 @@ input {
   background-color: red;
   padding: 10px;
   margin-top: 10px;
+}
+
+.yaTienesCuenta {
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  letter-spacing: 1px;
+}
+
+.accede-button {
+  color: #05856e;
+  background-color: transparent;
+  border: none;
+  font-family: jost, sans-serif;
+  font-size: 15px;
+  letter-spacing: 1px;
+  margin-left: 5px;
+  font-weight: 700;
+}
+.accede-button:hover {
+  cursor: pointer;
+  color: white;
 }
