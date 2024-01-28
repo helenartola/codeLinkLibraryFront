@@ -1,4 +1,5 @@
 .container-buscador {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6,12 +7,19 @@
 }
 .lista-enlaces-buscador {
   position: absolute;
+  top: 100%; /* Posiciona el desplegable debajo del contenedor del buscador */
+  left: 0;
+  width: 100%; /* Ajusta el ancho según sea necesario */
   background-color: white;
   list-style-type: none;
-  z-index: 1; /* Ajusta según sea necesario para superponer al contenido */
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Opcional: añade sombra al desplegable */
 }
 /* Estilos para cada elemento de la lista */
 .lista-enlaces-buscador li {
+  padding-right: 250px;
+  padding-left: 250px;
+  padding-top: 50px;
   margin-bottom: 10px; /* Añade un espacio entre elementos de la lista (ajusta según sea necesario) */
 }
 /* Estilos para los enlaces dentro de cada elemento de la lista */
