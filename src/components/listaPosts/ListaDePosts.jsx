@@ -1,17 +1,15 @@
-import Post from "./Post";
+import PostItem from "../postItem/PostItem"; 
 
 const ListaDePosts = ({ posts }) => {
-
   return posts.length ? (
-    <ul>
+    <div className="lista-posts">
       {posts.map((post) => (
-        <li key={post.title}>
-          <Post post={post} />
-        </li>
+        <PostItem key={post.title} post={post} />
       ))}
-    </ul>
+    </div>
   ) : (
     <p>No hay posts todavía</p>
   );
 };
+
 export default ListaDePosts;
