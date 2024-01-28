@@ -60,9 +60,6 @@ input {
 
 .botonRegistro {
   margin-top: 30px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
   background-color: #303030;
   color: white;
   padding: 10px 15px;
