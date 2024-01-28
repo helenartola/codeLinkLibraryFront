@@ -22,4 +22,8 @@ body {
   .logo {
     width: 200px;
   }
+  html,
+  body {
+    font-family: Jost, sans-serif;
+  }
 }
