@@ -15,8 +15,8 @@ const HomePage = () => {
   // Renderizamos la sección de inicio
   return (
     <section className="inicio">
-      {/* Añadimos la clase "main-content" y "post-page-container" al contenedor principal */}
-      <div className="main-content post-page-container">
+      {/* Eliminamos la clase "post-page-container" del contenedor principal, dejo comentado por si queremos añadirlo después */}
+      <div className="main-content">
         {/* Pasamos los posts a ListaDePosts para su renderización */}
         <ListaDePosts posts={posts} />
       </div>
