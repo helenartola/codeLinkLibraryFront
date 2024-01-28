@@ -1,21 +1,20 @@
 /* Estilos para el contenedor principal de la página de posts */
 .post-page-container {
-    margin: 20px; /* Márgenes externos de 20px */
-    padding: 15px; /* Relleno interno de 15px */
-    border: 1px solid #ddd; /* Borde de 1px sólido con color #ddd */
-    border-radius: 8px; /* Esquinas redondeadas de 8px */
-    background-color: #fff; /* Fondo blanco */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
-  }
-  
-  /* Estilo para los títulos (h1) dentro del contenedor */
-  .post-page-container h1 {
-    color: #0a1922; /* Color azul para los títulos */
-  }
-  
-  /* Estilo para los párrafos (p) dentro del contenedor */
-  .post-page-container p {
-    color: #555; /* Color gris oscuro para los párrafos */
-  }
+  margin: 20px; /* Márgenes externos de 20px */
+  padding: 15px; /* Relleno interno de 15px */
+  border: 1px solid #ddd; /* Borde de 1px sólido con color #ddd */
+  border-radius: 8px; /* Esquinas redondeadas de 8px */
+  background-color: #fff; /* Fondo blanco */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  font-family: jost, sans-serif;
+}
 
-  
+/* Estilo para los títulos (h1) dentro del contenedor */
+.post-page-container h1 {
+  color: #0a1922; /* Color azul para los títulos */
+}
+
+/* Estilo para los párrafos (p) dentro del contenedor */
+.post-page-container p {
+  color: #555; /* Color gris oscuro para los párrafos */
+}

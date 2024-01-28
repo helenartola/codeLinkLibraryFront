@@ -1,23 +1,9 @@
-/* Estilos para la caja que contiene cada post */
 .post-item-container {
-    margin-bottom: 20px;        /* Margen inferior para separar cada caja de post */
-    padding: 15px;              /* Espaciado interno dentro de la caja */
-    border: 1px solid #ddd;     /* Borde de 1 píxel con sombra */
-    border-radius: 8px;         /* Bordes redondeados para suavizar la apariencia */
-    background-color: #fff;     /* Fondo blanco para la caja */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera para resaltar la caja */
-  }
-  
-  /* Estilos para el título (h2) dentro de la caja de post */
-  .post-item-container h2 {
-    color: #080d10;  /* Color del texto del título */
-  }
-  
-  /* Estilos para el párrafo (p) dentro de la caja de post */
-  .post-item-container p {
-    color: #555;     /* Color del texto del párrafo */
-  }
-  
-  
-  
-  
+  margin-bottom: 20px;
+  padding: 15px;
+}
+
+.post-item-container:not(:last-child) {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
+}
