@@ -41,20 +41,21 @@ const Buscador = () => {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-
-      {/* Lista de resultados de la búsqueda */}
-      <ul>
-        {searchResults.map((result) => (
-          <li key={result.postId}>
-            {/* Enlace a la página del post utilizando Link */}
-            <Link to={`/post/${result.postId}`}>
-              {/* Mostrar la información del post */}
-              <p>Title: {result.title}</p>
-              <p>Description: {result.description}</p>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <div className="container-buscador">
+        {/* Lista de resultados de la búsqueda */}
+        <ul className="lista-enlaces-buscador">
+          {searchResults.map((result) => (
+            <li key={result.postId}>
+              {/* Enlace a la página del post utilizando Link */}
+              <Link to={`/post/${result.postId}`}>
+                {/* Mostrar la información del post */}
+                <p> {result.title}</p>
+                <p>{result.description}</p>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

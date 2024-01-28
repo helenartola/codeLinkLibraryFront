@@ -1,3 +1,25 @@
+.container-buscador {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+.lista-enlaces-buscador {
+  position: absolute;
+  background-color: white;
+  list-style-type: none;
+  z-index: 1; /* Ajusta según sea necesario para superponer al contenido */
+}
+/* Estilos para cada elemento de la lista */
+.lista-enlaces-buscador li {
+  margin-bottom: 10px; /* Añade un espacio entre elementos de la lista (ajusta según sea necesario) */
+}
+/* Estilos para los enlaces dentro de cada elemento de la lista */
+.lista-enlaces-buscador li a {
+  text-decoration: none; /* Elimina la subrayado predeterminado de los enlaces */
+  color: #333; /* Establece el color del texto para los enlaces (ajusta según sea necesario) */
+  /* Otros estilos para los enlaces si es necesario */
+}
 .search-bar {
   flex-grow: 1;
   text-align: center;
