@@ -1,9 +1,11 @@
 .post-item-container {
-  margin-bottom: 20px;
-  padding: 15px;
-}
-
-.post-item-container:not(:last-child) {
-  border-bottom: 1px solid #ddd;
-  margin-bottom: 20px;
-}
+    margin-bottom: 20px;
+    padding: 15px;
+    max-width: 800px; /* Ajusta el valor*/
+    margin: 0 auto; /* Esto centra el contenedor */
+  }
+  
+  .post-item-container:not(:last-child) {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+  }
