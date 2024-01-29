@@ -5,6 +5,7 @@
   background-color: #05856e;
   color: white;
   margin: 5px;
+  font-family: jost, sans-serif;
 }
 .auth-button:hover {
   border: 1px solid #05856e;
@@ -32,6 +33,7 @@
 .profile-button:hover {
   border: 1px solid #05856e;
   background-color: transparent;
+  background-image: url(/profileIcon.png);
 }
 
 .light .profile-button:hover {
