@@ -1,6 +1,7 @@
 .contenedorFormularioLogin {
   display: flex;
-  align-items: center;
   justify-content: center;
-  height: 80vh;
+  align-items: center;
+  padding-top: 5%;
+  padding-bottom: 5%;
 }

@@ -9,7 +9,7 @@ export const FormularioLogin = ({ onLogin }) => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const { isDarkMode } = useTheme();
-  
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setError("");
@@ -19,12 +19,9 @@ export const FormularioLogin = ({ onLogin }) => {
 
       if (response && response.token) {
         // Almacenar el token en localStorage
-        localStorage.setItem('token', response.token);
+        localStorage.setItem("token", response.token);
 
-        
         onLogin();
-
-       
       } else {
         setError("Error al obtener el token");
       }
@@ -34,7 +31,7 @@ export const FormularioLogin = ({ onLogin }) => {
   };
 
   return (
-    <section className={`cajaFormulario ${isDarkMode ? "dark" : "light"}`}>
+    <section className={`cajaFormularioLogin ${isDarkMode ? "dark" : "light"}`}>
       <h1>INICIO DE SESIÓN</h1>
       <form onSubmit={handleLogin}>
         <fieldset>
