@@ -9,14 +9,25 @@ export const FormularioLogin = ({ onLogin }) => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const { isDarkMode } = useTheme();
+  
   const handleLogin = async (e) => {
     e.preventDefault();
     setError("");
 
     try {
-      await loginUsuarioService({ email, password });
-      onLogin();
-      // Lógica adicional después de iniciar sesión, si es necesario
+      const response = await loginUsuarioService({ email, password });
+
+      if (response && response.token) {
+        // Almacenar el token en localStorage
+        localStorage.setItem('token', response.token);
+
+        
+        onLogin();
+
+       
+      } else {
+        setError("Error al obtener el token");
+      }
     } catch (error) {
       setError(error.message);
     }
