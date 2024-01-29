@@ -11,7 +11,7 @@ const ProfilePage = () => {
 
   return (
     <div className="profile-container">
-      <nav className="navegacion-perfil">
+      <nav className="botones-navegacion-perfil">
         <button>Historico de Posts</button>
         <button>Guardado</button>
         <button>Ajustes</button>
