@@ -46,9 +46,12 @@ export const createPostService = async (postData) => {
 // Obtener un post por su ID
 export const getPostByIdService = async (postId) => {
   try {
-    const response = await fetch(`${import.meta.env.VITE_BACKEND}/posts/${postId}`, {
-      method: "GET",
-    });
+    const response = await fetch(
+      `${import.meta.env.VITE_BACKEND}/posts/${postId}`,
+      {
+        method: "GET",
+      }
+    );
     const json = await response.json();
 
     if (!response.ok) {
@@ -58,25 +61,33 @@ export const getPostByIdService = async (postId) => {
     // Devolver la información del post individual
     return json.data;
   } catch (error) {
-    console.error(`Error al obtener el post con ID ${postId} desde el frontend:`, error);
-    throw new Error(`Error al obtener el post con ID ${postId} desde el frontend`);
+    console.error(
+      `Error al obtener el post con ID ${postId} desde el frontend:`,
+      error
+    );
+    throw new Error(
+      `Error al obtener el post con ID ${postId} desde el frontend`
+    );
   }
 };
 
 // Registrar un nuevo usuario
 export const registroUsuarioService = async ({ userName, email, password }) => {
   try {
-    const response = await fetch(`${import.meta.env.VITE_BACKEND}/user/register`, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        userName,
-        email,
-        password,
-      }),
-    });
+    const response = await fetch(
+      `${import.meta.env.VITE_BACKEND}/user/register`,
+      {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          userName,
+          email,
+          password,
+        }),
+      }
+    );
     const json = await response.json();
 
     if (!response.ok) {
@@ -86,7 +97,10 @@ export const registroUsuarioService = async ({ userName, email, password }) => {
     // Devolver la respuesta del servidor
     return json.data;
   } catch (error) {
-    console.error("Error al registrar un nuevo usuario desde el frontend:", error);
+    console.error(
+      "Error al registrar un nuevo usuario desde el frontend:",
+      error
+    );
     throw new Error("Error al registrar un nuevo usuario desde el frontend");
   }
 };
@@ -94,16 +108,19 @@ export const registroUsuarioService = async ({ userName, email, password }) => {
 // Iniciar sesión de un usuario
 export const loginUsuarioService = async ({ email, password }) => {
   try {
-    const response = await fetch(`${import.meta.env.VITE_BACKEND}/user/login`, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    });
+    const response = await fetch(
+      `${import.meta.env.VITE_BACKEND}/users/login`,
+      {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      }
+    );
     const json = await response.json();
 
     if (!response.ok) {
@@ -125,9 +142,12 @@ export const searchService = async (term) => {
     const encodedTerm = encodeURIComponent(term);
 
     // Realizar la solicitud GET al backend
-    const response = await fetch(`${import.meta.env.VITE_BACKEND}/post/search?filter=${encodedTerm}`, {
-      method: "GET", // Método de la solicitud
-    });
+    const response = await fetch(
+      `${import.meta.env.VITE_BACKEND}/post/search?filter=${encodedTerm}`,
+      {
+        method: "GET", // Método de la solicitud
+      }
+    );
 
     // Verificar si la respuesta es exitosa
     if (!response.ok) {

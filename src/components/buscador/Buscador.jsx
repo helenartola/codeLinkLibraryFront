@@ -63,7 +63,7 @@ const Buscador = () => {
         />
         {/* Botón con el icono de la lupa */}
         <button className="boton-lupa" onClick={handleSearchClick}>
-          <img src="lupa-blanca.png" alt="Search Icon" />
+          <img src="lupa-gris.png" alt="Search Icon" />
         </button>
       </div>
 
