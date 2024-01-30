@@ -23,17 +23,19 @@ const ThemeSwitcher = () => {
   // Maneja el cambio de tema
   const handleToggleDarkMode = () => {
     setLocalDarkMode(!localDarkMode);
-    toggleDarkMode(); 
+    toggleDarkMode();
   };
 
   return (
     <button
       onClick={handleToggleDarkMode}
-      className={`theme-switcher ${localDarkMode ? "dark" : "light"} small-icon`}
+      className={`theme-switcher ${
+        localDarkMode ? "dark" : "light"
+      } small-icon`}
     >
       <img
-        src={localDarkMode ? "/luna.png" : "/sol.png"}
-        alt={localDarkMode ? "luna" : "sol"}
+        src={localDarkMode ? "/sol.png" : "/luna.png"}
+        alt={localDarkMode ? "sol" : "luna"}
         className="small-icon"
       />
     </button>
