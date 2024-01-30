@@ -1,22 +1,39 @@
 import { useTheme } from "../../context/ThemeContext";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./ThemeSwitcher.css";
 
 const ThemeSwitcher = () => {
-  const { isDarkMode, toggleDarkMode } = useTheme();
+  const { toggleDarkMode } = useTheme();
 
+  // Estado local para manejar el tema
+  const [localDarkMode, setLocalDarkMode] = useState(
+    localStorage.getItem("darkMode") === "true"
+  );
+
+  // Actualiza el tema en el local storage cuando cambia
   useEffect(() => {
-    document.body.classList.toggle("dark-mode", isDarkMode);
-  }, [isDarkMode]);
+    localStorage.setItem("darkMode", localDarkMode);
+  }, [localDarkMode]);
+
+  // Aplica el tema al cuerpo del documento
+  useEffect(() => {
+    document.body.classList.toggle("dark-mode", localDarkMode);
+  }, [localDarkMode]);
+
+  // Maneja el cambio de tema
+  const handleToggleDarkMode = () => {
+    setLocalDarkMode(!localDarkMode);
+    toggleDarkMode(); 
+  };
 
   return (
     <button
-      onClick={toggleDarkMode}
-      className={`theme-switcher ${isDarkMode ? "dark" : "light"} small-icon`}
+      onClick={handleToggleDarkMode}
+      className={`theme-switcher ${localDarkMode ? "dark" : "light"} small-icon`}
     >
       <img
-        src={isDarkMode ? "/luna.png" : "/sol.png"}
-        alt={isDarkMode ? "luna" : "sol"}
+        src={localDarkMode ? "/luna.png" : "/sol.png"}
+        alt={localDarkMode ? "luna" : "sol"}
         className="small-icon"
       />
     </button>
