@@ -1,84 +1,57 @@
-/* Estilos para la barra de búsqueda y el botón */
-.buscador-container .search-bar {
-  display: flex;
-  align-items: center; /* Centra verticalmente los elementos en la barra de búsqueda */
-}
-
-.buscador-container .search-button {
-  border: none; /* Sin borde en el botón */
-  background: none; /* Fondo transparente en el botón */
-  cursor: pointer; /* Cambia el cursor al pasar por encima del botón */
-  padding: 5px; /* Espaciado interno del botón */
-  margin-left: 5px; /* Margen izquierdo para separar el botón del campo de entrada */
-}
-
-.buscador-container .search-button img {
-  width: 20px; /* Ajusta el tamaño del ícono de la lupa según sea necesario */
-  height: 20px;
-  vertical-align: middle; /* Alinea el ícono verticalmente en el botón */
-}
-
-/* Estilos para el contenedor de resultados de búsqueda */
 .container-buscador {
   display: flex;
   align-items: center;
-  justify-content: center; /* Centra horizontalmente los elementos en el contenedor de resultados */
-  background-color: white; /* Fondo blanco para el contenedor de resultados */
+  justify-content: center;
+  background-color: white;
 }
-
-/* Estilos para la lista de resultados de búsqueda */
 .lista-enlaces-buscador {
-  position: absolute; /* Posiciona la lista de resultados absolutamente en relación con el contenedor padre */
-  background-color: white; /* Fondo blanco para la lista de resultados */
-  list-style-type: none; /* Elimina los estilos de lista (viñetas) */
-  z-index: 1; /* Controla la superposición de la lista sobre otros elementos (ajusta según sea necesario) */
+  position: absolute;
+  background-color: white;
+  list-style-type: none;
+  z-index: 1; /* Ajusta según sea necesario para superponer al contenido */
 }
-
-/* Estilos para cada elemento de la lista de resultados */
+/* Estilos para cada elemento de la lista */
 .lista-enlaces-buscador li {
-  margin-bottom: 10px; /* Espaciado entre elementos de la lista (ajusta según sea necesario) */
+  margin-bottom: 10px; /* Añade un espacio entre elementos de la lista (ajusta según sea necesario) */
 }
-
 /* Estilos para los enlaces dentro de cada elemento de la lista */
 .lista-enlaces-buscador li a {
   text-decoration: none; /* Elimina la subrayado predeterminado de los enlaces */
   color: #333; /* Establece el color del texto para los enlaces (ajusta según sea necesario) */
+  /* Otros estilos para los enlaces si es necesario */
 }
-
-/* Estilos para el campo de entrada en la barra de búsqueda */
+.search-bar {
+  flex-grow: 1;
+  text-align: center;
+  padding: 0 20px;
+  font-family: Jost, sans-serif;
+}
 .search-bar input {
-  width: 80%; /* Ancho del campo de entrada */
-  padding: 8px; /* Espaciado interno del campo de entrada */
-  box-sizing: border-box; /* Incluye el padding y el borde en el ancho total del campo de entrada */
-  border: 1px solid #05856e; /* Borde del campo de entrada */
-  border-radius: 50px; /* Bordes redondeados del campo de entrada */
-  background-color: #05856e; /* Fondo verde oscuro del campo de entrada */
-  color: white; /* Color del texto en el campo de entrada */
-  font-family: jost, sans-serif; /* Fuente del texto en el campo de entrada */
-  padding-left: 20px; /* Espaciado interno a la izquierda del texto en el campo de entrada */
+  width: 80%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #05856e;
+  border-radius: 50px;
+  background-color: #05856e;
+  color: white;
+  font-family: jost, sans-serif;
+  padding-left: 20px;
 }
 
-/* Estilos para el texto de marcador de posición en el campo de entrada en modo oscuro */
 .dark .search-bar input::placeholder {
-  color: white; /* Color del texto de marcador de posición en modo oscuro */
-  font-size: 15px; /* Tamaño del texto de marcador de posición en modo oscuro */
+  color: white;
+  font-size: 15px;
 }
 
-/* Estilos para el texto de marcador de posición en el campo de entrada en modo claro */
 .light .search-bar input::placeholder {
-  color: #303030; /* Color del texto de marcador de posición en modo claro */
-  font-size: 15px; /* Tamaño del texto de marcador de posición en modo claro */
+  color: #303030;
+  font-size: 15px;
 }
-
-/* Estilos para el campo de entrada en modo claro */
 .light .search-bar input {
-  border: 1px solid #303030; /* Borde del campo de entrada en modo claro */
-  background-color: transparent; /* Fondo transparente del campo de entrada en modo claro */
+  border: 1px solid #303030;
+  background-color: transparent;
 }
-
-/* Estilos para el campo de entrada en modo oscuro */
 .dark .search-bar input {
-  border: 1px solid #05856e; /* Borde del campo de entrada en modo oscuro */
-  background-color: transparent; /* Fondo transparente del campo de entrada en modo oscuro */
+  border: 1px solid #05856e;
+  background-color: transparent;
 }
-
