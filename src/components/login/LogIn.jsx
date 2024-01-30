@@ -3,13 +3,15 @@ import { useState } from "react";
 import { useTheme } from "../../context/ThemeContext";
 import { loginUsuarioService } from "../../services";
 import { Link } from "react-router-dom";
-import LogoCodeLinkLibrary from "../logo/logoCodeLinkLibrary"; 
+import LogoCodeLinkLibrary from "../logo/logoCodeLinkLibrary";
+import { useNavigate } from "react-router-dom";
 
-export const FormularioLogin = ({ onLogin }) => {
+export const FormularioLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const { isDarkMode } = useTheme();
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -21,8 +23,7 @@ export const FormularioLogin = ({ onLogin }) => {
       if (token) {
         // Almacenar el token en localStorage
         localStorage.setItem("token", token);
-
-        onLogin();
+        navigate("/");
       } else {
         setError("Error al obtener el token");
       }
@@ -33,47 +34,48 @@ export const FormularioLogin = ({ onLogin }) => {
 
   return (
     <div className="login-container">
-    <LogoCodeLinkLibrary />
-    <section className={`cajaFormularioLogin ${isDarkMode ? "dark" : "light"}`}>
-      <h1>INICIO DE SESIÓN</h1>
-      <form onSubmit={handleLogin}>
-        <fieldset>
-          <label htmlFor="email">MAIL</label>
-          <input
-            value={email}
-            type="text"
-            id="email"
-            name="email"
-            required
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </fieldset>
+      <LogoCodeLinkLibrary />
+      <section
+        className={`cajaFormularioLogin ${isDarkMode ? "dark" : "light"}`}
+      >
+        <h1>INICIO DE SESIÓN</h1>
+        <form onSubmit={handleLogin}>
+          <fieldset>
+            <label htmlFor="email">MAIL</label>
+            <input
+              value={email}
+              type="text"
+              id="email"
+              name="email"
+              required
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </fieldset>
 
-        <fieldset>
-          <label htmlFor="password">CONTRASEÑA</label>
-          <input
-            value={password}
-            type="password"
-            id="password"
-            name="password"
-            required
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </fieldset>
+          <fieldset>
+            <label htmlFor="password">CONTRASEÑA</label>
+            <input
+              value={password}
+              type="password"
+              id="password"
+              name="password"
+              required
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </fieldset>
 
-        <button className="botonLogin">INICIAR SESIÓN</button>
-        {error && <p className="errorMensaje">{error}</p>}
-        <div className="yaTienesCuenta">
-          <p>¿Aún no tienes tu cuenta?</p>
-          <Link to="/registro">
-            <button className="accede-button">Regístrate</button>
-          </Link>
-        </div>
-      </form>
-    </section>
+          <button className="botonLogin">INICIAR SESIÓN</button>
+          {error && <p className="errorMensaje">{error}</p>}
+          <div className="yaTienesCuenta">
+            <p>¿Aún no tienes tu cuenta?</p>
+            <Link to="/registro">
+              <button className="accede-button">Regístrate</button>
+            </Link>
+          </div>
+        </form>
+      </section>
     </div>
   );
 };
 
 export default FormularioLogin;
-
