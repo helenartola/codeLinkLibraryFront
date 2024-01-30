@@ -1,7 +1,7 @@
 import "./Buscador.css";
 import { useState, useEffect } from "react";
 import { searchService } from "../../services";
-import { Link } from "react-router-dom"; // Importar Link de React Router*
+import { Link } from "react-router-dom";
 
 const Buscador = () => {
   // Estado para almacenar el término de búsqueda
@@ -12,6 +12,7 @@ const Buscador = () => {
 
   // Efecto que se ejecuta cuando el término de búsqueda cambia
   useEffect(() => {
+    // Función de búsqueda asincrónica
     const search = async () => {
       // Ejecutar la función de búsqueda cuando el término de búsqueda no está vacío
       if (searchTerm.trim() !== "") {
@@ -32,6 +33,11 @@ const Buscador = () => {
     // Dependencia del efecto: se ejecutará cada vez que searchTerm cambie
   }, [searchTerm]);
 
+  // Limpiar la búsqueda
+  const clearSearchTerm = () => {
+    setSearchTerm("");
+  };
+
   return (
     <div>
       {/* Input para que el usuario escriba el término de búsqueda */}
@@ -44,12 +50,13 @@ const Buscador = () => {
       <div className="container-buscador">
         {/* Lista de resultados de la búsqueda */}
         <ul className="lista-enlaces-buscador">
+          {/* Mapear los resultados y generar enlaces */}
           {searchResults.map((result) => (
             <li key={result.postId}>
               {/* Enlace a la página del post utilizando Link */}
-              <Link to={`/post/${result.postId}`}>
+              <Link to={`/post/${result.postId}`} onClick={clearSearchTerm}>
                 {/* Mostrar la información del post */}
-                <p> {result.title}</p>
+                <p>{result.title}</p>
                 <p>{result.description}</p>
               </Link>
             </li>
@@ -61,3 +68,4 @@ const Buscador = () => {
 };
 
 export default Buscador;
+
