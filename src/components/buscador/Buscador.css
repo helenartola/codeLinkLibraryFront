@@ -16,12 +16,16 @@
 
 /* Estilos para el botón con el icono de la lupa */
 .boton-lupa {
-  background-color: #05856e;
-  border: 1px solid #05856e;
+  background-color: transparent;
+  border: 2px solid #05856e;
+  border-left: none;
   cursor: pointer;
   padding: 8px;
-  width: 37px;
-  height: 37px;
+  width: 39px;
+  height: 39px;
+}
+.boton-lupa:hover {
+  background-color: #05856e;
 }
 
 /* Estilos para la imagen dentro del botón */
@@ -30,7 +34,8 @@
 }
 
 .light .search-bar input {
-  border: 1px solid #05856e; /* Borde del campo de entrada en modo claro */
+  border: 2px solid #05856e; /* Borde del campo de entrada en modo claro */
+  border-right: none;
   background-color: transparent; /* Fondo transparente del campo de entrada en modo claro */
   flex: 1;
   padding: 8px;
@@ -42,7 +47,8 @@
 
 /* Estilos para el campo de entrada en modo oscuro */
 .dark .search-bar input {
-  border: 1px solid #05856e; /* Borde del campo de entrada en modo oscuro */
+  border: 2px solid #05856e; /* Borde del campo de entrada en modo oscuro */
+  border-right: none;
   background-color: transparent; /* Fondo transparente del campo de entrada en modo oscuro */
   flex: 1;
   padding: 8px;
@@ -108,21 +114,25 @@
   }
 
   .boton-lupa {
-    background-color: #05856e;
-    border: 2.5px solid #05856e;
+    background-color: transparent;
+    border: 2px solid #05856e;
+    border-left: none;
     cursor: pointer;
     padding: 8px;
     width: 38px;
     height: 38px;
   }
-
+  .boton-lupa:hover {
+    background-color: #05856e;
+  }
   .boton-lupa img {
     width: 15px;
   }
 
   /* Estilos para el campo de entrada en modo claro */
   .light .search-bar input {
-    border: 2px solid #05856e; /* Borde del campo de entrada en modo claro */
+    border: 2px solid #05856e;
+    border-right: none;
     background-color: transparent; /* Fondo transparente del campo de entrada en modo claro */
     flex: 1;
     padding: 8px;
@@ -135,6 +145,7 @@
   /* Estilos para el campo de entrada en modo oscuro */
   .dark .search-bar input {
     border: 2px solid #05856e; /* Borde del campo de entrada en modo oscuro */
+    border-right: none;
     background-color: transparent; /* Fondo transparente del campo de entrada en modo oscuro */
     flex: 1;
     padding: 8px;
