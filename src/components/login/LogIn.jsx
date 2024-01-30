@@ -16,11 +16,11 @@ export const FormularioLogin = ({ onLogin }) => {
     setError("");
 
     try {
-      const response = await loginUsuarioService({ email, password });
+      const token = await loginUsuarioService({ email, password });
 
-      if (response && response.token) {
+      if (token) {
         // Almacenar el token en localStorage
-        localStorage.setItem("token", response.token);
+        localStorage.setItem("token", token);
 
         onLogin();
       } else {
