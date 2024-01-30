@@ -39,6 +39,9 @@
     align-items: center;
   }
 
+  .buscador {
+    width: fit-content;
+  }
   .theme-switcher-container {
     margin-top: 0;
   }

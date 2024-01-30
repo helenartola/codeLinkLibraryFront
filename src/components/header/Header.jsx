@@ -13,7 +13,7 @@ const Header = () => {
         <Link to="/" className="logo-container">
           <img className="logo" src="/CodeLinkLibrary-verde.png" alt="Logo" />
         </Link>
-        <div className="search-bar">
+        <div className="buscador">
           {/* Componente Buscador para realizar búsquedas estáticas */}
           <Buscador />
         </div>
