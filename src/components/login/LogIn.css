@@ -24,15 +24,19 @@ fieldset {
   border-bottom: 1px solid white;
 }
 
-.cajaFormularioLogin {
+.login-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 0;
+}
+
+.cajaFormularioLogin {
   border: 1px solid #05856e;
   width: 100%;
   max-width: 300px;
-  margin: auto;
+  margin: 20px ;
   padding: 20px;
   padding-bottom: 30px;
   font-family: Jost, sans-serif;

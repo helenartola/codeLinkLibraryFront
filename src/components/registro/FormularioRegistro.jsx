@@ -3,6 +3,7 @@ import { useState } from "react";
 import { registroUsuarioService } from "../../services";
 import { Link } from "react-router-dom";
 import { useTheme } from "../../context/ThemeContext";
+import LogoCodeLinkLibrary from "../logo/logoCodeLinkLibrary"; 
 
 export const FormularioRegistro = () => {
   //hacemos que todos los campos esten controlados por un estado
@@ -33,6 +34,8 @@ export const FormularioRegistro = () => {
   };
 
   return (
+    <div className="registro-container">
+    <LogoCodeLinkLibrary />
     <section className={`cajaFormulario ${isDarkMode ? "dark" : "light"}`}>
       {/* Gestionamos el envio con el evento handleForm */}
 
@@ -96,6 +99,7 @@ export const FormularioRegistro = () => {
         </div>
       </form>
     </section>
+    </div>
   );
 };
 
