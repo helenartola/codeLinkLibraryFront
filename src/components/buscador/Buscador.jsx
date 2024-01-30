@@ -2,9 +2,11 @@ import "./Buscador.css";
 import { useState, useEffect, useCallback } from "react";
 import { searchService } from "../../services";
 import { Link } from "react-router-dom";
+import { useTheme } from "../../context/ThemeContext";
 
 // Define el componente Buscador
 const Buscador = () => {
+  const { isDarkMode } = useTheme();
   // Estado para almacenar el término de búsqueda
   const [searchTerm, setSearchTerm] = useState("");
   // Estado para almacenar los resultados de la búsqueda
@@ -62,8 +64,14 @@ const Buscador = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         {/* Botón con el icono de la lupa */}
-        <button className="boton-lupa" onClick={handleSearchClick}>
-          <img src="lupa-gris.png" alt="Search Icon" />
+        <button
+          className={`boton-lupa ${isDarkMode ? "dark-mode" : ""}`}
+          onClick={handleSearchClick}
+        >
+          <img
+            src={isDarkMode ? "lupa-blanca.png" : "lupa.png"}
+            alt="Search Icon"
+          />
         </button>
       </div>
 
