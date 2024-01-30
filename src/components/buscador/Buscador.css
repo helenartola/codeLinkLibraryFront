@@ -1,28 +1,70 @@
-/* Estilos para la barra de búsqueda y el botón */
-.buscador-container .search-bar {
+/* Estilos para la barra de búsqueda */
+
+.barra-buscador {
   display: flex;
-  width: 80%;
-  align-items: center; /* Centra verticalmente los elementos en la barra de búsqueda */
+  width: 100%;
+  max-width: 600px;
 }
+
+/* Estilos para el campo de búsqueda y el botón */
 .search-bar {
-  width: 80%;
-}
-.buscador-container .search-button {
-  border: none; /* Sin borde en el botón */
-  background: none; /* Fondo transparente en el botón */
-  cursor: pointer; /* Cambia el cursor al pasar por encima del botón */
-  padding: 5px; /* Espaciado interno del botón */
-  margin-left: 5px; /* Margen izquierdo para separar el botón del campo de entrada */
+  display: flex;
+  align-items: center;
+  border: 1px solid #05856e;
+  width: 100%;
+  max-width: 600px;
 }
 
-.buscador-container .search-button img {
-  width: 20px; /* Ajusta el tamaño del ícono de la lupa según sea necesario */
-  height: 20px;
-  vertical-align: middle; /* Alinea el ícono verticalmente en el botón */
+/* Estilos para el campo de entrada */
+.search-bar input {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  font-family: jost, sans-serif;
+  outline: none;
+  width: 100%;
+  max-width: 600px;
 }
 
-/* Estilos para el contenedor de resultados de búsqueda */
-.container-buscador {
+/* Estilos para el botón con el icono de la lupa */
+.boton-lupa {
+  background-color: #05856e;
+  border: 1px solid #05856e;
+  cursor: pointer;
+  padding: 8px;
+}
+
+/* Estilos para la imagen dentro del botón */
+.boton-lupa img {
+  width: 15px; /* Para asegurar que la imagen ocupe todo el espacio del botón */
+}
+
+/* Estilos para el campo de entrada en modo claro */
+.light .search-bar input {
+  border: 1px solid #303030; /* Borde del campo de entrada en modo claro */
+  background-color: transparent; /* Fondo transparente del campo de entrada en modo claro */
+}
+
+/* Estilos para el campo de entrada en modo oscuro */
+.dark .search-bar input {
+  border: 1px solid #05856e; /* Borde del campo de entrada en modo oscuro */
+  background-color: transparent; /* Fondo transparente del campo de entrada en modo oscuro */
+}
+
+/* Estilos para el texto de marcador de posición en el campo de entrada en modo oscuro */
+.dark .search-bar input::placeholder {
+  color: white; /* Color del texto de marcador de posición en modo oscuro */
+  font-size: 15px; /* Tamaño del texto de marcador de posición en modo oscuro */
+}
+
+/* Estilos para el texto de marcador de posición en el campo de entrada en modo claro */
+.light .search-bar input::placeholder {
+  color: #303030; /* Color del texto de marcador de posición en modo claro */
+  font-size: 15px; /* Tamaño del texto de marcador de posición en modo claro */
+}
+
+/* CONTAINER RESULTADOS BÚSQUEDA */
+.container-lista-enlaces-encontrados {
   display: flex;
   align-items: center;
   justify-content: center; /* Centra horizontalmente los elementos en el contenedor de resultados */
@@ -45,51 +87,5 @@
 /* Estilos para los enlaces dentro de cada elemento de la lista */
 .lista-enlaces-buscador li a {
   text-decoration: none; /* Elimina la subrayado predeterminado de los enlaces */
-  color: #333; /* Establece el color del texto para los enlaces (ajusta según sea necesario) */
-}
-
-/* Estilos para el campo de entrada en la barra de búsqueda */
-.search-bar input {
-  width: 100%; /* Ancho del campo de entrada */
-  padding: 8px; /* Espaciado interno del campo de entrada */
-  box-sizing: border-box; /* Incluye el padding y el borde en el ancho total del campo de entrada */
-  border: 1px solid #05856e; /* Borde del campo de entrada */
-  border-radius: 50px; /* Bordes redondeados del campo de entrada */
-  background-color: #05856e; /* Fondo verde oscuro del campo de entrada */
-  color: white; /* Color del texto en el campo de entrada */
-  font-family: jost, sans-serif; /* Fuente del texto en el campo de entrada */
-  padding-left: 20px; /* Espaciado interno a la izquierda del texto en el campo de entrada */
-}
-.search-input {
-  padding: 30px; /* Ajusta el espaciado según tus necesidades */
-  background-image: url("/lupa-gris.png"); /* Cambia 'ruta-de-tu-imagen.jpg' con la ruta de tu imagen */
-  background-size: 15px; /* Ajusta el tamaño de la imagen */
-  background-position: left; /* Centra la imagen */
-  background-repeat: no-repeat; /* Evita que se repita la imagen */
-  border: 1px solid #ccc; /* Ajusta el estilo del borde según tus necesidades */
-  outline: none; /* Elimina el borde al enfocar el input */
-}
-
-/* Estilos para el texto de marcador de posición en el campo de entrada en modo oscuro */
-.dark .search-bar input::placeholder {
-  color: white; /* Color del texto de marcador de posición en modo oscuro */
-  font-size: 15px; /* Tamaño del texto de marcador de posición en modo oscuro */
-}
-
-/* Estilos para el texto de marcador de posición en el campo de entrada en modo claro */
-.light .search-bar input::placeholder {
-  color: #303030; /* Color del texto de marcador de posición en modo claro */
-  font-size: 15px; /* Tamaño del texto de marcador de posición en modo claro */
-}
-
-/* Estilos para el campo de entrada en modo claro */
-.light .search-bar input {
-  border: 1px solid #303030; /* Borde del campo de entrada en modo claro */
-  background-color: transparent; /* Fondo transparente del campo de entrada en modo claro */
-}
-
-/* Estilos para el campo de entrada en modo oscuro */
-.dark .search-bar input {
-  border: 1px solid #05856e; /* Borde del campo de entrada en modo oscuro */
-  background-color: transparent; /* Fondo transparente del campo de entrada en modo oscuro */
+  color: #303030; /* Establece el color del texto para los enlaces (ajusta según sea necesario) */
 }
