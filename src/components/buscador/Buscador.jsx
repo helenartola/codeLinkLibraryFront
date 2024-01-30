@@ -44,27 +44,30 @@ const Buscador = () => {
   };
 
   // Función para realizar la búsqueda cuando se hace clic en el botón (lupa)
-  /* const handleSearchClick = () => {
+  const handleSearchClick = () => {
     // Llama a la función de búsqueda
     search();
-  }; */
+  };
 
   // Renderiza el componente Buscador
   return (
-    <div className="buscador-container">
+    <div className="barra-buscador">
       {/* Input para que el usuario escriba el término de búsqueda */}
       <div className="search-bar">
         <input
           type="text"
-          placeholder=""
-          className="search-input"
+          placeholder="Search"
           alt="Search Icon"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
+        {/* Botón con el icono de la lupa */}
+        <button className="boton-lupa" onClick={handleSearchClick}>
+          <img src="lupa-blanca.png" alt="Search Icon" />
+        </button>
       </div>
 
-      <div className="container-buscador">
+      <div className="container-lista-enlaces-encontrados">
         {/* Lista de resultados de la búsqueda */}
         <ul className="lista-enlaces-buscador">
           {/* Mapear los resultados y generar enlaces */}

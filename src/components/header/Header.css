@@ -19,7 +19,6 @@
 .logo {
   width: 100%;
   max-width: 200px;
-  margin-bottom: 10px;
 }
 
 .light .navbar {
@@ -40,7 +39,9 @@
   }
 
   .buscador {
-    width: fit-content;
+    width: 100%;
+    max-width: 400px; /* Puedes ajustar el máximo ancho según tus necesidades */
+    margin-right: 10px; /* Añadí un margen derecho para separar del resto de elementos */
   }
   .theme-switcher-container {
     margin-top: 0;
