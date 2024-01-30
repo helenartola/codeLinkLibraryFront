@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Auth = () => {
   return (
-    <section>
+    <section className="seccion-botones-acceso">
       <Link to="/login">
         <button className="auth-button">Log in</button>
       </Link>

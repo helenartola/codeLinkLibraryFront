@@ -14,6 +14,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 15px;
+}
+
+.buscador {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 300px;
 }
 
 .logo {
@@ -33,15 +42,18 @@
 
 @media screen and (min-width: 768px) {
   .navbar {
+    display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
   }
 
   .buscador {
     width: 100%;
-    max-width: 400px; /* Puedes ajustar el máximo ancho según tus necesidades */
-    margin-right: 10px; /* Añadí un margen derecho para separar del resto de elementos */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 800px; /* Puedes ajustar el máximo ancho según tus necesidades */
   }
   .theme-switcher-container {
     margin-top: 0;

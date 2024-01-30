@@ -3,27 +3,15 @@
 .barra-buscador {
   display: flex;
   width: 100%;
-  max-width: 600px;
+  max-width: 1000px;
 }
 
 /* Estilos para el campo de búsqueda y el botón */
 .search-bar {
   display: flex;
   align-items: center;
-  border: 1px solid #05856e;
   width: 100%;
-  max-width: 600px;
-}
-
-/* Estilos para el campo de entrada */
-.search-bar input {
-  flex: 1;
-  padding: 8px;
-  border: none;
-  font-family: jost, sans-serif;
-  outline: none;
-  width: 100%;
-  max-width: 600px;
+  max-width: 1000px;
 }
 
 /* Estilos para el botón con el icono de la lupa */
@@ -32,6 +20,8 @@
   border: 1px solid #05856e;
   cursor: pointer;
   padding: 8px;
+  width: 37px;
+  height: 37px;
 }
 
 /* Estilos para la imagen dentro del botón */
@@ -39,16 +29,27 @@
   width: 15px; /* Para asegurar que la imagen ocupe todo el espacio del botón */
 }
 
-/* Estilos para el campo de entrada en modo claro */
 .light .search-bar input {
-  border: 1px solid #303030; /* Borde del campo de entrada en modo claro */
+  border: 1px solid #05856e; /* Borde del campo de entrada en modo claro */
   background-color: transparent; /* Fondo transparente del campo de entrada en modo claro */
+  flex: 1;
+  padding: 8px;
+  font-family: jost, sans-serif;
+  outline: none;
+  width: 100%;
+  max-width: 600px;
 }
 
 /* Estilos para el campo de entrada en modo oscuro */
 .dark .search-bar input {
   border: 1px solid #05856e; /* Borde del campo de entrada en modo oscuro */
   background-color: transparent; /* Fondo transparente del campo de entrada en modo oscuro */
+  flex: 1;
+  padding: 8px;
+  font-family: jost, sans-serif;
+  outline: none;
+  width: 100%;
+  max-width: 600px;
 }
 
 /* Estilos para el texto de marcador de posición en el campo de entrada en modo oscuro */
@@ -88,4 +89,97 @@
 .lista-enlaces-buscador li a {
   text-decoration: none; /* Elimina la subrayado predeterminado de los enlaces */
   color: #303030; /* Establece el color del texto para los enlaces (ajusta según sea necesario) */
+}
+
+/* ESTILOS PARA DESKTOP */
+
+@media screen and (min-width: 768px) {
+  .barra-buscador {
+    display: flex;
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .search-bar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .boton-lupa {
+    background-color: #05856e;
+    border: 2.5px solid #05856e;
+    cursor: pointer;
+    padding: 8px;
+    width: 38px;
+    height: 38px;
+  }
+
+  .boton-lupa img {
+    width: 15px;
+  }
+
+  /* Estilos para el campo de entrada en modo claro */
+  .light .search-bar input {
+    border: 2px solid #05856e; /* Borde del campo de entrada en modo claro */
+    background-color: transparent; /* Fondo transparente del campo de entrada en modo claro */
+    flex: 1;
+    padding: 8px;
+    font-family: jost, sans-serif;
+    outline: none;
+    width: 100%;
+    max-width: 600px;
+  }
+
+  /* Estilos para el campo de entrada en modo oscuro */
+  .dark .search-bar input {
+    border: 2px solid #05856e; /* Borde del campo de entrada en modo oscuro */
+    background-color: transparent; /* Fondo transparente del campo de entrada en modo oscuro */
+    flex: 1;
+    padding: 8px;
+    font-family: jost, sans-serif;
+    outline: none;
+    width: 100%;
+    max-width: 600px;
+  }
+
+  /* Estilos para el texto de marcador de posición en el campo de entrada en modo oscuro */
+  .dark .search-bar input::placeholder {
+    color: white; /* Color del texto de marcador de posición en modo oscuro */
+    font-size: 15px; /* Tamaño del texto de marcador de posición en modo oscuro */
+  }
+
+  /* Estilos para el texto de marcador de posición en el campo de entrada en modo claro */
+  .light .search-bar input::placeholder {
+    color: #303030; /* Color del texto de marcador de posición en modo claro */
+    font-size: 15px; /* Tamaño del texto de marcador de posición en modo claro */
+  }
+
+  /* CONTAINER RESULTADOS BÚSQUEDA */
+  .container-lista-enlaces-encontrados {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centra horizontalmente los elementos en el contenedor de resultados */
+    background-color: white; /* Fondo blanco para el contenedor de resultados */
+  }
+
+  /* Estilos para la lista de resultados de búsqueda */
+  .lista-enlaces-buscador {
+    position: absolute; /* Posiciona la lista de resultados absolutamente en relación con el contenedor padre */
+    background-color: white; /* Fondo blanco para la lista de resultados */
+    list-style-type: none; /* Elimina los estilos de lista (viñetas) */
+    z-index: 1; /* Controla la superposición de la lista sobre otros elementos (ajusta según sea necesario) */
+  }
+
+  /* Estilos para cada elemento de la lista de resultados */
+  .lista-enlaces-buscador li {
+    margin-bottom: 10px; /* Espaciado entre elementos de la lista (ajusta según sea necesario) */
+  }
+
+  /* Estilos para los enlaces dentro de cada elemento de la lista */
+  .lista-enlaces-buscador li a {
+    text-decoration: none; /* Elimina la subrayado predeterminado de los enlaces */
+    color: #303030; /* Establece el color del texto para los enlaces (ajusta según sea necesario) */
+  }
 }

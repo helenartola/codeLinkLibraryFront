@@ -1,3 +1,8 @@
+.seccion-botones-acceso {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .auth-button {
   border: 1px solid #05856e;
   padding: 10px 30px 10px 30px;
@@ -19,15 +24,15 @@
 
 .profile-button {
   border: 1px solid #05856e;
-  padding: 10px 40px 10px 15px;
+  padding: 10px 30px 10px 30px;
   border-radius: 50px;
-  background-color: #05856e;
   margin: 5px;
-  background-size: 40%;
+  background-color: #05856e;
+  background-size: 30%;
   background-position: center;
   background-repeat: no-repeat;
   background-image: url(/profileicon-blanco.png);
-  height: 35px;
+  height: 40px;
 }
 
 .profile-button:hover {
