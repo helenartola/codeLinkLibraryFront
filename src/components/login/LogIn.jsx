@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useTheme } from "../../context/ThemeContext";
 import { loginUsuarioService } from "../../services";
 import { Link } from "react-router-dom";
+import LogoCodeLinkLibrary from "../logo/logoCodeLinkLibrary"; 
 
 export const FormularioLogin = ({ onLogin }) => {
   const [email, setEmail] = useState("");
@@ -31,6 +32,8 @@ export const FormularioLogin = ({ onLogin }) => {
   };
 
   return (
+    <div className="login-container">
+    <LogoCodeLinkLibrary />
     <section className={`cajaFormularioLogin ${isDarkMode ? "dark" : "light"}`}>
       <h1>INICIO DE SESIÓN</h1>
       <form onSubmit={handleLogin}>
@@ -68,7 +71,9 @@ export const FormularioLogin = ({ onLogin }) => {
         </div>
       </form>
     </section>
+    </div>
   );
 };
 
 export default FormularioLogin;
+
