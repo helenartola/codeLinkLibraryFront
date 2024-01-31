@@ -53,7 +53,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    max-width: 800px; /* Puedes ajustar el máximo ancho según tus necesidades */
+    max-width: 800px;
   }
   .theme-switcher-container {
     margin-top: 0;
