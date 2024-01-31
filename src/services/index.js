@@ -130,8 +130,8 @@ export const loginUsuarioService = async ({ email, password }) => {
     // Devolver la información del usuario logueado
     return json.data;
   } catch (error) {
-    console.error("Error al iniciar sesión desde el frontend:", error);
-    throw new Error("Error al iniciar sesión desde el frontend");
+    //console.error("Error al iniciar sesión:", error);
+    throw new Error("Credenciales incorrectas");
   }
 };
 

@@ -1,38 +1,86 @@
-.contenedorFormularioRegistro {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 1.5%;
+.light-mode {
+  background-color: var(--background-light);
+  color: var(--text-light);
 }
 
-.textoRegistro {
-  flex: 4;
+.dark-mode {
+  background-color: var(--background-dark);
+  color: var(--text-dark);
+}
+.contenedorFormularioRegistro {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  height: 100vh;
+}
+
+div.textoRegistro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 40px;
 }
 
 .cajaRegistro {
   display: flex;
-  flex: 6;
-  align-items: flex-start;
-  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
 }
 
 h1.tituloRegistro {
   font-family: jost, sans-serif;
   font-size: 40px;
   color: #05856e;
-  text-align: right;
-  margin-right: 30px;
+  text-align: center;
 }
 
 p.parrafoRegistro {
   font-family: jost, sans-serif;
   font-weight: 300;
   font-size: 20px;
-  text-align: right;
-  margin-right: 30px;
-  padding-left: 30px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .contenedorFormularioRegistro {
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+  }
+  .textoRegistro {
+    box-sizing: border-box;
+    display: flex;
+    flex: 4;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+
+  .cajaRegistro {
+    box-sizing: border-box;
+    display: flex;
+    flex: 6;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  h1.tituloRegistro {
+    font-family: jost, sans-serif;
+    font-size: 40px;
+    color: #05856e;
+    text-align: right;
+    margin-right: 30px;
+  }
+
+  p.parrafoRegistro {
+    font-family: jost, sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    text-align: right;
+    padding-left: 30px;
+  }
 }

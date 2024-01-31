@@ -1,26 +1,9 @@
-fieldset {
-  border: 0px solid;
-  padding-bottom: 10px;
-  width: 400px;
-}
-.dark {
-  --background: var(--background-dark);
-  --text: var(--text-dark);
-}
-
-.light {
-  --background: var(--background-light);
-  --text: var(--text-light);
-}
-
-.light input {
-  color: #303030;
-  border-bottom: 1px solid #303030;
-}
-
-.dark input {
-  color: white;
-  border-bottom: 1px solid white;
+.caja-formulario-registro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
 }
 .cajaFormulario {
   display: flex;
@@ -28,24 +11,28 @@ fieldset {
   align-items: center;
   justify-content: center;
   border: 1px solid #05856e;
-  width: 500px;
+  width: 100%;
+  max-width: 300px;
   padding-top: 15px;
   padding-bottom: 30px;
   font-family: Jost, sans-serif;
+  padding-right: 40px;
+  padding-left: 40px;
 }
-.cajaFormulario h1 {
-  font-size: 16px;
+.dark .cajaFormulario {
+  background-color: var(--background-dark);
+  color: var(--text-dark);
 }
-
-label {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  margin-bottom: 5px;
-  font-size: 11px;
-  letter-spacing: 0.2em;
+.light .cajaFormulario {
+  --background: var(--background-light);
+  --text: var(--text-light);
 }
-
+fieldset {
+  border: 0px solid;
+  padding-right: 40px;
+  padding-left: 40px;
+  width: 300px;
+}
 input {
   width: 100%;
   padding: 8px;
@@ -57,9 +44,13 @@ input {
   border: none;
   outline: none;
 }
+.cajaFormulario h1 {
+  font-size: 16px;
+  text-align: center;
+}
 
 .botonRegistro {
-  margin-top: 30px;
+  margin-top: 10px;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -79,6 +70,16 @@ input {
   border: 1px solid #05856e;
 }
 
+.cajaFormulario label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-align: center;
+}
+
 .errorMensaje {
   font-family: jost, sans-serif;
   font-weight: 500;
@@ -92,7 +93,7 @@ input {
 .yaTienesCuenta {
   display: flex;
   align-items: center;
-  padding-top: 20px;
+  padding-top: 10px;
   letter-spacing: 1px;
 }
 

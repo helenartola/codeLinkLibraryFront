@@ -1,4 +1,4 @@
-import PostItem from "../postItem/PostItem"; 
+import PostItem from "../postItem/PostItem";
 
 const ListaDePosts = ({ posts }) => {
   return posts.length ? (
@@ -8,7 +8,7 @@ const ListaDePosts = ({ posts }) => {
       ))}
     </div>
   ) : (
-    <p>No hay posts todavía</p>
+    <p className="no-hay-posts-mesaje">No hay posts todavía</p>
   );
 };
 

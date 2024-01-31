@@ -39,7 +39,7 @@ export const FormularioRegistro = () => {
   };
 
   return (
-    <div className="registro-container">
+    <div className="caja-formulario-registro">
       <LogoCodeLinkLibrary />
       <section className={`cajaFormulario ${isDarkMode ? "dark" : "light"}`}>
         {/* Gestionamos el envio con el evento handleForm */}
