@@ -1,29 +1,29 @@
-import useFetchSuspense from 'fetch-suspense'
-import { useUser } from "../components/UserContext"
+import useFetchSuspense from "fetch-suspense";
+import { useUser } from "../context/UserContext";
 
 export const useFetch = (url) => {
-  const [user] = useUser()
-  const headers = {}
-  if (user?.token) headers.Authorization = user.token
-  return useFetchSuspense(url, { headers })
-}
+  const [user] = useUser();
+  const headers = {};
+  if (user) headers.Authorization = user.token;
+  return useFetchSuspense(url, { headers });
+};
 
 export const useFetchPost = () => {
-  const [user] = useUser()
+  const [user] = useUser();
   return async (url, body, method) => {
-    const headers = {}
+    const headers = {};
     if (body && !(body instanceof FormData)) {
-      headers['Content-Type'] = 'application/json'
+      headers["Content-Type"] = "application/json";
     }
-    if (user?.token) headers.Authorization = user.token
+    if (user) headers.Authorization = user.token;
     const res = await fetch(url, {
-      method: method || 'POST',
+      method: method || "POST",
       headers,
-      body: body && (body instanceof FormData ? body : JSON.stringify(body))
-    })
-    if (res.ok) return await res.json()
-    throw new Error(res.status)
-  }
-}
+      body: body && (body instanceof FormData ? body : JSON.stringify(body)),
+    });
+    if (res.ok) return await res.json();
+    throw new Error(res.status);
+  };
+};
 
-export default useFetch
+export default useFetch;

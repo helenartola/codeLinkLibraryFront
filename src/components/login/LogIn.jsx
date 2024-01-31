@@ -5,6 +5,7 @@ import { loginUsuarioService } from "../../services";
 import { Link } from "react-router-dom";
 import LogoCodeLinkLibrary from "../logo/logoCodeLinkLibrary";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../../context/UserContext";
 
 export const FormularioLogin = () => {
   const [email, setEmail] = useState("");
@@ -12,17 +13,19 @@ export const FormularioLogin = () => {
   const [error, setError] = useState("");
   const { isDarkMode } = useTheme();
   const navigate = useNavigate();
+  const [, betterSetUser] = useUser();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setError("");
 
     try {
-      const token = await loginUsuarioService({ email, password });
+      const userData = await loginUsuarioService({ email, password });
 
-      if (token) {
+      if (userData.token) {
         // Almacenar el token en localStorage
-        localStorage.setItem("token", token);
+        //localStorage.setItem("token", token);
+        betterSetUser(userData);
         navigate("/");
       } else {
         setError("Error al obtener el token");

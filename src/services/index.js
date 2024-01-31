@@ -14,8 +14,8 @@ export const getAllPostsService = async () => {
     // Devolver la lista de posts
     return json.data;
   } catch (error) {
-    console.error("Error al obtener los posts desde el frontend:", error);
-    throw new Error("Error al obtener los posts desde el frontend");
+    //console.error("Error al obtener los posts desde el frontend:", error);
+    throw new Error("No se ha podido obtener la lista de posts");
   }
 };
 

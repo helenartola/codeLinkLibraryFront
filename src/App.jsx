@@ -1,6 +1,3 @@
-
-
-
 import { Routes, Route, useLocation } from "react-router-dom";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
@@ -15,7 +12,8 @@ function App() {
   const location = useLocation();
 
   // Verificar si la ruta actual es la página de login o registro
-  const isLoginPageOrRegistro = location.pathname === "/login" || location.pathname === "/registro";
+  const isLoginPageOrRegistro =
+    location.pathname === "/login" || location.pathname === "/registro";
 
   return (
     <>
