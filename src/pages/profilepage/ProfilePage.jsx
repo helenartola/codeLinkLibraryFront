@@ -65,7 +65,7 @@ const ProfilePage = () => {
               <h2>Listado de Posts</h2>
               <ul>
                 {userPosts.map((post) => (
-                  <li key={post.id}>{post.title}</li>
+                  <li key={post.postId}>{post.title}</li>
                 ))}
               </ul>
             </div>

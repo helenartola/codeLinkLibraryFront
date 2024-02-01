@@ -4,7 +4,7 @@ const ListaDePosts = ({ posts }) => {
   return posts.length ? (
     <div className="lista-posts">
       {posts.map((post) => (
-        <PostItem key={post.title} post={post} />
+        <PostItem key={post.postId} post={post} />
       ))}
     </div>
   ) : (
