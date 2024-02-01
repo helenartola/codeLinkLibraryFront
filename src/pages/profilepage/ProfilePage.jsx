@@ -1,20 +1,7 @@
 import { useState, useEffect } from "react";
 import { useUser } from "../../context/UserContext";
 import "./ProfilePage.css";
-import { getInfoUserService } from "../../services";
-
-// Función ficticia para simular la obtención de posts asociados a un usuario
-const fetchUserPosts = async (userId) => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve([
-        { id: 1, title: "Post 1" },
-        { id: 2, title: "Post 2" },
-        // Otros posts del usuario
-      ]);
-    }, 1000); // Simulamos un tiempo de carga de 1 segundo
-  });
-};
+import { getInfoUserService, getUserPostsService } from "../../services";
 
 const ProfilePage = () => {
   const [user] = useUser();
@@ -26,12 +13,12 @@ const ProfilePage = () => {
     const fetchData = async () => {
       try {
         if (user) {
-          // Obtener datos del perfil del
-          const data  = await getInfoUserService(user.userId);
+          // Obtener datos del perfil del usuario
+          const data = await getInfoUserService(user.userId);
           setUserData(data);
 
-          // Obtener posts del usuario
-          const posts = await fetchUserPosts(user.userId);
+          // Obtener posts del usuario utilizando el servicio
+          const posts = await getUserPostsService(user.userId);
           setUserPosts(posts);
 
           setLoading(false);
@@ -47,11 +34,14 @@ const ProfilePage = () => {
 
   return (
     <div className="profile-container">
+      {/* Barra de navegación */}
       <nav className="botones-navegacion-perfil">
         <button>Historico de Posts</button>
         <button>Guardado</button>
         <button>Ajustes</button>
       </nav>
+      
+      {/* Información del perfil */}
       <h1>Perfil de Usuario</h1>
       <section>
         {userData ? (
@@ -65,11 +55,12 @@ const ProfilePage = () => {
           <p>Inicia sesión para ver el perfil.</p>
         )}
 
+        {/* Mostrar durante la carga de datos */}
         {loading ? (
           <p>Cargando datos del perfil...</p>
         ) : (
           <>
-           
+            {/* Listado de posts del usuario */}
             <div className="user-posts">
               <h2>Listado de Posts</h2>
               <ul>
@@ -81,8 +72,9 @@ const ProfilePage = () => {
           </>
         )}
       </section>
+
+      {/* Sección de posts (aún por implementar) */}
       <section className="posts">
-        {/* LISTADO DE POSTS */}
         <div>LISTADO POSTS</div>
       </section>
     </div>

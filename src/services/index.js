@@ -188,3 +188,26 @@ export const getInfoUserService = async (userId) => {
     throw new Error("Error al obtener la información del usuario");
   }
 };
+
+// Obtener los posts de un usuario por su ID (sin autenticación)
+export const getUserPostsService = async (userId) => {
+  try {
+    const response = await fetch(
+      `${import.meta.env.VITE_BACKEND}/posts/user/${userId}`,
+      {
+        method: "GET",
+      }
+    );
+    const json = await response.json();
+
+    if (!response.ok) {
+      throw new Error(json.message);
+    }
+
+    // Devolver la lista de posts del usuario
+    return json.data;
+  } catch (error) {
+    console.error("Error al obtener los posts del usuario:", error);
+    throw new Error("Error al obtener los posts del usuario");
+  }
+};
