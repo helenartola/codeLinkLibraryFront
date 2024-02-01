@@ -164,14 +164,14 @@ export const searchService = async (term) => {
   }
 };
 
-export const getInfoUserService = async (userId) => {
+export const getInfoUserService = async (user) => {
   try {
     const response = await fetch(
-      `${import.meta.env.VITE_BACKEND}/user/${userId}`, // Endpoint para obtener la información del usuario
+      `${import.meta.env.VITE_BACKEND}/user/${user.userId}`, // Endpoint para obtener la información del usuario
       {
         method: "GET",
         headers: {
-          Authorization: localStorage.getItem("token"), // Agrega el token de autenticación
+          Authorization: user.token // Agrega el token de autenticación
         },
       }
     );

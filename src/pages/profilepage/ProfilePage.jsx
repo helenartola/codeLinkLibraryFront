@@ -14,7 +14,7 @@ const ProfilePage = () => {
       try {
         if (user) {
           // Obtener datos del perfil del usuario
-          const data = await getInfoUserService(user.userId);
+          const data = await getInfoUserService(user);
           setUserData(data);
 
           // Obtener posts del usuario utilizando el servicio
@@ -71,11 +71,6 @@ const ProfilePage = () => {
             </div>
           </>
         )}
-      </section>
-
-      {/* Sección de posts (aún por implementar) */}
-      <section className="posts">
-        <div>LISTADO POSTS</div>
       </section>
     </div>
   );
