@@ -1,19 +1,7 @@
 import { useState, useEffect } from "react";
 import { useUser } from "../../context/UserContext";
 import "./ProfilePage.css";
-
-// Función ficticia para simular la obtención de datos del perfil del usuario desde una API
-const fetchUserData = async (userId) => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({
-        username: "Ejemplo",
-        email: "ejemplo@mail.com",
-        // Otras propiedades del perfil del usuario
-      });
-    }, 1000); // Simulamos un tiempo de carga de 1 segundo
-  });
-};
+import { getInfoUserService } from "../../services";
 
 // Función ficticia para simular la obtención de posts asociados a un usuario
 const fetchUserPosts = async (userId) => {
@@ -30,7 +18,7 @@ const fetchUserPosts = async (userId) => {
 
 const ProfilePage = () => {
   const [user] = useUser();
-  const [additionalUserData, setAdditionalUserData] = useState(null);
+  const [userData, setUserData] = useState(null);
   const [userPosts, setUserPosts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -38,12 +26,12 @@ const ProfilePage = () => {
     const fetchData = async () => {
       try {
         if (user) {
-          // Obtener datos del perfil del usuario
-          const userData = await fetchUserData(user.id);
-          setAdditionalUserData(userData);
+          // Obtener datos del perfil del
+          const data  = await getInfoUserService(user.userId);
+          setUserData(data);
 
           // Obtener posts del usuario
-          const posts = await fetchUserPosts(user.id);
+          const posts = await fetchUserPosts(user.userId);
           setUserPosts(posts);
 
           setLoading(false);
@@ -66,10 +54,12 @@ const ProfilePage = () => {
       </nav>
       <h1>Perfil de Usuario</h1>
       <section>
-        {user ? (
+        {userData ? (
           <div className="user-info">
-            <p>Nombre de usuario: {user.username}</p>
-            <p>Email: {user.email}</p>
+            <p>Nombre de usuario: {userData.userName}</p>
+            <p>Email: {userData.email}</p>
+            <p>Nombre: {userData.name}</p>
+            <p>Apellidos: {userData.lastName}</p>
           </div>
         ) : (
           <p>Inicia sesión para ver el perfil.</p>
@@ -79,10 +69,7 @@ const ProfilePage = () => {
           <p>Cargando datos del perfil...</p>
         ) : (
           <>
-            <div className="additional-info">
-              {/* Muestra información adicional del perfil */}
-              <p>Otra información: {additionalUserData.otraPropiedad}</p>
-            </div>
+           
             <div className="user-posts">
               <h2>Listado de Posts</h2>
               <ul>

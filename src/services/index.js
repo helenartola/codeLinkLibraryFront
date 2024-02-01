@@ -163,3 +163,28 @@ export const searchService = async (term) => {
     console.error("Error al buscar:", error);
   }
 };
+
+export const getInfoUserService = async (userId) => {
+  try {
+    const response = await fetch(
+      `${import.meta.env.VITE_BACKEND}/user/${userId}`, // Endpoint para obtener la información del usuario
+      {
+        method: "GET",
+        headers: {
+          Authorization: localStorage.getItem("token"), // Agrega el token de autenticación
+        },
+      }
+    );
+    const json = await response.json();
+
+    if (!response.ok) {
+      throw new Error(json.message);
+    }
+
+    // Devolver la información del usuario
+    return json.data;
+  } catch (error) {
+    console.error("Error al obtener la información del usuario:", error);
+    throw new Error("Error al obtener la información del usuario");
+  }
+};
