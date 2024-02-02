@@ -14,7 +14,7 @@ export const getAllPostsService = async () => {
     // Devolver la lista de posts
     return json.data;
   } catch (error) {
-    //console.error("Error al obtener los posts desde el frontend:", error);
+    console.error("Error al obtener los posts:", error);
     throw new Error("No se ha podido obtener la lista de posts");
   }
 };
@@ -38,8 +38,8 @@ export const createPostService = async (postData) => {
     // Devolver la respuesta del servidor
     return json.data;
   } catch (error) {
-    console.error("Error al crear un nuevo post desde el frontend:", error);
-    throw new Error("Error al crear un nuevo post desde el frontend");
+    console.error("Error al crear un nuevo post:", error);
+    throw new Error("Error al crear un nuevo post");
   }
 };
 
@@ -62,11 +62,11 @@ export const getPostByIdService = async (postId) => {
     return json.data;
   } catch (error) {
     console.error(
-      `Error al obtener el post con ID ${postId} desde el frontend:`,
+      `Error al obtener el post con ID ${postId}:`,
       error
     );
     throw new Error(
-      `Error al obtener el post con ID ${postId} desde el frontend`
+      `Error al obtener el post en cuestión ${postId}`
     );
   }
 };
@@ -98,10 +98,10 @@ export const registroUsuarioService = async ({ userName, email, password }) => {
     return json.data;
   } catch (error) {
     console.error(
-      "Error al registrar un nuevo usuario desde el frontend:",
+      "Error al registrar un nuevo usuario:",
       error
     );
-    throw new Error("Error al registrar un nuevo usuario desde el frontend");
+    throw new Error("Error al registrar un nuevo usuario");
   }
 };
 
