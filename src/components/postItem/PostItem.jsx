@@ -62,9 +62,8 @@ const PostItem = ({ post }) => {
       <h2>{post.title}</h2>
       <p>{post.description}</p>
 
-      {/* Mostrar comentarios */}
       <div>
-        <h4>{comments.length} Comentarios</h4>
+        <h4>{comments.length === 1 ? '1 Comentario' : `${comments.length} Comentarios`}</h4>
         <ul>
           {comments.map((comment) => (
             <li key={comment.commentId}>{comment.text}</li>
