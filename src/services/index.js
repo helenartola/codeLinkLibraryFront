@@ -1,5 +1,4 @@
-//Vamos a colocar todas las funciones asíncronas que hacen la comunicación con la base de datos y en los hooks vamos a llamar esas funciones.
-//Servicio que se encarga de la comunicación con la base de datos y obtener todos los posts.
+// Servicio que se encarga de la comunicación con la base de datos y obtener todos los posts.
 export const getAllPostsService = async () => {
   try {
     const response = await fetch(`${import.meta.env.VITE_BACKEND}/posts`, {
@@ -66,8 +65,31 @@ export const getPostByIdService = async (postId) => {
       error
     );
     throw new Error(
-      `Error al obtener el post en cuestión ${postId}`
+      `Error al obtener el post con ID ${postId}`
     );
+  }
+};
+
+// Obtener los comentarios de un post por su ID
+export const getCommentsService = async (postId) => {
+  try {
+    const response = await fetch(
+      `${import.meta.env.VITE_BACKEND}/post/${postId}/comments`,
+      {
+        method: "GET",
+      }
+    );
+    const json = await response.json();
+
+    if (!response.ok) {
+      throw new Error(json.message);
+    }
+
+    // Devolver la lista de comentarios
+    return json.data;
+  } catch (error) {
+    console.error(`Error al obtener los comentarios del post ${postId}:`, error);
+    throw new Error(`Error al obtener los comentarios del post ${postId}`);
   }
 };
 
@@ -237,7 +259,8 @@ export const createCommentService = async ({ postId, comentario }) => {
     // Devolver la respuesta del servidor (puede ser útil según tu implementación)
     return json.data;
   } catch (error) {
-    console.error("Error al crear un nuevo comentario desde el frontend:", error);
-    throw new Error("Error al crear un nuevo comentario desde el frontend");
+    console.error("Error al crear un nuevo comentario:", error);
+    throw new Error("Error al crear un nuevo comentario");
   }
 };
+
