@@ -211,3 +211,33 @@ export const getUserPostsService = async (userId) => {
     throw new Error("Error al obtener los posts del usuario");
   }
 };
+
+// Crear un nuevo comentario
+export const createCommentService = async ({ postId, comentario }) => {
+  try {
+    const response = await fetch(
+      `${import.meta.env.VITE_BACKEND}/comments`,
+      {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          postId,
+          text: comentario,
+        }),
+      }
+    );
+    const json = await response.json();
+
+    if (!response.ok) {
+      throw new Error(json.message);
+    }
+
+    // Devolver la respuesta del servidor (puede ser útil según tu implementación)
+    return json.data;
+  } catch (error) {
+    console.error("Error al crear un nuevo comentario desde el frontend:", error);
+    throw new Error("Error al crear un nuevo comentario desde el frontend");
+  }
+};
