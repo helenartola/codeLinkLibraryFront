@@ -31,7 +31,11 @@ fieldset {
   justify-content: center;
   margin: 0;
 }
-
+.logoCodeLinkLibrary .logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .cajaFormularioLogin {
   border: 1px solid #05856e;
   width: 100%;

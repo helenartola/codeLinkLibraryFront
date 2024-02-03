@@ -12,8 +12,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0;
-  height: 100vh;
+  margin-top: 0;
+  margin-left: 0;
+  padding-bottom: 100px;
 }
 
 div.textoRegistro {
@@ -22,7 +23,7 @@ div.textoRegistro {
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin-top: 40px;
+  margin-top: 60px;
 }
 
 .cajaRegistro {
@@ -32,12 +33,15 @@ div.textoRegistro {
   justify-content: center;
   margin-top: 40px;
 }
-
+.cajaFormulario {
+  padding: 20px;
+}
 h1.tituloRegistro {
   font-family: jost, sans-serif;
-  font-size: 40px;
+  font-size: 30px;
   color: #05856e;
   text-align: center;
+  padding: 10px;
 }
 
 p.parrafoRegistro {
