@@ -1,23 +1,36 @@
-import "./HomePage.css";
+import { useState } from "react";
 import usePosts from "../../hooks/usePosts";
 import ListaDePosts from "../../components/listaPosts/ListaDePosts";
+import NewPost from "../../components/newpost/NewPost"; 
+import "./HomePage.css";
 
 const HomePage = () => {
-  // Utilizamos el hook usePosts para obtener los posts, loading y error
   const { posts, loading, error } = usePosts();
+  const [showNewPostForm, setShowNewPostForm] = useState(false); // Controla la visibilidad del formulario
 
-  // Si está cargando, mostramos un mensaje de carga
+  // Función para mostrar el formulario del nuevo post
+  const handleShowNewPostForm = () => {
+    setShowNewPostForm(true);
+  };
+
+  // Función para ocultar el formulario del nuevo post
+  const handleHideNewPostForm = () => {
+    setShowNewPostForm(false);
+  };
+
   if (loading) return <p>Cargando posts...</p>;
-
-  // Si hay un error, mostramos el mensaje de error
   if (error) return <p>{error}</p>;
 
-  // Renderizamos la sección de inicio
   return (
     <section className="inicio">
-      {/* Eliminamos la clase "post-page-container" del contenedor principal, dejo comentado por si queremos añadirlo después */}
       <div className="main-content">
-        {/* Pasamos los posts a ListaDePosts para su renderización */}
+        {/* Botón para mostrar el formulario del nuevo post */}
+        <button onClick={handleShowNewPostForm}>Crear Nuevo Post</button>
+
+        {/* Condición para mostrar el formulario del nuevo post */}
+        {showNewPostForm && <NewPost onClose={handleHideNewPostForm} />}
+
+        {/* Lista de posts */}
         <ListaDePosts posts={posts} />
       </div>
     </section>
