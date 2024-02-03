@@ -13,6 +13,7 @@ const Auth = () => {
             <button className="profile-button"></button>
           </Link>
           <a
+            className="logout-boton"
             href="#"
             onClick={(e) => {
               e.preventDefault();

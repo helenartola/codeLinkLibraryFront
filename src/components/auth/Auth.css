@@ -16,12 +16,27 @@
   border: 1px solid #05856e;
   background-color: transparent;
 }
-
+.usuario {
+  font-family: jost, sans-serif;
+  letter-spacing: 0.1em;
+  margin-right: 1em;
+}
 .light .auth-button:hover {
   color: #303030;
   border-bottom: 1px solid #05856e;
 }
-
+.logout-boton {
+  font-family: jost, sans-serif;
+  border: 1px solid #05856e;
+  padding: 10px 30px 10px 30px;
+  border-radius: 50px;
+  color: white;
+  text-decoration: none;
+}
+.logout-boton:hover {
+  border: 1px solid #05856e;
+  background-color: #05856e;
+}
 .profile-button {
   border: 1px solid #05856e;
   padding: 10px 30px 10px 30px;
