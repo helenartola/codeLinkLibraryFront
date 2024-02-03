@@ -8,7 +8,7 @@ const Auth = () => {
     <section className="seccion-botones-acceso">
       {user ? (
         <>
-          <span>{user.userName}</span>
+          <span className="usuario">{user.userName}</span>
           <Link to="/profile">
             <button className="profile-button"></button>
           </Link>
