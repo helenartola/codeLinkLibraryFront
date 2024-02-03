@@ -19,12 +19,13 @@ export const getAllPostsService = async () => {
 };
 
 // Crear un nuevo post
-export const createPostService = async (postData) => {
+export const createPostService = async (postData, token) => {
   try {
-    const response = await fetch(`${import.meta.env.VITE_BACKEND}/posts`, {
+    const response = await fetch(`${import.meta.env.VITE_BACKEND}/post`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
+        "Authorization": `Bearer ${token}`, 
       },
       body: JSON.stringify(postData),
     });
@@ -41,6 +42,7 @@ export const createPostService = async (postData) => {
     throw new Error("Error al crear un nuevo post");
   }
 };
+
 
 // Obtener un post por su ID
 export const getPostByIdService = async (postId) => {
