@@ -11,7 +11,7 @@ const PaginaLogin = () => {
         isDarkMode ? "dark-mode" : "light-mode"
       }`}
     >
-      <div>
+      <div className="cajaLogin">
         <FormularioLogin />
       </div>
     </section>
