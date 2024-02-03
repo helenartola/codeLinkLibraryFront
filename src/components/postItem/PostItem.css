@@ -9,3 +9,13 @@
   border-bottom: 1px solid #ddd;
   margin-bottom: 20px;
 }
+
+.boton-comentar {
+  border: 1px solid #05856e;
+  padding: 10px 30px 10px 30px;
+  background-color: #05856e;
+  color: white;
+  margin: 5px;
+  font-family: jost, sans-serif;
+  font-size: 14px;
+}

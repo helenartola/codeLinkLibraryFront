@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { getCommentsService, createCommentService } from "../../services/index";
 
-import './PostItem.css';
+import "./PostItem.css";
 
 const PostItem = ({ post }) => {
   // Estado para el nuevo comentario
@@ -18,7 +18,7 @@ const PostItem = ({ post }) => {
         if (post) {
           // Obtener los comentarios asociados al post
           const comentarios = await getCommentsService(post.postId);
-          
+
           // Actualizar el estado con la lista de comentarios
           setComments(comentarios);
         }
@@ -40,7 +40,10 @@ const PostItem = ({ post }) => {
       }
 
       // Crear el nuevo comentario
-      const nuevoComentario = await createCommentService({ postId: post.id, comentario });
+      const nuevoComentario = await createCommentService({
+        postId: post.id,
+        comentario,
+      });
       console.log("Nuevo comentario creado:", nuevoComentario);
 
       // Actualizar la lista de comentarios después de la creación
@@ -63,7 +66,11 @@ const PostItem = ({ post }) => {
       <p>{post.description}</p>
 
       <div>
-        <h4>{comments.length === 1 ? '1 Comentario' : `${comments.length} Comentarios`}</h4>
+        <h4>
+          {comments.length === 1
+            ? "1 Comentario"
+            : `${comments.length} Comentarios`}
+        </h4>
         <ul>
           {comments.map((comment) => (
             <li key={comment.commentId}>{comment.text}</li>
@@ -74,9 +81,15 @@ const PostItem = ({ post }) => {
       {/* Formulario para agregar un comentario */}
       <div>
         <label>
-          <input type="text" value={comentario} onChange={(e) => setComentario(e.target.value)} />
+          <input
+            type="text"
+            value={comentario}
+            onChange={(e) => setComentario(e.target.value)}
+          />
         </label>
-        <button onClick={handleAgregarComentario}>Comentar</button>
+        <button className="boton-comentar" onClick={handleAgregarComentario}>
+          Comentar
+        </button>
       </div>
     </div>
   );

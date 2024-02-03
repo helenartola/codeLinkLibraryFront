@@ -1,43 +1,57 @@
 .new-post-container {
-    width: 300px;
-    margin: 20px;
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-  }
-  
-  .new-post-container h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  
-  .new-post-container label {
-    display: block;
-    margin-bottom: 8px;
-  }
-  
-  .new-post-container input,
-  .new-post-container textarea {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  
-  .new-post-container button {
-    background-color: #4caf50;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .new-post-container button:hover {
-    background-color: #45a049;
-  }
-  
-  
+  width: 600px;
+  margin: 20px;
+  padding: 15px;
+  border: 1px solid #05856e;
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+.new-post-container h3 {
+  font-size: 20px;
+  font-family: Jost, sans-serif;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.new-post-container button {
+  background-color: #05856e;
+  color: white;
+  font-family: Jost, sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.new-post-container button:hover {
+  background-color: #05856e;
+}
+.label-titulo {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #05856e;
+  box-sizing: border-box;
+  color: white;
+}
+
+.input-titulo {
+  color: white;
+}
+.label-descripcion {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #05856e;
+  box-sizing: border-box;
+  color: white;
+}
+
+textarea {
+  background-color: transparent;
+  border: none;
+  color: white;
+}

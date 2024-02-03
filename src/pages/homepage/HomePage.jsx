@@ -1,7 +1,7 @@
 import { useState } from "react";
 import usePosts from "../../hooks/usePosts";
 import ListaDePosts from "../../components/listaPosts/ListaDePosts";
-import NewPost from "../../components/newpost/NewPost"; 
+import NewPost from "../../components/newpost/NewPost";
 import "./HomePage.css";
 
 const HomePage = () => {
@@ -25,7 +25,9 @@ const HomePage = () => {
     <section className="inicio">
       <div className="main-content">
         {/* Botón para mostrar el formulario del nuevo post */}
-        <button onClick={handleShowNewPostForm}>Crear Nuevo Post</button>
+        <button className="boton-crear-post" onClick={handleShowNewPostForm}>
+          Crear Nuevo Post
+        </button>
 
         {/* Condición para mostrar el formulario del nuevo post */}
         {showNewPostForm && <NewPost onClose={handleHideNewPostForm} />}

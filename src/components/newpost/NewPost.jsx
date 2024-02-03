@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createPostService } from "../../services";
 import { useUser } from "../../context/UserContext";
-import './NewPost.css';
+import "./NewPost.css";
 
 const NewPost = ({ onAddPost }) => {
   const [title, setTitle] = useState("");
@@ -53,21 +53,28 @@ const NewPost = ({ onAddPost }) => {
 
   return (
     <div className="new-post-container">
-      <h3>Agregar Nuevo Post</h3>
-      <label>
+      <h3>Agregar nuevo post</h3>
+      <label className="label-titulo">
         Título:
-        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+        <input
+          className="input-titulo"
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
       </label>
       <br />
-      <label>
+      <label className="label-descripcion">
         Descripción:
-        <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
+        <textarea
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
       </label>
       <br />
-      <button onClick={handleAddPost}>Agregar Post</button>
+      <button onClick={handleAddPost}>Agregar post</button>
     </div>
   );
 };
 
 export default NewPost;
-
