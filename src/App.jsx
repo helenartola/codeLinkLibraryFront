@@ -19,7 +19,6 @@ function App() {
     <>
       {!isLoginPageOrRegistro && <Header />}
       <main className="main-container">
-        {/* Configurar las rutas */}
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/registro" element={<PaginaRegistro />} />

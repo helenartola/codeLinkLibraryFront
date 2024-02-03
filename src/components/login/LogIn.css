@@ -42,10 +42,6 @@ fieldset {
   font-family: Jost, sans-serif;
 }
 
-/* .cajaFormularioLogin .light {
-  background-color: transparent;
-} */
-
 label {
   display: flex;
   align-items: flex-start;
