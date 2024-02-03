@@ -20,6 +20,8 @@
 
   --background-dark: #303030;
   --text-dark: #ffffff;
+  --border-color-light: #303030;
+  --border-color-dark: white;
 }
 
 .dark-mode {

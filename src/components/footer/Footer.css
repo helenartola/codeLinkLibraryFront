@@ -8,15 +8,26 @@
   font-size: 13px;
   font-family: jost, sans-serif;
   letter-spacing: 0.1em;
+  z-index: 1000;
+}
+.light-mode {
+  background-color: var(--background-light);
+  color: var(--text-light);
+  --border-color: var(--border-color-light);
 }
 
-.light {
+.dark-mode {
+  background-color: var(--background-dark);
+  color: var(--text-dark);
+  --border-color: var(--border-color-light);
+}
+.light .footer {
   background-color: var(--background-light);
   color: var(--text-light);
   --border-color: #303030;
 }
 
-.dark {
+.dark .footer {
   background-color: var(--background-dark);
   color: var(--text-dark);
   --border-color: white;
