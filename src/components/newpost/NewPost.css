@@ -29,29 +29,18 @@
 .new-post-container button:hover {
   background-color: #05856e;
 }
-.label-titulo {
+
+.label-titulo,
+.label-descripcion,
+textarea {
   width: 100%;
   padding: 8px;
   margin-bottom: 12px;
-  border: 1px solid #05856e;
   box-sizing: border-box;
-  color: white;
+  color: black; 
+  background-color: whitesmoke 
 }
 
 .input-titulo {
-  color: white;
-}
-.label-descripcion {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 12px;
-  border: 1px solid #05856e;
-  box-sizing: border-box;
-  color: white;
-}
-
-textarea {
-  background-color: transparent;
-  border: none;
-  color: white;
+  color: black; 
 }
