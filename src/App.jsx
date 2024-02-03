@@ -7,6 +7,7 @@ import PostPage from "./pages/postpage/PostPage";
 import NotFoundPage from "./pages/notfoundpage/NotFoundPage";
 import ProfilePage from "./pages/profilepage/ProfilePage";
 import PaginaRegistro from "./pages/paginaregistro/PaginaRegistro";
+import UserSettingsPage from "./pages/settingspage/UserSettingsPage";
 
 function App() {
   const location = useLocation();
@@ -28,6 +29,8 @@ function App() {
           <Route path="/post/:postId" element={<PostPage />} />
 
           <Route path="/profile" element={<ProfilePage />} />
+          {/* Ruta para ir a page Ajustes de usuario */}
+          <Route path="/settings" element={<UserSettingsPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>

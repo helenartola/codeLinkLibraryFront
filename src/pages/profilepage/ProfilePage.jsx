@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useUser } from "../../context/UserContext";
 import "./ProfilePage.css";
 import { getInfoUserService, getUserPostsService } from "../../services";
+import { Link } from "react-router-dom";
 
 const ProfilePage = () => {
   const [user] = useUser();
@@ -38,7 +39,10 @@ const ProfilePage = () => {
       <nav className="botones-navegacion-perfil">
         <button>Historico de Posts</button>
         <button>Guardado</button>
-        <button>Ajustes</button>
+        {/* boton que nos lleva a la page User Settings */}
+        <Link to="/settings">
+              <button className="accede-settings">Ajustes</button>
+            </Link>
       </nav>
       
       {/* Información del perfil */}
