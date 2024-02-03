@@ -21,11 +21,14 @@ export const getAllPostsService = async () => {
 // Crear un nuevo post
 export const createPostService = async (postData, token) => {
   try {
+    // Imprime el token en la consola
+    console.log('Authorization Token in createPostService:', token);
+
     const response = await fetch(`${import.meta.env.VITE_BACKEND}/post`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
-        "Authorization": `Bearer ${token}`, 
+        "Authorization": token, 
       },
       body: JSON.stringify(postData),
     });
@@ -236,18 +239,17 @@ export const getUserPostsService = async (userId) => {
   }
 };
 
-// Crear un nuevo comentario
-export const createCommentService = async ({ postId, comentario }) => {
+export const createCommentService = async ({ postId, comentario }, token) => {
   try {
     const response = await fetch(
-      `${import.meta.env.VITE_BACKEND}/comments`,
+      `${import.meta.env.VITE_BACKEND}/post/${postId}/comments`,
       {
         method: "POST",
         headers: {
           "Content-type": "application/json",
+          "Authorization": token,
         },
         body: JSON.stringify({
-          postId,
           text: comentario,
         }),
       }
@@ -258,7 +260,6 @@ export const createCommentService = async ({ postId, comentario }) => {
       throw new Error(json.message);
     }
 
-    // Devolver la respuesta del servidor (puede ser útil según tu implementación)
     return json.data;
   } catch (error) {
     console.error("Error al crear un nuevo comentario:", error);

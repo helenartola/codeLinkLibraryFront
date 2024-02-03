@@ -1,25 +1,27 @@
 import { useState, useEffect } from "react";
 import { getCommentsService, createCommentService } from "../../services/index";
-
 import "./PostItem.css";
+import { useUser } from "../../context/UserContext";
 
 const PostItem = ({ post }) => {
-  // Estado para el nuevo comentario
+  // Estado para almacenar el nuevo comentario
   const [comentario, setComentario] = useState("");
-
-  // Estado para almacenar la lista de comentarios asociados al post
+  // Estado para almacenar la lista de comentarios
   const [comments, setComments] = useState([]);
+  // Estado para controlar la visibilidad del formulario de comentarios
+  const [showCommentForm, setShowCommentForm] = useState(false);
+  // Obtiene el usuario del contexto
+  const [user] = useUser();
+  // Obtiene el token del usuario o establece en null si no hay usuario
+  const token = user ? user.token : null;
 
-  // Efecto para cargar los comentarios al cargar el componente o cuando cambia el ID del post
+  // Efecto secundario para cargar comentarios cuando cambia el post
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        // Verificar si el postId es válido
         if (post) {
-          // Obtener los comentarios asociados al post
+          // Obtiene los comentarios asociados al post
           const comentarios = await getCommentsService(post.postId);
-
-          // Actualizar el estado con la lista de comentarios
           setComments(comentarios);
         }
       } catch (error) {
@@ -27,39 +29,40 @@ const PostItem = ({ post }) => {
       }
     };
 
-    // Llamar a la función para obtener comentarios
+    // Llama a la función para cargar comentarios
     fetchComments();
-  }, [post]); // Desestructurar directamente el post y añadirlo como dependencia
+  }, [post]);
 
   // Función para manejar la creación de un nuevo comentario
   const handleAgregarComentario = async () => {
     try {
       if (!comentario) {
+        // Verifica si el campo de comentario está vacío
         alert("Por favor, ingresa un comentario.");
         return;
       }
 
-      // Crear el nuevo comentario
-      const nuevoComentario = await createCommentService({
-        postId: post.id,
-        comentario,
-      });
-      console.log("Nuevo comentario creado:", nuevoComentario);
+      // Crea un nuevo comentario utilizando el servicio
+      const nuevoComentario = await createCommentService(
+        {
+          postId: post.postId,
+          comentario,
+        },
+        token 
+      );
 
-      // Actualizar la lista de comentarios después de la creación
+      // Actualiza la lista de comentarios con el nuevo comentario
       setComments([...comments, nuevoComentario]);
-
-      // Restablecer el campo de comentario después de la creación
+      // Reinicia el estado del comentario
       setComentario("");
-
-      // Puedes realizar otras acciones después de crear el comentario
+      // Oculta el formulario de comentarios
+      setShowCommentForm(false);
     } catch (error) {
       console.error("Error al agregar el comentario:", error);
       alert("Error al agregar el comentario. Por favor, inténtalo de nuevo.");
     }
   };
 
-  // Renderizar el componente
   return (
     <div className="post-item-container">
       <h2>{post.title}</h2>
@@ -72,25 +75,33 @@ const PostItem = ({ post }) => {
             : `${comments.length} Comentarios`}
         </h4>
         <ul>
+          {/* Mapea la lista de comentarios y muestra cada uno */}
           {comments.map((comment) => (
             <li key={comment.commentId}>{comment.text}</li>
           ))}
         </ul>
       </div>
 
-      {/* Formulario para agregar un comentario */}
-      <div>
-        <label>
-          <input
-            type="text"
-            value={comentario}
-            onChange={(e) => setComentario(e.target.value)}
-          />
-        </label>
-        <button className="boton-comentar" onClick={handleAgregarComentario}>
-          Comentar
-        </button>
-      </div>
+      {/* Botón para mostrar/ocultar el formulario de comentarios */}
+      <button className="boton-comentar" onClick={() => setShowCommentForm(!showCommentForm)}>
+        Comentar
+      </button>
+
+      {showCommentForm && (
+        <div>
+          {/* Formulario para agregar comentarios */}
+          <label>
+            <input
+              type="text"
+              value={comentario}
+              onChange={(e) => setComentario(e.target.value)}
+            />
+          </label>
+          <button className="boton-comentar" onClick={handleAgregarComentario}>
+            Agregar Comentario
+          </button>
+        </div>
+      )}
     </div>
   );
 };
