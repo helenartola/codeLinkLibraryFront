@@ -42,6 +42,9 @@ const PostItem = ({ post }) => {
         return;
       }
 
+      // Registra el token antes de realizar la solicitud
+      console.log('Authorization Token before createCommentService:', token);
+
       // Crea un nuevo comentario utilizando el servicio
       const nuevoComentario = await createCommentService(
         {

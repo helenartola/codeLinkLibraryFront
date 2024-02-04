@@ -250,6 +250,7 @@ export const createCommentService = async ({ postId, comentario }, token) => {
           "Authorization": token,
         },
         body: JSON.stringify({
+          postId: postId, 
           text: comentario,
         }),
       }
