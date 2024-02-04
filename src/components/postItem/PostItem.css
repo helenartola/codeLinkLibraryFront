@@ -1,7 +1,7 @@
 .post-item-container {
   margin-bottom: 20px;
   padding: 15px;
-  /*  max-width: 800px; */ /* Ajusta el valor*/
+  /*  max-width: 800px; */ /* Ajusta el valor */
   margin: 0 auto; /* Esto centra el contenedor */
 }
 
@@ -19,3 +19,12 @@
   font-family: jost, sans-serif;
   font-size: 14px;
 }
+
+.comment-input {
+  border: 1px solid #ddd; /* Borde para la caja de comentarios */
+  border-radius: 5px; /* Esquinas redondeadas */
+  padding: 10px; /* Espaciado interno */
+  margin: 5px 0; /* Margen superior e inferior */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+

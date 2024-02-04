@@ -23,12 +23,15 @@ const PostItem = ({ post }) => {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        // Obtiene los comentarios asociados al post
-        const comentarios = await getCommentsService(post.postId);
-        // Actualiza el estado con los comentarios obtenidos
-        setComments(comentarios);
-        // Actualiza el total de comentarios
-        setTotalComments(comentarios.length);
+        // Verifica si el post y la visualización de comentarios están activos
+        if (post && showComments) {
+          // Obtiene los comentarios asociados al post
+          const comentarios = await getCommentsService(post.postId);
+          // Actualiza el estado con los comentarios obtenidos
+          setComments(comentarios);
+          // Actualiza el total de comentarios
+          setTotalComments(comentarios.length);
+        }
       } catch (error) {
         console.error("Error al obtener comentarios:", error);
       }
@@ -36,7 +39,7 @@ const PostItem = ({ post }) => {
 
     // Llama a la función para cargar comentarios
     fetchComments();
-  }, [post]); // Dependencia del efecto: post
+  }, [post, showComments]); // Dependencias del efecto: post y showComments
 
   // Función para manejar la creación de un nuevo comentario
   const handleAgregarComentario = async () => {
@@ -114,6 +117,7 @@ const PostItem = ({ post }) => {
           {/* Formulario para agregar comentarios */}
           <label>
             <input
+              className="comment-input" // Aquí añadí la clase para el estilo del comentario
               type="text"
               value={comentario}
               onChange={(e) => setComentario(e.target.value)}
@@ -132,3 +136,4 @@ const PostItem = ({ post }) => {
 };
 
 export default PostItem;
+
