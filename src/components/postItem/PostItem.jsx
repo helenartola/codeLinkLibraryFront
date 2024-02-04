@@ -23,15 +23,12 @@ const PostItem = ({ post }) => {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        // Verifica si el post y la visualización de comentarios están activos
-        if (post && showComments) {
-          // Obtiene los comentarios asociados al post
-          const comentarios = await getCommentsService(post.postId);
-          // Actualiza el estado con los comentarios obtenidos
-          setComments(comentarios);
-          // Actualiza el total de comentarios
-          setTotalComments(comentarios.length);
-        }
+        // Obtiene los comentarios asociados al post
+        const comentarios = await getCommentsService(post.postId);
+        // Actualiza el estado con los comentarios obtenidos
+        setComments(comentarios);
+        // Actualiza el total de comentarios
+        setTotalComments(comentarios.length);
       } catch (error) {
         console.error("Error al obtener comentarios:", error);
       }
@@ -39,7 +36,7 @@ const PostItem = ({ post }) => {
 
     // Llama a la función para cargar comentarios
     fetchComments();
-  }, [post, showComments]); // Dependencias del efecto: post y showComments
+  }, [post]); // Dependencia del efecto: post
 
   // Función para manejar la creación de un nuevo comentario
   const handleAgregarComentario = async () => {
@@ -113,27 +110,26 @@ const PostItem = ({ post }) => {
       </button>
 
       {showCommentForm && (
-        <div>
-          {/* Formulario para agregar comentarios */}
-          <label>
-            <input
-              className="comment-input" // Aquí añadí la clase para el estilo del comentario
-              type="text"
-              value={comentario}
-              onChange={(e) => setComentario(e.target.value)}
-            />
-          </label>
-          <button
-            className="boton-comentar"
-            onClick={handleAgregarComentario}
-          >
-            Agregar Comentario
-          </button>
-        </div>
-      )}
+  <div>
+    {/* Formulario para agregar comentarios */}
+    <label>
+      <input
+        className="comment-input" // Añade la clase para el estilo del área de comentarios
+        type="text"
+        value={comentario}
+        onChange={(e) => setComentario(e.target.value)}
+      />
+    </label>
+    <button
+      className="boton-comentar"
+      onClick={handleAgregarComentario}
+    >
+      Agregar Comentario
+    </button>
+  </div>
+)}
     </div>
   );
 };
 
 export default PostItem;
-
