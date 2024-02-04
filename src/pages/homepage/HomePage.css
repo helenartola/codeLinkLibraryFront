@@ -3,6 +3,10 @@
   align-items: center;
   justify-content: center;
   font-family: Jost, sans-serif;
+  margin-top: 40px;
+}
+.main-content {
+  width: 50%;
 }
 .light .boton-crear-post {
   border: 1px solid #05856e;
@@ -22,8 +26,8 @@
 .dark .boton-crear-post {
   border: 1px solid #05856e;
   padding: 10px 30px 10px 30px;
+  background-color: transparent;
   border-radius: 50px;
-  background-color: #05856e;
   color: white;
   margin: 5px;
   font-family: jost, sans-serif;
@@ -31,6 +35,6 @@
 }
 .dark .boton-crear-post:hover {
   border: 1px solid #05856e;
-  background-color: transparent;
-  color: #05856e;
+  background-color: #05856e;
+  color: white;
 }
