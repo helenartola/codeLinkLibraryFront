@@ -3,8 +3,11 @@ import usePosts from "../../hooks/usePosts";
 import ListaDePosts from "../../components/listaPosts/ListaDePosts";
 import NewPost from "../../components/newpost/NewPost";
 import "./HomePage.css";
+import { useTheme } from "../../context/ThemeContext";
 
 const HomePage = () => {
+  const { isDarkMode } = useTheme();
+
   const { posts, loading, error } = usePosts();
   const [showNewPostForm, setShowNewPostForm] = useState(false); // Controla la visibilidad del formulario
 
@@ -22,7 +25,7 @@ const HomePage = () => {
   if (error) return <p>{error}</p>;
 
   return (
-    <section className="inicio">
+    <section className={`inicio ${isDarkMode ? "dark" : "light"}`}>
       <div className="main-content">
         {/* Botón para mostrar el formulario del nuevo post */}
         <button className="boton-crear-post" onClick={handleShowNewPostForm}>
