@@ -10,18 +10,22 @@ const PostItem = ({ post }) => {
   const [comments, setComments] = useState([]);
   // Estado para controlar la visibilidad del formulario de comentarios
   const [showCommentForm, setShowCommentForm] = useState(false);
+  // Estado para controlar la visibilidad de los comentarios
+  const [showComments, setShowComments] = useState(false);
   // Obtiene el usuario del contexto
   const [user] = useUser();
   // Obtiene el token del usuario o establece en null si no hay usuario
   const token = user ? user.token : null;
 
-  // Efecto secundario para cargar comentarios cuando cambia el post
+  // Efecto secundario para cargar comentarios cuando cambia el post o el estado de mostrar comentarios
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        if (post) {
+        // Verifica si el post y la visualización de comentarios están activos
+        if (post && showComments) {
           // Obtiene los comentarios asociados al post
           const comentarios = await getCommentsService(post.postId);
+          // Actualiza el estado con los comentarios obtenidos
           setComments(comentarios);
         }
       } catch (error) {
@@ -31,13 +35,13 @@ const PostItem = ({ post }) => {
 
     // Llama a la función para cargar comentarios
     fetchComments();
-  }, [post]);
+  }, [post, showComments]); // Dependencias del efecto: post y showComments
 
   // Función para manejar la creación de un nuevo comentario
   const handleAgregarComentario = async () => {
     try {
+      // Verifica si el campo de comentario está vacío
       if (!comentario) {
-        // Verifica si el campo de comentario está vacío
         alert("Por favor, ingresa un comentario.");
         return;
       }
@@ -51,7 +55,7 @@ const PostItem = ({ post }) => {
           postId: post.postId,
           comentario,
         },
-        token 
+        token
       );
 
       // Actualiza la lista de comentarios con el nuevo comentario
@@ -77,16 +81,28 @@ const PostItem = ({ post }) => {
             ? "1 Comentario"
             : `${comments.length} Comentarios`}
         </h4>
-        <ul>
-          {/* Mapea la lista de comentarios y muestra cada uno */}
-          {comments.map((comment, index) => (
-            <li key={`${comment.commentId}-${index}`}>{comment.text}</li>
-          ))}
-        </ul>
+
+        {/* Botón para mostrar/ocultar los comentarios */}
+        <button onClick={() => setShowComments(!showComments)}>
+          {showComments ? "Ocultar Comentarios" : "Mostrar Comentarios"}
+        </button>
+
+        {/* Mostrar comentarios si showComments es true */}
+        {showComments && (
+          <ul>
+            {/* Mapea la lista de comentarios y muestra cada uno */}
+            {comments.map((comment) => (
+              <li key={comment.commentId}>{comment.text}</li>
+            ))}
+          </ul>
+        )}
       </div>
 
       {/* Botón para mostrar/ocultar el formulario de comentarios */}
-      <button className="boton-comentar" onClick={() => setShowCommentForm(!showCommentForm)}>
+      <button
+        className="boton-comentar"
+        onClick={() => setShowCommentForm(!showCommentForm)}
+      >
         Comentar
       </button>
 
@@ -100,7 +116,10 @@ const PostItem = ({ post }) => {
               onChange={(e) => setComentario(e.target.value)}
             />
           </label>
-          <button className="boton-comentar" onClick={handleAgregarComentario}>
+          <button
+            className="boton-comentar"
+            onClick={handleAgregarComentario}
+          >
             Agregar Comentario
           </button>
         </div>
