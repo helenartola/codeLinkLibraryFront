@@ -12,6 +12,8 @@ const PostItem = ({ post }) => {
   const [showCommentForm, setShowCommentForm] = useState(false);
   // Estado para controlar la visibilidad de los comentarios
   const [showComments, setShowComments] = useState(false);
+  // Estado para almacenar el total de comentarios
+  const [totalComments, setTotalComments] = useState(0);
   // Obtiene el usuario del contexto
   const [user] = useUser();
   // Obtiene el token del usuario o establece en null si no hay usuario
@@ -21,13 +23,12 @@ const PostItem = ({ post }) => {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        // Verifica si el post y la visualización de comentarios están activos
-        if (post && showComments) {
-          // Obtiene los comentarios asociados al post
-          const comentarios = await getCommentsService(post.postId);
-          // Actualiza el estado con los comentarios obtenidos
-          setComments(comentarios);
-        }
+        // Obtiene los comentarios asociados al post
+        const comentarios = await getCommentsService(post.postId);
+        // Actualiza el estado con los comentarios obtenidos
+        setComments(comentarios);
+        // Actualiza el total de comentarios
+        setTotalComments(comentarios.length);
       } catch (error) {
         console.error("Error al obtener comentarios:", error);
       }
@@ -35,7 +36,7 @@ const PostItem = ({ post }) => {
 
     // Llama a la función para cargar comentarios
     fetchComments();
-  }, [post, showComments]); // Dependencias del efecto: post y showComments
+  }, [post]); // Dependencia del efecto: post
 
   // Función para manejar la creación de un nuevo comentario
   const handleAgregarComentario = async () => {
@@ -60,6 +61,8 @@ const PostItem = ({ post }) => {
 
       // Actualiza la lista de comentarios con el nuevo comentario
       setComments([...comments, nuevoComentario]);
+      // Incrementa el total de comentarios
+      setTotalComments(totalComments + 1);
       // Reinicia el estado del comentario
       setComentario("");
       // Oculta el formulario de comentarios
@@ -77,9 +80,9 @@ const PostItem = ({ post }) => {
 
       <div>
         <h4>
-          {comments.length === 1
+          {totalComments === 1
             ? "1 Comentario"
-            : `${comments.length} Comentarios`}
+            : `${totalComments} Comentarios`}
         </h4>
 
         {/* Botón para mostrar/ocultar los comentarios */}
