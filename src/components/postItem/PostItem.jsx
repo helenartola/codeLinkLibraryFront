@@ -57,7 +57,7 @@ const PostItem = ({ post }) => {
       console.log('Authorization Token before createCommentService:', token);
 
       // Crea un nuevo comentario utilizando el servicio
-      const nuevoComentario = await createCommentService(
+      const newCommentId = await createCommentService(
         {
           postId: post.postId,
           comentario,
@@ -66,7 +66,7 @@ const PostItem = ({ post }) => {
       );
 
       // Actualiza la lista de comentarios con el nuevo comentario
-      setComments([...comments, nuevoComentario]);
+      setComments([...comments, {commentId : newCommentId, text: comentario}]);
       // Incrementa el total de comentarios
       setTotalComments(totalComments + 1);
       // Reinicia el estado del comentario
