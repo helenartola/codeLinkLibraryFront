@@ -25,6 +25,22 @@
   color: #303030;
   border-bottom: 1px solid #05856e;
 }
+.light .logout-boton {
+  font-family: jost, sans-serif;
+  border: 1px solid #05856e;
+  padding: 10px 30px 10px 30px;
+  border-radius: 50px;
+  color: #05856e;
+  text-decoration: none;
+}
+.light .logout-boton:hover {
+  font-family: jost, sans-serif;
+  border: 1px solid #05856e;
+  padding: 10px 30px 10px 30px;
+  border-radius: 50px;
+  color: white;
+  text-decoration: none;
+}
 .logout-boton {
   font-family: jost, sans-serif;
   border: 1px solid #05856e;

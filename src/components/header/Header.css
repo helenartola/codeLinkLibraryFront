@@ -1,7 +1,15 @@
 /* Estilos base para dispositivos móviles */
+.dark-mode {
+  --background: var(--background-dark);
+  --text: var(--text-dark);
+}
+
+.light-mode {
+  --background: var(--background-light);
+  --text: var(--text-light);
+}
 .header {
   padding: 10px;
-  border-bottom: 1px solid var(--border-color);
 }
 
 .theme-switcher-container {
@@ -41,6 +49,10 @@
 }
 
 @media screen and (min-width: 768px) {
+  .header {
+    border-bottom: 1px solid white;
+  }
+
   .navbar {
     display: flex;
     flex-direction: row;
