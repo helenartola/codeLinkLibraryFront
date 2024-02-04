@@ -16,7 +16,7 @@ const PostItem = ({ post }) => {
   const [totalComments, setTotalComments] = useState(0);
 
   // Estado para almacenar el número de likes
-  const [numLikes, setNumLikes] = useState(post.likes);
+  const [numLikes, setNumLikes] = useState(post.numLikes);
   // Estado para almacenar si el usuario ha dado like
   const [isLiked, setIsLiked] = useState(post.isLiked);
 
