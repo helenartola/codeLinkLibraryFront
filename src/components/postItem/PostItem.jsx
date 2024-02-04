@@ -126,9 +126,12 @@ const PostItem = ({ post }) => {
       </div>
 
       {/* Botón para dar/quitar like */}
-      <button onClick={handleLikePost}>
-        {isLiked ? "Quitar Like" : "Dar Like"}
-      </button>
+         {user && post.userId != user.userId && (
+        <button onClick={handleLikePost}>
+          {isLiked ? "Quitar Like" : "Dar Like"}
+        </button>
+      )}
+
 
       {/* Mostrar el número total de likes */}
       <p>Total de Likes: {numLikes}</p>
