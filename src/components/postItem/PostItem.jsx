@@ -79,8 +79,8 @@ const PostItem = ({ post }) => {
         </h4>
         <ul>
           {/* Mapea la lista de comentarios y muestra cada uno */}
-          {comments.map((comment) => (
-            <li key={comment.commentId}>{comment.text}</li>
+          {comments.map((comment, index) => (
+            <li key={`${comment.commentId}-${index}`}>{comment.text}</li>
           ))}
         </ul>
       </div>
