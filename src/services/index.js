@@ -239,6 +239,41 @@ export const getUserPostsService = async (userId) => {
   }
 };
 
+export const likePostService = async (postId, token) => {
+  try {
+    // Registra el token antes de realizar la solicitud
+    console.log('Authorization Token in likePostService:', token);
+
+    // Verifica que el token esté presente antes de la solicitud
+    if (!token) {
+      throw new Error("Token not available. User may not be authenticated.");
+    }
+
+    const response = await fetch(`${import.meta.env.VITE_BACKEND}/post/${postId}/like`, {
+      method: "POST",
+      headers: {
+        "Authorization": token,
+      },
+    });
+
+    const json = await response.json();
+
+    if (!response.ok) {
+      throw new Error(json.message);
+    }
+
+    // Devolver la respuesta del servidor
+    return {
+      numLikes: json.data.numLikes,
+      isLiked: json.data.isLiked,
+    };
+  } catch (error) {
+    console.error("Error al dar/quitar like:", error);
+    throw new Error("Error al dar/quitar like");
+  }
+};
+
+
 export const createCommentService = async ({ postId, comentario }, token) => {
   try {
     const response = await fetch(

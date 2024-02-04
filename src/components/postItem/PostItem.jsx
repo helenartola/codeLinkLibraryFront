@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getCommentsService, createCommentService } from "../../services/index";
+import { getCommentsService, createCommentService, likePostService } from "../../services/index";
 import "./PostItem.css";
 import { useUser } from "../../context/UserContext";
 
@@ -14,6 +14,12 @@ const PostItem = ({ post }) => {
   const [showComments, setShowComments] = useState(false);
   // Estado para almacenar el total de comentarios
   const [totalComments, setTotalComments] = useState(0);
+
+  // Estado para almacenar el número de likes
+  const [numLikes, setNumLikes] = useState(post.likes);
+  // Estado para almacenar si el usuario ha dado like
+  const [isLiked, setIsLiked] = useState(post.isLiked);
+
   // Obtiene el usuario del contexto
   const [user] = useUser();
   // Obtiene el token del usuario o establece en null si no hay usuario
@@ -73,6 +79,24 @@ const PostItem = ({ post }) => {
     }
   };
 
+  // Función para manejar el clic en el botón de like
+  const handleLikePost = async () => {
+    try {
+      // Imprime el token antes de realizar la solicitud
+      console.log('Authorization Token before likePostService:', token);
+
+      // Llama al servicio para dar/quitar like
+      const likeResponse = await likePostService(post.postId, token);
+
+      // Actualiza el estado con la nueva información de likes
+      setNumLikes(likeResponse.numLikes);
+      setIsLiked(likeResponse.isLiked);
+    } catch (error) {
+      console.error("Error al dar/quitar like:", error);
+      alert("Error al dar/quitar like. Por favor, inténtalo de nuevo.");
+    }
+  };
+
   return (
     <div className="post-item-container">
       <h2>{post.title}</h2>
@@ -101,6 +125,14 @@ const PostItem = ({ post }) => {
         )}
       </div>
 
+      {/* Botón para dar/quitar like */}
+      <button onClick={handleLikePost}>
+        {isLiked ? "Quitar Like" : "Dar Like"}
+      </button>
+
+      {/* Mostrar el número total de likes */}
+      <p>Total de Likes: {numLikes}</p>
+
       {/* Botón para mostrar/ocultar el formulario de comentarios */}
       <button
         className="boton-comentar"
@@ -110,24 +142,24 @@ const PostItem = ({ post }) => {
       </button>
 
       {showCommentForm && (
-  <div>
-    {/* Formulario para agregar comentarios */}
-    <label>
-      <input
-        className="comment-input" // Añade la clase para el estilo del área de comentarios
-        type="text"
-        value={comentario}
-        onChange={(e) => setComentario(e.target.value)}
-      />
-    </label>
-    <button
-      className="boton-comentar"
-      onClick={handleAgregarComentario}
-    >
-      Agregar Comentario
-    </button>
-  </div>
-)}
+        <div>
+          {/* Formulario para agregar comentarios */}
+          <label>
+            <input
+              className="comment-input" 
+              type="text"
+              value={comentario}
+              onChange={(e) => setComentario(e.target.value)}
+            />
+          </label>
+          <button
+            className="boton-comentar"
+            onClick={handleAgregarComentario}
+          >
+            Agregar Comentario
+          </button>
+        </div>
+      )}
     </div>
   );
 };
