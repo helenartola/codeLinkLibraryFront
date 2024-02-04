@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { getAllPostsService } from "../services";
+import { useUser } from "../context/UserContext";
 
 const usePosts = () => {
+  const [user] = useUser();
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -13,7 +15,7 @@ const usePosts = () => {
         //indicamos que estan cargando los datos
         setLoading(true);
         //hacemos la petición para obtener todos los Posts
-        const data = await getAllPostsService();
+        const data = await getAllPostsService(user ? user.userId : 0);
         //si no hay un error, devuelve los datos, la lista de posts
         setPosts(data);
       } catch (error) {
@@ -25,7 +27,7 @@ const usePosts = () => {
       }
     };
     loadPosts();
-  }, []);
+  }, [user]);
 
   return { posts, loading, error };
 };

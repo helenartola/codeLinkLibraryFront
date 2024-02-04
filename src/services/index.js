@@ -1,8 +1,11 @@
 // Servicio que se encarga de la comunicación con la base de datos y obtener todos los posts.
-export const getAllPostsService = async () => {
+export const getAllPostsService = async (userid = 0) => {
   try {
     const response = await fetch(`${import.meta.env.VITE_BACKEND}/posts`, {
       method: "GET",
+      headers: {
+        userid: userid
+      },
     });
     const json = await response.json();
 
