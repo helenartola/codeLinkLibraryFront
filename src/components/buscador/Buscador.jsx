@@ -57,6 +57,7 @@ const Buscador = () => {
       {/* Input para que el usuario escriba el término de búsqueda */}
       <div className="search-bar">
         <input
+          className="input-buscador"
           type="text"
           placeholder="Search"
           alt="Search Icon"

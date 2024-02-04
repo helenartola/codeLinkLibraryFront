@@ -33,7 +33,7 @@
   width: 15px; /* Para asegurar que la imagen ocupe todo el espacio del botón */
 }
 
-.light .search-bar input {
+.light .search-bar .input-buscador {
   border: 2px solid #05856e; /* Borde del campo de entrada en modo claro */
   border-right: none;
   background-color: transparent; /* Fondo transparente del campo de entrada en modo claro */
@@ -43,10 +43,12 @@
   outline: none;
   width: 100%;
   max-width: 600px;
+  margin-bottom: 0;
+  border-radius: 0;
 }
 
 /* Estilos para el campo de entrada en modo oscuro */
-.dark .search-bar input {
+.dark .search-bar .input-buscador {
   border: 2px solid #05856e; /* Borde del campo de entrada en modo oscuro */
   border-right: none;
   background-color: transparent; /* Fondo transparente del campo de entrada en modo oscuro */
@@ -56,6 +58,8 @@
   outline: none;
   width: 100%;
   max-width: 600px;
+  margin-bottom: 0;
+  border-radius: 0;
 }
 
 /* Estilos para el texto de marcador de posición en el campo de entrada en modo oscuro */
@@ -130,7 +134,7 @@
   }
 
   /* Estilos para el campo de entrada en modo claro */
-  .light .search-bar input {
+  .light .search-bar .input-buscador {
     border: 2px solid #05856e;
     border-right: none;
     background-color: transparent; /* Fondo transparente del campo de entrada en modo claro */
@@ -143,7 +147,7 @@
   }
 
   /* Estilos para el campo de entrada en modo oscuro */
-  .dark .search-bar input {
+  .dark .search-bar .input-buscador {
     border: 2px solid #05856e; /* Borde del campo de entrada en modo oscuro */
     border-right: none;
     background-color: transparent; /* Fondo transparente del campo de entrada en modo oscuro */

@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { createPostService } from "../../services";
 import { useUser } from "../../context/UserContext";
-import './NewPost.css';
+import "./NewPost.css";
+import { useTheme } from "../../context/ThemeContext";
 
 const NewPost = ({ onAddPost }) => {
   // Estados para los campos del formulario
@@ -10,6 +11,7 @@ const NewPost = ({ onAddPost }) => {
   const [url, setUrl] = useState("");
   const [user] = useUser();
   const [isFormOpen, setIsFormOpen] = useState(false); // Estado para controlar la apertura/cierre del formulario
+  const { isDarkMode } = useTheme();
 
   // Función para manejar la creación de un nuevo post
   const handleAddPost = async () => {
@@ -55,21 +57,27 @@ const NewPost = ({ onAddPost }) => {
   };
 
   return (
-    <div className="new-post-container">
+    <div className={`new-post-container ${isDarkMode ? "dark" : "light"}`}>
       {/* Botón para abrir/cerrar el formulario */}
       <h3 onClick={() => setIsFormOpen(!isFormOpen)}>Crear Nuevo Post</h3>
       {isFormOpen && (
         <>
           {/* Campo para el título */}
           <label>
-            Título:
-            <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+            <input
+              className="input-new-post"
+              placeholder="Título"
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
           </label>
           <br />
           {/* Campo para la descripción */}
           <label>
-            Descripción:
             <textarea
+              className="textarea-new-post"
+              placeholder="Descripción"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
@@ -77,8 +85,13 @@ const NewPost = ({ onAddPost }) => {
           <br />
           {/* Campo para la URL */}
           <label>
-            URL:
-            <input type="text" value={url} onChange={(e) => setUrl(e.target.value)} />
+            <input
+              className="input-new-post"
+              placeholder="url"
+              type="text"
+              value={url}
+              onChange={(e) => setUrl(e.target.value)}
+            />
           </label>
           <br />
           {/* Botón para agregar el post */}
