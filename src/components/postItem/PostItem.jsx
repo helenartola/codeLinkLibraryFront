@@ -9,6 +9,12 @@ import {
 import "./PostItem.css";
 import { useUser } from "../../context/UserContext";
 
+// Función para formatear la fecha y hora
+const formatDateTime = (dateTimeString) => {
+  const options = { year: "numeric", month: "long", day: "numeric", hour: "numeric", minute: "numeric" };
+  return new Date(dateTimeString).toLocaleDateString("es-ES", options);
+};
+
 // Componente para renderizar un elemento de post
 const PostItem = ({ post }) => {
   // Estado para almacenar el nuevo comentario
@@ -26,6 +32,7 @@ const PostItem = ({ post }) => {
   const [numLikes, setNumLikes] = useState(post.numLikes);
   // Estado para almacenar si el usuario ha dado like
   const [isLiked, setIsLiked] = useState(post.isLiked);
+
   // Estado para almacenar si el usuario ha guardado el post
   const [isSaved, setIsSaved] = useState(post.isSaved);
 
@@ -75,7 +82,7 @@ const PostItem = ({ post }) => {
       );
 
       // Actualiza la lista de comentarios con el nuevo comentario
-      setComments([...comments, { commentId: newCommentId, text: comentario, userName: user.userName, userAvatar: user.userAvatar }]);
+      setComments([...comments, { commentId: newCommentId, text: comentario }]);
       // Incrementa el total de comentarios
       setTotalComments(totalComments + 1);
       // Reinicia el estado del comentario
@@ -135,16 +142,15 @@ const PostItem = ({ post }) => {
     }
   };
 
-  // Función para renderizar la lista de comentarios
+  // Función para renderizar los comentarios
   const renderComments = () => {
     return (
       <ul>
-        {/* Mapea la lista de comentarios y muestra cada uno */}
+        {/* Mapea la lista de comentarios y muestra cada uno con la fecha y hora */}
         {comments.map((comment) => (
           <li key={comment.commentId}>
-            <img src={comment.userAvatar} alt={`${comment.userName}'s avatar`} />
-            <span>{comment.userName}</span>
             <p>{comment.text}</p>
+            <p>Publicado el: {formatDateTime(comment.createdAt)}</p>
           </li>
         ))}
       </ul>
@@ -157,6 +163,9 @@ const PostItem = ({ post }) => {
       {/* Título y descripción del post */}
       <h2>{post.title}</h2>
       <p>{post.description}</p>
+
+      {/* Fecha y hora de publicación del post */}
+      <p>Publicado el: {formatDateTime(post.createdAt)}</p>
 
       {/* Comentarios */}
       <div>
