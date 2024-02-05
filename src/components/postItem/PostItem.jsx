@@ -143,7 +143,7 @@ const PostItem = ({ post }) => {
 
       {/* Mostrar información del usuario */}
       <div>
-        <p>By: {post.userName}</p>
+        <p>Autor: {post.userName}</p>
         {/* Agrega la lógica para mostrar el avatar del usuario si está disponible */}
         {post.userAvatar && (
           <img src={post.userAvatar} alt={`Avatar de ${post.userName}`} />
