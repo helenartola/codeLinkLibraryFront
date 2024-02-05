@@ -30,13 +30,11 @@ const HomePage = () => {
             >
               <img
                 className="icono-nuevo-post"
-                src="/nuevo-post.png"
+                src="/nuevo-post-verde.png"
                 alt="Crear Nuevo Post"
               />
               <span className="escribe-tu-mejor-post">
-                {isFormOpen
-                  ? "No estoy inspirad@, cierra"
-                  : "Escribe tu mejor post!"}
+                {isFormOpen ? "" : "Escribe tu mejor post!"}
               </span>
             </button>
             {/* Condición para mostrar el formulario del nuevo post */}
