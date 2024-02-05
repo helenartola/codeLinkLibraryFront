@@ -33,7 +33,11 @@ const HomePage = () => {
                 src="/nuevo-post.png"
                 alt="Crear Nuevo Post"
               />
-              {isFormOpen ? "X" : "Comparte un post"}
+              <span className="escribe-tu-mejor-post">
+                {isFormOpen
+                  ? "No estoy inspirad@, cierra"
+                  : "Escribe tu mejor post!"}
+              </span>
             </button>
             {/* Condición para mostrar el formulario del nuevo post */}
             {isFormOpen && (
