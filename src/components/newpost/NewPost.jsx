@@ -4,47 +4,47 @@ import { useUser } from "../../context/UserContext";
 import "./NewPost.css";
 import { useTheme } from "../../context/ThemeContext";
 
-const NewPost = ({ onAddPost }) => {
+const NewPost = ({ isFormOpen, setIsFormOpen, onAddPost }) => {
   // Estados para los campos del formulario
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [url, setUrl] = useState("");
   const [user] = useUser();
-  const [isFormOpen, setIsFormOpen] = useState(false); // Estado para controlar la apertura/cierre del formulario
+  //const [isFormOpen, setIsFormOpen] = useState(false);
   const { isDarkMode } = useTheme();
 
   const handleAddPost = async () => {
     try {
       const token = user ? user.token : null;
-  
+
       // Verifica si el usuario está autenticado
       if (!token) {
         alert("No estás autenticado. Inicia sesión para crear un nuevo post.");
         return;
       }
-  
+
       // Verifica si se han completado todos los campos del formulario
       if (!title || !description || !url) {
         alert("Por favor, completa todos los campos.");
         return;
       }
-  
+
       const postData = { title, description, url };
-  
+
       // Llama a la función para crear un nuevo post en el servicio
       const newPost = await createPostService(postData, token);
-  
+
       // Si se proporciona la función onAddPost, llámala para actualizar la lista de posts
       if (onAddPost) {
         onAddPost(newPost);
       }
-  
+
       // Limpia los campos del formulario y cierra el formulario después de agregar el post
       setTitle("");
       setDescription("");
       setUrl("");
       setIsFormOpen(false);
-  
+
       alert("Nuevo post agregado con éxito!");
     } catch (error) {
       console.error("Error al agregar el nuevo post:", error);
@@ -62,8 +62,6 @@ const NewPost = ({ onAddPost }) => {
 
   return (
     <div className={`new-post-container ${isDarkMode ? "dark" : "light"}`}>
-      {/* Botón/Título para abrir/cerrar el formulario */}
-      <h3 onClick={() => setIsFormOpen(!isFormOpen)}>Crear Nuevo Post</h3>
       {isFormOpen && (
         <>
           {/* Campo para el título */}
