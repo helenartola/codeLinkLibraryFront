@@ -1,13 +1,20 @@
-/*import { useLocation } from "react-router-dom";
+/*import "./SearchPage.css";
+import usePosts from "../../hooks/usePosts";
 import ListaDePosts from "../../components/listaPosts/ListaDePosts";
 import { useTheme } from "../../context/ThemeContext";
+/*import { useLocation } from "react-router-dom";
 
-// Define el componente SearchPage
+
 const SearchPage = () => {
+  const { isDarkMode } = useTheme();                      // Obtiene el estado del tema del contexto
+  const { posts, loading, error, refresh } = usePosts();  // Obtiene posts, estado de carga y errores, mediante el hook usePosts
+  if (loading) return <p>Cargando posts...</p>;           // Muestra mensaje de carga temporal
+  if (error) return <p>{error}</p>;                       // Manejo del mensaje de error
+
+
   // Obtiene la ubicación actual de la aplicación
   const location = useLocation();
-  // Obtiene el tema actual
-  const { isDarkMode } = useTheme();
+ 
   // Extrae el término de búsqueda de la URL
   const searchTerm = new URLSearchParams(location.search).get("q");
 
@@ -18,10 +25,10 @@ const SearchPage = () => {
     return null;
   }
 
-  // Renderiza la sección de resultados de búsqueda
+  // Renderiza la sección búsqueda
   return (
     <section className={`search-results ${isDarkMode ? "dark" : "light"}`}>
-      <div className="main-content">
+      <div className="search-content">
         <h2>Search Results for "{searchTerm}"</h2>
         <ListaDePosts searchTerm={searchTerm} />
       </div>
