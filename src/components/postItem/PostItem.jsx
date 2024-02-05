@@ -9,13 +9,6 @@ import {
 import "./PostItem.css";
 import { useUser } from "../../context/UserContext";
 
-// Función para formatear la fecha y hora
-const formatDateTime = (dateTimeString) => {
-  const options = { year: "numeric", month: "long", day: "numeric", hour: "numeric", minute: "numeric" };
-  return new Date(dateTimeString).toLocaleDateString("es-ES", options);
-};
-
-// Componente para renderizar un elemento de post
 const PostItem = ({ post }) => {
   // Estado para almacenar el nuevo comentario
   const [comentario, setComentario] = useState("");
@@ -69,9 +62,6 @@ const PostItem = ({ post }) => {
         return;
       }
 
-      // Registra el token antes de realizar la solicitud
-      console.log('Authorization Token before createCommentService:', token);
-
       // Crea un nuevo comentario utilizando el servicio
       const newCommentId = await createCommentService(
         {
@@ -82,7 +72,7 @@ const PostItem = ({ post }) => {
       );
 
       // Actualiza la lista de comentarios con el nuevo comentario
-      setComments([...comments, { commentId: newCommentId, text: comentario }]);
+      setComments([...comments, { commentId: newCommentId, text: comentario, userName: user.userName, createdAt: new Date().toISOString() }]);
       // Incrementa el total de comentarios
       setTotalComments(totalComments + 1);
       // Reinicia el estado del comentario
@@ -98,9 +88,6 @@ const PostItem = ({ post }) => {
   // Función para manejar el clic en el botón de like
   const handleLikePost = async () => {
     try {
-      // Imprime el token antes de realizar la solicitud
-      console.log('Authorization Token before likePostService:', token);
-
       // Llama al servicio para dar/quitar like
       const likeResponse = await likePostService(post.postId, token);
 
@@ -116,9 +103,6 @@ const PostItem = ({ post }) => {
   // Función para manejar el clic en el botón de guardar/eliminar post
   const handleSavePost = async () => {
     try {
-      // Imprime el token antes de realizar la solicitud
-      console.log('Authorization Token before save/unsave:', token);
-
       // Verifica si el post pertenece al propio usuario
       if (user && post.userId === user.userId) {
         alert("No puedes guardar tus propios posts.");
@@ -142,30 +126,18 @@ const PostItem = ({ post }) => {
     }
   };
 
-  // Función para renderizar los comentarios
-  const renderComments = () => {
-    return (
-      <ul>
-        {/* Mapea la lista de comentarios y muestra cada uno con la fecha y hora */}
-        {comments.map((comment) => (
-          <li key={comment.commentId}>
-            <p>{comment.text}</p>
-            <p>Publicado el: {formatDateTime(comment.createdAt)}</p>
-          </li>
-        ))}
-      </ul>
-    );
-  };
-
-  // Renderiza el componente PostItem
   return (
     <div className="post-item-container">
       {/* Título y descripción del post */}
       <h2>{post.title}</h2>
       <p>{post.description}</p>
 
-      {/* Fecha y hora de publicación del post */}
-      <p>Publicado el: {formatDateTime(post.createdAt)}</p>
+      {/* Información del usuario */}
+      <div>
+        <p>Autor: {post.userName}</p>
+        {/* Puedes agregar la lógica para mostrar el avatar aquí */}
+        <p>Fecha de publicación: {new Date(post.createdAt).toLocaleString()}</p>
+      </div>
 
       {/* Comentarios */}
       <div>
@@ -181,7 +153,22 @@ const PostItem = ({ post }) => {
         </button>
 
         {/* Mostrar comentarios si showComments es true */}
-        {showComments && renderComments()}
+        {showComments && (
+          <ul>
+            {/* Mapea la lista de comentarios y muestra cada uno */}
+            {comments.map((comment) => (
+              <li key={comment.commentId}>
+                {/* Muestra el nombre del usuario que hizo el comentario */}
+                <p>Comentado por: {comment.userName}</p>
+                {/* Puedes agregar la lógica para mostrar el avatar del usuario aquí */}
+                {/* Muestra el texto del comentario */}
+                <p>{comment.text}</p>
+                {/* Muestra la fecha de publicación del comentario */}
+                <p>Fecha de publicación: {new Date(comment.createdAt).toLocaleString()}</p>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
 
       {/* Botón para dar/quitar like */}
@@ -232,5 +219,4 @@ const PostItem = ({ post }) => {
   );
 };
 
-// Exporta el componente PostItem
 export default PostItem;
