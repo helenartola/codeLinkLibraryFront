@@ -43,6 +43,8 @@
   margin: 5px;
   font-family: jost, sans-serif;
   font-size: 14px;
+  padding: 10px 0 10px 0;
+  cursor: pointer;
 }
 
 .icono-nuevo-post {
@@ -50,9 +52,7 @@
   max-width: 30px;
   margin-left: 10%;
 }
-
-.dark .escribe-tu-mejor-post {
-  color: white;
+.escribe-tu-mejor-post {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -60,12 +60,11 @@
   margin-left: 5px;
   white-space: nowrap;
 }
+
+.dark .escribe-tu-mejor-post {
+  color: white;
+}
+
 .light .escribe-tu-mejor-post {
   color: #303030;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  margin-left: 5px;
-  white-space: nowrap;
 }

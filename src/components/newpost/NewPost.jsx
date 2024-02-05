@@ -12,6 +12,8 @@ const NewPost = ({ isFormOpen, setIsFormOpen, onAddPost }) => {
   const [user] = useUser();
   //const [isFormOpen, setIsFormOpen] = useState(false);
   const { isDarkMode } = useTheme();
+  const [errorMessage, setErrorMessage] = useState("");
+  const [message, setMessage] = useState("");
 
   const handleAddPost = async () => {
     try {
@@ -19,13 +21,15 @@ const NewPost = ({ isFormOpen, setIsFormOpen, onAddPost }) => {
 
       // Verifica si el usuario está autenticado
       if (!token) {
-        alert("No estás autenticado. Inicia sesión para crear un nuevo post.");
+        setErrorMessage(
+          "No estás autenticado. Inicia sesión para crear un nuevo post."
+        );
         return;
       }
 
       // Verifica si se han completado todos los campos del formulario
       if (!title || !description || !url) {
-        alert("Por favor, completa todos los campos.");
+        setErrorMessage("Por favor, completa todos los campos.");
         return;
       }
 
@@ -45,10 +49,14 @@ const NewPost = ({ isFormOpen, setIsFormOpen, onAddPost }) => {
       setUrl("");
       setIsFormOpen(false);
 
-      alert("Nuevo post agregado con éxito!");
+      setMessage("Nuevo post agregado con éxito!");
+      setErrorMessage("");
     } catch (error) {
       console.error("Error al agregar el nuevo post:", error);
-      alert("Error al agregar el nuevo post. Por favor, inténtalo de nuevo.");
+      setMessage("");
+      setErrorMessage(
+        "Error al agregar el nuevo post. Por favor, inténtalo de nuevo."
+      );
     }
   };
 
@@ -58,6 +66,7 @@ const NewPost = ({ isFormOpen, setIsFormOpen, onAddPost }) => {
     setDescription("");
     setUrl("");
     setIsFormOpen(false);
+    setErrorMessage("");
   };
 
   return (
@@ -95,11 +104,17 @@ const NewPost = ({ isFormOpen, setIsFormOpen, onAddPost }) => {
               onChange={(e) => setUrl(e.target.value)}
             />
           </label>
-          <br />
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
+          {message && <p className="success-message">{message}</p>}
           {/* Botón para agregar el post */}
-          <button onClick={handleAddPost}>Agregar Post</button>
+          <br />
+          <button className="agregar-post" onClick={handleAddPost}>
+            Agregar Post
+          </button>
           {/* Botón para cerrar el formulario */}
-          <button onClick={handleCloseForm}>Cerrar</button>
+          <button className="cerrar-post" onClick={handleCloseForm}>
+            Cerrar
+          </button>
         </>
       )}
     </div>
