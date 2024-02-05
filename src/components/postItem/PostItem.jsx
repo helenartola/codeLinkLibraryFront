@@ -9,6 +9,7 @@ import {
 import "./PostItem.css";
 import { useUser } from "../../context/UserContext";
 
+// Componente para renderizar un elemento de post
 const PostItem = ({ post }) => {
   // Estado para almacenar el nuevo comentario
   const [comentario, setComentario] = useState("");
@@ -25,7 +26,6 @@ const PostItem = ({ post }) => {
   const [numLikes, setNumLikes] = useState(post.numLikes);
   // Estado para almacenar si el usuario ha dado like
   const [isLiked, setIsLiked] = useState(post.isLiked);
-
   // Estado para almacenar si el usuario ha guardado el post
   const [isSaved, setIsSaved] = useState(post.isSaved);
 
@@ -75,7 +75,7 @@ const PostItem = ({ post }) => {
       );
 
       // Actualiza la lista de comentarios con el nuevo comentario
-      setComments([...comments, { commentId: newCommentId, text: comentario }]);
+      setComments([...comments, { commentId: newCommentId, text: comentario, userName: user.userName, userAvatar: user.userAvatar }]);
       // Incrementa el total de comentarios
       setTotalComments(totalComments + 1);
       // Reinicia el estado del comentario
@@ -135,20 +135,28 @@ const PostItem = ({ post }) => {
     }
   };
 
+  // Función para renderizar la lista de comentarios
+  const renderComments = () => {
+    return (
+      <ul>
+        {/* Mapea la lista de comentarios y muestra cada uno */}
+        {comments.map((comment) => (
+          <li key={comment.commentId}>
+            <img src={comment.userAvatar} alt={`${comment.userName}'s avatar`} />
+            <span>{comment.userName}</span>
+            <p>{comment.text}</p>
+          </li>
+        ))}
+      </ul>
+    );
+  };
+
+  // Renderiza el componente PostItem
   return (
     <div className="post-item-container">
       {/* Título y descripción del post */}
       <h2>{post.title}</h2>
       <p>{post.description}</p>
-
-      {/* Mostrar información del usuario */}
-      <div>
-        <p>Autor: {post.userName}</p>
-        {/* Agrega la lógica para mostrar el avatar del usuario si está disponible */}
-        {post.userAvatar && (
-          <img src={post.userAvatar} alt={`Avatar de ${post.userName}`} />
-        )}
-      </div>
 
       {/* Comentarios */}
       <div>
@@ -164,14 +172,7 @@ const PostItem = ({ post }) => {
         </button>
 
         {/* Mostrar comentarios si showComments es true */}
-        {showComments && (
-          <ul>
-            {/* Mapea la lista de comentarios y muestra cada uno */}
-            {comments.map((comment) => (
-              <li key={comment.commentId}>{comment.text}</li>
-            ))}
-          </ul>
-        )}
+        {showComments && renderComments()}
       </div>
 
       {/* Botón para dar/quitar like */}
@@ -222,4 +223,5 @@ const PostItem = ({ post }) => {
   );
 };
 
+// Exporta el componente PostItem
 export default PostItem;
