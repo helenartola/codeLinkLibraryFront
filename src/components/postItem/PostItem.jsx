@@ -159,12 +159,6 @@ const PostItem = ({ post }) => {
 
       {/* Comentarios */}
       <div>
-        <h4>
-          {totalComments === 1
-            ? "1 Comentario"
-            : `${totalComments} Comentarios`}
-        </h4>
-
         {/* Botón para mostrar/ocultar los comentarios */}
         <button onClick={() => setShowComments(!showComments)}>
           {showComments ? "Ocultar Comentarios" : "Mostrar Comentarios"}
