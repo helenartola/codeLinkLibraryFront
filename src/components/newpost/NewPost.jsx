@@ -8,7 +8,8 @@ const NewPost = ({ isFormOpen, setIsFormOpen, onAddPost }) => {
   // Estados para los campos del formulario
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [url, setUrl] = useState("");
+  // Modificación aquí para agregar un valor predeterminado y hacer el campo obligatorio
+  const [url, setUrl] = useState("http://");
   const [user] = useUser();
   //const [isFormOpen, setIsFormOpen] = useState(false);
   const { isDarkMode } = useTheme();
@@ -99,9 +100,10 @@ const NewPost = ({ isFormOpen, setIsFormOpen, onAddPost }) => {
             <input
               className="input-new-post"
               placeholder="URL"
-              type="text"
+              type="url"  // Cambiado a type "url" para validar la URL automáticamente
               value={url}
               onChange={(e) => setUrl(e.target.value)}
+              required  // Hace que el campo sea obligatorio
             />
           </label>
           {errorMessage && <p className="error-message">{errorMessage}</p>}
