@@ -3,33 +3,56 @@ import { getAllPostsService } from "../services";
 import { useUser } from "../context/UserContext";
 
 const usePosts = () => {
+  // Obtiene el usuario actual del contexto
   const [user] = useUser();
+  // Estado para almacenar la lista de posts
   const [posts, setPosts] = useState([]);
+  // Estados para indicar si se está cargando y si hay un error
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  //esta función no puede ser asíncrona
+  // Función para forzar la actualización de la lista de posts
+  const refresh = async () => {
+    try {
+      // Indica que se están cargando los datos
+      setLoading(true);
+      // Hace la petición para obtener todos los posts
+      const data = await getAllPostsService(user ? user.userId : 0);
+      // Actualiza la lista de posts
+      setPosts(data);
+    } catch (error) {
+      // Si hay un error, muestra el mensaje de error
+      setError(error.message);
+    } finally {
+      // Al final, tanto si hay error como si no, termina de cargar
+      setLoading(false);
+    }
+  };
+
+  // Efecto secundario que se ejecuta al montar el componente o cuando cambia el usuario
   useEffect(() => {
     const loadPosts = async () => {
       try {
-        //indicamos que estan cargando los datos
+        // Indica que se están cargando los datos
         setLoading(true);
-        //hacemos la petición para obtener todos los Posts
+        // Hace la petición para obtener todos los posts
         const data = await getAllPostsService(user ? user.userId : 0);
-        //si no hay un error, devuelve los datos, la lista de posts
+        // Si no hay un error, actualiza la lista de posts
         setPosts(data);
       } catch (error) {
-        //si hay un error, muestra el mensaje de error que tenemos en la base de datos
+        // Si hay un error, muestra el mensaje de error
         setError(error.message);
       } finally {
-        //al final, tanto si hay error como si no, acaba de cargar
+        // Al final, tanto si hay error como si no, termina de cargar
         setLoading(false);
       }
     };
+    // Llama a la función para cargar los posts al montar el componente o cuando cambia el usuario
     loadPosts();
   }, [user]);
 
-  return { posts, loading, error };
+  // Devuelve los datos y la función de actualización
+  return { posts, loading, error, refresh };
 };
 
 export default usePosts;

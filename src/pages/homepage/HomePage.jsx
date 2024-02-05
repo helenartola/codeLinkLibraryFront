@@ -6,10 +6,12 @@ import "./HomePage.css";
 import { useTheme } from "../../context/ThemeContext";
 
 const HomePage = () => {
+  // Obtiene el estado del tema oscuro/luminoso del contexto
   const { isDarkMode } = useTheme();
-
-  const { posts, loading, error } = usePosts();
-  const [showNewPostForm, setShowNewPostForm] = useState(false); // Controla la visibilidad del formulario
+  // Obtiene los posts, el estado de carga y el error mediante el hook usePosts
+  const { posts, loading, error, refresh } = usePosts();
+  // Estado para controlar la visibilidad del formulario de nuevo post
+  const [showNewPostForm, setShowNewPostForm] = useState(false);
 
   // Función para mostrar el formulario del nuevo post
   const handleShowNewPostForm = () => {
@@ -21,7 +23,9 @@ const HomePage = () => {
     setShowNewPostForm(false);
   };
 
+  // Si se está cargando, muestra un mensaje de carga
   if (loading) return <p>Cargando posts...</p>;
+  // Si hay un error, muestra el mensaje de error
   if (error) return <p>{error}</p>;
 
   return (
@@ -33,7 +37,7 @@ const HomePage = () => {
         </button>
 
         {/* Condición para mostrar el formulario del nuevo post */}
-        {showNewPostForm && <NewPost onClose={handleHideNewPostForm} />}
+        {showNewPostForm && <NewPost onClose={handleHideNewPostForm} onAddPost={refresh} />}
 
         {/* Lista de posts */}
         <ListaDePosts posts={posts} />
@@ -43,3 +47,4 @@ const HomePage = () => {
 };
 
 export default HomePage;
+

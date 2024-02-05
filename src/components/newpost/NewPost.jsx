@@ -13,34 +13,38 @@ const NewPost = ({ onAddPost }) => {
   const [isFormOpen, setIsFormOpen] = useState(false); // Estado para controlar la apertura/cierre del formulario
   const { isDarkMode } = useTheme();
 
-  // Función para manejar la creación de un nuevo post
   const handleAddPost = async () => {
     try {
       const token = user ? user.token : null;
-
+  
+      // Verifica si el usuario está autenticado
       if (!token) {
         alert("No estás autenticado. Inicia sesión para crear un nuevo post.");
         return;
       }
-
+  
+      // Verifica si se han completado todos los campos del formulario
       if (!title || !description || !url) {
         alert("Por favor, completa todos los campos.");
         return;
       }
-
+  
       const postData = { title, description, url };
-
-      const nuevoPost = await createPostService(postData, token);
-
+  
+      // Llama a la función para crear un nuevo post en el servicio
+      const newPost = await createPostService(postData, token);
+  
+      // Si se proporciona la función onAddPost, llámala para actualizar la lista de posts
       if (onAddPost) {
-        onAddPost(nuevoPost);
+        onAddPost(newPost);
       }
-
+  
+      // Limpia los campos del formulario y cierra el formulario después de agregar el post
       setTitle("");
       setDescription("");
       setUrl("");
-      setIsFormOpen(false); // Cerrar el formulario después de agregar el post
-
+      setIsFormOpen(false);
+  
       alert("Nuevo post agregado con éxito!");
     } catch (error) {
       console.error("Error al agregar el nuevo post:", error);
@@ -53,12 +57,12 @@ const NewPost = ({ onAddPost }) => {
     setTitle("");
     setDescription("");
     setUrl("");
-    setIsFormOpen(false); // Cerrar el formulario sin agregar un post
+    setIsFormOpen(false);
   };
 
   return (
     <div className={`new-post-container ${isDarkMode ? "dark" : "light"}`}>
-      {/* Botón para abrir/cerrar el formulario */}
+      {/* Botón/Título para abrir/cerrar el formulario */}
       <h3 onClick={() => setIsFormOpen(!isFormOpen)}>Crear Nuevo Post</h3>
       {isFormOpen && (
         <>
@@ -87,7 +91,7 @@ const NewPost = ({ onAddPost }) => {
           <label>
             <input
               className="input-new-post"
-              placeholder="url"
+              placeholder="URL"
               type="text"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
