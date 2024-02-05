@@ -106,34 +106,42 @@ const PostItem = ({ post }) => {
     }
   };
 
-  // Función para manejar el clic en el botón de guardar/eliminar post
-  const handleSavePost = async () => {
-    try {
-      // Imprime el token antes de realizar la solicitud
-      console.log('Authorization Token before save/unsave:', token);
+// Función para manejar el clic en el botón de guardar/eliminar post
+const handleSavePost = async () => {
+  try {
+    // Imprime el token antes de realizar la solicitud
+    console.log('Authorization Token before save/unsave:', token);
 
-      // Llama al servicio para guardar o eliminar el post según su estado actual
-      if (isSaved) {
-        // Si está guardado, entonces llamamos al servicio para desguardar
-        await unsavePostService(post.postId, token);
-      } else {
-        // Si no está guardado, llamamos al servicio para guardar
-        await savePostService(post.postId, token);
-      }
-
-      // Actualiza el estado con el nuevo estado de guardado
-      setIsSaved(!isSaved);
-    } catch (error) {
-      console.error("Error al guardar/eliminar post:", error);
-      alert("Error al guardar/eliminar post. Por favor, inténtalo de nuevo.");
+    // Verifica si el post pertenece al propio usuario
+    if (user && post.userId === user.userId) {
+      alert("No puedes guardar tus propios posts.");
+      return;
     }
-  };
+
+    // Llama al servicio para guardar o eliminar el post según su estado actual
+    if (isSaved) {
+      // Si está guardado, entonces llamamos al servicio para desguardar
+      await unsavePostService(post.postId, token);
+    } else {
+      // Si no está guardado, llamamos al servicio para guardar
+      await savePostService(post.postId, token);
+    }
+
+    // Actualiza el estado con el nuevo estado de guardado
+    setIsSaved(!isSaved);
+  } catch (error) {
+    console.error("Error al guardar/eliminar post:", error);
+    alert("Error al guardar/eliminar post. Por favor, inténtalo de nuevo.");
+  }
+};
 
   return (
     <div className="post-item-container">
+      {/* Título y descripción del post */}
       <h2>{post.title}</h2>
       <p>{post.description}</p>
 
+      {/* Comentarios */}
       <div>
         <h4>
           {totalComments === 1
@@ -168,7 +176,7 @@ const PostItem = ({ post }) => {
       <p>Total de Likes: {numLikes}</p>
 
       {/* Botón para guardar/eliminar el post */}
-      {user && (
+      {user && post.userId !== user.userId && (
         <button onClick={handleSavePost}>
           {isSaved ? "Eliminar Guardado" : "Guardar"}
         </button>
@@ -182,9 +190,9 @@ const PostItem = ({ post }) => {
         Comentar
       </button>
 
+      {/* Formulario para agregar comentarios */}
       {showCommentForm && (
         <div>
-          {/* Formulario para agregar comentarios */}
           <label>
             <input
               className="comment-input"
