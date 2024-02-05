@@ -1,30 +1,76 @@
-.post-item-container {
-  margin-bottom: 20px;
+.dark .post-item-container {
+  margin: 20px 5% 20px 5%;
   padding: 15px;
-  /*  max-width: 800px; */ /* Ajusta el valor */
-  margin: 0 auto; /* Esto centra el contenedor */
+  background-color: #47474778;
+  border-radius: 16px;
+  border: none;
+  max-width: 600px;
 }
-
+.light .post-item-container {
+  margin: 20px 5% 20px 5%;
+  padding: 15px;
+  background-color: #ededed9b;
+  border-radius: 4px;
+  border: none;
+  max-width: 600px;
+}
 .post-item-container:not(:last-child) {
-  border-bottom: 1px solid #ddd;
-  margin-bottom: 20px;
+  margin: 20px 5% 20px 5%;
 }
 
 .boton-comentar {
-  border: 1px solid #05856e;
-  padding: 10px 30px 10px 30px;
-  background-color: #05856e;
+  background-color: transparent;
   color: white;
   margin: 5px;
   font-family: jost, sans-serif;
   font-size: 14px;
+  border: none;
 }
-
-.comment-input {
+.icono-comentario {
+  width: 22px;
+}
+.dark .comment-input {
   border: 1px solid #ddd; /* Borde para la caja de comentarios */
   border-radius: 5px; /* Esquinas redondeadas */
   padding: 10px; /* Espaciado interno */
   margin: 5px 0; /* Margen superior e inferior */
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+.light .comment-input {
+  border: 1px solid #303030; /* Borde para la caja de comentarios */
+  border-radius: 5px; /* Esquinas redondeadas */
+  padding: 10px; /* Espaciado interno */
+  margin: 5px 0; /* Margen superior e inferior */
+}
+.light .boton-comentar {
+  color: #303030;
+}
+.boton-icono-like img {
+  width: 22px;
+}
+.boton-icono-like {
+  background-color: transparent;
+  border: none;
 }
 
+.botones-post-complementos {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.botones-guardar img {
+  width: 22px;
+}
+.botones-guardar {
+  background-color: transparent;
+  border: none;
+}
+.titulo-post-home {
+  font-size: 30px;
+  letter-spacing: 0.1px;
+}
+.descripcion-post-home {
+  margin-bottom: 10px;
+  font-size: 20px;
+  letter-spacing: 0.8px;
+}

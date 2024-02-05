@@ -7,6 +7,7 @@ import {
   unsavePostService,
 } from "../../services/index";
 import "./PostItem.css";
+
 import { useUser } from "../../context/UserContext";
 
 const PostItem = ({ post }) => {
@@ -62,6 +63,9 @@ const PostItem = ({ post }) => {
         return;
       }
 
+      // Registra el token antes de realizar la solicitud
+      console.log("Authorization Token before createCommentService:", token);
+
       // Crea un nuevo comentario utilizando el servicio
       const newCommentId = await createCommentService(
         {
@@ -72,7 +76,15 @@ const PostItem = ({ post }) => {
       );
 
       // Actualiza la lista de comentarios con el nuevo comentario
-      setComments([...comments, { commentId: newCommentId, text: comentario, userName: user.userName, createdAt: new Date().toISOString() }]);
+      setComments([
+        ...comments,
+        {
+          commentId: newCommentId,
+          text: comentario,
+          userName: user.userName,
+          createdAt: new Date().toISOString(),
+        },
+      ]);
       // Incrementa el total de comentarios
       setTotalComments(totalComments + 1);
       // Reinicia el estado del comentario
@@ -88,6 +100,9 @@ const PostItem = ({ post }) => {
   // Función para manejar el clic en el botón de like
   const handleLikePost = async () => {
     try {
+      // Imprime el token antes de realizar la solicitud
+      console.log("Authorization Token before likePostService:", token);
+
       // Llama al servicio para dar/quitar like
       const likeResponse = await likePostService(post.postId, token);
 
@@ -103,6 +118,9 @@ const PostItem = ({ post }) => {
   // Función para manejar el clic en el botón de guardar/eliminar post
   const handleSavePost = async () => {
     try {
+      // Imprime el token antes de realizar la solicitud
+      console.log("Authorization Token before save/unsave:", token);
+
       // Verifica si el post pertenece al propio usuario
       if (user && post.userId === user.userId) {
         alert("No puedes guardar tus propios posts.");
@@ -129,8 +147,8 @@ const PostItem = ({ post }) => {
   return (
     <div className="post-item-container">
       {/* Título y descripción del post */}
-      <h2>{post.title}</h2>
-      <p>{post.description}</p>
+      <h2 className="titulo-post-home">{post.title}</h2>
+      <p className="descripcion-post-home">{post.description}</p>
 
       {/* Información del usuario */}
       <div>
@@ -164,37 +182,64 @@ const PostItem = ({ post }) => {
                 {/* Muestra el texto del comentario */}
                 <p>{comment.text}</p>
                 {/* Muestra la fecha de publicación del comentario */}
-                <p>Fecha de publicación: {new Date(comment.createdAt).toLocaleString()}</p>
+                <p>
+                  Fecha de publicación:{" "}
+                  {new Date(comment.createdAt).toLocaleString()}
+                </p>
               </li>
             ))}
           </ul>
         )}
       </div>
 
-      {/* Botón para dar/quitar like */}
-      {user && post.userId !== user.userId && (
-        <button onClick={handleLikePost}>
-          {isLiked ? "Quitar Like" : "Dar Like"}
+      {/* Botones de like, guardado y comentario */}
+      <div className="botones-post-complementos">
+        {/* Botón para dar/quitar like */}
+        {user && post.userId !== user.userId && (
+          <button className="boton-icono-like" onClick={handleLikePost}>
+            {isLiked ? (
+              <img src="/corazon-relleno-verde.png" alt="Corazón Relleno" />
+            ) : (
+              <img src="/corazon-verde.png" alt="Corazón Vacío" />
+            )}
+          </button>
+        )}
+
+        {/* Mostrar el número total de likes */}
+        <p className="likes-count">{numLikes}</p>
+
+        {/* Botón para guardar/eliminar el post */}
+        {user && post.userId !== user.userId && (
+          <button className="botones-guardar" onClick={handleSavePost}>
+            {isSaved ? (
+              <>
+                <img src="/guardar.png" alt="Eliminar Guardado" />
+              </>
+            ) : (
+              <>
+                <img src="/guardar-relleno.png" alt="Guardar" />
+              </>
+            )}
+          </button>
+        )}
+
+        {/* Botón para mostrar/ocultar el formulario de comentarios */}
+        <button
+          className="boton-comentar"
+          onClick={() => setShowCommentForm(!showCommentForm)}
+        >
+          <img
+            className="icono-comentario"
+            src="/comentario-verde.png"
+            alt="Escribir comentario"
+          />
         </button>
-      )}
-
-      {/* Mostrar el número total de likes */}
-      <p>Total de Likes: {numLikes}</p>
-
-      {/* Botón para guardar/eliminar el post */}
-      {user && post.userId !== user.userId && (
-        <button onClick={handleSavePost}>
-          {isSaved ? "Eliminar Guardado" : "Guardar"}
-        </button>
-      )}
-
-      {/* Botón para mostrar/ocultar el formulario de comentarios */}
-      <button
-        className="boton-comentar"
-        onClick={() => setShowCommentForm(!showCommentForm)}
-      >
-        Comentar
-      </button>
+        <h4>
+          {totalComments === 1
+            ? "1 Comentario"
+            : `${totalComments} Comentarios`}
+        </h4>
+      </div>
 
       {/* Formulario para agregar comentarios */}
       {showCommentForm && (
@@ -207,10 +252,7 @@ const PostItem = ({ post }) => {
               onChange={(e) => setComentario(e.target.value)}
             />
           </label>
-          <button
-            className="boton-comentar"
-            onClick={handleAgregarComentario}
-          >
+          <button className="boton-comentar" onClick={handleAgregarComentario}>
             Agregar Comentario
           </button>
         </div>
