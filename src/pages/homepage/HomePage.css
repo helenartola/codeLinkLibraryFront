@@ -1,45 +1,37 @@
 .inicio {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start; /* Alinea los elementos en la parte superior del contenedor */
   font-family: Jost, sans-serif;
-  /*   margin-top: 40px;
- */
   padding-bottom: 10%;
 }
+
 .main-content {
-  width: 50%;
-  border-left: 1px solid white;
-  padding-right: 5%;
-  padding-left: 5%;
+  width: 100%;
+  display: flex;
 }
-.light .boton-crear-post {
-  border: 1px solid #05856e;
-  padding: 10px 30px 10px 30px;
-  border-radius: 50px;
-  background-color: transparent;
-  color: #05856e;
-  margin: 5px;
-  font-family: jost, sans-serif;
-  font-size: 14px;
+
+.sidebar-izq {
+  width: 20%;
+  padding-right: 20px;
+  border-right: 1px solid white;
 }
-.light .boton-crear-post:hover {
-  border: 1px solid #05856e;
+.contenedor-crear-post {
   background-color: #05856e;
-  color: white;
 }
+.sidebar-derecha {
+  flex: 1; /* La columna derecha ocupa el resto del espacio disponible */
+}
+
+.light .boton-crear-post,
 .dark .boton-crear-post {
-  border: 1px solid #05856e;
-  padding: 10px 30px 10px 30px;
   background-color: transparent;
-  border-radius: 50px;
-  color: white;
+  border: none;
   margin: 5px;
   font-family: jost, sans-serif;
   font-size: 14px;
 }
-.dark .boton-crear-post:hover {
-  border: 1px solid #05856e;
-  background-color: #05856e;
-  color: white;
+
+.icono-nuevo-post {
+  width: 100%; /* Hace que el icono ocupe el 100% del ancho del botón */
+  max-width: 40px; /* Ajusta el tamaño máximo del icono según tus preferencias */
 }

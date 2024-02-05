@@ -11,17 +11,7 @@ const HomePage = () => {
   // Obtiene los posts, el estado de carga y el error mediante el hook usePosts
   const { posts, loading, error, refresh } = usePosts();
   // Estado para controlar la visibilidad del formulario de nuevo post
-  const [showNewPostForm, setShowNewPostForm] = useState(false);
-
-  // Función para mostrar el formulario del nuevo post
-  const handleShowNewPostForm = () => {
-    setShowNewPostForm(true);
-  };
-
-  // Función para ocultar el formulario del nuevo post
-  const handleHideNewPostForm = () => {
-    setShowNewPostForm(false);
-  };
+  const [isFormOpen, setIsFormOpen] = useState(false); // Estado para controlar la apertura/cierre del formulario
 
   // Si se está cargando, muestra un mensaje de carga
   if (loading) return <p>Cargando posts...</p>;
@@ -31,20 +21,36 @@ const HomePage = () => {
   return (
     <section className={`inicio ${isDarkMode ? "dark" : "light"}`}>
       <div className="main-content">
-        {/* Botón para mostrar el formulario del nuevo post */}
-        <button className="boton-crear-post" onClick={handleShowNewPostForm}>
-          Crear Nuevo Post
-        </button>
-
-        {/* Condición para mostrar el formulario del nuevo post */}
-        {showNewPostForm && <NewPost onClose={handleHideNewPostForm} onAddPost={refresh} />}
-
-        {/* Lista de posts */}
-        <ListaDePosts posts={posts} />
+        <div className="sidebar-izq">
+          <div className="contenedor-crear-post">
+            {/* Botón para mostrar/ocultar el formulario del nuevo post */}
+            <button
+              className="boton-crear-post"
+              onClick={() => setIsFormOpen(!isFormOpen)}
+            >
+              <img
+                className="icono-nuevo-post"
+                src="/nuevo-post.png"
+                alt="Crear Nuevo Post"
+              />
+              {isFormOpen ? "X" : "Comparte un post"}
+            </button>
+            {/* Condición para mostrar el formulario del nuevo post */}
+            {isFormOpen && (
+              <NewPost
+                isFormOpen={isFormOpen}
+                setIsFormOpen={setIsFormOpen}
+                onAddPost={refresh}
+              />
+            )}
+          </div>
+        </div>
+        <div className="sidebar-derecha">
+          <ListaDePosts posts={posts} />
+        </div>
       </div>
     </section>
   );
 };
 
 export default HomePage;
-
