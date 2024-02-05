@@ -1,5 +1,11 @@
 import { useState, useEffect } from "react";
-import { getCommentsService, createCommentService, likePostService } from "../../services/index";
+import {
+  getCommentsService,
+  createCommentService,
+  likePostService,
+  savePostService,
+  unsavePostService,
+} from "../../services/index";
 import "./PostItem.css";
 import { useUser } from "../../context/UserContext";
 
@@ -19,6 +25,9 @@ const PostItem = ({ post }) => {
   const [numLikes, setNumLikes] = useState(post.numLikes);
   // Estado para almacenar si el usuario ha dado like
   const [isLiked, setIsLiked] = useState(post.isLiked);
+
+  // Estado para almacenar si el usuario ha guardado el post
+  const [isSaved, setIsSaved] = useState(post.isSaved);
 
   // Obtiene el usuario del contexto
   const [user] = useUser();
@@ -66,7 +75,7 @@ const PostItem = ({ post }) => {
       );
 
       // Actualiza la lista de comentarios con el nuevo comentario
-      setComments([...comments, {commentId : newCommentId, text: comentario}]);
+      setComments([...comments, { commentId: newCommentId, text: comentario }]);
       // Incrementa el total de comentarios
       setTotalComments(totalComments + 1);
       // Reinicia el estado del comentario
@@ -94,6 +103,29 @@ const PostItem = ({ post }) => {
     } catch (error) {
       console.error("Error al dar/quitar like:", error);
       alert("Error al dar/quitar like. Por favor, inténtalo de nuevo.");
+    }
+  };
+
+  // Función para manejar el clic en el botón de guardar/eliminar post
+  const handleSavePost = async () => {
+    try {
+      // Imprime el token antes de realizar la solicitud
+      console.log('Authorization Token before save/unsave:', token);
+
+      // Llama al servicio para guardar o eliminar el post según su estado actual
+      if (isSaved) {
+        // Si está guardado, entonces llamamos al servicio para desguardar
+        await unsavePostService(post.postId, token);
+      } else {
+        // Si no está guardado, llamamos al servicio para guardar
+        await savePostService(post.postId, token);
+      }
+
+      // Actualiza el estado con el nuevo estado de guardado
+      setIsSaved(!isSaved);
+    } catch (error) {
+      console.error("Error al guardar/eliminar post:", error);
+      alert("Error al guardar/eliminar post. Por favor, inténtalo de nuevo.");
     }
   };
 
@@ -126,15 +158,21 @@ const PostItem = ({ post }) => {
       </div>
 
       {/* Botón para dar/quitar like */}
-         {user && post.userId != user.userId && (
+      {user && post.userId !== user.userId && (
         <button onClick={handleLikePost}>
           {isLiked ? "Quitar Like" : "Dar Like"}
         </button>
       )}
 
-
       {/* Mostrar el número total de likes */}
       <p>Total de Likes: {numLikes}</p>
+
+      {/* Botón para guardar/eliminar el post */}
+      {user && (
+        <button onClick={handleSavePost}>
+          {isSaved ? "Eliminar Guardado" : "Guardar"}
+        </button>
+      )}
 
       {/* Botón para mostrar/ocultar el formulario de comentarios */}
       <button
@@ -149,7 +187,7 @@ const PostItem = ({ post }) => {
           {/* Formulario para agregar comentarios */}
           <label>
             <input
-              className="comment-input" 
+              className="comment-input"
               type="text"
               value={comentario}
               onChange={(e) => setComentario(e.target.value)}

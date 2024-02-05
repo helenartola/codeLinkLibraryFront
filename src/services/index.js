@@ -306,3 +306,50 @@ export const createCommentService = async ({ postId, comentario }, token) => {
   }
 };
 
+// Guardar un post
+export const savePostService = async (postId, token) => {
+  try {
+    const response = await fetch(`${import.meta.env.VITE_BACKEND}/post/${postId}/save`, {
+      method: "POST",
+      headers: {
+        "Authorization": token,
+      },
+    });
+
+    const json = await response.json();
+
+    if (!response.ok) {
+      throw new Error(json.message);
+    }
+
+    // Devolver la respuesta del servidor
+    return json.data;
+  } catch (error) {
+    console.error("Error al guardar el post:", error);
+    throw new Error("Error al guardar el post");
+  }
+};
+
+// Eliminar un post guardado
+export const unsavePostService = async (postId, token) => {
+  try {
+    const response = await fetch(`${import.meta.env.VITE_BACKEND}/post/${postId}/unsave`, {
+      method: "DELETE",
+      headers: {
+        "Authorization": token,
+      },
+    });
+
+    const json = await response.json();
+
+    if (!response.ok) {
+      throw new Error(json.message);
+    }
+
+    // Devolver la respuesta del servidor
+    return json.data;
+  } catch (error) {
+    console.error("Error al eliminar el post guardado:", error);
+    throw new Error("Error al eliminar el post guardado");
+  }
+};
