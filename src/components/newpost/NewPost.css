@@ -1,6 +1,6 @@
 /* Estilos Light */
 .light .new-post-container {
-  padding: 5px;
+  padding: 15px;
 }
 
 .new-post-container h3 {
@@ -51,10 +51,8 @@ textarea {
 
 /* Estilos Dark */
 .dark .new-post-container {
-  border-color: #303030;
   background-color: #303030;
-  color: #ffffff32;
-  padding: 5px;
+  padding: 15px;
 }
 
 .dark .new-post-container h3 {

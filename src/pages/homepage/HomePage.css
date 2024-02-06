@@ -21,12 +21,12 @@
 }
 .dark .contenedor-crear-post {
   background-color: #303030;
-  width: 100%;
   border-bottom: 1px solid #ffffff32;
+  width: 100%;
 }
 .light .contenedor-crear-post {
   width: 100%;
-  border-bottom: 1px solid #cbc9c9;
+  border-bottom: 1px solid #303030;
 }
 .light .sidebar-derecha {
   flex: 1;
@@ -64,10 +64,6 @@
   color: #303030;
 }
 @media only screen and (min-width: 960px) {
-  .light .sidebar-izq {
-    padding: 10px;
-  }
-
   .light .contenedor-crear-post {
     position: sticky;
     top: 10px; /* Ajusta según sea necesario */
@@ -79,9 +75,6 @@
     text-align: center;
     margin-left: 5px;
     white-space: nowrap;
-  }
-  .dark .sidebar-izq {
-    padding: 10px;
   }
 
   .dark .contenedor-crear-post {
