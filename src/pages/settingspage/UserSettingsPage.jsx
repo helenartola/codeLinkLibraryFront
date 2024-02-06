@@ -1,55 +1,29 @@
-import { useState/* , useEffect */ } from "react";
-//import { useUser } from "../../context/UserContext";
-//import { Link } from "react-router-dom";
+import { useState } from "react";
 import "./UserSettingsPage.css";
-//import { getInfoUserService, getUserPostsService } from "../../services";
+import { usuarioAjustes } from "../../services";
+import { Link } from "react-router-dom";
 
 const UserSettingsPage = () => {
-  //const [user] = useUser();
   const [name, setName] = useState('');
   const [lastName, setLastName] = useState('');
   const [birthDate, setBirthDate] = useState('');
   const [bio, setBio] = useState('');
   const [error, setError] = useState(null);
 
-  const clearForm = () => {
-    setName('');
-    setLastName('');
-    setBirthDate('');
-    setBio('');
-  };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:8000/settings', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          
-        },
-        body: JSON.stringify({
-          name,
-          lastName,
-          birthDate,
-          bio,
-        }),
-      });
+  
+      const userData = await usuarioAjustes(name, lastName, birthDate, bio, token);
 
-      if (!response.ok) {
-        throw new Error('Error al actualizar el usuario');
+      if (userData.token) {
+        // Lógica para manejar el token obtenido
+      } else {
+        setError("Error al obtener el token");
       }
-
-      // Limpia el formulario después de enviar la información
-      clearForm();
-      setError(null); // Restablece cualquier error previo
-
-
     } catch (error) {
-
-      console.error("Error al enviar la información:", error);
-      setError('Error al enviar la información. Por favor, inténtalo de nuevo.'); 
+      setError(error.message);
     }
   };
 
@@ -70,6 +44,9 @@ const UserSettingsPage = () => {
       <textarea id="bio" value={bio} onChange={(e) => setBio(e.target.value)} />
 
       <button type="submit">Aceptar</button>
+      <Link to="/">
+              <button className="return">Volver</button>
+            </Link>
     </form>
   );
 };
