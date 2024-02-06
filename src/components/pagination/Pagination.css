@@ -1,36 +1,37 @@
 .pagination {
-    display: flex;
-    align-items: center;
-  }
-  
-  .current-page-box {
-    margin: 0 10px;
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  button {
-    margin: 0 5px;
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    background-color: #f0f0f0;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
-  }
-  
-  /* Estilo de flechas */
-  .current-page-box::before {
-    content: '‹';
-    margin-right: 5px;
-  }
-  
-  .current-page-box::after {
-    content: '›';
-    margin-left: 5px;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.current-page-box {
+  margin: 0 10px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Estilo de flechas */
+.current-page-box::before {
+  content: "‹";
+  margin-right: 5px;
+}
+
+.current-page-box::after {
+  content: "›";
+  margin-left: 5px;
+}

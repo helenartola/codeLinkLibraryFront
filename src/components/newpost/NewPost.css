@@ -1,7 +1,7 @@
 /* Estilos Light */
 .light .new-post-container {
-  width: 80%;
-  max-width: 400px;
+  width: 100%;
+  max-width: 1400px;
   margin: 20px auto;
   padding: 15px;
 }
@@ -57,8 +57,8 @@ textarea {
   border-color: #303030;
   background-color: #303030;
   color: white;
-  width: 80%;
-  max-width: 400px;
+  width: 100%;
+  max-width: 1400px;
   margin: 20px auto;
 }
 
