@@ -1,3 +1,5 @@
+import "./Pagination.css";
+
 const Pagination = ({ totalPosts, totalPages, currentPage, onPageChange }) => {
     return (
       <nav aria-label="Paginación" className="pagination">

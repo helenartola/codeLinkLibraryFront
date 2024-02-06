@@ -24,9 +24,13 @@
     opacity: 0.5;
   }
   
-  /* Ajuste para colocar el número de página entre las flechas */
-  .current-page-box {
-    order: -1; /* Cambiar el orden del elemento */
+  /* Estilo de flechas */
+  .current-page-box::before {
+    content: '‹';
+    margin-right: 5px;
   }
   
-  
+  .current-page-box::after {
+    content: '›';
+    margin-left: 5px;
+  }
