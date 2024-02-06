@@ -64,7 +64,31 @@
   color: #303030;
 }
 @media only screen and (min-width: 960px) {
-  .escribe-tu-mejor-post {
+  .light .sidebar-izq {
+    padding: 10px;
+  }
+
+  .light .contenedor-crear-post {
+    position: sticky;
+    top: 10px; /* Ajusta según sea necesario */
+  }
+  .light .escribe-tu-mejor-post {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-left: 5px;
+    white-space: nowrap;
+  }
+  .dark .sidebar-izq {
+    padding: 10px;
+  }
+
+  .dark .contenedor-crear-post {
+    position: sticky;
+    top: 10px; /* Ajusta según sea necesario */
+  }
+  .dark .escribe-tu-mejor-post {
     display: flex;
     align-items: center;
     justify-content: center;

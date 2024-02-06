@@ -1,9 +1,6 @@
 /* Estilos Light */
 .light .new-post-container {
-  width: 100%;
-  max-width: 1400px;
-  margin: 20px auto;
-  padding: 15px;
+  padding: 5px;
 }
 
 .new-post-container h3 {
@@ -15,7 +12,7 @@
 
 .new-post-container button {
   background-color: transparent;
-  color: #05856e;
+  color: #008080;
   font-family: Jost, sans-serif;
   font-size: 15px;
   letter-spacing: 0.1em;
@@ -26,8 +23,8 @@
 }
 
 .new-post-container button:hover {
-  background-color: #05856e;
-  color: white;
+  background-color: #008080;
+  color: #ffffff32;
   border: none;
 }
 
@@ -48,7 +45,7 @@ textarea {
 .light .textarea-new-post {
   color: #303030;
   border: #303030 1px solid;
-  background-color: white;
+  background-color: #ffffff32;
   width: 100%;
 }
 
@@ -56,10 +53,8 @@ textarea {
 .dark .new-post-container {
   border-color: #303030;
   background-color: #303030;
-  color: white;
-  width: 100%;
-  max-width: 1400px;
-  margin: 20px auto;
+  color: #ffffff32;
+  padding: 5px;
 }
 
 .dark .new-post-container h3 {
@@ -77,7 +72,7 @@ textarea {
 .dark textarea {
   color: white;
   background-color: #303030;
-  border: white 1px solid;
+  border: #ffffff32 1px solid;
 }
 
 .dark .input-new-post,
@@ -103,5 +98,5 @@ textarea {
   color: red;
 }
 .success-message {
-  color: #05856e;
+  color: #008080;
 }
