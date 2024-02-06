@@ -15,7 +15,7 @@
 
 .botones-navegacion-perfil button {
   padding: 10px 20px;
-  background-color: #05856e;
+  background-color: #008080;
   color: white;
   border: none;
   border-radius: 50px;
@@ -26,8 +26,8 @@
 
 .botones-navegacion-perfil button:hover {
   background-color: transparent;
-  border: 1px solid #05856e;
-  color: #05856e;
+  border: 1px solid #008080;
+  color: #008080;
 }
 
 .h1 {

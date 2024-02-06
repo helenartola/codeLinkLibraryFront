@@ -10,6 +10,7 @@
 }
 .header {
   padding: 10px;
+  border-bottom: 1px solid #008080;
 }
 
 .theme-switcher-container {
@@ -50,7 +51,7 @@
 
 @media screen and (min-width: 768px) {
   .header {
-    border-bottom: 1px solid #ffffff32;
+    border-bottom: 1px solid #008080;
   }
 
   .navbar {

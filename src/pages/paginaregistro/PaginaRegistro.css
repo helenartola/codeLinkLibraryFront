@@ -39,7 +39,7 @@ div.textoRegistro {
 h1.tituloRegistro {
   font-family: jost, sans-serif;
   font-size: 30px;
-  color: #05856e;
+  color: #008080;
   text-align: center;
   padding: 10px;
 }
@@ -75,7 +75,7 @@ p.parrafoRegistro {
   h1.tituloRegistro {
     font-family: jost, sans-serif;
     font-size: 40px;
-    color: #05856e;
+    color: #008080;
     text-align: right;
     margin-right: 30px;
   }

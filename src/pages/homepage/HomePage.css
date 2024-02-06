@@ -53,12 +53,7 @@
   margin-left: 10%;
 }
 .escribe-tu-mejor-post {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  margin-left: 5px;
-  white-space: nowrap;
+  display: none;
 }
 
 .dark .escribe-tu-mejor-post {
@@ -67,4 +62,14 @@
 
 .light .escribe-tu-mejor-post {
   color: #303030;
+}
+@media only screen and (min-width: 960px) {
+  .escribe-tu-mejor-post {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-left: 5px;
+    white-space: nowrap;
+  }
 }
