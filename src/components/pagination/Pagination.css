@@ -11,7 +11,7 @@
   border-radius: 5px;
 }
 
-button {
+.boton-pagination {
   padding: 5px 10px;
   border: 1px solid #ccc;
   background-color: #f0f0f0;
@@ -19,7 +19,7 @@ button {
   cursor: pointer;
 }
 
-button:disabled {
+.boton-pagination:disabled {
   cursor: not-allowed;
   opacity: 0.5;
 }
