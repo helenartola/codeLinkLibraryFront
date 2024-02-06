@@ -24,11 +24,11 @@
 .light .footer {
   background-color: var(--background-light);
   color: var(--text-light);
-  --border-color: #303030;
+  --border-color: #cbc9c9;
 }
 
 .dark .footer {
   background-color: var(--background-dark);
   color: var(--text-dark);
-  --border-color: white;
+  --border-color: #ffffff32;
 }

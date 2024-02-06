@@ -35,7 +35,7 @@
 
 .logo {
   width: 100%;
-  max-width: 200px;
+  max-width: 300px;
 }
 
 .light .navbar {
@@ -50,7 +50,7 @@
 
 @media screen and (min-width: 768px) {
   .header {
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid #ffffff32;
   }
 
   .navbar {

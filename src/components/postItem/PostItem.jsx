@@ -6,7 +6,7 @@ import {
   savePostService,
   unsavePostService,
   deletePostService,
-  deleteCommentService // Importa el servicio para eliminar comentarios
+  deleteCommentService, // Importa el servicio para eliminar comentarios
 } from "../../services/index";
 import "./PostItem.css";
 import { useUser } from "../../context/UserContext";
@@ -97,7 +97,7 @@ const PostItem = ({ post }) => {
       alert("Error al agregar el comentario. Por favor, inténtalo de nuevo.");
     }
   };
-  
+
   // Función para manejar el clic en el botón de like
   const handleLikePost = async () => {
     try {
@@ -160,45 +160,41 @@ const PostItem = ({ post }) => {
     }
   };
 
-// Función para manejar el clic en el botón de eliminar comentario
-const handleDeleteComment = async (commentId) => {
-  try {
-    // Llama al servicio para eliminar el comentario
-    await deleteCommentService(post.postId, commentId, token); 
-    // Filtra los comentarios para excluir el comentario eliminado
-    const updatedComments = comments.filter(comment => comment.commentId !== commentId);
-    // Actualiza la lista de comentarios
-    setComments(updatedComments);
-    // Decrementa el total de comentarios
-    setTotalComments(totalComments - 1);
-    alert("El comentario ha sido eliminado con éxito.");
-  } catch (error) {
-    console.error("Error al eliminar comentario:", error);
-    alert("Error al eliminar comentario. Por favor, inténtalo de nuevo.");
-  }
-};
+  // Función para manejar el clic en el botón de eliminar comentario
+  const handleDeleteComment = async (commentId) => {
+    try {
+      // Llama al servicio para eliminar el comentario
+      await deleteCommentService(post.postId, commentId, token);
+      // Filtra los comentarios para excluir el comentario eliminado
+      const updatedComments = comments.filter(
+        (comment) => comment.commentId !== commentId
+      );
+      // Actualiza la lista de comentarios
+      setComments(updatedComments);
+      // Decrementa el total de comentarios
+      setTotalComments(totalComments - 1);
+      alert("El comentario ha sido eliminado con éxito.");
+    } catch (error) {
+      console.error("Error al eliminar comentario:", error);
+      alert("Error al eliminar comentario. Por favor, inténtalo de nuevo.");
+    }
+  };
 
   return (
     <div className="post-item-container">
+      <div className="datos-publicacion">
+        <p className="publicado-por">
+          Publicado por:{" "}
+          <span className="nombre-usuario">{post.userName} · </span>
+        </p>
+        <p className="fecha"> {new Date(post.createdAt).toLocaleString()}</p>
+      </div>
       {/* Título y descripción del post */}
       <h2 className="titulo-post-home">{post.title}</h2>
       <p className="descripcion-post-home">{post.description}</p>
 
-      {/* Información del usuario */}
-      <div>
-        <p>Autor: {post.userName}</p>
-        {/* Puedes agregar la lógica para mostrar el avatar aquí */}
-        <p>Fecha de publicación: {new Date(post.createdAt).toLocaleString()}</p>
-      </div>
-
       {/* Comentarios */}
       <div>
-        <h4>
-          {totalComments === 1
-            ? "1 Comentario"
-            : `${totalComments} Comentarios`}
-        </h4>
-
         {/* Botón para mostrar/ocultar los comentarios */}
         <button onClick={() => setShowComments(!showComments)}>
           {showComments ? "Ocultar Comentarios" : "Mostrar Comentarios"}
@@ -222,7 +218,9 @@ const handleDeleteComment = async (commentId) => {
                 </p>
                 {/* Agrega un botón para eliminar el comentario */}
                 {user && comment.userId === user.userId && (
-                  <button onClick={() => handleDeleteComment(comment.commentId)}>
+                  <button
+                    onClick={() => handleDeleteComment(comment.commentId)}
+                  >
                     Eliminar Comentario
                   </button>
                 )}
@@ -238,9 +236,9 @@ const handleDeleteComment = async (commentId) => {
         {user && post.userId !== user.userId && (
           <button className="boton-icono-like" onClick={handleLikePost}>
             {isLiked ? (
-              <img src="/corazon-relleno-verde.png" alt="Corazón Relleno" />
+              <img src="/corazon-relleno.png" alt="Corazón Relleno" />
             ) : (
-              <img src="/corazon-verde.png" alt="Corazón Vacío" />
+              <img src="/corazon.png" alt="Corazón Vacío" />
             )}
           </button>
         )}
@@ -257,7 +255,7 @@ const handleDeleteComment = async (commentId) => {
               </>
             ) : (
               <>
-                <img src="/guardar-relleno.png" alt="Guardar" />
+                <img src="/guardar-rell.png" alt="Guardar" />
               </>
             )}
           </button>
@@ -270,7 +268,7 @@ const handleDeleteComment = async (commentId) => {
         >
           <img
             className="icono-comentario"
-            src="/comentario-verde.png"
+            src="/comentario.png"
             alt="Escribir comentario"
           />
         </button>
