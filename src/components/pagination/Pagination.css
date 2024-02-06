@@ -1,0 +1,32 @@
+.pagination {
+    display: flex;
+    align-items: center;
+  }
+  
+  .current-page-box {
+    margin: 0 10px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  
+  /* Ajuste para colocar el número de página entre las flechas */
+  .current-page-box {
+    order: -1; /* Cambiar el orden del elemento */
+  }
+  
+  
