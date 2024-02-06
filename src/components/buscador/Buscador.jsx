@@ -44,17 +44,16 @@ const Buscador = () => {
 
   // Función para realizar la búsqueda cuando se hace clic en el botón (lupa)
   const handleSearchClick = () => {
-   
     search();                                             // Llama a la función de búsqueda
     redirectToSearchPage();
   };
 
    // Función para redirigir a la página de búsqueda
    const redirectToSearchPage = () => {
-    const searchPath = `/search?q=${searchTerm}`;  
+    const searchPath = `/search?q=${searchTerm}`;
+    console.log("Redirigiendo a:", searchPath);
     navigate(searchPath);
   };
-
     // Función para realizar la búsqueda cuando se presiona la tecla "Enter"
    /* const handleKeyPress = (e) => {
       if (e.key === "Enter") {
