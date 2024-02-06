@@ -400,3 +400,28 @@ export const deleteCommentService = async (postId, commentId, token) => {
     throw new Error("Error al eliminar el comentario");
   }
 };
+
+export const editCommentService = async (commentId, editedComment, token) => {
+  try {
+    const response = await fetch(`${import.meta.env.VITE_BACKEND}/post/comment/${commentId}`, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+        "Authorization": token,
+      },
+      body: JSON.stringify(editedComment),
+    });
+
+    const json = await response.json();
+
+    if (!response.ok) {
+      throw new Error(json.message);
+    }
+
+    // Devolver la respuesta del servidor
+    return json.data;
+  } catch (error) {
+    console.error("Error al editar el comentario:", error);
+    throw new Error("Error al editar el comentario");
+  }
+};

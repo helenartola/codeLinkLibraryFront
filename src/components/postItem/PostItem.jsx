@@ -6,66 +6,53 @@ import {
   savePostService,
   unsavePostService,
   deletePostService,
-  deleteCommentService // Importa el servicio para eliminar comentarios
+  deleteCommentService,
+  editCommentService
 } from "../../services/index";
 import "./PostItem.css";
 import { useUser } from "../../context/UserContext";
 
 const PostItem = ({ post }) => {
-  // Estado para almacenar el nuevo comentario
+  // Estados para el manejo de comentarios
   const [comentario, setComentario] = useState("");
-  // Estado para almacenar la lista de comentarios
   const [comments, setComments] = useState([]);
-  // Estado para controlar la visibilidad del formulario de comentarios
   const [showCommentForm, setShowCommentForm] = useState(false);
-  // Estado para controlar la visibilidad de los comentarios
   const [showComments, setShowComments] = useState(false);
-  // Estado para almacenar el total de comentarios
   const [totalComments, setTotalComments] = useState(0);
-
-  // Estado para almacenar el número de likes
+  
+  // Estados para el manejo de likes y guardado
   const [numLikes, setNumLikes] = useState(post.numLikes);
-  // Estado para almacenar si el usuario ha dado like
   const [isLiked, setIsLiked] = useState(post.isLiked);
-
-  // Estado para almacenar si el usuario ha guardado el post
   const [isSaved, setIsSaved] = useState(post.isSaved);
+  
+  // Estados para la edición de comentarios
+  const [editingComment, setEditingComment] = useState(null); // Nuevo estado para el comentario en edición
+  const [lastEditTime, setLastEditTime] = useState({}); // Nuevo estado para almacenar la hora de la última edición de cada comentario
 
-  // Obtiene el usuario del contexto
   const [user] = useUser();
-  // Obtiene el token del usuario o establece en null si no hay usuario
   const token = user ? user.token : null;
 
-  // Efecto secundario para cargar comentarios cuando cambia el post o el estado de mostrar comentarios
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        // Obtiene los comentarios asociados al post
         const comentarios = await getCommentsService(post.postId);
-        // Actualiza el estado con los comentarios obtenidos
         setComments(comentarios);
-        // Actualiza el total de comentarios
         setTotalComments(comentarios.length);
       } catch (error) {
         console.error("Error al obtener comentarios:", error);
       }
     };
 
-    // Llama a la función para cargar comentarios
     fetchComments();
-  }, [post]); // Dependencia del efecto: post
+  }, [post]);
 
-  // Función para manejar la creación de un nuevo comentario
+  // Función para agregar un nuevo comentario
   const handleAgregarComentario = async () => {
     try {
-      // Verifica si el campo de comentario está vacío
       if (!comentario) {
         alert("Por favor, ingresa un comentario.");
         return;
       }
-
-      // Registra el token antes de realizar la solicitud
-      console.log("Authorization Token before createCommentService:", token);
 
       // Crea un nuevo comentario utilizando el servicio
       const newCommentId = await createCommentService(
@@ -101,12 +88,8 @@ const PostItem = ({ post }) => {
   // Función para manejar el clic en el botón de like
   const handleLikePost = async () => {
     try {
-      // Imprime el token antes de realizar la solicitud
-      console.log("Authorization Token before likePostService:", token);
-
       // Llama al servicio para dar/quitar like
       const likeResponse = await likePostService(post.postId, token);
-
       // Actualiza el estado con la nueva información de likes
       setNumLikes(likeResponse.numLikes);
       setIsLiked(likeResponse.isLiked);
@@ -134,9 +117,6 @@ const PostItem = ({ post }) => {
   // Función para manejar el clic en el botón de guardar/eliminar post
   const handleSavePost = async () => {
     try {
-      // Imprime el token antes de realizar la solicitud
-      console.log("Authorization Token before save/unsave:", token);
-
       // Verifica si el post pertenece al propio usuario
       if (user && post.userId === user.userId) {
         alert("No puedes guardar tus propios posts.");
@@ -160,67 +140,108 @@ const PostItem = ({ post }) => {
     }
   };
 
-// Función para manejar el clic en el botón de eliminar comentario
-const handleDeleteComment = async (commentId) => {
-  try {
-    // Llama al servicio para eliminar el comentario
-    await deleteCommentService(post.postId, commentId, token); 
-    // Filtra los comentarios para excluir el comentario eliminado
-    const updatedComments = comments.filter(comment => comment.commentId !== commentId);
-    // Actualiza la lista de comentarios
-    setComments(updatedComments);
-    // Decrementa el total de comentarios
-    setTotalComments(totalComments - 1);
-    alert("El comentario ha sido eliminado con éxito.");
-  } catch (error) {
-    console.error("Error al eliminar comentario:", error);
-    alert("Error al eliminar comentario. Por favor, inténtalo de nuevo.");
-  }
-};
+  // Función para manejar el clic en el botón de eliminar comentario
+  const handleDeleteComment = async (commentId) => {
+    try {
+      // Llama al servicio para eliminar el comentario
+      await deleteCommentService(post.postId, commentId, token); 
+      // Filtra los comentarios para excluir el comentario eliminado
+      const updatedComments = comments.filter(comment => comment.commentId !== commentId);
+      // Actualiza la lista de comentarios
+      setComments(updatedComments);
+      // Decrementa el total de comentarios
+      setTotalComments(totalComments - 1);
+      alert("El comentario ha sido eliminado con éxito.");
+    } catch (error) {
+      console.error("Error al eliminar comentario:", error);
+      alert("Error al eliminar comentario. Por favor, inténtalo de nuevo.");
+    }
+  };
+
+  // Función para manejar el clic en el botón de editar comentario
+  const handleEditComment = (commentId) => {
+    // Encuentra el comentario a editar
+    const commentToEdit = comments.find(comment => comment.commentId === commentId);
+    // Establece el comentario en edición
+    setEditingComment(commentToEdit);
+    setComentario (commentToEdit.text);
+  };
+
+  // Función para guardar la edición del comentario
+  const handleSaveEdit = async () => {
+    try {
+      // Copia el comentario editado con el nuevo texto
+      const editedComment = { ...editingComment, text: comentario };
+      // Llama al servicio para editar el comentario
+      await editCommentService(editingComment.commentId, editedComment, token);
+      // Actualiza la lista de comentarios con el comentario editado
+      const updatedComments = comments.map(comment => {
+        if (comment.commentId === editingComment.commentId) {
+          return {
+            ...comment,
+            text: comentario,
+          };
+        }
+        return comment;
+      });
+      // Actualiza los comentarios, oculta el formulario de edición y restablece el estado de edición
+      setComments(updatedComments);
+      setEditingComment(null);
+      // Actualiza la hora de la última edición del comentario
+      setLastEditTime({
+        ...lastEditTime,
+        [editingComment.commentId]: new Date().toLocaleString(),
+      });
+      alert("El comentario ha sido editado con éxito.");
+    } catch (error) {
+      console.error("Error al editar comentario:", error);
+      alert("Error al editar comentario. Por favor, inténtalo de nuevo.");
+    }
+  };
 
   return (
     <div className="post-item-container">
-      {/* Título y descripción del post */}
       <h2 className="titulo-post-home">{post.title}</h2>
       <p className="descripcion-post-home">{post.description}</p>
 
-      {/* Información del usuario */}
       <div>
         <p>Autor: {post.userName}</p>
-        {/* Puedes agregar la lógica para mostrar el avatar aquí */}
         <p>Fecha de publicación: {new Date(post.createdAt).toLocaleString()}</p>
       </div>
 
-      {/* Comentarios */}
       <div>
-        <h4>
-          {totalComments === 1
-            ? "1 Comentario"
-            : `${totalComments} Comentarios`}
-        </h4>
-
-        {/* Botón para mostrar/ocultar los comentarios */}
+        <h4>{totalComments === 1 ? "1 Comentario" : `${totalComments} Comentarios`}</h4>
         <button onClick={() => setShowComments(!showComments)}>
           {showComments ? "Ocultar Comentarios" : "Mostrar Comentarios"}
         </button>
-
-        {/* Mostrar comentarios si showComments es true */}
         {showComments && (
           <ul>
-            {/* Mapea la lista de comentarios y muestra cada uno */}
             {comments.map((comment) => (
               <li key={comment.commentId}>
-                {/* Muestra el nombre del usuario que hizo el comentario */}
                 <p>Comentado por: {comment.userName}</p>
-                {/* Puedes agregar la lógica para mostrar el avatar del usuario aquí */}
-                {/* Muestra el texto del comentario */}
                 <p>{comment.text}</p>
-                {/* Muestra la fecha de publicación del comentario */}
-                <p>
-                  Fecha de publicación:{" "}
-                  {new Date(comment.createdAt).toLocaleString()}
-                </p>
-                {/* Agrega un botón para eliminar el comentario */}
+                <p>Fecha de publicación: {new Date(comment.createdAt).toLocaleString()}</p>
+                {/* Mostrar hora de la última edición y "editado" si corresponde */}
+                {comment.commentId === editingComment?.commentId ? (
+                  <div>
+                    <input
+                      type="text"
+                      value={comentario}
+                      onChange={(e) => setComentario(e.target.value)}
+                    />
+                    <button onClick={handleSaveEdit}>Guardar</button>
+                    <button onClick={() => setEditingComment(null)}>Cerrar Edición</button>
+                  </div>
+                ) : (
+                  <div>
+                    {lastEditTime[comment.commentId] && (
+                      <p>Editado: {lastEditTime[comment.commentId]}</p>
+                    )}
+                    <button onClick={() => handleEditComment(comment.commentId)}>
+                      Editar Comentario
+                    </button>
+                  </div>
+                )}
                 {user && comment.userId === user.userId && (
                   <button onClick={() => handleDeleteComment(comment.commentId)}>
                     Eliminar Comentario
@@ -232,9 +253,7 @@ const handleDeleteComment = async (commentId) => {
         )}
       </div>
 
-      {/* Botones de like, guardado y comentario */}
       <div className="botones-post-complementos">
-        {/* Botón para dar/quitar like */}
         {user && post.userId !== user.userId && (
           <button className="boton-icono-like" onClick={handleLikePost}>
             {isLiked ? (
@@ -244,26 +263,16 @@ const handleDeleteComment = async (commentId) => {
             )}
           </button>
         )}
-
-        {/* Mostrar el número total de likes */}
         <p className="likes-count">{numLikes}</p>
-
-        {/* Botón para guardar/eliminar el post */}
         {user && post.userId !== user.userId && (
           <button className="botones-guardar" onClick={handleSavePost}>
             {isSaved ? (
-              <>
-                <img src="/guardar.png" alt="Eliminar Guardado" />
-              </>
+              <img src="/guardar.png" alt="Eliminar Guardado" />
             ) : (
-              <>
-                <img src="/guardar-relleno.png" alt="Guardar" />
-              </>
+              <img src="/guardar-relleno.png" alt="Guardar" />
             )}
           </button>
         )}
-
-        {/* Botón para mostrar/ocultar el formulario de comentarios */}
         <button
           className="boton-comentar"
           onClick={() => setShowCommentForm(!showCommentForm)}
@@ -274,14 +283,9 @@ const handleDeleteComment = async (commentId) => {
             alt="Escribir comentario"
           />
         </button>
-        <h4>
-          {totalComments === 1
-            ? "1 Comentario"
-            : `${totalComments} Comentarios`}
-        </h4>
+        <h4>{totalComments === 1 ? "1 Comentario" : `${totalComments} Comentarios`}</h4>
       </div>
 
-      {/* Formulario para agregar comentarios */}
       {showCommentForm && (
         <div>
           <label>
@@ -298,7 +302,6 @@ const handleDeleteComment = async (commentId) => {
         </div>
       )}
 
-      {/* Botón para eliminar el post */}
       {user && post.userId === user.userId && (
         <button className="botones-eliminar" onClick={handleDeletePost}>
           Eliminar Post
