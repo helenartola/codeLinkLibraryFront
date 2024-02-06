@@ -2,6 +2,8 @@
 
 .barra-buscador {
   display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   max-width: 1000px;
 }
@@ -10,8 +12,7 @@
 .search-bar {
   display: flex;
   align-items: center;
-  width: 100%;
-  max-width: 1000px;
+  justify-content: center;
 }
 
 /* Estilos para el botón con el icono de la lupa */
@@ -20,6 +21,7 @@
   border: 2px solid #008080;
   border-left: none;
   cursor: pointer;
+  border-radius: 0;
   padding: 8px;
   width: 39px;
   height: 39px;
@@ -41,10 +43,6 @@
   padding: 8px;
   font-family: jost, sans-serif;
   outline: none;
-  width: 100%;
-  max-width: 600px;
-  margin-bottom: 0;
-  border-radius: 0;
 }
 
 /* Estilos para el campo de entrada en modo oscuro */
@@ -57,7 +55,7 @@
   font-family: jost, sans-serif;
   outline: none;
   width: 100%;
-  max-width: 600px;
+  max-width: 1200px;
   margin-bottom: 0;
   border-radius: 0;
 }
@@ -106,15 +104,13 @@
 @media screen and (min-width: 768px) {
   .barra-buscador {
     display: flex;
-    width: 100%;
-    max-width: 600px;
+    align-items: center;
+    justify-content: center;
   }
 
   .search-bar {
     display: flex;
     align-items: center;
-    width: 100%;
-    max-width: 600px;
   }
 
   .boton-lupa {
@@ -123,8 +119,8 @@
     border-left: none;
     cursor: pointer;
     padding: 8px;
-    width: 38px;
-    height: 38px;
+    width: 39px;
+    height: 39px;
   }
   .boton-lupa:hover {
     background-color: #008080;
@@ -151,12 +147,9 @@
     border: 2px solid #008080; /* Borde del campo de entrada en modo oscuro */
     border-right: none;
     background-color: transparent; /* Fondo transparente del campo de entrada en modo oscuro */
-    flex: 1;
     padding: 8px;
     font-family: jost, sans-serif;
     outline: none;
-    width: 100%;
-    max-width: 600px;
   }
 
   /* Estilos para el texto de marcador de posición en el campo de entrada en modo oscuro */
