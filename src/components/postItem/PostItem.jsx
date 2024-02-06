@@ -5,7 +5,8 @@ import {
   likePostService,
   savePostService,
   unsavePostService,
-  deletePostService
+  deletePostService,
+  deleteCommentService // Importa el servicio para eliminar comentarios
 } from "../../services/index";
 import "./PostItem.css";
 import { useUser } from "../../context/UserContext";
@@ -96,7 +97,7 @@ const PostItem = ({ post }) => {
       alert("Error al agregar el comentario. Por favor, inténtalo de nuevo.");
     }
   };
-
+  
   // Función para manejar el clic en el botón de like
   const handleLikePost = async () => {
     try {
@@ -116,19 +117,19 @@ const PostItem = ({ post }) => {
   };
 
   // Función para manejar el clic en el botón de eliminar post
-const handleDeletePost = async () => {
-  try {
-    // Llama al servicio para eliminar el post
-    await deletePostService(post.postId, token);
-    // Actualiza la lista de posts para que el post eliminado ya no se muestre
-    // Esto podría implicar recargar la página o actualizar el estado del componente
-    // dependiendo de cómo esté estructurada tu aplicación
-    alert("El post ha sido eliminado con éxito.");
-  } catch (error) {
-    console.error("Error al eliminar post:", error);
-    alert("Error al eliminar post. Por favor, inténtalo de nuevo.");
-  }
-};
+  const handleDeletePost = async () => {
+    try {
+      // Llama al servicio para eliminar el post
+      await deletePostService(post.postId, token);
+      // Actualiza la lista de posts para que el post eliminado ya no se muestre
+      // Esto podría implicar recargar la página o actualizar el estado del componente
+      // dependiendo de cómo esté estructurada tu aplicación
+      alert("El post ha sido eliminado con éxito.");
+    } catch (error) {
+      console.error("Error al eliminar post:", error);
+      alert("Error al eliminar post. Por favor, inténtalo de nuevo.");
+    }
+  };
 
   // Función para manejar el clic en el botón de guardar/eliminar post
   const handleSavePost = async () => {
@@ -158,6 +159,24 @@ const handleDeletePost = async () => {
       alert("Error al guardar/eliminar post. Por favor, inténtalo de nuevo.");
     }
   };
+
+// Función para manejar el clic en el botón de eliminar comentario
+const handleDeleteComment = async (commentId) => {
+  try {
+    // Llama al servicio para eliminar el comentario
+    await deleteCommentService(post.postId, commentId, token); 
+    // Filtra los comentarios para excluir el comentario eliminado
+    const updatedComments = comments.filter(comment => comment.commentId !== commentId);
+    // Actualiza la lista de comentarios
+    setComments(updatedComments);
+    // Decrementa el total de comentarios
+    setTotalComments(totalComments - 1);
+    alert("El comentario ha sido eliminado con éxito.");
+  } catch (error) {
+    console.error("Error al eliminar comentario:", error);
+    alert("Error al eliminar comentario. Por favor, inténtalo de nuevo.");
+  }
+};
 
   return (
     <div className="post-item-container">
@@ -201,6 +220,12 @@ const handleDeletePost = async () => {
                   Fecha de publicación:{" "}
                   {new Date(comment.createdAt).toLocaleString()}
                 </p>
+                {/* Agrega un botón para eliminar el comentario */}
+                {user && comment.userId === user.userId && (
+                  <button onClick={() => handleDeleteComment(comment.commentId)}>
+                    Eliminar Comentario
+                  </button>
+                )}
               </li>
             ))}
           </ul>

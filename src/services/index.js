@@ -377,3 +377,26 @@ export const deletePostService = async (postId, token) => {
     throw new Error("Error al eliminar el post");
   }
 };
+
+export const deleteCommentService = async (postId, commentId, token) => {
+  try {
+    const response = await fetch(`${import.meta.env.VITE_BACKEND}/post/${postId}/comment/${commentId}`, {
+      method: "DELETE",
+      headers: {
+        "Authorization": token,
+      },
+    });
+
+    const json = await response.json();
+
+    if (!response.ok) {
+      throw new Error(json.message);
+    }
+
+    // Devolver la respuesta del servidor
+    return json.data;
+  } catch (error) {
+    console.error("Error al eliminar el comentario:", error);
+    throw new Error("Error al eliminar el comentario");
+  }
+};
