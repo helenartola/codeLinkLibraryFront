@@ -2,16 +2,32 @@ import { useState } from "react";
 import usePosts from "../../hooks/usePosts";
 import ListaDePosts from "../../components/listaPosts/ListaDePosts";
 import NewPost from "../../components/newpost/NewPost";
+import Pagination from "../../components/pagination/Pagination"; // Importa el componente de paginación
 import "./HomePage.css";
 import { useTheme } from "../../context/ThemeContext";
 
 const HomePage = () => {
-  // Obtiene el estado del tema oscuro/luminoso del contexto
   const { isDarkMode } = useTheme();
-  // Obtiene los posts, el estado de carga y el error mediante el hook usePosts
   const { posts, loading, error, refresh } = usePosts();
-  // Estado para controlar la visibilidad del formulario de nuevo post
-  const [isFormOpen, setIsFormOpen] = useState(false); // Estado para controlar la apertura/cierre del formulario
+  const [isFormOpen, setIsFormOpen] = useState(false);
+
+  // Estado para controlar la página actual
+  const [currentPage, setCurrentPage] = useState(1);
+  // Número máximo de resultados por página
+  const resultsPerPage = 5;
+
+  // Calcula el índice inicial y final de los posts a mostrar en la página actual
+  const indexOfLastPost = currentPage * resultsPerPage;
+  const indexOfFirstPost = indexOfLastPost - resultsPerPage;
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+
+  // Calcula el número total de páginas
+  const totalPages = Math.ceil(posts.length / resultsPerPage);
+
+  // Función para manejar el cambio de página
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   // Si se está cargando, muestra un mensaje de carga
   if (loading) return <p>Cargando posts...</p>;
@@ -48,7 +64,14 @@ const HomePage = () => {
           </div>
         </div>
         <div className="sidebar-derecha">
-          <ListaDePosts posts={posts} />
+          {/* Lista de posts correspondientes a la página actual */}
+          <ListaDePosts posts={currentPosts} />
+          {/* Componente de paginación */}
+          <Pagination
+            totalPages={totalPages}
+            currentPage={currentPage}
+            onPageChange={handlePageChange}
+          />
         </div>
       </div>
     </section>
