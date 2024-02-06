@@ -54,6 +54,14 @@ const Buscador = () => {
     console.log("Redirigiendo a:", searchPath);
     navigate(searchPath);
   };
+     
+  // Manejar el envío del formulario (pulsar Enter)
+     const handleFormSubmit = (e) => {
+      e.preventDefault(); // Evita que se recargue la página
+      search();
+      redirectToSearchPage();
+    };
+  
     // Función para realizar la búsqueda cuando se presiona la tecla "Enter"
    /* const handleKeyPress = (e) => {
       if (e.key === "Enter") {
@@ -63,48 +71,53 @@ const Buscador = () => {
     };*/
   
   // Renderiza el componente Buscador
-  return (
-    <div className="barra-buscador">
-      {/* Input para que el usuario escriba el término de búsqueda */}
-      <div className="search-bar">
-        <input
-          className="input-buscador"
-          type="text"
-          placeholder="Search"
+  return (   <div className="barra-buscador">
+  {/* Formulario para manejar el envío (pulsar Enter) */}
+  <form onSubmit={handleFormSubmit}>
+    {/* Input para que el usuario escriba el término de búsqueda */}
+    <div className="search-bar">
+      <input
+        className="input-buscador"
+        type="text"
+        placeholder="Search"
+        alt="Search Icon"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+      {/* Botón con el icono de la lupa */}
+      <button
+        className={`boton-lupa ${isDarkMode ? "dark-mode" : ""}`}
+        type="submit"  // Utiliza type="submit" en lugar de onClick
+        onClick={handleSearchClick}
+      >
+        <img
+          src={isDarkMode ? "lupa-blanca.png" : "lupa.png"}
           alt="Search Icon"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
         />
-        {/* Botón con el icono de la lupa */}
-        <button
-          className={`boton-lupa ${isDarkMode ? "dark-mode" : ""}`}
-          onClick={handleSearchClick}
-        >
-          <img
-            src={isDarkMode ? "lupa-blanca.png" : "lupa.png"}
-            alt="Search Icon"
-          />
-        </button>
-      </div>
-
-      <div className="container-lista-enlaces-encontrados">
-        {/* Lista de resultados de la búsqueda */}
-        <ul className="lista-enlaces-buscador">
-          {/* Mapear los resultados y generar enlaces */}
-          {searchResults.map((result) => (
-            <li key={result.postId}>
-              {/* Enlace a la página del post utilizando Link */}
-              <Link to={`/post/${result.postId}`} onClick={clearSearchTerm}>
-                {/* Mostrar la información del post */}
-                <p>{result.title}</p>
-                <p>{result.description}</p>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+      </button>
     </div>
-  );
+  </form>
+
+    <div className="container-lista-enlaces-encontrados">
+      {/* Lista de resultados de la búsqueda */}
+      <ul className="lista-enlaces-buscador">
+        {/* Mapear los resultados y generar enlaces */}
+        {searchResults.map((result) => (
+          <li key={result.postId}>
+            {/* Enlace a la página del post utilizando Link */}
+            <Link to={`/post/${result.postId}`} onClick={clearSearchTerm}>
+              {/* Mostrar la información del post */}
+              <p>{result.title}</p>
+              <p>{result.description}</p>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+);
 };
+
+
 
 export default Buscador;
