@@ -2,30 +2,30 @@ import "./Buscador.css";
 import { useState, useEffect, useCallback } from "react";
 import { searchService } from "../../services";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useTheme } from "../../context/ThemeContext";
 
 // Define el componente Buscador
 const Buscador = () => {
   const { isDarkMode } = useTheme();
-  // Estado para almacenar el término de búsqueda
-  const [searchTerm, setSearchTerm] = useState("");
-  // Estado para almacenar los resultados de la búsqueda
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");         // Estado para almacenar el término de búsqueda
+  const [searchResults, setSearchResults] = useState([]);   // Estado para almacenar los resultados de la búsqueda
+  const navigate = useNavigate();                           // Utiliza useNavigate para navegación programática
 
   // Función de búsqueda asincrónica utilizando useCallback
   const search = useCallback(async () => {
-    // Ejecutar la función de búsqueda cuando el término de búsqueda no está vacío
-    if (searchTerm.trim() !== "") {
-      // Llamar al servicio de búsqueda y obtener los resultados
-      const data = await searchService(searchTerm);
-
-      // Actualizar el estado con los resultados de la búsqueda
-      setSearchResults(data);
+    
+    if (searchTerm.trim() !== "") {                         // Ejecutar la función de búsqueda cuando el término de búsqueda no está vacío
+      try {
+        const data = await searchService(searchTerm);       // Llamar al servicio de búsqueda y obtener los resultados
+        setSearchResults(data);                             // Actualizar el estado con los resultados de la búsqueda
+      } catch (error) {
+        console.error("Error al realizar la búsqueda:", error);
+      }
     } else {
-      // Si el término de búsqueda está vacío, limpiar los resultados
-      setSearchResults([]);
+      setSearchResults([]);                                 // Si el término de búsqueda está vacío, limpiar los resultados
     }
-  }, [searchTerm]); // Dependencia incluida en el useCallback
+  }, [searchTerm]);                                         // Dependencia incluida en el useCallback
 
   // Efecto que se ejecuta cuando el término de búsqueda cambia
   useEffect(() => {
@@ -34,11 +34,8 @@ const Buscador = () => {
       await search();
     };
 
-    // Llamar a la función de búsqueda
-    performSearch();
-
-    // Dependencia del efecto: se ejecutará cada vez que searchTerm cambie
-  }, [search, searchTerm]);
+    performSearch();                                       // Llamar a la función de búsqueda
+  }, [search, searchTerm]);                                // Dependencia del efecto: se ejecutará cada vez que searchTerm cambie
 
   // Limpiar la búsqueda
   const clearSearchTerm = () => {
@@ -47,10 +44,24 @@ const Buscador = () => {
 
   // Función para realizar la búsqueda cuando se hace clic en el botón (lupa)
   const handleSearchClick = () => {
-    // Llama a la función de búsqueda
-    search();
+    search();                                             // Llama a la función de búsqueda
+    redirectToSearchPage();
   };
 
+   // Función para redirigir a la página de búsqueda
+   const redirectToSearchPage = () => {
+    const searchPath = `/search?q=${searchTerm}`;
+    console.log("Redirigiendo a:", searchPath);
+    navigate(searchPath);
+  };
+    // Función para realizar la búsqueda cuando se presiona la tecla "Enter"
+   /* const handleKeyPress = (e) => {
+      if (e.key === "Enter") {
+        search();
+        redirectToSearchPage();
+      }
+    };*/
+  
   // Renderiza el componente Buscador
   return (
     <div className="barra-buscador">

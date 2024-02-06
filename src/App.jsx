@@ -8,6 +8,7 @@ import NotFoundPage from "./pages/notfoundpage/NotFoundPage";
 import ProfilePage from "./pages/profilepage/ProfilePage";
 import PaginaRegistro from "./pages/paginaregistro/PaginaRegistro";
 import UserSettingsPage from "./pages/settingspage/UserSettingsPage";
+import SearchPage from "./pages/searchpage/searchPage";
 
 function App() {
   const location = useLocation();
@@ -31,6 +32,8 @@ function App() {
           <Route path="/profile" element={<ProfilePage />} />
           {/* Ruta para ir a page Ajustes de usuario */}
           <Route path="/settings" element={<UserSettingsPage />} />
+          {/* Ruta para ir a page Search */}
+          <Route path="/search/:searchTerm" element={<SearchPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
