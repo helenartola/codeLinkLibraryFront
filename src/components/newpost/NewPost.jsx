@@ -9,7 +9,7 @@ const NewPost = ({ isFormOpen, setIsFormOpen, onAddPost }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   // Modificación aquí para agregar un valor predeterminado y hacer el campo obligatorio
-  const [url, setUrl] = useState("http://");
+  const [url, setUrl] = useState("https://");
   const [user] = useUser();
   //const [isFormOpen, setIsFormOpen] = useState(false);
   const { isDarkMode } = useTheme();
