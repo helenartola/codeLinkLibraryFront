@@ -10,14 +10,16 @@
   margin: 20px 5% 20px 5%;
   padding: 15px;
   background-color: #ededed9b;
-  border-radius: 4px;
+  border-radius: 16px;
   border: none;
   max-width: 600px;
 }
 .post-item-container:not(:last-child) {
   margin: 20px 5% 20px 5%;
 }
-
+.datos-publicacion {
+  display: flex;
+}
 .boton-comentar {
   background-color: transparent;
   color: white;
@@ -30,7 +32,7 @@
   width: 22px;
 }
 .dark .comment-input {
-  border: 1px solid #ddd; /* Borde para la caja de comentarios */
+  border: 1px solid #dddddd76; /* Borde para la caja de comentarios */
   border-radius: 5px; /* Esquinas redondeadas */
   padding: 10px; /* Espaciado interno */
   margin: 5px 0; /* Margen superior e inferior */
@@ -73,4 +75,21 @@
   margin-bottom: 10px;
   font-size: 20px;
   letter-spacing: 0.8px;
+}
+.datos-publicacion {
+  margin-bottom: 10px;
+}
+.fecha,
+.publicado-por {
+  color: #008080;
+  font-size: 11px;
+}
+.fecha {
+  margin-left: 2px;
+}
+.dark .nombre-usuario {
+  color: white;
+}
+.light .nombre-usuario {
+  color: #303030;
 }

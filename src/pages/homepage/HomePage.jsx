@@ -30,7 +30,7 @@ const HomePage = () => {
             >
               <img
                 className="icono-nuevo-post"
-                src="/nuevo-post-verde.png"
+                src="/edit.png"
                 alt="Crear Nuevo Post"
               />
               <span className="escribe-tu-mejor-post">

@@ -11,7 +11,7 @@ const Header = () => {
     <header className={`header ${isDarkMode ? "dark" : "light"}`}>
       <nav className="navbar">
         <Link to="/" className="logo-container">
-          <img className="logo" src="/CodeLinkLibrary-verde.png" alt="Logo" />
+          <img className="logo" src="/CodeLinkLibrary-Logo.png" alt="Logo" />
         </Link>
         <div className="buscador">
           {/* Componente Buscador para realizar búsquedas estáticas */}
