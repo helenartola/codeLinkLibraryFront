@@ -37,7 +37,6 @@ const ProfilePage = () => {
     <div className="profile-container">
       {/* Barra de navegación */}
       <nav className="botones-navegacion-perfil">
-        <button>Historico de Posts</button>
         <button>Guardado</button>
         {/* boton que nos lleva a la page User Settings */}
         <Link to="/settings">

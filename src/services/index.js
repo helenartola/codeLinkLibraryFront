@@ -425,3 +425,36 @@ export const editCommentService = async (commentId, editedComment, token) => {
     throw new Error("Error al editar el comentario");
   }
 };
+
+// Ajustes de usuario
+export const usuarioAjustes = async ( name, lastName, birthDate, bio, token) => {
+  try {
+    const response = await fetch(
+      `${import.meta.env.VITE_BACKEND}/settings`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-type": "application/json",
+          Authorization: token,
+        },
+        body: JSON.stringify({
+          name,
+          lastName,
+          birthDate,
+          bio,
+        }),
+      }
+    );
+
+    const json = await response.json();
+
+    if (!response.ok) {
+      throw new Error(json.message);
+    }
+
+    return json.data;
+  } catch (error) {
+    console.error("Error al actualizar la información del usuario:", error);
+    throw new Error("Error al actualizar la información del usuario");
+  }
+};
