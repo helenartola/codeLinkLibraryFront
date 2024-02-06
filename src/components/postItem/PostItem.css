@@ -46,6 +46,22 @@
 .light .boton-comentar {
   color: #303030;
 }
+.dark .boton-eliminar-comentario {
+  color: #008080;
+  font-family: jost, sans-serif;
+  background-color: transparent;
+  border: 1px solid #008080;
+  border-radius: 50px;
+  padding: 5px;
+}
+.light .boton-eliminar-comentario {
+  color: #008080;
+  font-family: jost, sans-serif;
+  background-color: transparent;
+  border: 1px solid #008080;
+  border-radius: 50px;
+  padding: 5px;
+}
 .boton-icono-like img {
   width: 22px;
 }

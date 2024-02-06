@@ -7,7 +7,7 @@ import {
   unsavePostService,
   deletePostService,
   deleteCommentService,
-  editCommentService
+  editCommentService,
 } from "../../services/index";
 import "./PostItem.css";
 import { useUser } from "../../context/UserContext";
@@ -19,12 +19,12 @@ const PostItem = ({ post }) => {
   const [showCommentForm, setShowCommentForm] = useState(false);
   const [showComments, setShowComments] = useState(false);
   const [totalComments, setTotalComments] = useState(0);
-  
+
   // Estados para el manejo de likes y guardado
   const [numLikes, setNumLikes] = useState(post.numLikes);
   const [isLiked, setIsLiked] = useState(post.isLiked);
   const [isSaved, setIsSaved] = useState(post.isSaved);
-  
+
   // Estados para la edición de comentarios
   const [editingComment, setEditingComment] = useState(null); // Nuevo estado para el comentario en edición
   const [lastEditTime, setLastEditTime] = useState({}); // Nuevo estado para almacenar la hora de la última edición de cada comentario
@@ -144,9 +144,11 @@ const PostItem = ({ post }) => {
   const handleDeleteComment = async (commentId) => {
     try {
       // Llama al servicio para eliminar el comentario
-      await deleteCommentService(post.postId, commentId, token); 
+      await deleteCommentService(post.postId, commentId, token);
       // Filtra los comentarios para excluir el comentario eliminado
-      const updatedComments = comments.filter(comment => comment.commentId !== commentId);
+      const updatedComments = comments.filter(
+        (comment) => comment.commentId !== commentId
+      );
       // Actualiza la lista de comentarios
       setComments(updatedComments);
       // Decrementa el total de comentarios
@@ -161,10 +163,12 @@ const PostItem = ({ post }) => {
   // Función para manejar el clic en el botón de editar comentario
   const handleEditComment = (commentId) => {
     // Encuentra el comentario a editar
-    const commentToEdit = comments.find(comment => comment.commentId === commentId);
+    const commentToEdit = comments.find(
+      (comment) => comment.commentId === commentId
+    );
     // Establece el comentario en edición
     setEditingComment(commentToEdit);
-    setComentario (commentToEdit.text);
+    setComentario(commentToEdit.text);
   };
 
   // Función para guardar la edición del comentario
@@ -175,7 +179,7 @@ const PostItem = ({ post }) => {
       // Llama al servicio para editar el comentario
       await editCommentService(editingComment.commentId, editedComment, token);
       // Actualiza la lista de comentarios con el comentario editado
-      const updatedComments = comments.map(comment => {
+      const updatedComments = comments.map((comment) => {
         if (comment.commentId === editingComment.commentId) {
           return {
             ...comment,
@@ -223,7 +227,10 @@ const PostItem = ({ post }) => {
               <li key={comment.commentId}>
                 <p>Comentado por: {comment.userName}</p>
                 <p>{comment.text}</p>
-                <p>Fecha de publicación: {new Date(comment.createdAt).toLocaleString()}</p>
+                <p>
+                  Fecha de publicación:{" "}
+                  {new Date(comment.createdAt).toLocaleString()}
+                </p>
                 {/* Mostrar hora de la última edición y "editado" si corresponde */}
                 {comment.commentId === editingComment?.commentId ? (
                   <div>
@@ -233,14 +240,18 @@ const PostItem = ({ post }) => {
                       onChange={(e) => setComentario(e.target.value)}
                     />
                     <button onClick={handleSaveEdit}>Guardar</button>
-                    <button onClick={() => setEditingComment(null)}>Cerrar Edición</button>
+                    <button onClick={() => setEditingComment(null)}>
+                      Cerrar Edición
+                    </button>
                   </div>
                 ) : (
                   <div>
                     {lastEditTime[comment.commentId] && (
                       <p>Editado: {lastEditTime[comment.commentId]}</p>
                     )}
-                    <button onClick={() => handleEditComment(comment.commentId)}>
+                    <button
+                      onClick={() => handleEditComment(comment.commentId)}
+                    >
                       Editar Comentario
                     </button>
                   </div>
@@ -290,7 +301,11 @@ const PostItem = ({ post }) => {
             alt="Escribir comentario"
           />
         </button>
-        <h4>{totalComments === 1 ? "1 Comentario" : `${totalComments} Comentarios`}</h4>
+        <h4>
+          {totalComments === 1
+            ? "1 Comentario"
+            : `${totalComments} Comentarios`}
+        </h4>
       </div>
 
       {showCommentForm && (
@@ -310,7 +325,10 @@ const PostItem = ({ post }) => {
       )}
 
       {user && post.userId === user.userId && (
-        <button className="botones-eliminar" onClick={handleDeletePost}>
+        <button
+          className="boton-eliminar-comentario"
+          onClick={handleDeletePost}
+        >
           Eliminar Post
         </button>
       )}
