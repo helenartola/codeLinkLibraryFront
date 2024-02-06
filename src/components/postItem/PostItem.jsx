@@ -5,9 +5,9 @@ import {
   likePostService,
   savePostService,
   unsavePostService,
+  deletePostService
 } from "../../services/index";
 import "./PostItem.css";
-
 import { useUser } from "../../context/UserContext";
 
 const PostItem = ({ post }) => {
@@ -115,6 +115,21 @@ const PostItem = ({ post }) => {
     }
   };
 
+  // Función para manejar el clic en el botón de eliminar post
+const handleDeletePost = async () => {
+  try {
+    // Llama al servicio para eliminar el post
+    await deletePostService(post.postId, token);
+    // Actualiza la lista de posts para que el post eliminado ya no se muestre
+    // Esto podría implicar recargar la página o actualizar el estado del componente
+    // dependiendo de cómo esté estructurada tu aplicación
+    alert("El post ha sido eliminado con éxito.");
+  } catch (error) {
+    console.error("Error al eliminar post:", error);
+    alert("Error al eliminar post. Por favor, inténtalo de nuevo.");
+  }
+};
+
   // Función para manejar el clic en el botón de guardar/eliminar post
   const handleSavePost = async () => {
     try {
@@ -159,6 +174,12 @@ const PostItem = ({ post }) => {
 
       {/* Comentarios */}
       <div>
+        <h4>
+          {totalComments === 1
+            ? "1 Comentario"
+            : `${totalComments} Comentarios`}
+        </h4>
+
         {/* Botón para mostrar/ocultar los comentarios */}
         <button onClick={() => setShowComments(!showComments)}>
           {showComments ? "Ocultar Comentarios" : "Mostrar Comentarios"}
@@ -250,6 +271,13 @@ const PostItem = ({ post }) => {
             Agregar Comentario
           </button>
         </div>
+      )}
+
+      {/* Botón para eliminar el post */}
+      {user && post.userId === user.userId && (
+        <button className="botones-eliminar" onClick={handleDeletePost}>
+          Eliminar Post
+        </button>
       )}
     </div>
   );
