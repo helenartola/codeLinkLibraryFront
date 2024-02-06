@@ -31,9 +31,10 @@
 }
 .light .sidebar-derecha {
   flex: 1;
-  border-top: 1px solid #cbc9c9;
 }
-
+.dark .sidebar-derecha {
+  flex: 1;
+}
 .light .boton-crear-post,
 .dark .boton-crear-post {
   display: flex;

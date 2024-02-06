@@ -27,11 +27,9 @@
 }
 
 .buscador {
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 300px;
 }
 
 .logo {
@@ -50,24 +48,26 @@
 }
 
 @media screen and (min-width: 768px) {
-  .header {
-    border-bottom: 1px solid #008080;
-  }
-
   .navbar {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between; /* Alinear los elementos al inicio, al final y distribuir el espacio restante entre ellos */
     align-items: center;
   }
 
+  .logo {
+    flex: 1; /* Hacer que el logo ocupe todo el espacio disponible */
+    max-width: 200px; /* Anular el máximo ancho establecido */
+  }
+
   .buscador {
-    width: 100%;
+    flex: 3; /* Hacer que el buscador ocupe la mayor parte del espacio disponible */
+    max-width: none; /* Anular el máximo ancho establecido */
     display: flex;
     align-items: center;
     justify-content: center;
-    max-width: 800px;
   }
+
   .theme-switcher-container {
     margin-top: 0;
   }

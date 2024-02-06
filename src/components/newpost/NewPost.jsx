@@ -100,10 +100,10 @@ const NewPost = ({ isFormOpen, setIsFormOpen, onAddPost }) => {
             <input
               className="input-new-post"
               placeholder="URL"
-              type="url"  // Cambiado a type "url" para validar la URL automáticamente
+              type="url" // Cambiado a type "url" para validar la URL automáticamente
               value={url}
               onChange={(e) => setUrl(e.target.value)}
-              required  // Hace que el campo sea obligatorio
+              required // Hace que el campo sea obligatorio
             />
           </label>
           {errorMessage && <p className="error-message">{errorMessage}</p>}
