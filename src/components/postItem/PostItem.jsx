@@ -318,13 +318,16 @@ const PostItem = ({ post, posts, setPosts }) => {
       <div className="caja-iconitos-post">
         {/* CAJA QUE CONTIENE CORAZÓN, GUARDAR, COMENTARIO, NÚMERO DE COMENTARIO */}
         <div className="botones-post-complementos">
-          {user && post.userId !== user.userId && (
-            <button className="boton-icono-like" onClick={handleLikePost}>
-              {isLiked ? (
+          {user && (
+            <button className="boton-icono-like" onClick={handleLikePost} disabled={post.userId === user.userId}>
+              {post.userId === user.userId ? (
+                <img src="/corazon-gris.png" alt="Corazón Gris" />
+              ) : (       
+              isLiked ? (
                 <img src="/corazon-relleno.png" alt="Corazón Relleno" />
               ) : (
                 <img src="/corazon.png" alt="Corazón Vacío" />
-              )}
+              ))}
             </button>
           )}
           <p className="likes-count">{numLikes}</p>
