@@ -8,6 +8,7 @@ import {
   deletePostService,
   deleteCommentService,
   editCommentService,
+  editPostService
 } from "../../services/index";
 import "./PostItem.css";
 import { useUser } from "../../context/UserContext";
@@ -26,11 +27,18 @@ const PostItem = ({ post }) => {
   const [isSaved, setIsSaved] = useState(post.isSaved);
 
   // Estados para la edición de comentarios
-  const [editingComment, setEditingComment] = useState(null); // Nuevo estado para el comentario en edición
-  const [lastEditTime, setLastEditTime] = useState({}); // Nuevo estado para almacenar la hora de la última edición de cada comentario
+  const [editingComment, setEditingComment] = useState(null); // Comentario en edición
+  const [lastCommentEditTime, setLastCommentEditTime] = useState({}); // Almacenar la hora de la última edición de cada comentario
 
   const [user] = useUser();
   const token = user ? user.token : null;
+
+  // Estados para la edición de un post
+  const [editingPost, setEditingPost] = useState(false);
+  const [editedTitle, setEditedTitle] = useState(post.title);
+  const [editedDescription, setEditedDescription] = useState(post.description);
+  const [editedURL, setEditedURL] = useState(post.url);
+  const [lastPostEditTime, setLastPostEditTime] = useState(post.lastEditTime || null); //Almacena la fecha de la última edición del post
 
   useEffect(() => {
     const fetchComments = async () => {
@@ -69,10 +77,12 @@ const PostItem = ({ post }) => {
         {
           commentId: newCommentId,
           text: comentario,
+          userId: user.userId,
           userName: user.userName,
           createdAt: new Date().toISOString(),
         },
       ]);
+      
       // Incrementa el total de comentarios
       setTotalComments(totalComments + 1);
       // Reinicia el estado del comentario
@@ -188,12 +198,13 @@ const PostItem = ({ post }) => {
         }
         return comment;
       });
+
       // Actualiza los comentarios, oculta el formulario de edición y restablece el estado de edición
       setComments(updatedComments);
       setEditingComment(null);
       // Actualiza la hora de la última edición del comentario
-      setLastEditTime({
-        ...lastEditTime,
+      setLastCommentEditTime({
+        ...lastCommentEditTime,
         [editingComment.commentId]: new Date().toLocaleString(),
       });
       alert("El comentario ha sido editado con éxito.");
@@ -203,20 +214,82 @@ const PostItem = ({ post }) => {
     }
   };
 
-  return (
-    <div className="post-item-container">
-      <div className="datos-publicacion">
-        <p className="publicado-por">
-          Publicado por:{" "}
-          <span className="nombre-usuario">{post.userName} · </span>
-        </p>
-        <p className="fecha"> {new Date(post.createdAt).toLocaleString()}</p>
-      </div>
-      {/* Título y descripción del post */}
-      <h2 className="titulo-post-home">{post.title}</h2>
-      <p className="descripcion-post-home">{post.description}</p>
+  // Función para manejar la edición del post
+      const handleEditPost = () => {
+        setEditingPost(true);
+      };
 
-      <div>
+      // Función para guardar la edición del post
+      const handleSaveEditPost = async () => {
+        try {
+          const editedPostData = {
+            title: editedTitle,
+            description: editedDescription,
+            url: editedURL,
+          };
+
+          await editPostService(post.postId, editedPostData, token);
+
+          // Actualiza el estado del post con los nuevos datos
+          post.title = editedTitle;
+          post.description = editedDescription;
+          post.url = editedURL;
+
+          // Guarda la fecha de la última edición
+          setLastPostEditTime(new Date().toLocaleString());
+
+          // Finaliza la edición del post
+          setEditingPost(false);
+        } catch (error) {
+          console.error("Error al editar el post:", error);
+          alert("Error al editar el post. Por favor, inténtalo de nuevo.");
+        }
+      };
+
+    return (
+        <div className="post-item-container">
+          <div className="datos-publicacion">
+            {/* Contenido de los datos de publicación */}
+            <p className="fecha">Fecha de publicación: {new Date(post.createdAt).toLocaleString()}</p>
+            {lastPostEditTime && <p>Última edición: {lastPostEditTime}</p>}
+            <p className="publicado-por">
+              Publicado por:{" "}
+              <span className="nombre-usuario">{post.userName} · </span>
+            </p> 
+          </div>
+      
+          {/* Título y descripción del post */}
+          {editingPost ? (
+            <div>
+              <input
+                type="text"
+                value={editedTitle}
+                onChange={(e) => setEditedTitle(e.target.value)}
+              />
+              <input
+                type="text"
+                value={editedDescription}
+                onChange={(e) => setEditedDescription(e.target.value)}
+              />
+              <input
+                type="text"
+                value={editedURL}
+                onChange={(e) => setEditedURL(e.target.value)}
+              />
+              <button onClick={handleSaveEditPost}>Guardar</button>
+              <button onClick={() => setEditingPost(false)}>Cancelar</button>
+            </div>
+          ) : (
+            <div>
+              <h2 className="titulo-post-home">{post.title}</h2>
+              <p className="descripcion-post-home">{post.description}</p>
+              {/* ... */}
+              {user && post.userId === user.userId && (
+                <button onClick={handleEditPost}>Editar Post</button>
+              )}
+            </div>
+          )}
+          <div>
         {/* Botón para mostrar/ocultar los comentarios */}
         <button onClick={() => setShowComments(!showComments)}>
           {showComments ? "Ocultar Comentarios" : "Mostrar Comentarios"}
@@ -246,14 +319,15 @@ const PostItem = ({ post }) => {
                   </div>
                 ) : (
                   <div>
-                    {lastEditTime[comment.commentId] && (
-                      <p>Editado: {lastEditTime[comment.commentId]}</p>
+                    {lastCommentEditTime[comment.commentId] && (
+                      <p>Editado: {lastCommentEditTime[comment.commentId]}</p>
                     )}
-                    <button
-                      onClick={() => handleEditComment(comment.commentId)}
-                    >
-                      Editar Comentario
-                    </button>
+                    {user && comment.userId === user.userId && (
+                      <button
+                        onClick={() => handleEditComment(comment.commentId)}
+                      >Editar Comentario
+                      </button>
+                    )}
                   </div>
                 )}
                 {user && comment.userId === user.userId && (
@@ -291,16 +365,18 @@ const PostItem = ({ post }) => {
             )}
           </button>
         )}
-        <button
-          className="boton-comentar"
-          onClick={() => setShowCommentForm(!showCommentForm)}
-        >
-          <img
-            className="icono-comentario"
-            src="/comentario.png"
-            alt="Escribir comentario"
-          />
-        </button>
+        {user && (
+          <button
+            className="boton-comentar"
+            onClick={() => setShowCommentForm(!showCommentForm)}
+          >
+            <img
+              className="icono-comentario"
+              src="/comentario.png"
+              alt="Escribir comentario"
+            />
+          </button>
+        )}
         <h4>
           {totalComments === 1
             ? "1 Comentario"
@@ -333,7 +409,9 @@ const PostItem = ({ post }) => {
         </button>
       )}
     </div>
-  );
+
+    
+ );
 };
 
 export default PostItem;

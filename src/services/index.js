@@ -458,3 +458,33 @@ export const usuarioAjustes = async ( name, lastName, birthDate, bio, token) => 
     throw new Error("Error al actualizar la información del usuario");
   }
 };
+
+// Editar un post
+export const editPostService = async (postId, postData, token) => {
+  try {
+    // Realiza una solicitud PUT al backend para editar el post
+    const response = await fetch(`${import.meta.env.VITE_BACKEND}/post/${postId}`, {
+      method: "PUT", 
+      headers: {
+        "Content-type": "application/json",
+        "Authorization": token,
+      },
+      body: JSON.stringify(postData),
+    });
+
+    // Analiza la respuesta del servidor
+    const json = await response.json();
+
+    // Verifica si la solicitud fue exitosa
+    if (!response.ok) {
+      throw new Error(json.message); 
+    }
+
+    // Devuelve la respuesta del servidor 
+    return json.data;
+  } catch (error) {
+    // Maneja cualquier error que ocurra durante la solicitud
+    console.error("Error al editar el post:", error);
+    throw new Error("Error al editar el post"); 
+  }
+};
