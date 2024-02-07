@@ -65,30 +65,23 @@
 .light .escribe-tu-mejor-post {
   color: #303030;
 }
-@media only screen and (min-width: 960px) {
-  .light .contenedor-crear-post {
-    position: sticky;
-    top: 10px; /* Ajusta según sea necesario */
-  }
-  .light .escribe-tu-mejor-post {
+
+@media only screen and (max-width: 767px) {
+  .main-content {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin-left: 5px;
-    white-space: nowrap;
+    flex-direction: column;
+    margin-top: 260px;
   }
 
-  .dark .contenedor-crear-post {
-    position: sticky;
-    top: 10px; /* Ajusta según sea necesario */
+  .sidebar-izq {
+    display: none; /* Oculta la barra lateral izquierda en dispositivos móviles */
   }
-  .dark .escribe-tu-mejor-post {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin-left: 5px;
-    white-space: nowrap;
+
+  .sidebar-derecha {
+    width: 100%; /* Ajusta el ancho de la barra lateral derecha al 100% en dispositivos móviles */
+  }
+
+  .contenedor-crear-post {
+    margin-bottom: 20px;
   }
 }

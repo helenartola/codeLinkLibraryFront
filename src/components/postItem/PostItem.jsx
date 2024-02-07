@@ -13,7 +13,7 @@ import {
 import "./PostItem.css";
 import { useUser } from "../../context/UserContext";
 
-const PostItem = ({ post, posts, setPosts  }) => {
+const PostItem = ({ post, posts, setPosts }) => {
   // Estados para el manejo de comentarios
   const [comentario, setComentario] = useState("");
   const [comments, setComments] = useState([]);
@@ -119,8 +119,8 @@ const PostItem = ({ post, posts, setPosts  }) => {
       // Actualiza la lista de posts para que el post eliminado ya no se muestre
       // Esto podría implicar recargar la página o actualizar el estado del componente
       // dependiendo de cómo esté estructurada tu aplicación
-      
-      setPosts(posts.filter(postItem => postItem.postId !== post.postId))
+
+      setPosts(posts.filter((postItem) => postItem.postId !== post.postId));
       alert("El post ha sido eliminado con éxito.");
     } catch (error) {
       console.error("Error al eliminar post:", error);
@@ -287,14 +287,29 @@ const PostItem = ({ post, posts, setPosts  }) => {
           <button onClick={() => setEditingPost(false)}>Cancelar</button>
         </div>
       ) : (
-        <div>
-          <h2 className="titulo-post-home">{post.title}</h2>
-          <p className="descripcion-post-home">{post.description}</p>
-          {/* ... */}
+        <div className="post-content">
+          <div className="post-info">
+            <h2 className="titulo-post-home">{post.title}</h2>
+            <p className="descripcion-post-home">{post.description}</p>
+          </div>
+          {/* Botón de editar post */}
           {user && post.userId === user.userId && (
-            <button className="boton-editar-post" onClick={handleEditPost}>
-              Editar Post
-            </button>
+            <div className="editar-post-container">
+              <button className="boton-editar-post" onClick={handleEditPost}>
+                Editar
+              </button>
+            </div>
+          )}
+
+          {user && post.userId === user.userId && (
+            <div className="eliminar-post-container">
+              <button
+                className="boton-eliminar-post"
+                onClick={handleDeletePost}
+              >
+                Eliminar
+              </button>
+            </div>
           )}
         </div>
       )}
@@ -362,11 +377,6 @@ const PostItem = ({ post, posts, setPosts  }) => {
           </div>
         )}
 
-        {user && post.userId === user.userId && (
-          <button className="boton-eliminar-post" onClick={handleDeletePost}>
-            Eliminar Post
-          </button>
-        )}
         {/* CAJA CON EL BOTÓN DE MOSTRAR/OCULTAR COMENTARIOS */}
         <div className="caja-comentarios-dentro-post">
           {/* Botón para mostrar/ocultar los comentarios */}

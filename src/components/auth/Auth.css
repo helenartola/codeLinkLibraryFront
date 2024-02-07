@@ -25,34 +25,15 @@
   color: #303030;
   border-bottom: 1px solid #008080;
 }
-.light .logout-boton {
+.light .icono-logout {
   font-family: jost, sans-serif;
-  border: 1px solid #008080;
-  padding: 10px 30px 10px 30px;
-  border-radius: 50px;
-  color: #008080;
-  text-decoration: none;
+  width: 32px;
 }
-.light .logout-boton:hover {
+.dark .icono-logout {
   font-family: jost, sans-serif;
-  border: 1px solid #008080;
-  padding: 10px 30px 10px 30px;
-  border-radius: 50px;
-  color: white;
-  text-decoration: none;
+  width: 32px;
 }
-.logout-boton {
-  font-family: jost, sans-serif;
-  border: 1px solid #008080;
-  padding: 10px 30px 10px 30px;
-  border-radius: 50px;
-  color: white;
-  text-decoration: none;
-}
-.logout-boton:hover {
-  border: 1px solid #008080;
-  background-color: #008080;
-}
+
 .profile-button {
   border: 1px solid #008080;
   padding: 10px 30px 10px 30px;

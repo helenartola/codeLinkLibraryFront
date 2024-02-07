@@ -33,7 +33,7 @@ body {
     font-family: Jost, sans-serif;
   }
   .main-container {
-    margin: 0;
+    margin-top: 70px;
     padding: 0;
     min-height: 100vh;
   }
