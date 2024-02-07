@@ -24,9 +24,6 @@ export const getAllPostsService = async (userid = 0) => {
 // Crear un nuevo post
 export const createPostService = async (postData, token) => {
   try {
-    // Imprime el token en la consola
-    console.log('Authorization Token in createPostService:', token);
-
     const response = await fetch(`${import.meta.env.VITE_BACKEND}/post`, {
       method: "POST",
       headers: {
@@ -201,7 +198,7 @@ export const getInfoUserService = async (user) => {
       {
         method: "GET",
         headers: {
-          Authorization: user.token // Agrega el token de autenticación
+          "Authorization": user.token // Agrega el token de autenticación
         },
       }
     );
@@ -244,9 +241,7 @@ export const getUserPostsService = async (userId) => {
 
 export const likePostService = async (postId, token) => {
   try {
-    // Registra el token antes de realizar la solicitud
-    console.log('Authorization Token in likePostService:', token);
-
+   
     // Verifica que el token esté presente antes de la solicitud
     if (!token) {
       throw new Error("Token not available. User may not be authenticated.");
@@ -435,7 +430,7 @@ export const usuarioAjustes = async ( name, lastName, birthDate, bio, token) => 
         method: "PUT",
         headers: {
           "Content-type": "application/json",
-          Authorization: token,
+          "Authorization": token,
         },
         body: JSON.stringify({
           name,
