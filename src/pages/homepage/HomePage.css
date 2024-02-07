@@ -13,16 +13,20 @@
 
 .dark .sidebar-izq {
   flex: 1;
-  width: 5%;
+  width: 15%;
   border-right: 1px solid #ffffff32;
   height: 100vw;
+  position: fixed;
+  top: 90px;
 }
 
 .light .sidebar-izq {
   flex: 1;
-  width: 5%;
+  width: 15%;
   border-right: 1px solid #cbc9c9;
   height: 100vw;
+  position: fixed;
+  top: 90px;
 }
 .dark .contenedor-crear-post {
   background-color: #303030;
@@ -35,9 +39,11 @@
 }
 .light .columna-centro {
   flex: 3;
+  margin-left: 15%;
 }
 .dark .columna-centro {
   flex: 3;
+  margin-left: 15%;
 }
 
 .light .boton-crear-post,
@@ -81,8 +87,8 @@
   color: white;
   margin: 20px;
   border-radius: 20px;
-  position: fixed; /* Añade esta línea para fijar la caja */
-  top: 90px; /* Ajusta la distancia desde la parte superior según tu diseño */
+  position: fixed;
+  top: 90px;
   right: 5px;
 }
 .trending-topics-titulo {
@@ -95,17 +101,23 @@
   .main-content {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     margin-top: 260px;
   }
 
   .sidebar-izq {
-    display: none; /* Oculta la barra lateral izquierda en dispositivos móviles */
+    display: none;
+    margin-left: 0;
   }
 
   .columna-centro {
-    width: 100%; /* Ajusta el ancho de la barra lateral derecha al 100% en dispositivos móviles */
+    width: 100%;
+    margin-left: 0;
   }
-
+  .sidebar-derecha {
+    display: none;
+  }
   .contenedor-crear-post {
     margin-bottom: 20px;
   }
