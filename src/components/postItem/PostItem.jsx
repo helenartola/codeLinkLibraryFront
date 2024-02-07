@@ -12,6 +12,7 @@ import {
 } from "../../services/index";
 import "./PostItem.css";
 import { useUser } from "../../context/UserContext";
+import { Link } from "react-router-dom";
 
 const PostItem = ({ post, posts, setPosts }) => {
   // Estados para el manejo de comentarios
@@ -288,10 +289,13 @@ const PostItem = ({ post, posts, setPosts }) => {
         </div>
       ) : (
         <div className="post-content">
-          <div className="post-info">
+        <div className="post-info">
+          {/* Modifica el título del post para que sea un enlace */}
+          <Link to={`/post/${post.postId}`} className="link-titulo-post">
             <h2 className="titulo-post-home">{post.title}</h2>
-            <p className="descripcion-post-home">{post.description}</p>
-          </div>
+          </Link>
+          <p className="descripcion-post-home">{post.description}</p>
+        </div>
           {/* Botón de editar post */}
           {user && post.userId === user.userId && (
             <div className="editar-post-container">
