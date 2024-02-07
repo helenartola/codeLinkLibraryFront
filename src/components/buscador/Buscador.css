@@ -127,6 +127,8 @@
   .search-bar {
     display: flex;
     align-items: center;
+    width: 100%;
+    border: 1px solid #008080;
   }
 
   .boton-lupa {
