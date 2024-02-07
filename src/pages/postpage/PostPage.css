@@ -1,20 +1,107 @@
-/* Estilos para el contenedor principal de la página de posts */
+
+/* Estilos adicionales para replicar la apariencia de PostItem */
 .post-page-container {
-  margin: 20px; /* Márgenes externos de 20px */
-  padding: 15px; /* Relleno interno de 15px */
-  border: 1px solid #ddd; /* Borde de 1px sólido con color #ddd */
-  border-radius: 8px; /* Esquinas redondeadas de 8px */
-  background-color: #fff; /* Fondo blanco */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  margin: 20px 5% 20px 5%;
+  padding: 15px;
+  background-color: #47474778;
+  border-radius: 16px;
+  border: none;
+  max-width: 600px;
+}
+ .post-page-container .light {
+  margin: 20px 5% 20px 5%;
+  padding: 15px;
+  background-color: #ededed9b;
+  border-radius: 16px;
+  border: none;
+  max-width: 600px; 
+}
+/*la caja hay que arreglarla*/
+
+.datos-publicacion {
+  display: flex;
+}
+
+.post-page-container .boton-comentar {
+  background-color: transparent;
+  color: white;
+  margin: 5px;
   font-family: jost, sans-serif;
+  font-size: 14px;
+  border: none;
 }
 
-/* Estilo para los títulos (h1) dentro del contenedor */
-.post-page-container h1 {
-  color: #0a1922; /* Color azul para los títulos */
+.post-page-container .icono-comentario {
+  width: 22px;
+}
+.post-page-container .dark .comment-input {
+  border: 1px solid #dddddd76; /* Borde para la caja de comentarios */
+  border-radius: 5px; /* Esquinas redondeadas */
+  padding: 10px; /* Espaciado interno */
+  margin: 5px 0; /* Margen superior e inferior */
+}
+.post-page-container .light .comment-input {
+  border: 1px solid #303030; /* Borde para la caja de comentarios */
+  border-radius: 5px; /* Esquinas redondeadas */
+  padding: 10px; /* Espaciado interno */
+  margin: 5px 0; /* Margen superior e inferior */
 }
 
-/* Estilo para los párrafos (p) dentro del contenedor */
-.post-page-container p {
-  color: #555; /* Color gris oscuro para los párrafos */
+.post-page-container .boton-eliminar-comentario {
+  color: #008080;
+  font-family: jost, sans-serif;
+  background-color: transparent;
+  border: 1px solid #008080;
+  border-radius: 50px;
+  padding: 5px;
+}
+
+.post-page-container .boton-icono-like img {
+  width: 22px;
+}
+
+.post-page-container .boton-icono-like {
+  background-color: transparent;
+  border: none;
+}
+
+.post-page-container .botones-post-complementos {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.post-page-container .botones-guardar img {
+  width: 22px;
+}
+
+.post-page-container .botones-guardar {
+  background-color: transparent;
+  border: none;
+}
+
+.post-page-container .titulo-post-home {
+  font-size: 30px;
+  letter-spacing: 0.1px;
+}
+
+.post-page-container .descripcion-post-home {
+  margin-bottom: 10px;
+  font-size: 20px;
+  letter-spacing: 0.8px;
+}
+
+.post-page-container .datos-publicacion {
+  margin-bottom: 10px;
+}
+
+.post-page-container .fecha,
+.post-page-container .publicado-por {
+  color: #008080;
+  font-size: 11px;
+  margin-left: 2px;
+}
+
+.post-page-container .nombre-usuario {
+  /* Ajusta el color según el tema claro u oscuro */
 }
