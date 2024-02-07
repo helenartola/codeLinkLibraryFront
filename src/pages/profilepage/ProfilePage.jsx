@@ -36,48 +36,46 @@ const ProfilePage = () => {
   return (
     <div className="profile-container">
       {/* Información del perfil */}
-      <section>
-        <div className="user-info">
-          <h1>Perfil de Usuario</h1>
-          {userData ? (
-            <>
-              <p>Nombre de usuario: {userData.userName}</p>
-              <p>Email: {userData.email}</p>
-              <p>Nombre: {userData.name}</p>
-              <p>Apellidos: {userData.lastName}</p>
-              <p>Fecha de nacimiento: {userData.birthDate}</p>
-              <p>Biografía: {userData.bio}</p>
-            </>
-          ) : (
-            <p>Inicia sesión para ver el perfil.</p>
-          )}
-          <nav className="botones-navegacion-perfil">
-            <Link to="/settings">
-              <button className="common-button">Ajustes</button>
-            </Link>
-          </nav>
-        </div>
-
-        {/* Mostrar durante la carga de datos */}
-        {loading ? (
-          <p>Cargando datos del perfil...</p>
-        ) : (
+      <section className="user-info">
+        <h1 className="perfil-usuario-titulo">Perfil de Usuario</h1>
+        {userData ? (
           <>
-            {/* Listado de posts del usuario */}
-            <div className="user-posts">
-              <h2>Listado de Posts</h2>
-              <ul>
-                {userPosts.map((post) => (
-                  <li key={post.postId}>{post.title}</li>
-                ))}
-              </ul>
-              <nav className="botones-navegacion-post">
-                <button className="common-button">Guardados</button>
-              </nav>
-            </div>
+            <p>Nombre de usuario: {userData.userName}</p>
+            <p>Email: {userData.email}</p>
+            <p>Nombre: {userData.name}</p>
+            <p>Apellidos: {userData.lastName}</p>
+            <p>Fecha de nacimiento: {userData.birthDate}</p>
+            <p>Biografía: {userData.bio}</p>
           </>
+        ) : (
+          <p>Inicia sesión para ver el perfil.</p>
         )}
+        <nav className="botones-navegacion-perfil">
+          <Link to="/settings" className="boton-ajustes">
+            Ajustes
+          </Link>
+        </nav>
       </section>
+
+      {/* Mostrar durante la carga de datos */}
+      {loading ? (
+        <p>Cargando datos del perfil...</p>
+      ) : (
+        <>
+          {/* Listado de posts del usuario */}
+          <div className="user-posts">
+            <h2>Listado de Posts</h2>
+            <ul>
+              {userPosts.map((post) => (
+                <li key={post.postId}>{post.title}</li>
+              ))}
+            </ul>
+            <nav className="botones-navegacion-post">
+              <button className="boton-guardados">Guardados</button>
+            </nav>
+          </div>
+        </>
+      )}
     </div>
   );
 };

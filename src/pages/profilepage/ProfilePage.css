@@ -1,24 +1,27 @@
 .profile-container {
   display: flex;
-  padding: 50px;
-  font-family: 'jost', sans-serif;
-  margin-top: 7%;
+  font-family: "jost", sans-serif;
+  margin-top: 10%;
   justify-content: center;
   align-items: center;
 }
 
-.common-button {
+.a,
+.boton-ajustes {
   padding: 10px 20px;
   background-color: #008080;
   color: white;
   border: none;
   border-radius: 50px;
-  font-family: 'jost', sans-serif;
+  font-family: "jost", sans-serif;
   cursor: pointer;
   font-size: 14px;
+  text-decoration: none;
+  margin-top: 15px;
 }
 
-.common-button:hover {
+.a,
+.boton-ajustes:hover {
   background-color: transparent;
   border: 1px solid #008080;
   color: #008080;
@@ -26,47 +29,36 @@
 
 .botones-navegacion-perfil,
 .botones-navegacion-post {
-  margin-top: auto; /* Adjusted margin to align buttons to the bottom */
+  margin-top: auto;
 }
 
-.h1,
+.h1 .perfil-usuario-titulo,
 h2 {
   margin-bottom: 10px;
 }
 
-section {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
 .user-info,
 .user-posts {
+  width: 50%;
   display: flex;
+  align-items: flex-start;
   flex-direction: column;
-  padding: 200px; /* Increase the padding for larger boxes */
   border: 2px solid #008080;
   border-radius: 10px;
   overflow: hidden;
-  text-align: center;
-  margin: 0 150px;
+  margin: 30px;
+  padding: 50px;
 }
 
 .user-info p {
   margin-bottom: 10px;
 }
 
-.user-info button,
-.user-posts button {
-  margin-top: auto;
-}
-
 .user-posts ul {
   list-style: none;
   padding: 0;
-  column-count: 1; /* Set the number of columns as needed */
-  column-gap: 20px; /* Adjust the gap between columns */
+  column-count: 1;
+  column-gap: 20px;
 }
 
 .user-posts li {
@@ -74,8 +66,8 @@ section {
 }
 
 .user-posts li:before {
-  content: "#"; /* Custom bullet point, you can adjust this character */
-  color: #008080; /* Color of the bullet point */
-  font-size: 16px; /* Adjust size of the bullet point */
-  margin-right: 7px; /* Adjust margin for spacing between the bullet point and text */
+  content: "#";
+  color: #008080;
+  font-size: 16px;
+  margin-right: 7px;
 }
