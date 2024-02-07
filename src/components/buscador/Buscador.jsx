@@ -41,6 +41,7 @@ const Buscador = () => {
   // Limpiar la búsqueda
   const clearSearchTerm = () => {
     setSearchTerm("");
+    setSearchResults([]); // Limpiar los resultados cuando se borra el término de búsqueda
   };
 
   // Función para realizar la búsqueda cuando se hace clic en el botón (lupa)
@@ -63,7 +64,7 @@ const Buscador = () => {
     redirectToSearchPage();
   };
 
-  // Manejar clics fuera del área de búsqueda
+  // Manejar clics fuera del área de búsqueda para limpiar el término de búsqueda
   const handleClickOutside = (event) => {
     if (searchRef.current && !searchRef.current.contains(event.target)) {
       clearSearchTerm();
@@ -76,7 +77,7 @@ const Buscador = () => {
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  });
+  }, []);
 
   // Renderiza el componente Buscador
   return (
@@ -107,22 +108,25 @@ const Buscador = () => {
         </div>
       </form>
 
-      <div className="container-lista-enlaces-encontrados">
-        {/* Lista de resultados de la búsqueda */}
-        <ul className="lista-enlaces-buscador">
-          {/* Mapear los resultados y generar enlaces */}
-          {searchResults.map((result) => (
-            <li key={result.postId}>
-              {/* Enlace a la página del post utilizando Link */}
-              <Link to={`/post/${result.postId}`} onClick={clearSearchTerm}>
-                {/* Mostrar la información del post */}
-                <p>{result.title}</p>
-                <p>{result.description}</p>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+      {/* Mostrar los resultados solo si hay resultados */}
+      {searchResults.length > 0 && (
+        <div className="container-lista-enlaces-encontrados">
+          {/* Lista de resultados de la búsqueda */}
+          <ul className="lista-enlaces-buscador">
+            {/* Mapear los resultados y generar enlaces */}
+            {searchResults.map((result) => (
+              <li key={result.postId}>
+                {/* Enlace a la página del post utilizando Link */}
+                <Link to={`/post/${result.postId}`} onClick={clearSearchTerm}>
+                  {/* Mostrar la información del post */}
+                  <p>{result.title}</p>
+                  <p>{result.description}</p>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };

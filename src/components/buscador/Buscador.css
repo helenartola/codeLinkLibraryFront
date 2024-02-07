@@ -68,32 +68,54 @@
 }
 
 /* CONTAINER RESULTADOS BÚSQUEDA */
-.container-lista-enlaces-encontrados {
+.light .container-lista-enlaces-encontrados {
+  position: absolute; /* Posiciona el contenedor de resultados absolutamente */
+  top: 10%; /* Coloca el contenedor justo debajo del buscador */
   display: flex;
-  align-items: center;
-  justify-content: center; /* Centra horizontalmente los elementos en el contenedor de resultados */
-  background-color: white; /* Fondo blanco para el contenedor de resultados */
+  flex-direction: column; /* Alinear los resultados en cascada hacia abajo */
+  align-items: flex-start; /* Alinear los elementos a la izquierda */
+  background-color: white;
+  border: 1px solid #008080;
+  padding: 10px; /* Agregar un espacio alrededor de los resultados */
+  z-index: 1;
 }
-
+/* CONTAINER RESULTADOS BÚSQUEDA */
+.dark .container-lista-enlaces-encontrados {
+  position: absolute; /* Posiciona el contenedor de resultados absolutamente */
+  top: 10%; /* Coloca el contenedor justo debajo del buscador */
+  display: flex;
+  flex-direction: column; /* Alinear los resultados en cascada hacia abajo */
+  align-items: flex-start; /* Alinear los elementos a la izquierda */
+  background-color: #303030;
+  border: 1px solid #008080;
+  padding: 10px; /* Agregar un espacio alrededor de los resultados */
+  z-index: 1;
+}
 /* Estilos para la lista de resultados de búsqueda */
 .lista-enlaces-buscador {
-  position: absolute; /* Posiciona la lista de resultados absolutamente en relación con el contenedor padre */
-  background-color: white; /* Fondo blanco para la lista de resultados */
-  list-style-type: none; /* Elimina los estilos de lista (viñetas) */
-  z-index: 1; /* Controla la superposición de la lista sobre otros elementos (ajusta según sea necesario) */
+  list-style-type: none;
+  width: 600px;
+  padding: 20px;
 }
 
 /* Estilos para cada elemento de la lista de resultados */
 .lista-enlaces-buscador li {
-  margin-bottom: 10px; /* Espaciado entre elementos de la lista (ajusta según sea necesario) */
+  margin-bottom: 30px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #008080;
 }
 
 /* Estilos para los enlaces dentro de cada elemento de la lista */
-.lista-enlaces-buscador li a {
-  text-decoration: none; /* Elimina la subrayado predeterminado de los enlaces */
-  color: #303030; /* Establece el color del texto para los enlaces (ajusta según sea necesario) */
+.light .lista-enlaces-buscador li a {
+  text-decoration: none;
+  color: #303030;
+  font-family: jost, sans-serif;
 }
-
+.dark .lista-enlaces-buscador li a {
+  text-decoration: none;
+  color: white;
+  font-family: jost, sans-serif;
+}
 /* ESTILOS PARA DESKTOP */
 @media screen and (min-width: 768px) {
   .barra-buscador {
