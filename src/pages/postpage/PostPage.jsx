@@ -1,22 +1,27 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getPostByIdService } from "../../services";
-import './PostPage.css';  // Importa el archivo de estilos
+import './PostPage.css';
+import PostItem from "../../components/postItem/PostItem.jsx";  // Ajusta la ruta según la ubicación real
+import { useUser } from "../../context/UserContext";
 
-// Componente principal
 const PostPage = () => {
-  // Obtener el valor del parámetro postId de la URL
+  // Obtener el postId de los parámetros de la URL
   const { postId } = useParams();
+
   // Estado para almacenar los detalles del post
   const [post, setPost] = useState(null);
 
+  // Obtener información del usuario del contexto
+  const [user] = useUser();
+
   // Efecto secundario para cargar los detalles del post al montar el componente
   useEffect(() => {
-    // Función asincrónica para obtener detalles del post
     const fetchPostDetails = async () => {
       try {
         // Llamar al servicio para obtener los detalles del post
         const postDetails = await getPostByIdService(postId);
+
         // Actualizar el estado con los detalles del post
         setPost(postDetails);
       } catch (error) {
@@ -28,23 +33,12 @@ const PostPage = () => {
     fetchPostDetails();
   }, [postId]);
 
-  // Renderizar un indicador de carga si los detalles del post aún se están cargando
-  if (!post) {
-    return <p>Cargando...</p>;
-  }
-
-  // Renderizar la sección principal con los detalles del post
   return (
     <section className="post-page-container">
-      {/* Título del post */}
-      <h1>{post.title}</h1>
-      {/* Descripción del post */}
-      <p>{post.description}</p>
-      {/* Contenido del post (asumiendo que está en la propiedad 'content') */}
-      <div dangerouslySetInnerHTML={{ __html: post.content }} />
+      {/* Verificar si el post existe antes de renderizar el componente PostItem */}
+      {post && <PostItem post={post} user={user} />}
     </section>
   );
 };
 
-// Exportar el componente
 export default PostPage;
