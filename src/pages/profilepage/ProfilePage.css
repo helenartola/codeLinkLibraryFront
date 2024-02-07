@@ -1,40 +1,81 @@
 .profile-container {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   padding: 50px;
-  text-align: left;
-  font-family: jost, sans-serif;
+  font-family: 'jost', sans-serif;
   margin-top: 7%;
+  justify-content: center;
+  align-items: center;
 }
 
-.botones-navegacion-perfil {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.botones-navegacion-perfil button {
+.common-button {
   padding: 10px 20px;
   background-color: #008080;
   color: white;
   border: none;
   border-radius: 50px;
-  font-family: jost, sans-serif;
+  font-family: 'jost', sans-serif;
   cursor: pointer;
   font-size: 14px;
 }
 
-.botones-navegacion-perfil button:hover {
+.common-button:hover {
   background-color: transparent;
   border: 1px solid #008080;
   color: #008080;
 }
 
-.h1 {
+.botones-navegacion-perfil,
+.botones-navegacion-post {
+  margin-top: auto; /* Adjusted margin to align buttons to the bottom */
+}
+
+.h1,
+h2 {
   margin-bottom: 10px;
 }
 
-.user-info {
+section {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
   margin-bottom: 20px;
+}
+
+.user-info,
+.user-posts {
+  display: flex;
+  flex-direction: column;
+  padding: 200px; /* Increase the padding for larger boxes */
+  border: 2px solid #008080;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  margin: 0 150px;
+}
+
+.user-info p {
+  margin-bottom: 10px;
+}
+
+.user-info button,
+.user-posts button {
+  margin-top: auto;
+}
+
+.user-posts ul {
+  list-style: none;
+  padding: 0;
+  column-count: 1; /* Set the number of columns as needed */
+  column-gap: 20px; /* Adjust the gap between columns */
+}
+
+.user-posts li {
+  margin-bottom: 10px;
+}
+
+.user-posts li:before {
+  content: "#"; /* Custom bullet point, you can adjust this character */
+  color: #008080; /* Color of the bullet point */
+  font-size: 16px; /* Adjust size of the bullet point */
+  margin-right: 7px; /* Adjust margin for spacing between the bullet point and text */
 }
