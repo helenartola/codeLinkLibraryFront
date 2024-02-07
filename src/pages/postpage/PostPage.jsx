@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getPostByIdService } from "../../services";
-import './PostPage.css';
-import PostItem from "../../components/postItem/PostItem.jsx";  // Ajusta la ruta según la ubicación real
+import "./PostPage.css";
+import PostItem from "../../components/postItem/PostItem.jsx"; // Ajusta la ruta según la ubicación real
 import { useUser } from "../../context/UserContext";
+import { useTheme } from "../../context/ThemeContext"; // Importa useTheme desde tu contexto de tema
 
 const PostPage = () => {
+  const { isDarkMode } = useTheme();
+
   // Obtener el postId de los parámetros de la URL
   const { postId } = useParams();
 
@@ -34,7 +37,7 @@ const PostPage = () => {
   }, [postId]);
 
   return (
-    <section className="post-page-container">
+    <section className={`post-page-container ${isDarkMode ? "dark" : "light"}`}>
       {/* Verificar si el post existe antes de renderizar el componente PostItem */}
       {post && <PostItem post={post} user={user} />}
     </section>

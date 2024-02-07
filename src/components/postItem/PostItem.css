@@ -46,7 +46,7 @@
 .light .boton-comentar {
   color: #303030;
 }
-.dark .boton-eliminar-comentario {
+.dark .boton-eliminar-post {
   color: #008080;
   font-family: jost, sans-serif;
   background-color: transparent;
@@ -54,7 +54,16 @@
   border-radius: 50px;
   padding: 5px;
 }
-.light .boton-eliminar-comentario {
+.dark .boton-editar-post {
+  color: #008080;
+  font-family: jost, sans-serif;
+  background-color: transparent;
+  border: 1px solid #008080;
+  border-radius: 50px;
+  padding: 5px;
+}
+.light .boton-eliminar-post,
+.boton-eliminar-comentario {
   color: #008080;
   font-family: jost, sans-serif;
   background-color: transparent;
@@ -96,9 +105,12 @@
   margin-bottom: 10px;
 }
 .fecha,
-.publicado-por {
+.comentario-publicado-por,
+.comentario-de,
+.post-publicado-por {
   color: #008080;
   font-size: 11px;
+  margin-right: 2px;
 }
 .fecha {
   margin-left: 2px;
