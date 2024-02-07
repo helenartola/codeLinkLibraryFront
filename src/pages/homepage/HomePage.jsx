@@ -8,7 +8,7 @@ import { useTheme } from "../../context/ThemeContext";
 
 const HomePage = () => {
   const { isDarkMode } = useTheme();
-  const { posts, loading, error, refresh } = usePosts();
+  const { posts, setPosts, loading, error, refresh } = usePosts();
   const [isFormOpen, setIsFormOpen] = useState(false);
 
   // Estado para controlar la página actual
@@ -65,7 +65,7 @@ const HomePage = () => {
         </div>
         <div className="sidebar-derecha">
           {/* Lista de posts correspondientes a la página actual */}
-          <ListaDePosts posts={currentPosts} />
+          <ListaDePosts currentPosts={currentPosts}  posts={posts} setPosts={setPosts}/>
           {/* Componente de paginación */}
           <Pagination
             totalPages={totalPages}

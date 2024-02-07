@@ -1,10 +1,10 @@
 import PostItem from "../postItem/PostItem";
 
-const ListaDePosts = ({ posts }) => {
-  return posts.length ? (
+const ListaDePosts = ({ currentPosts,  posts, setPosts }) => {
+  return currentPosts.length ? (
     <div className="lista-posts">
-      {posts.map((post) => (
-        <PostItem key={post.postId} post={post} />
+      {currentPosts.map((post) => (
+        <PostItem key={post.postId} post={post} posts={posts} setPosts={setPosts} />
       ))}
     </div>
   ) : (

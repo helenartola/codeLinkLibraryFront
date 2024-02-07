@@ -13,7 +13,7 @@ import {
 import "./PostItem.css";
 import { useUser } from "../../context/UserContext";
 
-const PostItem = ({ post }) => {
+const PostItem = ({ post, posts, setPosts  }) => {
   // Estados para el manejo de comentarios
   const [comentario, setComentario] = useState("");
   const [comments, setComments] = useState([]);
@@ -119,6 +119,8 @@ const PostItem = ({ post }) => {
       // Actualiza la lista de posts para que el post eliminado ya no se muestre
       // Esto podría implicar recargar la página o actualizar el estado del componente
       // dependiendo de cómo esté estructurada tu aplicación
+      
+      setPosts(posts.filter(postItem => postItem.postId !== post.postId))
       alert("El post ha sido eliminado con éxito.");
     } catch (error) {
       console.error("Error al eliminar post:", error);
