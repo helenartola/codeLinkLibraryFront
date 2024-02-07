@@ -35,10 +35,10 @@ const SearchPage = () => {
     </section>
   );
 };*/
-
+/////////////////////////////////////////////////////////////////////////////////////////////
 // Exporta el componente SearchPage
 //export default SearchPage;
-import { useSearchParams } from "react-router-dom";
+/*import { useSearchParams } from "react-router-dom";
 
 const SearchPage = () => {
   const  [searchParams]  = useSearchParams()
@@ -49,9 +49,58 @@ const SearchPage = () => {
   return (
     <div>
       <h2>Search Results for: {searchParams.get("q")}</h2>
-      {/* Resto del contenido... */}
+      /* Resto del contenido... */
+    /*</div>
+  );
+};
+
+export default SearchPage;*/
+
+///////////////////////////////////////////////////////////////////////////////////////////
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
+import { searchService } from "../../services";
+import PostItem from "../../components/postItem/PostItem.jsx"; // Ajusta la ruta según la ubicación real
+
+const SearchPage = () => {
+  const [searchParams] = useSearchParams();
+  const searchTerm = searchParams.get("q");
+  const [searchResults, setSearchResults] = useState([]);
+
+  useEffect(() => {
+    const fetchSearchResults = async () => {
+      try {
+        if (searchTerm) {
+          const results = await searchService(searchTerm);
+          setSearchResults(results);
+        }
+      } catch (error) {
+        console.error("Error fetching search results:", error);
+      }
+    };
+
+    fetchSearchResults();
+  }, [searchTerm]);
+
+  return (
+    <div>
+      <h2>Search Results for: {searchTerm}</h2>
+      {searchResults.length > 0 ? (
+        <ul>
+          {searchResults.map((result) => (
+            <li key={result.postId}>
+              {/* Renderiza el componente PostItem con los detalles del post */}
+              <PostItem post={result} />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No results found</p>
+      )}
     </div>
   );
 };
 
 export default SearchPage;
+
+
