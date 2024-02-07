@@ -28,6 +28,7 @@
   flex-direction: column;
   align-items: center;
   gap: 15px;
+  margin-right: 20px;
 }
 
 .buscador {

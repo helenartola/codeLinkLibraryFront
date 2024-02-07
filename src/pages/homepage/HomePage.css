@@ -14,6 +14,7 @@
 .dark .sidebar-izq {
   width: 20%;
   border-right: 1px solid #ffffff32;
+  height: 100vw;
 }
 
 .light .sidebar-izq {
