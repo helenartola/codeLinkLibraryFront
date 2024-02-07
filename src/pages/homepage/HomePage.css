@@ -12,14 +12,17 @@
 }
 
 .dark .sidebar-izq {
-  width: 20%;
+  flex: 1;
+  width: 5%;
   border-right: 1px solid #ffffff32;
   height: 100vw;
 }
 
 .light .sidebar-izq {
-  width: 20%;
+  flex: 1;
+  width: 5%;
   border-right: 1px solid #cbc9c9;
+  height: 100vw;
 }
 .dark .contenedor-crear-post {
   background-color: #303030;
@@ -30,12 +33,13 @@
   width: 100%;
   border-bottom: 1px solid #303030;
 }
-.light .sidebar-derecha {
-  flex: 1;
+.light .columna-centro {
+  flex: 3;
 }
-.dark .sidebar-derecha {
-  flex: 1;
+.dark .columna-centro {
+  flex: 3;
 }
+
 .light .boton-crear-post,
 .dark .boton-crear-post {
   display: flex;
@@ -66,6 +70,27 @@
   color: #303030;
 }
 
+.sidebar-derecha {
+  flex: 1;
+  width: 10%;
+}
+.caja-trending {
+  width: 300px;
+  height: 450px;
+  background-color: #008080;
+  color: white;
+  margin: 20px;
+  border-radius: 20px;
+  position: fixed; /* Añade esta línea para fijar la caja */
+  top: 90px; /* Ajusta la distancia desde la parte superior según tu diseño */
+  right: 5px;
+}
+.trending-topics-titulo {
+  font-size: 20px;
+  padding: 20px;
+  margin-top: 20px;
+  text-align: center;
+}
 @media only screen and (max-width: 767px) {
   .main-content {
     display: flex;
@@ -77,7 +102,7 @@
     display: none; /* Oculta la barra lateral izquierda en dispositivos móviles */
   }
 
-  .sidebar-derecha {
+  .columna-centro {
     width: 100%; /* Ajusta el ancho de la barra lateral derecha al 100% en dispositivos móviles */
   }
 
