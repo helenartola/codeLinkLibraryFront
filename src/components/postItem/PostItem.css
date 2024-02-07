@@ -62,14 +62,28 @@
   border-radius: 50px;
   padding: 5px;
 }
+.caja-editar-post .icono-nuevo-post {
+  width: 22px;
+}
+.caja-editar-comentario {
+  display: flex;
+  align-items: center;
+}
 .light .boton-eliminar-post,
-.boton-eliminar-comentario {
+.boton-eliminar-comentario,
+.guardar-edicion,
+.cerrar-edicion {
   color: #008080;
   font-family: jost, sans-serif;
   background-color: transparent;
   border: 1px solid #008080;
   border-radius: 50px;
   padding: 5px;
+  margin-bottom: 3px;
+}
+.guardar-edicion,
+.cerrar-edicion {
+  margin: 5px;
 }
 .boton-icono-like img {
   width: 22px;
@@ -106,14 +120,42 @@
 }
 .fecha,
 .comentario-publicado-por,
-.comentario-de,
 .post-publicado-por {
   color: #008080;
   font-size: 11px;
   margin-right: 2px;
 }
-.fecha {
-  margin-left: 2px;
+.post-editado {
+  color: rgb(166, 166, 166);
+  font-size: 11px;
+  margin-top: 10px;
+}
+.dark .comentario-de {
+  color: white;
+  font-size: 12px;
+  margin-right: 3px;
+}
+.light .comentario-de {
+  color: #303030;
+  font-size: 12px;
+  margin-right: 3px;
+}
+.caja-datos-edicion-comentario {
+  display: flex;
+  align-items: center;
+}
+.lista-comentarios-post {
+  list-style-type: none;
+}
+.dark .texto-comentario-editado {
+  color: white;
+}
+.light .texto-comentario-editado {
+  color: #008080;
+}
+.hola {
+  display: flex;
+  align-items: center;
 }
 .dark .nombre-usuario {
   color: white;

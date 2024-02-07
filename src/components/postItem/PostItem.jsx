@@ -303,31 +303,43 @@ const PostItem = ({ post }) => {
           {showComments ? "Ocultar Comentarios" : "Mostrar Comentarios"}
         </button>
         {showComments && (
-          <ul>
+          <ul className="lista-comentarios-post">
             {comments.map((comment) => (
               <li key={comment.commentId}>
-                <p className="comentario-de">De: {comment.userName}</p>
-                <p>{comment.text}</p>
-                <p className="comentario-publicado-por">
-                  Publicado: {new Date(comment.createdAt).toLocaleString()}
-                </p>
+                <div className="caja-datos-edicion-comentario">
+                  <p className="comentario-de">De: {comment.userName}</p>
+                  <p className="comentario-publicado-por">
+                    Publicado el {new Date(comment.createdAt).toLocaleString()}
+                  </p>
+                </div>
+                <p className="texto-comentario-editado">{comment.text}</p>
                 {/* Mostrar hora de la última edición y "editado" si corresponde */}
                 {comment.commentId === editingComment?.commentId ? (
-                  <div>
+                  <div className="caja-editar-comentario">
                     <input
                       type="text"
                       value={comentario}
                       onChange={(e) => setComentario(e.target.value)}
                     />
-                    <button onClick={handleSaveEdit}>Guardar</button>
-                    <button onClick={() => setEditingComment(null)}>
+                    <button
+                      className="guardar-edicion"
+                      onClick={handleSaveEdit}
+                    >
+                      Guardar
+                    </button>
+                    <button
+                      className="cerrar-edicion"
+                      onClick={() => setEditingComment(null)}
+                    >
                       Cerrar Edición
                     </button>
                   </div>
                 ) : (
-                  <div>
+                  <div className="caja-editar-post">
                     {lastCommentEditTime[comment.commentId] && (
-                      <p>Editado: {lastCommentEditTime[comment.commentId]}</p>
+                      <p className="post-editado">
+                        Editado el {lastCommentEditTime[comment.commentId]}
+                      </p>
                     )}
                     {user && comment.userId === user.userId && (
                       <button
