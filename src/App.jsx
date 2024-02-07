@@ -33,7 +33,7 @@ function App() {
           {/* Ruta para ir a page Ajustes de usuario */}
           <Route path="/settings" element={<UserSettingsPage />} />
           {/* Ruta para ir a page Search */}
-          <Route path="/search/:searchTerm" element={<SearchPage />} />
+          <Route path="/search" element={<SearchPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>

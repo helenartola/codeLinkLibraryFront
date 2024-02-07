@@ -38,16 +38,17 @@ const SearchPage = () => {
 
 // Exporta el componente SearchPage
 //export default SearchPage;
-import { useParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 const SearchPage = () => {
-  const { searchTerm } = useParams();
+  const  [searchParams]  = useSearchParams()
 
   // Resto del contenido del componente...
+  console.log(searchParams.get("q"))
 
   return (
     <div>
-      <h2>Search Results for: {searchTerm}</h2>
+      <h2>Search Results for: {searchParams.get("q")}</h2>
       {/* Resto del contenido... */}
     </div>
   );
