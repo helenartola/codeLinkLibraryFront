@@ -435,3 +435,12 @@
     right: 10px;
   }
 }
+
+.link-titulo-post {
+  color: #0cbbbb; 
+  
+};
+
+.link-titulo-post:visited {
+  color:#59397e; /* Cambia el color para enlaces visitados */
+}
