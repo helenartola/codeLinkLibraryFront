@@ -11,6 +11,10 @@
 .header {
   padding: 10px;
   border-bottom: 1px solid #008080;
+  position: fixed; /* Fija el header en la parte superior de la ventana */
+  top: 0; /* Asegura que el header esté pegado a la parte superior */
+  width: 100%;
+  z-index: 1000;
 }
 
 .theme-switcher-container {
