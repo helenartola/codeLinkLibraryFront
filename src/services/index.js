@@ -4,7 +4,7 @@ export const getAllPostsService = async (userid = 0) => {
     const response = await fetch(`${import.meta.env.VITE_BACKEND}/posts`, {
       method: "GET",
       headers: {
-        userid: userid
+        userid: userid,
       },
     });
     const json = await response.json();
@@ -28,7 +28,7 @@ export const createPostService = async (postData, token) => {
       method: "POST",
       headers: {
         "Content-type": "application/json",
-        "Authorization": token, 
+        Authorization: token,
       },
       body: JSON.stringify(postData),
     });
@@ -45,7 +45,6 @@ export const createPostService = async (postData, token) => {
     throw new Error("Error al crear un nuevo post");
   }
 };
-
 
 // Obtener un post por su ID
 export const getPostByIdService = async (postId) => {
@@ -65,13 +64,8 @@ export const getPostByIdService = async (postId) => {
     // Devolver la información del post individual
     return json.data;
   } catch (error) {
-    console.error(
-      `Error al obtener el post con ID ${postId}:`,
-      error
-    );
-    throw new Error(
-      `Error al obtener el post con ID ${postId}`
-    );
+    console.error(`Error al obtener el post con ID ${postId}:`, error);
+    throw new Error(`Error al obtener el post con ID ${postId}`);
   }
 };
 
@@ -93,7 +87,10 @@ export const getCommentsService = async (postId) => {
     // Devolver la lista de comentarios
     return json.data;
   } catch (error) {
-    console.error(`Error al obtener los comentarios del post ${postId}:`, error);
+    console.error(
+      `Error al obtener los comentarios del post ${postId}:`,
+      error
+    );
     throw new Error(`Error al obtener los comentarios del post ${postId}`);
   }
 };
@@ -124,10 +121,7 @@ export const registroUsuarioService = async ({ userName, email, password }) => {
     // Devolver la respuesta del servidor
     return json.data;
   } catch (error) {
-    console.error(
-      "Error al registrar un nuevo usuario:",
-      error
-    );
+    console.error("Error al registrar un nuevo usuario:", error);
     throw new Error("Error al registrar un nuevo usuario");
   }
 };
@@ -198,7 +192,7 @@ export const getInfoUserService = async (user) => {
       {
         method: "GET",
         headers: {
-          "Authorization": user.token // Agrega el token de autenticación
+          Authorization: user.token, // Agrega el token de autenticación
         },
       }
     );
@@ -241,18 +235,20 @@ export const getUserPostsService = async (userId) => {
 
 export const likePostService = async (postId, token) => {
   try {
-   
     // Verifica que el token esté presente antes de la solicitud
     if (!token) {
       throw new Error("Token not available. User may not be authenticated.");
     }
 
-    const response = await fetch(`${import.meta.env.VITE_BACKEND}/post/${postId}/like`, {
-      method: "POST",
-      headers: {
-        "Authorization": token,
-      },
-    });
+    const response = await fetch(
+      `${import.meta.env.VITE_BACKEND}/post/${postId}/like`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: token,
+        },
+      }
+    );
 
     const json = await response.json();
 
@@ -271,7 +267,6 @@ export const likePostService = async (postId, token) => {
   }
 };
 
-
 export const createCommentService = async ({ postId, comentario }, token) => {
   try {
     const response = await fetch(
@@ -280,10 +275,10 @@ export const createCommentService = async ({ postId, comentario }, token) => {
         method: "POST",
         headers: {
           "Content-type": "application/json",
-          "Authorization": token,
+          Authorization: token,
         },
         body: JSON.stringify({
-          postId: postId, 
+          postId: postId,
           text: comentario,
         }),
       }
@@ -304,12 +299,15 @@ export const createCommentService = async ({ postId, comentario }, token) => {
 // Guardar un post
 export const savePostService = async (postId, token) => {
   try {
-    const response = await fetch(`${import.meta.env.VITE_BACKEND}/post/${postId}/save`, {
-      method: "POST",
-      headers: {
-        "Authorization": token,
-      },
-    });
+    const response = await fetch(
+      `${import.meta.env.VITE_BACKEND}/post/${postId}/save`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: token,
+        },
+      }
+    );
 
     const json = await response.json();
 
@@ -328,12 +326,15 @@ export const savePostService = async (postId, token) => {
 // Eliminar un post guardado
 export const unsavePostService = async (postId, token) => {
   try {
-    const response = await fetch(`${import.meta.env.VITE_BACKEND}/post/${postId}/unsave`, {
-      method: "DELETE",
-      headers: {
-        "Authorization": token,
-      },
-    });
+    const response = await fetch(
+      `${import.meta.env.VITE_BACKEND}/post/${postId}/unsave`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: token,
+        },
+      }
+    );
 
     const json = await response.json();
 
@@ -352,12 +353,15 @@ export const unsavePostService = async (postId, token) => {
 // Eliminar un post
 export const deletePostService = async (postId, token) => {
   try {
-    const response = await fetch(`${import.meta.env.VITE_BACKEND}/post/${postId}`, {
-      method: "DELETE",
-      headers: {
-        "Authorization": token,
-      },
-    });
+    const response = await fetch(
+      `${import.meta.env.VITE_BACKEND}/post/${postId}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: token,
+        },
+      }
+    );
 
     const json = await response.json();
 
@@ -375,12 +379,15 @@ export const deletePostService = async (postId, token) => {
 
 export const deleteCommentService = async (postId, commentId, token) => {
   try {
-    const response = await fetch(`${import.meta.env.VITE_BACKEND}/post/${postId}/comment/${commentId}`, {
-      method: "DELETE",
-      headers: {
-        "Authorization": token,
-      },
-    });
+    const response = await fetch(
+      `${import.meta.env.VITE_BACKEND}/post/${postId}/comment/${commentId}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: token,
+        },
+      }
+    );
 
     const json = await response.json();
 
@@ -398,14 +405,17 @@ export const deleteCommentService = async (postId, commentId, token) => {
 
 export const editCommentService = async (commentId, editedComment, token) => {
   try {
-    const response = await fetch(`${import.meta.env.VITE_BACKEND}/post/comment/${commentId}`, {
-      method: "PUT",
-      headers: {
-        "Content-type": "application/json",
-        "Authorization": token,
-      },
-      body: JSON.stringify(editedComment),
-    });
+    const response = await fetch(
+      `${import.meta.env.VITE_BACKEND}/post/comment/${commentId}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-type": "application/json",
+          Authorization: token,
+        },
+        body: JSON.stringify(editedComment),
+      }
+    );
 
     const json = await response.json();
 
@@ -422,24 +432,21 @@ export const editCommentService = async (commentId, editedComment, token) => {
 };
 
 // Ajustes de usuario
-export const usuarioAjustes = async ( name, lastName, birthDate, bio, token) => {
+export const usuarioAjustes = async (name, lastName, birthDate, bio, token) => {
   try {
-    const response = await fetch(
-      `${import.meta.env.VITE_BACKEND}/settings`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-type": "application/json",
-          "Authorization": token,
-        },
-        body: JSON.stringify({
-          name,
-          lastName,
-          birthDate,
-          bio,
-        }),
-      }
-    );
+    const response = await fetch(`${import.meta.env.VITE_BACKEND}/settings`, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: token,
+      },
+      body: JSON.stringify({
+        name,
+        lastName,
+        birthDate,
+        bio,
+      }),
+    });
 
     const json = await response.json();
 
@@ -458,28 +465,60 @@ export const usuarioAjustes = async ( name, lastName, birthDate, bio, token) => 
 export const editPostService = async (postId, postData, token) => {
   try {
     // Realiza una solicitud PUT al backend para editar el post
-    const response = await fetch(`${import.meta.env.VITE_BACKEND}/post/${postId}`, {
-      method: "PUT", 
-      headers: {
-        "Content-type": "application/json",
-        "Authorization": token,
-      },
-      body: JSON.stringify(postData),
-    });
+    const response = await fetch(
+      `${import.meta.env.VITE_BACKEND}/post/${postId}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-type": "application/json",
+          Authorization: token,
+        },
+        body: JSON.stringify(postData),
+      }
+    );
 
     // Analiza la respuesta del servidor
     const json = await response.json();
 
     // Verifica si la solicitud fue exitosa
     if (!response.ok) {
-      throw new Error(json.message); 
+      throw new Error(json.message);
     }
 
-    // Devuelve la respuesta del servidor 
+    // Devuelve la respuesta del servidor
     return json.data;
   } catch (error) {
     // Maneja cualquier error que ocurra durante la solicitud
     console.error("Error al editar el post:", error);
-    throw new Error("Error al editar el post"); 
+    throw new Error("Error al editar el post");
+  }
+};
+
+// Función para obtener los diez posts más votados
+export const fetchTopLikedPosts = async () => {
+  try {
+    // Realiza la solicitud a la API para obtener los diez posts más votados
+    const response = await fetch(`${import.meta.env.VITE_BACKEND}/top`, {
+      method: "GET", // Método GET para obtener los posts
+    });
+
+    // Verifica si la solicitud fue exitosa
+    if (!response.ok) {
+      // Si la respuesta no es exitosa, lanza un error con el mensaje correspondiente
+      throw new Error(
+        `Error al obtener los posts más votados. Código ${response.status}`
+      );
+    }
+
+    // Parsea la respuesta a formato JSON
+    const data = await response.json();
+
+    // Devuelve los datos obtenidos
+    return data.data;
+  } catch (error) {
+    // Captura cualquier error y lo maneja
+    console.error("Error al obtener los posts más votados:", error);
+    // Lanza el error nuevamente para que el componente pueda manejarlo
+    throw error;
   }
 };
