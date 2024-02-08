@@ -62,22 +62,18 @@
   border-radius: 50px;
   padding: 5px;
 }
-.dark .boton-editar-post {
-  color: #008080;
-  font-family: jost, sans-serif;
-  background-color: transparent;
-  border: 1px solid #008080;
-  border-radius: 50px;
-  padding: 5px;
-  margin-bottom: 5px;
+
+.link-url-post {
+  color: teal;
+  text-decoration: none;
 }
-.light .boton-editar-post {
-  color: #008080;
-  font-family: jost, sans-serif;
-  background-color: transparent;
-  border: 1px solid #008080;
-  border-radius: 50px;
-  padding: 5px;
+.light .link-url-post:hover {
+  color: #303030;
+  text-decoration: none;
+}
+.dark .link-url-post:hover {
+  color: white;
+  text-decoration: none;
 }
 .caja-editar-post .icono-nuevo-post {
   width: 22px;
@@ -89,8 +85,7 @@
 .caja-para-escribir-comentario {
   margin: 10px;
 }
-.light .boton-eliminar-post,
-.boton-eliminar-comentario,
+.light .boton-eliminar-comentario,
 .guardar-edicion,
 .cerrar-edicion {
   color: #008080;
@@ -99,6 +94,18 @@
   border: 1px solid #008080;
   border-radius: 50px;
   margin-bottom: 3px;
+}
+.boton-editar-post-postitem {
+  background-color: transparent;
+  border: none;
+}
+.boton-eliminar-post-postitem {
+  border: none;
+  background-color: transparent;
+}
+.icono-eliminar,
+.icono-editar-post {
+  width: 32px;
 }
 .guardar-edicion,
 .cerrar-edicion {
@@ -280,22 +287,7 @@
     padding: 5px;
     margin-left: 10px;
   }
-  .dark .boton-editar-post {
-    color: #008080;
-    font-family: jost, sans-serif;
-    background-color: transparent;
-    border: 1px solid #008080;
-    border-radius: 50px;
-    padding: 5px;
-  }
-  .light .boton-editar-post {
-    color: #008080;
-    font-family: jost, sans-serif;
-    background-color: transparent;
-    border: 1px solid #008080;
-    border-radius: 50px;
-    padding: 5px;
-  }
+
   .caja-editar-post .icono-nuevo-post {
     width: 22px;
   }
@@ -329,7 +321,10 @@
     background-color: transparent;
     border: none;
   }
-
+  .boton-editar-post-postitem {
+    background-color: transparent;
+    border: none;
+  }
   .botones-post-complementos {
     display: flex;
     align-items: center;
@@ -437,10 +432,9 @@
 }
 
 .link-titulo-post {
-  color: #0cbbbb; 
-  
-};
+  color: #0cbbbb;
+}
 
 .link-titulo-post:visited {
-  color:#59397e; /* Cambia el color para enlaces visitados */
+  color: #59397e; /* Cambia el color para enlaces visitados */
 }

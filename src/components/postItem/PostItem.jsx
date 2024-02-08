@@ -288,27 +288,40 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
           <button onClick={() => setEditingPost(false)}>Cancelar</button>
         </div>
       ) : (
-      
         // Sección para mostrar el post
         <div className="post-content">
-        <div className="post-info">
-          {/* Título del post */}
-          <h2 className="titulo-post-home">
-            <Link to={`/post/${post.postId}`}>{post.title}</Link>
-          </h2>
-          {/* Muestra el enlace si existe y showLink es true */}
-          {showLink && post.url && (
-            <a href={post.url} target="_blank" rel="noopener noreferrer">
-              {post.url}
-            </a>
-          )}
-          <p className="descripcion-post-home">{post.description}</p>
-        </div>
+          <div className="post-info">
+            {/* Título del post */}
+            <h2 className="titulo-post-home">
+              <Link className="link-url-post" to={`/post/${post.postId}`}>
+                {post.title}
+              </Link>
+            </h2>
+            {/* Muestra el enlace si existe y showLink es true */}
+            {showLink && post.url && (
+              <a
+                className="link-url-post"
+                href={post.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {post.url}
+              </a>
+            )}
+            <p className="descripcion-post-home">{post.description}</p>
+          </div>
           {/* Botón de editar post */}
           {user && post.userId === user.userId && (
             <div className="editar-post-container">
-              <button className="boton-editar-post" onClick={handleEditPost}>
-                Editar
+              <button
+                className="boton-editar-post-postitem"
+                onClick={handleEditPost}
+              >
+                <img
+                  className="icono-editar-post"
+                  src="/edit.png"
+                  alt="Editar post"
+                />
               </button>
             </div>
           )}
@@ -316,10 +329,14 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
           {user && post.userId === user.userId && (
             <div className="eliminar-post-container">
               <button
-                className="boton-eliminar-post"
+                className="boton-eliminar-post-postitem"
                 onClick={handleDeletePost}
               >
-                Eliminar
+                <img
+                  className="icono-eliminar"
+                  src="/eliminar.png"
+                  alt="Eliminar"
+                />
               </button>
             </div>
           )}

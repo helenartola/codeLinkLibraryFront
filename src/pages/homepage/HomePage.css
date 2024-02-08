@@ -85,6 +85,10 @@
   width: 10%;
 }
 .caja-trending {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   width: 300px;
   height: 500px;
   background-color: teal;
@@ -97,10 +101,13 @@
 }
 .trending-topics-titulo {
   font-size: 20px;
-  margin-top: 30px;
   text-align: center;
 }
-
+.emoticono-fuego {
+  width: 32px;
+  margin-top: 10px;
+  margin-bottom: -7px;
+}
 .lista-trending-topics {
   list-style-type: none;
   text-align: center;
@@ -110,10 +117,6 @@
   flex-direction: column;
 }
 
-.emoticono-fuego {
-  width: 22px;
-  margin-left: 10px;
-}
 .lista-posts-trending {
   padding: 15px 10px;
   width: 80%;
