@@ -44,7 +44,7 @@ const UserSettingsPage = () => {
       <textarea id="bio" value={bio} onChange={(e) => setBio(e.target.value)} />
 
       <button type="submit">Aceptar</button>
-      <Link to="/">
+      <Link to="/settings">
               <button className="return">Volver</button>
             </Link>
     </form>
