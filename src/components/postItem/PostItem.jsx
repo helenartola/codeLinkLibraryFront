@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useUser } from "../../context/UserContext";
 import {
   getCommentsService,
   createCommentService,
@@ -11,10 +13,8 @@ import {
   editPostService,
 } from "../../services/index";
 import "./PostItem.css";
-import { useUser } from "../../context/UserContext";
-import { Link } from "react-router-dom";
 
-const PostItem = ({ post, posts, setPosts }) => {
+const PostItem = ({ post, posts, setPosts, showLink = false }) => {
   // Estados para el manejo de comentarios
   const [comentario, setComentario] = useState("");
   const [comments, setComments] = useState([]);
@@ -41,7 +41,7 @@ const PostItem = ({ post, posts, setPosts }) => {
   const [editedURL, setEditedURL] = useState(post.url);
   const [lastPostEditTime, setLastPostEditTime] = useState(
     post.lastEditTime || null
-  ); //Almacena la fecha de la última edición del post
+  ); // Almacena la fecha de la última edición del post
 
   useEffect(() => {
     const fetchComments = async () => {
@@ -288,12 +288,20 @@ const PostItem = ({ post, posts, setPosts }) => {
           <button onClick={() => setEditingPost(false)}>Cancelar</button>
         </div>
       ) : (
+      
+        // Sección para mostrar el post
         <div className="post-content">
         <div className="post-info">
-          {/* Modifica el título del post para que sea un enlace */}
-          <Link to={`/post/${post.postId}`} className="link-titulo-post">
-            <h2 className="titulo-post-home">{post.title}</h2>
-          </Link>
+          {/* Título del post */}
+          <h2 className="titulo-post-home">
+            <Link to={`/post/${post.postId}`}>{post.title}</Link>
+          </h2>
+          {/* Muestra el enlace si existe y showLink es true */}
+          {showLink && post.url && (
+            <a href={post.url} target="_blank" rel="noopener noreferrer">
+              {post.url}
+            </a>
+          )}
           <p className="descripcion-post-home">{post.description}</p>
         </div>
           {/* Botón de editar post */}
@@ -323,15 +331,18 @@ const PostItem = ({ post, posts, setPosts }) => {
         {/* CAJA QUE CONTIENE CORAZÓN, GUARDAR, COMENTARIO, NÚMERO DE COMENTARIO */}
         <div className="botones-post-complementos">
           {user && (
-            <button className="boton-icono-like" onClick={handleLikePost} disabled={post.userId === user.userId}>
+            <button
+              className="boton-icono-like"
+              onClick={handleLikePost}
+              disabled={post.userId === user.userId}
+            >
               {post.userId === user.userId ? (
                 <img src="/corazon-gris.png" alt="Corazón Gris" />
-              ) : (       
-              isLiked ? (
+              ) : isLiked ? (
                 <img src="/corazon-relleno.png" alt="Corazón Relleno" />
               ) : (
                 <img src="/corazon.png" alt="Corazón Vacío" />
-              ))}
+              )}
             </button>
           )}
           <p className="likes-count">{numLikes}</p>
