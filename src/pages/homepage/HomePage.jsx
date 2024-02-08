@@ -1,15 +1,36 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import usePosts from "../../hooks/usePosts";
 import ListaDePosts from "../../components/listaPosts/ListaDePosts";
 import NewPost from "../../components/newpost/NewPost";
 import Pagination from "../../components/pagination/Pagination"; // Importa el componente de paginación
 import "./HomePage.css";
 import { useTheme } from "../../context/ThemeContext";
+import { fetchTopLikedPosts } from "../../services";
 
 const HomePage = () => {
   const { isDarkMode } = useTheme();
   const { posts, setPosts, loading, error, refresh } = usePosts();
   const [isFormOpen, setIsFormOpen] = useState(false);
+
+  // Estado para almacenar los posts más votados
+  const [topLikedPosts, setTopLikedPosts] = useState([]);
+
+  // Efecto para cargar los posts más votados cuando el componente se monta
+  useEffect(() => {
+    // Función para obtener los diez posts más votados
+    const loadTopLikedPosts = async () => {
+      try {
+        const data = await fetchTopLikedPosts();
+        // Actualiza el estado con los diez posts más votados
+        setTopLikedPosts(data);
+      } catch (error) {
+        // Maneja el error aquí si es necesario
+      }
+    };
+
+    // Llama a la función para obtener los diez posts más votados cuando el componente se monta
+    loadTopLikedPosts();
+  }, []);
 
   // Estado para controlar la página actual
   const [currentPage, setCurrentPage] = useState(1);
@@ -30,7 +51,7 @@ const HomePage = () => {
   };
 
   // Si se está cargando, muestra un mensaje de carga
-  if (loading) return <p>Cargando posts...</p>;
+  if (loading) return <p className="texto-cargando-posts">Cargando posts...</p>;
   // Si hay un error, muestra el mensaje de error
   if (error) return <p>{error}</p>;
 
@@ -81,6 +102,11 @@ const HomePage = () => {
         <div className="sidebar-derecha">
           <div className="caja-trending">
             <h1 className="trending-topics-titulo">TRENDING TOPICS</h1>
+            <ul className="lista-trending-topics">
+              {topLikedPosts.map((post) => (
+                <li key={post.postId}>{post.title}</li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
