@@ -86,8 +86,10 @@
 }
 .caja-trending {
   width: 300px;
-  height: 450px;
-  background-color: #008080;
+  height: 500px;
+  background-image: url("/fondo.jpg");
+  background-size: cover;
+  background-position: center;
   color: white;
   margin: 20px;
   border-radius: 20px;
@@ -97,14 +99,30 @@
 }
 .trending-topics-titulo {
   font-size: 20px;
-  padding: 20px;
-  margin-top: 20px;
+  margin-top: 30px;
   text-align: center;
 }
 
 .lista-trending-topics {
   list-style-type: none;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.emoticono-fuego {
+  width: 22px;
+  margin-left: 10px;
+}
+.lista-posts-trending {
+  padding: 15px 10px;
+  width: 80%;
+  border-radius: 15px;
+  border: 1px solid white;
+  background-color: rgba(255, 255, 255, 0.482);
+  margin-bottom: 5px;
 }
 @media only screen and (max-width: 767px) {
   .main-content {
