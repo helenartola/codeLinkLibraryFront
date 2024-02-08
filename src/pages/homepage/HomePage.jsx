@@ -101,10 +101,19 @@ const HomePage = () => {
         {/* Columna derecha (solo para dispositivos de escritorio) */}
         <div className="sidebar-derecha">
           <div className="caja-trending">
-            <h1 className="trending-topics-titulo">TRENDING TOPICS</h1>
+            <h1 className="trending-topics-titulo">
+              TRENDING TOPICS
+              <img
+                className="emoticono-fuego"
+                src="fuego.png"
+                alt="Emoticono fuego"
+              />
+            </h1>
             <ul className="lista-trending-topics">
               {topLikedPosts.map((post) => (
-                <li key={post.postId}>{post.title}</li>
+                <li className="lista-posts-trending" key={post.postId}>
+                  {post.title}
+                </li>
               ))}
             </ul>
           </div>
