@@ -3,7 +3,7 @@ import "./UserSettingsPage.css";
 import { usuarioAjustes } from "../../services";
 import { Link } from "react-router-dom";
 
-const UserSettingsPage = () => {
+const UserSettingsPage = ({ token }) => {
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [birthDate, setBirthDate] = useState("");
@@ -11,24 +11,18 @@ const UserSettingsPage = () => {
   const [error, setError] = useState(null);
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault(); // Evita que el formulario se envíe automáticamente
 
     try {
-      const userData = await usuarioAjustes(
-        name,
-        lastName,
-        birthDate,
-        bio,
-        //token
-      );
-
-      if (userData.token) {
-        // Lógica para manejar el token obtenido
-      } else {
-        setError("Error al obtener el token");
-      }
+    
+      const userData = await usuarioAjustes(name, lastName, birthDate, bio, token);
+      
+      
+      console.log('Datos del usuario actualizados:', userData);
     } catch (error) {
-      setError(error.message);
+      // Manejo de errores, por ejemplo, mostrar un mensaje de error al usuario
+      setError("Error al actualizar los ajustes del usuario");
+      console.error('Error al actualizar los ajustes del usuario:', error.message);
     }
   };
 
@@ -57,7 +51,7 @@ const UserSettingsPage = () => {
 
         <label htmlFor="birthDate">Fecha de nacimiento:</label>
         <input
-          type="date"
+          type="text"
           id="birthDate"
           value={birthDate}
           onChange={(e) => setBirthDate(e.target.value)}
@@ -71,7 +65,7 @@ const UserSettingsPage = () => {
         />
 
         <button type="submit">Aceptar</button>
-        <Link to="/settings">
+        <Link to="/profile">
           <button className="return">Volver</button>
         </Link>
       </form>

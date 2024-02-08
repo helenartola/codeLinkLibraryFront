@@ -437,7 +437,7 @@ export const usuarioAjustes = async (name, lastName, birthDate, bio, token) => {
     const response = await fetch(
       `${import.meta.env.VITE_BACKEND}/settings`,
       {
-        method: "PUT",
+        method: "PATCH",
         headers: {
           "Content-type": "application/json",
           Authorization: token,
