@@ -440,7 +440,7 @@ export const userSettingsService = async (name, lastName, birthDate, bio, token)
         method: "PATCH",
         headers: {
           "Content-type": "application/json",
-          Authorization: token,
+          "Authorization": token,
         },
         body: JSON.stringify({
           name,

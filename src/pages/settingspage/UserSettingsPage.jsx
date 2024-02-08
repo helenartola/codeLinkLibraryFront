@@ -2,19 +2,21 @@ import { useState } from "react";
 import "./UserSettingsPage.css";
 import { userSettingsService } from "../../services";
 import { Link } from "react-router-dom";
+import { useUser } from "../../context/UserContext";
 
-const UserSettingsPage = ({ token }) => {
+const UserSettingsPage = () => {
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [birthDate, setBirthDate] = useState("");
   const [bio, setBio] = useState("");
   const [error, setError] = useState(null);
+  const [user] = useUser("");
 
   const handleSubmit = async (event) => {
     event.preventDefault(); // Evita que el formulario se envíe automáticamente
 
     try {
-    
+      const token = user ? user.token : null;
       const userData = await userSettingsService(name, lastName, birthDate, bio, token);
       
       
@@ -51,7 +53,7 @@ const UserSettingsPage = ({ token }) => {
 
         <label htmlFor="birthDate">Fecha de nacimiento:</label>
         <input
-          type="text"
+          type="date"
           id="birthDate"
           value={birthDate}
           onChange={(e) => setBirthDate(e.target.value)}
