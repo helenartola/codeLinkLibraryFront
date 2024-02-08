@@ -87,9 +87,7 @@
 .caja-trending {
   width: 300px;
   height: 500px;
-  background-image: url("/fondo.jpg");
-  background-size: cover;
-  background-position: center;
+  background-color: teal;
   color: white;
   margin: 20px;
   border-radius: 20px;
@@ -122,7 +120,7 @@
   border-radius: 15px;
   border: 1px solid white;
   background-color: rgba(255, 255, 255, 0.482);
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 }
 @media only screen and (max-width: 767px) {
   .main-content {
