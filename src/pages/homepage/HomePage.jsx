@@ -90,6 +90,7 @@ const HomePage = () => {
             currentPosts={currentPosts}
             posts={posts}
             setPosts={setPosts}
+            showLink={true}
           />
           {/* Componente de paginación */}
           <Pagination
