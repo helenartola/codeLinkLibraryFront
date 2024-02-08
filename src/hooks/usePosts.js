@@ -52,7 +52,7 @@ const usePosts = () => {
   }, [user]);
 
   // Devuelve los datos y la función de actualización
-  return { posts, loading, error, refresh };
+  return { posts, setPosts, loading, error, refresh };
 };
 
 export default usePosts;

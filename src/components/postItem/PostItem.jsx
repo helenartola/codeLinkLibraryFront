@@ -12,8 +12,9 @@ import {
 } from "../../services/index";
 import "./PostItem.css";
 import { useUser } from "../../context/UserContext";
+import { Link } from "react-router-dom";
 
-const PostItem = ({ post }) => {
+const PostItem = ({ post, posts, setPosts }) => {
   // Estados para el manejo de comentarios
   const [comentario, setComentario] = useState("");
   const [comments, setComments] = useState([]);
@@ -119,6 +120,8 @@ const PostItem = ({ post }) => {
       // Actualiza la lista de posts para que el post eliminado ya no se muestre
       // Esto podría implicar recargar la página o actualizar el estado del componente
       // dependiendo de cómo esté estructurada tu aplicación
+
+      setPosts(posts.filter((postItem) => postItem.postId !== post.postId));
       alert("El post ha sido eliminado con éxito.");
     } catch (error) {
       console.error("Error al eliminar post:", error);
@@ -250,9 +253,8 @@ const PostItem = ({ post }) => {
 
   return (
     <div className="post-item-container">
+      {/* Contenido de los datos de publicación */}
       <div className="datos-publicacion">
-        {/* Contenido de los datos de publicación */}
-
         <p className="post-publicado-por">
           <span className="nombre-usuario">{post.userName} · </span>
         </p>
@@ -286,151 +288,179 @@ const PostItem = ({ post }) => {
           <button onClick={() => setEditingPost(false)}>Cancelar</button>
         </div>
       ) : (
-        <div>
-          <h2 className="titulo-post-home">{post.title}</h2>
+        <div className="post-content">
+        <div className="post-info">
+          {/* Modifica el título del post para que sea un enlace */}
+          <Link to={`/post/${post.postId}`} className="link-titulo-post">
+            <h2 className="titulo-post-home">{post.title}</h2>
+          </Link>
           <p className="descripcion-post-home">{post.description}</p>
-          {/* ... */}
+        </div>
+          {/* Botón de editar post */}
           {user && post.userId === user.userId && (
-            <button className="boton-editar-post" onClick={handleEditPost}>
-              Editar Post
-            </button>
+            <div className="editar-post-container">
+              <button className="boton-editar-post" onClick={handleEditPost}>
+                Editar
+              </button>
+            </div>
+          )}
+
+          {user && post.userId === user.userId && (
+            <div className="eliminar-post-container">
+              <button
+                className="boton-eliminar-post"
+                onClick={handleDeletePost}
+              >
+                Eliminar
+              </button>
+            </div>
           )}
         </div>
       )}
-      <div>
-        {/* Botón para mostrar/ocultar los comentarios */}
-        <button onClick={() => setShowComments(!showComments)}>
-          {showComments ? "Ocultar Comentarios" : "Mostrar Comentarios"}
-        </button>
-        {showComments && (
-          <ul className="lista-comentarios-post">
-            {comments.map((comment) => (
-              <li key={comment.commentId}>
-                <div className="caja-datos-edicion-comentario">
-                  <p className="comentario-de">De: {comment.userName}</p>
-                  <p className="comentario-publicado-por">
-                    Publicado el {new Date(comment.createdAt).toLocaleString()}
-                  </p>
-                </div>
-                <p className="texto-comentario-editado">{comment.text}</p>
-                {/* Mostrar hora de la última edición y "editado" si corresponde */}
-                {comment.commentId === editingComment?.commentId ? (
-                  <div className="caja-editar-comentario">
-                    <input
-                      type="text"
-                      value={comentario}
-                      onChange={(e) => setComentario(e.target.value)}
-                    />
-                    <button
-                      className="guardar-edicion"
-                      onClick={handleSaveEdit}
-                    >
-                      Guardar
-                    </button>
-                    <button
-                      className="cerrar-edicion"
-                      onClick={() => setEditingComment(null)}
-                    >
-                      Cerrar Edición
-                    </button>
-                  </div>
-                ) : (
-                  <div className="caja-editar-post">
-                    {lastCommentEditTime[comment.commentId] && (
-                      <p className="post-editado">
-                        Editado el {lastCommentEditTime[comment.commentId]}
-                      </p>
-                    )}
-                    {user && comment.userId === user.userId && (
-                      <button
-                        className="boton-crear-post"
-                        onClick={() => handleEditComment(comment.commentId)}
-                      >
-                        <img
-                          className="icono-nuevo-post"
-                          src="/edit.png"
-                          alt="Crear Nuevo Post"
-                        />
-                      </button>
-                    )}
-                  </div>
-                )}
-                {user && comment.userId === user.userId && (
-                  <button
-                    className="boton-eliminar-comentario"
-                    onClick={() => handleDeleteComment(comment.commentId)}
-                  >
-                    Eliminar Comentario
-                  </button>
-                )}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
 
-      <div className="botones-post-complementos">
-        {user && post.userId !== user.userId && (
-          <button className="boton-icono-like" onClick={handleLikePost}>
-            {isLiked ? (
-              <img src="/corazon-relleno.png" alt="Corazón Relleno" />
-            ) : (
-              <img src="/corazon.png" alt="Corazón Vacío" />
-            )}
-          </button>
-        )}
-        <p className="likes-count">{numLikes}</p>
-        {user && post.userId !== user.userId && (
-          <button className="botones-guardar" onClick={handleSavePost}>
-            {isSaved ? (
-              <img src="/guardar.png" alt="Eliminar Guardado" />
-            ) : (
-              <>
-                <img src="/guardar-rell.png" alt="Guardar" />
-              </>
-            )}
-          </button>
-        )}
-        {user && (
-          <button
-            className="boton-comentar"
-            onClick={() => setShowCommentForm(!showCommentForm)}
-          >
-            <img
-              className="icono-comentario"
-              src="/comentario.png"
-              alt="Escribir comentario"
-            />
-          </button>
-        )}
-        <h4>
-          {totalComments === 1
-            ? "1 Comentario"
-            : `${totalComments} Comentarios`}
-        </h4>
-      </div>
-
-      {showCommentForm && (
-        <div>
-          <label>
-            <input
-              className="comment-input"
-              type="text"
-              value={comentario}
-              onChange={(e) => setComentario(e.target.value)}
-            />
-          </label>
-          <button className="boton-comentar" onClick={handleAgregarComentario}>
-            Agregar Comentario
-          </button>
+      {/* CAJA QUE INCLUYE TODOS LOS ICONOS DEBAJO DEL POST */}
+      <div className="caja-iconitos-post">
+        {/* CAJA QUE CONTIENE CORAZÓN, GUARDAR, COMENTARIO, NÚMERO DE COMENTARIO */}
+        <div className="botones-post-complementos">
+          {user && (
+            <button className="boton-icono-like" onClick={handleLikePost} disabled={post.userId === user.userId}>
+              {post.userId === user.userId ? (
+                <img src="/corazon-gris.png" alt="Corazón Gris" />
+              ) : (       
+              isLiked ? (
+                <img src="/corazon-relleno.png" alt="Corazón Relleno" />
+              ) : (
+                <img src="/corazon.png" alt="Corazón Vacío" />
+              ))}
+            </button>
+          )}
+          <p className="likes-count">{numLikes}</p>
+          {user && post.userId !== user.userId && (
+            <button className="botones-guardar" onClick={handleSavePost}>
+              {isSaved ? (
+                <img src="/guardar.png" alt="Eliminar Guardado" />
+              ) : (
+                <>
+                  <img src="/guardar-rell.png" alt="Guardar" />
+                </>
+              )}
+            </button>
+          )}
+          {user && (
+            <button
+              className="boton-comentar"
+              onClick={() => setShowCommentForm(!showCommentForm)}
+            >
+              <img
+                className="icono-comentario"
+                src="/comentario.png"
+                alt="Escribir comentario"
+              />
+            </button>
+          )}
+          <h4 className="numero-comentarios">
+            {totalComments === 1
+              ? "1 Comentario"
+              : `${totalComments} Comentarios`}
+          </h4>
         </div>
-      )}
 
-      {user && post.userId === user.userId && (
-        <button className="boton-eliminar-post" onClick={handleDeletePost}>
-          Eliminar Post
-        </button>
-      )}
+        {showCommentForm && (
+          <div className="caja-para-escribir-comentario">
+            <label>
+              <input
+                className="comment-input"
+                type="text"
+                value={comentario}
+                onChange={(e) => setComentario(e.target.value)}
+              />
+            </label>
+            <button
+              className="boton-comentar"
+              onClick={handleAgregarComentario}
+            >
+              Agregar Comentario
+            </button>
+          </div>
+        )}
+
+        {/* CAJA CON EL BOTÓN DE MOSTRAR/OCULTAR COMENTARIOS */}
+        <div className="caja-comentarios-dentro-post">
+          {/* Botón para mostrar/ocultar los comentarios */}
+          <button
+            className="boton-mostrar-ocultar-comentarios"
+            onClick={() => setShowComments(!showComments)}
+          >
+            {showComments ? "Ocultar Comentarios" : "Mostrar Comentarios"}
+          </button>
+          {showComments && (
+            <ul className="lista-comentarios-post">
+              {comments.map((comment) => (
+                <li key={comment.commentId}>
+                  <div className="caja-datos-edicion-comentario">
+                    <p className="comentario-de">De: {comment.userName}</p>
+                    <p className="comentario-publicado-por">
+                      Publicado el{" "}
+                      {new Date(comment.createdAt).toLocaleString()}
+                    </p>
+                  </div>
+                  <p className="texto-comentario-editado">{comment.text}</p>
+                  {/* Mostrar hora de la última edición y "editado" si corresponde */}
+                  {comment.commentId === editingComment?.commentId ? (
+                    <div className="caja-editar-comentario">
+                      <input
+                        type="text"
+                        value={comentario}
+                        onChange={(e) => setComentario(e.target.value)}
+                      />
+                      <button
+                        className="guardar-edicion"
+                        onClick={handleSaveEdit}
+                      >
+                        Guardar
+                      </button>
+                      <button
+                        className="cerrar-edicion"
+                        onClick={() => setEditingComment(null)}
+                      >
+                        Cerrar Edición
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="caja-editar-post">
+                      {lastCommentEditTime[comment.commentId] && (
+                        <p className="post-editado">
+                          Editado el {lastCommentEditTime[comment.commentId]}
+                        </p>
+                      )}
+                      {user && comment.userId === user.userId && (
+                        <button
+                          className="boton-crear-post"
+                          onClick={() => handleEditComment(comment.commentId)}
+                        >
+                          <img
+                            className="icono-nuevo-post"
+                            src="/edit.png"
+                            alt="Crear Nuevo Post"
+                          />
+                        </button>
+                      )}
+                    </div>
+                  )}
+                  {user && comment.userId === user.userId && (
+                    <button
+                      className="boton-eliminar-comentario"
+                      onClick={() => handleDeleteComment(comment.commentId)}
+                    >
+                      Eliminar Comentario
+                    </button>
+                  )}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

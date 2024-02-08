@@ -8,7 +8,7 @@ import { useTheme } from "../../context/ThemeContext";
 
 const HomePage = () => {
   const { isDarkMode } = useTheme();
-  const { posts, loading, error, refresh } = usePosts();
+  const { posts, setPosts, loading, error, refresh } = usePosts();
   const [isFormOpen, setIsFormOpen] = useState(false);
 
   // Estado para controlar la página actual
@@ -63,15 +63,25 @@ const HomePage = () => {
             )}
           </div>
         </div>
-        <div className="sidebar-derecha">
+        <div className="columna-centro">
           {/* Lista de posts correspondientes a la página actual */}
-          <ListaDePosts posts={currentPosts} />
+          <ListaDePosts
+            currentPosts={currentPosts}
+            posts={posts}
+            setPosts={setPosts}
+          />
           {/* Componente de paginación */}
           <Pagination
             totalPages={totalPages}
             currentPage={currentPage}
             onPageChange={handlePageChange}
           />
+        </div>
+        {/* Columna derecha (solo para dispositivos de escritorio) */}
+        <div className="sidebar-derecha">
+          <div className="caja-trending">
+            <h1 className="trending-topics-titulo">TRENDING TOPICS</h1>
+          </div>
         </div>
       </div>
     </section>

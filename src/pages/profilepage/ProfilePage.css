@@ -1,39 +1,73 @@
 .profile-container {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 50px;
-  text-align: left;
-  font-family: jost, sans-serif;
+  font-family: "jost", sans-serif;
+  margin-top: 10%;
+  justify-content: center;
+  align-items: center;
 }
 
-.botones-navegacion-perfil {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.botones-navegacion-perfil button {
+.a,
+.boton-ajustes {
   padding: 10px 20px;
   background-color: #008080;
   color: white;
   border: none;
   border-radius: 50px;
-  font-family: jost, sans-serif;
+  font-family: "jost", sans-serif;
   cursor: pointer;
   font-size: 14px;
+  text-decoration: none;
+  margin-top: 15px;
 }
 
-.botones-navegacion-perfil button:hover {
+.a,
+.boton-ajustes:hover {
   background-color: transparent;
   border: 1px solid #008080;
   color: #008080;
 }
 
-.h1 {
+.botones-navegacion-perfil,
+.botones-navegacion-post {
+  margin-top: auto;
+}
+
+.h1 .perfil-usuario-titulo,
+h2 {
   margin-bottom: 10px;
 }
 
-.user-info {
-  margin-bottom: 20px;
+.user-info,
+.user-posts {
+  width: 50%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  border: 2px solid #008080;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 30px;
+  padding: 50px;
+}
+
+.user-info p {
+  margin-bottom: 10px;
+}
+
+.user-posts ul {
+  list-style: none;
+  padding: 0;
+  column-count: 1;
+  column-gap: 20px;
+}
+
+.user-posts li {
+  margin-bottom: 10px;
+}
+
+.user-posts li:before {
+  content: "#";
+  color: #008080;
+  font-size: 16px;
+  margin-right: 7px;
 }

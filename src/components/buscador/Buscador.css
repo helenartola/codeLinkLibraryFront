@@ -70,7 +70,7 @@
 /* CONTAINER RESULTADOS BÚSQUEDA */
 .light .container-lista-enlaces-encontrados {
   position: absolute; /* Posiciona el contenedor de resultados absolutamente */
-  top: 10%; /* Coloca el contenedor justo debajo del buscador */
+  top: 75%; /* Coloca el contenedor justo debajo del buscador */
   display: flex;
   flex-direction: column; /* Alinear los resultados en cascada hacia abajo */
   align-items: flex-start; /* Alinear los elementos a la izquierda */
@@ -82,7 +82,7 @@
 /* CONTAINER RESULTADOS BÚSQUEDA */
 .dark .container-lista-enlaces-encontrados {
   position: absolute; /* Posiciona el contenedor de resultados absolutamente */
-  top: 10%; /* Coloca el contenedor justo debajo del buscador */
+  top: 75%; /* Coloca el contenedor justo debajo del buscador */
   display: flex;
   flex-direction: column; /* Alinear los resultados en cascada hacia abajo */
   align-items: flex-start; /* Alinear los elementos a la izquierda */
@@ -127,6 +127,8 @@
   .search-bar {
     display: flex;
     align-items: center;
+    width: 100%;
+    border: 1px solid #008080;
   }
 
   .boton-lupa {

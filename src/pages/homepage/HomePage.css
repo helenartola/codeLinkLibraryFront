@@ -12,13 +12,21 @@
 }
 
 .dark .sidebar-izq {
-  width: 20%;
+  flex: 1;
+  width: 15%;
   border-right: 1px solid #ffffff32;
+  height: 100vw;
+  position: fixed;
+  top: 90px;
 }
 
 .light .sidebar-izq {
-  width: 20%;
+  flex: 1;
+  width: 15%;
   border-right: 1px solid #cbc9c9;
+  height: 100vw;
+  position: fixed;
+  top: 90px;
 }
 .dark .contenedor-crear-post {
   background-color: #303030;
@@ -29,12 +37,15 @@
   width: 100%;
   border-bottom: 1px solid #303030;
 }
-.light .sidebar-derecha {
-  flex: 1;
+.light .columna-centro {
+  flex: 3;
+  margin-left: 15%;
 }
-.dark .sidebar-derecha {
-  flex: 1;
+.dark .columna-centro {
+  flex: 3;
+  margin-left: 15%;
 }
+
 .light .boton-crear-post,
 .dark .boton-crear-post {
   display: flex;
@@ -64,30 +75,50 @@
 .light .escribe-tu-mejor-post {
   color: #303030;
 }
-@media only screen and (min-width: 960px) {
-  .light .contenedor-crear-post {
-    position: sticky;
-    top: 10px; /* Ajusta según sea necesario */
-  }
-  .light .escribe-tu-mejor-post {
+
+.sidebar-derecha {
+  flex: 1;
+  width: 10%;
+}
+.caja-trending {
+  width: 300px;
+  height: 450px;
+  background-color: #008080;
+  color: white;
+  margin: 20px;
+  border-radius: 20px;
+  position: fixed;
+  top: 90px;
+  right: 5px;
+}
+.trending-topics-titulo {
+  font-size: 20px;
+  padding: 20px;
+  margin-top: 20px;
+  text-align: center;
+}
+@media only screen and (max-width: 767px) {
+  .main-content {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    margin-left: 5px;
-    white-space: nowrap;
+    margin-top: 260px;
   }
 
-  .dark .contenedor-crear-post {
-    position: sticky;
-    top: 10px; /* Ajusta según sea necesario */
+  .sidebar-izq {
+    display: none;
+    margin-left: 0;
   }
-  .dark .escribe-tu-mejor-post {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin-left: 5px;
-    white-space: nowrap;
+
+  .columna-centro {
+    width: 100%;
+    margin-left: 0;
+  }
+  .sidebar-derecha {
+    display: none;
+  }
+  .contenedor-crear-post {
+    margin-bottom: 20px;
   }
 }

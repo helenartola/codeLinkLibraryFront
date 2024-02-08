@@ -20,7 +20,7 @@ const Auth = () => {
               betterSetUser(null);
             }}
           >
-            Logout
+            <img className="icono-logout" src="/Logout.png" alt="Log out" />
           </a>
         </>
       ) : (

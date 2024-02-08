@@ -1,6 +1,24 @@
+import { useState } from 'react';
 import "./Pagination.css";
 
 const Pagination = ({ totalPosts, totalPages, currentPage, onPageChange }) => {
+  // Estado para controlar el número de página editable
+  const [editablePage, setEditablePage] = useState(currentPage);
+
+  // Función para manejar el cambio de página
+  const handlePageChange = (event) => {
+    // Obtener el nuevo número de página ingresado por el usuario
+    const newPage = parseInt(event.target.textContent);
+    // Verificar si el número es válido y está dentro del rango de páginas
+    if (!isNaN(newPage) && newPage >= 1 && newPage <= totalPages) {
+      // Si es válido, llama a la función onPageChange para actualizar la página actual
+      onPageChange(newPage);
+    } else {
+      // Si el número no es válido, restablece el contenido del div al valor original de currentPage
+      setEditablePage(currentPage);
+    }
+  };
+
   return (
     <nav aria-label="Paginación" className="pagination">
       {/* Flecha para ir a la página anterior */}
@@ -12,8 +30,10 @@ const Pagination = ({ totalPosts, totalPages, currentPage, onPageChange }) => {
         &laquo;
       </button>
 
-      {/* Muestra el número de la página actual */}
-      <div className="current-page-box">{currentPage}</div>
+      {/* Muestra el número de la página actual, editable */}
+      <div className="current-page-box" contentEditable="true" onBlur={handlePageChange}>
+        {editablePage}
+      </div>
 
       {/* Flecha para ir a la página siguiente */}
       <button
@@ -31,3 +51,4 @@ const Pagination = ({ totalPosts, totalPages, currentPage, onPageChange }) => {
 };
 
 export default Pagination;
+
