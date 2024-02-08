@@ -87,6 +87,7 @@
 }
 .light .boton-eliminar-comentario,
 .guardar-edicion,
+.boton-cancelar-edicion,
 .cerrar-edicion {
   color: #008080;
   font-family: jost, sans-serif;
@@ -94,6 +95,14 @@
   border: 1px solid #008080;
   border-radius: 50px;
   margin-bottom: 3px;
+}
+.boton-guardar-edicion {
+  border: none;
+  background-color: transparent;
+}
+
+.icono-guardar-edicion-post {
+  width: 27px;
 }
 .boton-editar-post-postitem {
   background-color: transparent;
@@ -300,7 +309,7 @@
   }
   .light .boton-eliminar-post,
   .boton-eliminar-comentario,
-  .guardar-edicion,
+  .boton-cancelar-edicion,
   .cerrar-edicion {
     color: #008080;
     font-family: jost, sans-serif;
@@ -313,6 +322,13 @@
   .guardar-edicion,
   .cerrar-edicion {
     margin: 5px;
+  }
+  .boton-guardar-edicion {
+    border: none;
+    background-color: transparent;
+  }
+  .icono-guardar-edicion-post {
+    width: 27px;
   }
   .boton-icono-like img {
     width: 22px;
@@ -429,12 +445,7 @@
     top: 20px;
     right: 10px;
   }
-}
-
-.link-titulo-post {
-  color: #0cbbbb;
-}
-
-.link-titulo-post:visited {
-  color: #59397e; /* Cambia el color para enlaces visitados */
+  .link-titulo-post:visited {
+    color: #9d9d9d;
+  }
 }
