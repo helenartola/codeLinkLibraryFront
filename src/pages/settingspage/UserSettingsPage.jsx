@@ -19,7 +19,7 @@ const UserSettingsPage = () => {
         lastName,
         birthDate,
         bio,
-        token
+        //token
       );
 
       if (userData.token) {
@@ -70,20 +70,12 @@ const UserSettingsPage = () => {
           onChange={(e) => setBio(e.target.value)}
         />
 
-<<<<<<< HEAD
-      <button type="submit">Aceptar</button>
-      <Link to="/settings">
-              <button className="return">Volver</button>
-            </Link>
-    </form>
-=======
         <button type="submit">Aceptar</button>
-        <Link to="/">
+        <Link to="/settings">
           <button className="return">Volver</button>
         </Link>
       </form>
     </div>
->>>>>>> 0a6787516e166d8a20ab2fb9063348dedff0a328
   );
 };
 
