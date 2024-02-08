@@ -106,7 +106,7 @@ const HomePage = () => {
               TRENDING TOPICS
               <img
                 className="emoticono-fuego"
-                src="fuego.png"
+                src="fuegito.png"
                 alt="Emoticono fuego"
               />
             </h1>
