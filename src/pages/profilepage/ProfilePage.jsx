@@ -47,6 +47,7 @@ const ProfilePage = () => {
             <p>Fecha de nacimiento: {userData.birthDate}</p>
             <p>Biografía: {userData.bio}</p>
           </>
+          
         ) : (
           <p>Inicia sesión para ver el perfil.</p>
         )}
@@ -54,6 +55,9 @@ const ProfilePage = () => {
           <Link to="/settings" className="boton-ajustes">
             Ajustes
           </Link>
+          <Link to="/">
+          <button className="boton-delete">Eliminar usuario</button>{/* pendiente funcionalidad */}
+        </Link>
         </nav>
       </section>
 

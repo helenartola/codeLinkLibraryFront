@@ -525,3 +525,30 @@ export const fetchTopLikedPosts = async () => {
     throw error;
   }
 };
+
+// Función para eliminar usuario
+export const deleteUserByIdService = async (userId, token) => {
+  try {
+    const response = await fetch(
+      `${import.meta.env.VITE_BACKEND}/user/${userId}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: token,
+        },
+      }
+    );
+
+    const json = await response.json();
+
+    if (!response.ok) {
+      throw new Error(json.message);
+    }
+
+    // Devolver la respuesta del servidor
+    return json.data;
+  } catch (error) {
+    console.error("Error al eliminar el usuario:", error);
+    throw new Error("Error al eliminar el usuario");
+  }
+};

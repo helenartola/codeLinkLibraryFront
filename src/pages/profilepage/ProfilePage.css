@@ -27,6 +27,27 @@
   color: #008080;
 }
 
+.a,
+.boton-delete {
+  padding: 10px 20px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-family: "jost", sans-serif;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
+  margin-top: 15px;
+}
+
+.a,
+.boton-delete:hover {
+  background-color: transparent;
+  border: 1px solid red;
+  color: red;
+}
+
 .botones-navegacion-perfil,
 .botones-navegacion-post {
   margin-top: auto;

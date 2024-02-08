@@ -9,21 +9,23 @@ const UserSettingsPage = () => {
   const [lastName, setLastName] = useState("");
   const [birthDate, setBirthDate] = useState("");
   const [bio, setBio] = useState("");
-  const [error, setError] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(""); // mensaje con el OK actualización de campos
+  const [error, setError] = useState(null); //mensaje de error
   const [user] = useUser("");
 
   const handleSubmit = async (event) => {
-    event.preventDefault(); // Evita que el formulario se envíe automáticamente
+    event.preventDefault(); // Evita el envío automático del formulario
 
     try {
-      const token = user ? user.token : null;
+      const token = user ? user.token : null;//revisa token
+
       const userData = await userSettingsService(name, lastName, birthDate, bio, token);
-      
-      
+      setSuccessMessage("¡Los campos de han actualizado correctamente!");//mensaje de OK
+      setError(null); // Limpiar cualquier error previo
       console.log('Datos del usuario actualizados:', userData);
+
     } catch (error) {
-      // Manejo de errores, por ejemplo, mostrar un mensaje de error al usuario
-      setError("Error al actualizar los ajustes del usuario");
+      setError("Error al actualizar los ajustes del usuario");//mensaje de error
       console.error('Error al actualizar los ajustes del usuario:', error.message);
     }
   };
@@ -31,7 +33,8 @@ const UserSettingsPage = () => {
   return (
     <div className="caja-ajustes-usuario">
       <form className="formulario-ajustes-usuario" onSubmit={handleSubmit}>
-        {error && <p className="error-message">{error}</p>}
+        {error && <p className="error-message">{error}</p>}{/* Mostrar mensaje de error */}
+        {successMessage && <p className="success-message">{successMessage}</p>} {/* Mostrar mensaje de éxito */}
 
         <label htmlFor="name">Nombre:</label>
         <input
@@ -65,8 +68,8 @@ const UserSettingsPage = () => {
           value={bio}
           onChange={(e) => setBio(e.target.value)}
         />
-
         <button type="submit">Aceptar</button>
+        
         <Link to="/profile">
           <button className="return">Volver</button>
         </Link>
