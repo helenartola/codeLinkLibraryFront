@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./UserSettingsPage.css";
-import { usuarioAjustes } from "../../services";
+import { userSettingsService } from "../../services";
 import { Link } from "react-router-dom";
 
 const UserSettingsPage = ({ token }) => {
@@ -15,7 +15,7 @@ const UserSettingsPage = ({ token }) => {
 
     try {
     
-      const userData = await usuarioAjustes(name, lastName, birthDate, bio, token);
+      const userData = await userSettingsService(name, lastName, birthDate, bio, token);
       
       
       console.log('Datos del usuario actualizados:', userData);
