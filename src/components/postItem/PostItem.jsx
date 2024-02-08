@@ -284,8 +284,22 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
             value={editedURL}
             onChange={(e) => setEditedURL(e.target.value)}
           />
-          <button onClick={handleSaveEditPost}>Guardar</button>
-          <button onClick={() => setEditingPost(false)}>Cancelar</button>
+          <button
+            className="boton-guardar-edicion"
+            onClick={handleSaveEditPost}
+          >
+            <img
+              className="icono-guardar-edicion-post"
+              src="/save.png"
+              alt="Guardar Post"
+            />
+          </button>
+          <button
+            className="boton-cancelar-edicion"
+            onClick={() => setEditingPost(false)}
+          >
+            Cancelar
+          </button>
         </div>
       ) : (
         // Sección para mostrar el post
@@ -445,6 +459,11 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
                         className="guardar-edicion"
                         onClick={handleSaveEdit}
                       >
+                        <img
+                          className="icono-guardar-edicion-post"
+                          src="/save.png"
+                          alt="Guardar Post"
+                        />
                         Guardar
                       </button>
                       <button
