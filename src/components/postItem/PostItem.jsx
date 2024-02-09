@@ -410,13 +410,7 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
               />
             </button>
           )}
-          <h4 className="numero-comentarios">
-            {totalComments === 1
-              ? "1 Comentario"
-              : `${totalComments} Comentarios`}
-          </h4>
         </div>
-
         {showCommentForm && (
           <div className="caja-para-escribir-comentario">
             <label>
@@ -435,27 +429,61 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
             </button>
           </div>
         )}
-
         {/* CAJA CON EL BOTÓN DE MOSTRAR/OCULTAR COMENTARIOS */}
         <div className="caja-comentarios-dentro-post">
           {/* Botón para mostrar/ocultar los comentarios */}
-          <button
-            className="boton-mostrar-ocultar-comentarios"
+          <h4
+            className="numero-comentarios"
             onClick={() => setShowComments(!showComments)}
           >
-            {showComments ? "Ocultar Comentarios" : "Mostrar Comentarios"}
-          </button>
+            {showComments ? (
+              totalComments === 1 ? (
+                "1 Comentario "
+              ) : (
+                `${totalComments} Comentarios`
+              )
+            ) : showCommentForm ? (
+              "Cancelar"
+            ) : (
+              <span className="mostrar-comentarios-texto">
+                Mostrar comentarios
+              </span>
+            )}
+            <img
+              className="icono-flecha"
+              src="/flecha.png"
+              alt="Icono flecha"
+            />
+          </h4>
+
           {showComments && (
-            <ul className="lista-comentarios-post">
+            <ul
+              className={`lista-comentarios-post ${
+                showComments ? "mostrar" : ""
+              }`}
+            >
               {comments.map((comment) => (
-                <li key={comment.commentId}>
+                <li className="lista-comentarios" key={comment.commentId}>
                   <div className="caja-datos-edicion-comentario">
                     <p className="comentario-de">De: {comment.userName}</p>
                     <p className="comentario-publicado-por">
                       Publicado el{" "}
                       {new Date(comment.createdAt).toLocaleString()}
                     </p>
+                    {user && comment.userId === user.userId && (
+                      <button
+                        className="boton-eliminar-comentario"
+                        onClick={() => handleDeleteComment(comment.commentId)}
+                      >
+                        <img
+                          className="icono-eliminar"
+                          src="/basura-roja.png"
+                          alt="Eliminar"
+                        />
+                      </button>
+                    )}
                   </div>
+
                   <p className="texto-comentario-editado">{comment.text}</p>
                   {/* Mostrar hora de la última edición y "editado" si corresponde */}
                   {comment.commentId === editingComment?.commentId ? (
@@ -474,13 +502,16 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
                           src="/save.png"
                           alt="Guardar Post"
                         />
-                        Guardar
                       </button>
                       <button
                         className="cerrar-edicion"
                         onClick={() => setEditingComment(null)}
                       >
-                        Cerrar Edición
+                        <img
+                          className="icono-cerrar-edicion-post"
+                          src="/cancelar.png"
+                          alt="Cerrar edición"
+                        />
                       </button>
                     </div>
                   ) : (
@@ -503,14 +534,6 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
                         </button>
                       )}
                     </div>
-                  )}
-                  {user && comment.userId === user.userId && (
-                    <button
-                      className="boton-eliminar-comentario"
-                      onClick={() => handleDeleteComment(comment.commentId)}
-                    >
-                      Eliminar Comentario
-                    </button>
                   )}
                 </li>
               ))}
