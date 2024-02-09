@@ -111,11 +111,19 @@ const NewPost = ({ isFormOpen, setIsFormOpen, onAddPost }) => {
           {/* Botón para agregar el post */}
           <br />
           <button className="agregar-post" onClick={handleAddPost}>
-            Agregar Post
+            <img
+              className="agregar-post-icono"
+              src="/agregar-post.png"
+              alt="Agregar post"
+            />
           </button>
           {/* Botón para cerrar el formulario */}
           <button className="cerrar-post" onClick={handleCloseForm}>
-            Cerrar
+            <img
+              className="cancelar-crear-post-icono"
+              src="/cancelar.png"
+              alt="Cancelar crear post"
+            />
           </button>
         </>
       )}

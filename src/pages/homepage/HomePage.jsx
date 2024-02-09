@@ -6,7 +6,7 @@ import Pagination from "../../components/pagination/Pagination"; // Importa el c
 import "./HomePage.css";
 import { useTheme } from "../../context/ThemeContext";
 import { fetchTopLikedPosts } from "../../services";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   const { isDarkMode } = useTheme();
@@ -113,12 +113,10 @@ const HomePage = () => {
             </h1>
             <ul className="lista-trending-topics">
               {topLikedPosts.map((post) => (
-              <li className="lista-posts-trending" key={post.postId}>
-              <Link to={`/post/${post.postId}`}>
-              {post.title}
-              </Link>
-              </li>
-             ))}
+                <li className="lista-posts-trending" key={post.postId}>
+                  <Link to={`/post/${post.postId}`}>{post.title}</Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

@@ -271,16 +271,19 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
         <div className="caja-editar-post">
           <h3 className="edita-tu-post-titulo">Edita tu post:</h3>
           <input
+            className="input-edita-tu-post"
             type="text"
             value={editedTitle}
             onChange={(e) => setEditedTitle(e.target.value)}
           />
           <input
+            className="input-edita-tu-post"
             type="text"
             value={editedDescription}
             onChange={(e) => setEditedDescription(e.target.value)}
           />
           <input
+            className="input-edita-tu-post"
             type="text"
             value={editedURL}
             onChange={(e) => setEditedURL(e.target.value)}
@@ -340,7 +343,7 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
               >
                 <img
                   className="icono-editar-post"
-                  src="/edit.png"
+                  src="/lapiz-editar.png"
                   alt="Editar post"
                 />
               </button>

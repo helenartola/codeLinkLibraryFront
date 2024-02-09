@@ -12,20 +12,8 @@
 
 .new-post-container button {
   background-color: transparent;
-  color: #008080;
-  font-family: Jost, sans-serif;
-  font-size: 15px;
-  letter-spacing: 0.1em;
-  padding: 10px 15px;
   border: none;
-  border-radius: 50px;
   cursor: pointer;
-}
-
-.new-post-container button:hover {
-  background-color: #008080;
-  color: #ffffff32;
-  border: none;
 }
 
 .label-titulo,
@@ -49,7 +37,6 @@ textarea {
   width: 100%;
 }
 
-/* Estilos Dark */
 .dark .new-post-container {
   background-color: #303030;
   padding: 15px;
@@ -82,14 +69,20 @@ textarea {
 }
 
 .dark .agregar-post {
-  border: 1px solid white;
+  border: none;
   background: transparent;
-  color: white;
 }
 .light .agregar-post {
-  border: 1px solid #303030;
+  border: none;
   background: transparent;
-  color: #303030;
+}
+.dark .agregar-post-icono,
+.cancelar-crear-post-icono {
+  width: 42px;
+}
+.light .agregar-post-icono,
+.cancelar-crear-post-icono {
+  width: 42px;
 }
 
 .error-message {
