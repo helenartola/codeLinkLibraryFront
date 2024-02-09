@@ -2,31 +2,52 @@
 .post-page-container {
   margin-top: 150px;
   display: flex;
-  flex-direction: column;
-  align-items: center; /* Centra el contenido verticalmente */
+  align-items: center;
+  overflow-y: auto;
 }
 
-.dark .post-item-container {
-  margin: 20px 5% 20px 5%;
+.post-content-container {
+  margin-bottom: 20px;
+}
+
+.dark .post-content-container {
+  margin: 20px 5%;
   padding: 15px;
-  background-color: #47474778;
   border-radius: 16px;
   border: none;
   max-width: 800px;
 }
 
-.light .post-item-container {
-  margin: 20px 5% 20px 5%;
+.light .post-content-container {
+  margin: 20px 5%;
   padding: 15px;
   background-color: #ededed9b;
   border-radius: 16px;
   border: none;
-  max-width: 600px;
+  max-width: 800px;
+}
+
+.dark .boton-eliminar-comentario {
+  border: none;
+  background-color: transparent;
+}
+
+.light .boton-eliminar-comentario {
+  border: none;
+  background-color: transparent;
 }
 
 .datos-publicacion {
   display: flex;
   font-family: jost, sans-serif;
+}
+
+.dark .texto-comentario-editado {
+  color: white;
+}
+
+.light .texto-comentario-editado {
+  color: #008080;
 }
 
 .post-page-container .boton-comentar {
@@ -43,26 +64,30 @@
 }
 
 .post-page-container .dark .comment-input {
-  border: 1px solid #dddddd76; /* Borde para la caja de comentarios */
-  border-radius: 5px; /* Esquinas redondeadas */
-  padding: 10px; /* Espaciado interno */
-  margin: 5px 0; /* Margen superior e inferior */
+  border: 1px solid #dddddd76;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px 0;
 }
 
 .post-page-container .light .comment-input {
-  border: 1px solid #303030; /* Borde para la caja de comentarios */
-  border-radius: 5px; /* Esquinas redondeadas */
-  padding: 10px; /* Espaciado interno */
-  margin: 5px 0; /* Margen superior e inferior */
+  border: 1px solid #303030;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px 0;
 }
 
 .post-page-container .boton-eliminar-comentario {
   color: #008080;
   font-family: jost, sans-serif;
   background-color: transparent;
-  border: 1px solid #008080;
-  border-radius: 50px;
   padding: 5px;
+}
+
+.numero-comentarios {
+  font-size: 14px;
+  font-weight: 500;
+  font-family: jost, sans-serif;
 }
 
 .post-page-container .boton-icono-like img {
@@ -98,6 +123,7 @@
 .post-page-container .descripcion-post-home {
   margin-bottom: 10px;
   font-size: 20px;
+  font-family: jost, sans-serif;
   letter-spacing: 0.8px;
 }
 
@@ -109,6 +135,7 @@
 .post-page-container .publicado-por {
   color: #008080;
   font-size: 11px;
+  font-family: jost, sans-serif;
   margin-left: 2px;
 }
 
@@ -117,18 +144,10 @@
 }
 
 .post-page-container .link-url-post.estilo-unico {
-  /* Estilos específicos para este enlace */
   display: inline-block;
-  background-color: transparent; /* Fondo transparente */
-  color: rgb(3, 204, 204); /* Color del texto */
+  font-family: jost, sans-serif;
+  background-color: transparent;
+  color: teal;
   text-decoration: none;
-  border: 2px solid #008080; /* Borde de 2px con el color especificado */
-  border-radius: 8px;
-  margin-top: 10px;
-  padding: 15px; 
-}
-
-.post-item-container {
-  /* Puedes agregar estilos específicos para el contenedor del PostItem aquí */
-  max-width: 600px;
+  margin-bottom: 20px;
 }
