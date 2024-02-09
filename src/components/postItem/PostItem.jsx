@@ -268,7 +268,8 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
 
       {/* Título y descripción del post */}
       {editingPost ? (
-        <div>
+        <div className="caja-editar-post">
+          <h3 className="edita-tu-post-titulo">Edita tu post:</h3>
           <input
             type="text"
             value={editedTitle}
@@ -284,22 +285,24 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
             value={editedURL}
             onChange={(e) => setEditedURL(e.target.value)}
           />
-          <button
-            className="boton-guardar-edicion"
-            onClick={handleSaveEditPost}
-          >
-            <img
-              className="icono-guardar-edicion-post"
-              src="/save.png"
-              alt="Guardar Post"
-            />
-          </button>
-          <button
-            className="boton-cancelar-edicion"
-            onClick={() => setEditingPost(false)}
-          >
-            Cancelar
-          </button>
+          <div className="botones-cancelar-guardar-edicion-post">
+            <button
+              className="boton-guardar-edicion"
+              onClick={handleSaveEditPost}
+            >
+              <img
+                className="icono-guardar-edicion-post"
+                src="/save.png"
+                alt="Guardar Post"
+              />
+            </button>
+            <button
+              className="boton-cancelar-edicion"
+              onClick={() => setEditingPost(false)}
+            >
+              Cancelar
+            </button>
+          </div>
         </div>
       ) : (
         // Sección para mostrar el post
@@ -323,7 +326,6 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
                 {post.url}
               </a>
             )}
-            
           </div>
           {/* Botón de editar post */}
           {user && post.userId === user.userId && (
@@ -475,7 +477,7 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
                       </button>
                     </div>
                   ) : (
-                    <div className="caja-editar-post">
+                    <div className="caja-editado-el">
                       {lastCommentEditTime[comment.commentId] && (
                         <p className="post-editado">
                           Editado el {lastCommentEditTime[comment.commentId]}
