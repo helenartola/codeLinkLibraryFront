@@ -91,7 +91,7 @@
   flex-direction: column;
   width: 300px;
   height: 500px;
-  background-color: teal;
+  background-color: rgb(0, 170, 170);
   color: white;
   margin: 20px;
   border-radius: 20px;
@@ -149,4 +149,14 @@
   .contenedor-crear-post {
     margin-bottom: 20px;
   }
+}
+
+.lista-posts-trending a {
+  color: white; /* Establece el color del texto del enlace en blanco */
+  text-decoration: none; /* Elimina el subrayado predeterminado del enlace si lo deseas */
+}
+
+.lista-posts-trending a:hover {
+  color:rgb(0, 170, 170);
+  text-decoration: underline; /* Agrega un subrayado cuando el usuario pasa el ratón por encima si lo deseas */
 }

@@ -34,10 +34,10 @@ const ProfilePage = () => {
   }, [user]);
 
   return (
-    <div className="profile-container">
+    <div className="zonas-container">
       {/* Información del perfil */}
       <section className="user-info">
-        <h1 className="perfil-usuario-titulo">Perfil de Usuario</h1>
+        <h1 className="perfil-usuario-titulo"> Mi Perfil de Usuario</h1>
         {userData ? (
           <>
             <p>Nombre de usuario: {userData.userName}</p>
@@ -53,7 +53,7 @@ const ProfilePage = () => {
         )}
         <nav className="botones-navegacion-perfil">
           <Link to="/settings" className="boton-ajustes">
-            Ajustes
+            Ajustes usuario
           </Link>
           <Link to="/">
           <button className="boton-delete">Eliminar usuario</button>{/* pendiente funcionalidad */}
@@ -68,14 +68,14 @@ const ProfilePage = () => {
         <>
           {/* Listado de posts del usuario */}
           <div className="user-posts">
-            <h2>Listado de Posts</h2>
+            <h2 className="mis-post-titulo">Mis Post Publicados</h2>
             <ul>
               {userPosts.map((post) => (
                 <li key={post.postId}>{post.title}</li>
               ))}
             </ul>
             <nav className="botones-navegacion-post">
-              <button className="boton-guardados">Guardados</button>
+              <button className="boton-guardados">Mis post Guardados</button>
             </nav>
           </div>
         </>
