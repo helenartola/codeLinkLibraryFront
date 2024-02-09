@@ -84,7 +84,9 @@ textarea {
 .cancelar-crear-post-icono {
   width: 42px;
 }
-
+.cancelar-crear-post-icono:hover {
+  filter: hue-rotate(190deg);
+}
 .error-message {
   color: red;
 }
