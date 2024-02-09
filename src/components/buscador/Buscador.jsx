@@ -119,8 +119,10 @@ const Buscador = () => {
                 {/* Enlace a la página del post utilizando Link */}
                 <Link to={`/post/${result.postId}`} onClick={clearSearchTerm}>
                   {/* Mostrar la información del post */}
-                  <p>{result.title}</p>
-                  <p>{result.description}</p>
+                  <p className="titulo-resultados-busqueda">{result.title}</p>
+                  <p className="descripcion-resultados-busqueda">
+                    {result.description}
+                  </p>
                 </Link>
               </li>
             ))}

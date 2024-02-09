@@ -116,6 +116,19 @@
   color: white;
   font-family: jost, sans-serif;
 }
+.lista-enlaces-buscador {
+  max-width: 200px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+.busqueda:hover {
+  background-color: rgba(0, 128, 128, 0.35);
+}
+.titulo-resultados-busqueda {
+  font-size: 20px;
+  font-weight: 800;
+  color: teal;
+}
 /* ESTILOS PARA DESKTOP */
 @media screen and (min-width: 768px) {
   .barra-buscador {
@@ -131,11 +144,17 @@
     border: 1px solid #008080;
   }
   .lista-enlaces-buscador {
+    max-width: 700px;
     max-height: 400px;
     overflow-y: auto;
   }
   .busqueda:hover {
     background-color: rgba(0, 128, 128, 0.35);
+  }
+  .titulo-resultados-busqueda {
+    font-size: 20px;
+    font-weight: 800;
+    color: teal;
   }
   .boton-lupa {
     background-color: transparent;
