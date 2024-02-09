@@ -130,7 +130,13 @@
     width: 100%;
     border: 1px solid #008080;
   }
-
+  .lista-enlaces-buscador {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  .busqueda:hover {
+    background-color: rgba(0, 128, 128, 0.35);
+  }
   .boton-lupa {
     background-color: transparent;
     border: 2px solid #008080;
