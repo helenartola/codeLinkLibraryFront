@@ -29,7 +29,7 @@
   border: none;
 }
 .icono-comentario {
-  width: 22px;
+  width: 32px;
 }
 .dark .comment-input {
   border: 1px solid #dddddd76;
@@ -274,7 +274,7 @@
     border: none;
   }
   .icono-comentario {
-    width: 22px;
+    width: 32px;
   }
   .dark .comment-input {
     border: 1px solid #dddddd76;
