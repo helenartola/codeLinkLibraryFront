@@ -8,13 +8,13 @@ const Pagination = ({ totalPosts, totalPages, currentPage, onPageChange }) => {
   // Función para manejar el cambio de página
   const handlePageChange = (event) => {
     // Obtener el nuevo número de página ingresado por el usuario
-    const newPage = parseInt(event.target.textContent);
+    const newPage = parseInt(event.target.value);
     // Verificar si el número es válido y está dentro del rango de páginas
     if (!isNaN(newPage) && newPage >= 1 && newPage <= totalPages) {
       // Si es válido, llama a la función onPageChange para actualizar la página actual
       onPageChange(newPage);
     } else {
-      // Si el número no es válido, restablece el contenido del div al valor original de currentPage
+      // Si el número no es válido, restablece el contenido del input al valor original de currentPage
       setEditablePage(currentPage);
     }
   };
@@ -30,10 +30,16 @@ const Pagination = ({ totalPosts, totalPages, currentPage, onPageChange }) => {
         &laquo;
       </button>
 
-      {/* Muestra el número de la página actual, editable */}
-      <div className="current-page-box" contentEditable="true" onBlur={handlePageChange}>
-        {editablePage}
-      </div>
+      {/* Input para editar el número de página */}
+      <input
+        type="number"
+        className="current-page-box"
+        value={editablePage}
+        onChange={(event) => setEditablePage(event.target.value)}
+        onBlur={handlePageChange}
+        min="1"
+        max={totalPages}
+      />
 
       {/* Flecha para ir a la página siguiente */}
       <button
@@ -51,4 +57,3 @@ const Pagination = ({ totalPosts, totalPages, currentPage, onPageChange }) => {
 };
 
 export default Pagination;
-
