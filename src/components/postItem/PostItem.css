@@ -292,6 +292,15 @@
     padding: 10px;
     margin: 5px 0;
   }
+  .dark .input-edita-tu-post {
+    border: none;
+    border-radius: 0;
+  }
+  .light .input-edita-tu-post {
+    border: none;
+    border-radius: 0;
+    background-color: #dddddd76;
+  }
   .light .comment-input {
     border: 1px solid #303030;
     border-radius: 5px;
