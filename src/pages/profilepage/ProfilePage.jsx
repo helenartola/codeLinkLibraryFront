@@ -109,8 +109,10 @@ const ProfilePage = () => {
               ))}
             </ul>
             <nav className="botones-navegacion-post">
-              <button className="boton-guardados">Mis post Guardados</button>
-            </nav>
+          <Link to="/saved-page" className="boton-guardados">
+            Mis post Guardados
+          </Link>
+        </nav>
           </div>
         </>
       )}

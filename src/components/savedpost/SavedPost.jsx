@@ -1,12 +1,12 @@
 // SavedPosts.jsx
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import './SavedPost.css'; // Ajusta la ruta según tu estructura de archivos
 
 const SavedPosts = () => {
   const [savedPosts, setSavedPosts] = useState([]);
 
   useEffect(() => {
-    // Lógica para obtener los posts guardados del usuario
     const fetchSavedPosts = async () => {
       try {
         const response = await fetch("/posts/saved"); // Ajusta la ruta según tu API
@@ -38,6 +38,9 @@ const SavedPosts = () => {
           ))}
         </ul>
       )}
+
+      {/* Enlace a la página SavedPage con la ruta correcta */}
+      <Link to="/saved">Ir a SavedPage</Link>
     </div>
   );
 };

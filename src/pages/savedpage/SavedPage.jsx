@@ -1,36 +1,51 @@
+// SavedPage.jsx
+import { useEffect, useState } from 'react';
+//import SavedPosts from '../../components/savedpost/SavedPosts';
 
+const SavedPage = () => {
+  const [savedPosts, setSavedPosts] = useState([]);
+  const [error, setError] = useState(null);
 
-//import { useEffect, useState } from 'react';
-//import { getSavedPosts } 
-/*const SavedPostsPage = () => {
-  //const [savedPosts, setSavedPosts] = useState([]);
-
-  //useEffect(() => {
-    // Llama a la función para obtener posts guardados al cargar la página
+  useEffect(() => {
     const fetchSavedPosts = async () => {
       try {
-        //const response = await getSavedPosts(); // Reemplaza con la función real
-        //setSavedPosts(response.data); // Asume que la respuesta contiene la lista de posts guardados
+        const response = await fetch("/posts/saved");
+        if (!response.ok) {
+          throw new Error("Error al obtener los posts guardados");
+        }
+
+        const contentType = response.headers.get('content-type');
+        if (contentType && contentType.includes('application/json')) {
+          const data = await response.json();
+          setSavedPosts(data.data);
+        } else {
+          throw new Error('La respuesta no es de tipo JSON');
+        }
       } catch (error) {
-        console.error('Error fetching saved posts:', error);
+        console.error("Error al obtener los posts guardados:", error);
+        setError(error.message);
       }
     };
 
     fetchSavedPosts();
-  }, []); // Se ejecuta solo al montar el componente
+  }, []);
 
   return (
     <div>
-      <h2>Your Saved Posts</h2>
-      <ul>
-        {savedPosts.map(post => (
-          <li key={post.id}>
-            <a href={`/post/${post.id}`}>{post.title}</a>
-          </li>
-        ))}
-      </ul>
+      <h2>Tus Posts Guardados</h2>
+      {error ? (
+        <p>Error: {error}</p>
+      ) : savedPosts.length === 0 ? (
+        <p>No tienes posts guardados por el momento.</p>
+      ) : (
+        <ul>
+          {savedPosts.map((post) => (
+            <li key={post.postId}>{post.title}</li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
 
-export default SavedPostsPage;*/
+export default SavedPage;
