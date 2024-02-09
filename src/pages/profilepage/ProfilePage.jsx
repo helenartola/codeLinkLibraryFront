@@ -85,9 +85,9 @@ const ProfilePage = () => {
           <p>Inicia sesión para ver el perfil.</p>
         )}
         <nav className="botones-navegacion-perfil">
-          <Link to="/settings" className="boton-ajustes"><img className="icono-boton-ajustes" src="/ajustes.png" alt="ajustes de usuario" />
+          <Link to="/settings" className="boton-ajustes">
           </Link>
-          <button className="boton-delete" onClick={handleDeleteUser}><img className="icono-boton-delete"src="/eliminar-usuario.png"alt="Eliminar usuario"/>
+          <button className="boton-delete" onClick={handleDeleteUser}>
           </button>
         </nav>
       </section>
