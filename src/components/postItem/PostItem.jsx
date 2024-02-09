@@ -300,7 +300,11 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
               className="boton-cancelar-edicion"
               onClick={() => setEditingPost(false)}
             >
-              Cancelar
+              <img
+                className="icono-cancelar-edicion-post"
+                src="/cancelar.png"
+                alt="Cancelar Edición"
+              />
             </button>
           </div>
         </div>

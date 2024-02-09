@@ -29,6 +29,17 @@
   border: none;
 }
 .icono-comentario {
+  width: 42px;
+}
+.dark .boton-cancelar-edicion {
+  border: none;
+  background-color: transparent;
+}
+.light .boton-cancelar-edicion {
+  border: none;
+  background-color: transparent;
+}
+.icono-cancelar-edicion-post {
   width: 32px;
 }
 .dark .comment-input {
@@ -87,7 +98,6 @@
 }
 .light .boton-eliminar-comentario,
 .guardar-edicion,
-.boton-cancelar-edicion,
 .cerrar-edicion {
   color: #008080;
   font-family: jost, sans-serif;
