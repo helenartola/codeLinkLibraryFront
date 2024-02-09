@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useUser } from "../../context/UserContext";
 import "./ProfilePage.css";
-import { getInfoUserService, getUserPostsService } from "../../services";
+import { getInfoUserService, getUserPostsService, deleteUserByIdService } from "../../services";
 import { Link } from "react-router-dom";
 
 const ProfilePage = () => {
@@ -33,6 +33,17 @@ const ProfilePage = () => {
     fetchData();
   }, [user]);
 
+  const handleDeleteUser = async () => {
+    try {
+      // Llama al servicio para eliminar el usuario
+      await deleteUserByIdService(user.userId);
+      // Después de eliminar, podrías redirigir a una página de inicio de sesión o realizar alguna otra acción.
+      console.log("Usuario eliminado correctamente");
+    } catch (error) {
+      console.error("Error al eliminar usuario:", error);
+    }
+  };
+
   return (
     <div className="zonas-container">
       {/* Información del perfil */}
@@ -54,16 +65,13 @@ const ProfilePage = () => {
           <Link to="/settings" className="boton-ajustes">
             Ajustes usuario
           </Link>
-          <Link to="/">
-            <button className="boton-delete">
-              <img
+          <button className="boton-delete" onClick={handleDeleteUser}>
+          <img
                 className="icono-boton-delete"
                 src="/eliminar-usuario.png"
                 alt="Eliminar usuario"
               />
-            </button>
-            {/* pendiente funcionalidad */}
-          </Link>
+          </button>
         </nav>
       </section>
 
