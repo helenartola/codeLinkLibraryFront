@@ -9,16 +9,17 @@ const ProfilePage = () => {
   const [userData, setUserData] = useState(null);
   const [userPosts, setUserPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showConfirmationDialog, setShowConfirmationDialog] = useState(false);//maneja el pop up de confirmación de eliminación
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         if (user) {
-          // Obtener datos del perfil del usuario
+          // mostrar datos del usuario
           const data = await getInfoUserService(user);
           setUserData(data);
 
-          // Obtener posts del usuario utilizando el servicio
+          // mostrar posts del usuario utilizando el service
           const posts = await getUserPostsService(user.userId);
           setUserPosts(posts);
 
@@ -33,15 +34,37 @@ const ProfilePage = () => {
     fetchData();
   }, [user]);
 
-  const handleDeleteUser = async () => {
-    try {
-      // Llama al servicio para eliminar el usuario
-      await deleteUserByIdService(user.userId);
-      // Después de eliminar, podrías redirigir a una página de inicio de sesión o realizar alguna otra acción.
-      console.log("Usuario eliminado correctamente");
-    } catch (error) {
-      console.error("Error al eliminar usuario:", error);
-    }
+  const handleDeleteUser = () => {//handle para eliminación de usuario
+    setShowConfirmationDialog(true);
+  };
+
+  const ConfirmationDialog = () => {//cuadro de dialogo para confirmación de eliminación de usuario
+    const handleCancel = () => {
+      setShowConfirmationDialog(false);
+    };
+
+    const handleConfirm = async () => {///handle confirmación de eliminación de usuario
+      try {
+        const token = user ? user.token : null;
+        await deleteUserByIdService(user.userId, token);
+        console.log("Usuario eliminado correctamente");
+
+      } catch (error) {
+        console.error("Error al eliminar usuario:", error);
+      } finally {
+        setShowConfirmationDialog(false);
+      }
+    };
+
+    return (
+      <div className="confirmation-dialog">
+        <p>¿Estás seguro de que quieres eliminar tu cuenta?</p>
+        <div>
+          <button className="boton-cancelar-eliminacion" onClick={handleCancel}>Cancelar</button>
+          <button className="boton-confirmar-eliminacion" onClick={handleConfirm}>Eliminar</button>
+        </div>
+      </div>
+    );
   };
 
   return (
@@ -62,18 +85,15 @@ const ProfilePage = () => {
           <p>Inicia sesión para ver el perfil.</p>
         )}
         <nav className="botones-navegacion-perfil">
-          <Link to="/settings" className="boton-ajustes">
-            Ajustes usuario
+          <Link to="/settings" className="boton-ajustes"><img className="icono-boton-ajustes" src="/ajustes.png" alt="ajustes de usuario" />
           </Link>
-          <button className="boton-delete" onClick={handleDeleteUser}>
-          <img
-                className="icono-boton-delete"
-                src="/eliminar-usuario.png"
-                alt="Eliminar usuario"
-              />
+          <button className="boton-delete" onClick={handleDeleteUser}><img className="icono-boton-delete"src="/eliminar-usuario.png"alt="Eliminar usuario"/>
           </button>
         </nav>
       </section>
+
+      {/* Cuadro de diálogo de confirmación */}
+      {showConfirmationDialog && <ConfirmationDialog />}
 
       {/* Mostrar durante la carga de datos */}
       {loading ? (
@@ -99,3 +119,4 @@ const ProfilePage = () => {
 };
 
 export default ProfilePage;
+
