@@ -3,6 +3,7 @@ import "./UserSettingsPage.css";
 import { userSettingsService } from "../../services";
 import { Link } from "react-router-dom";
 import { useUser } from "../../context/UserContext";
+import { useTheme } from "../../context/ThemeContext";
 
 const UserSettingsPage = () => {
   const [name, setName] = useState("");
@@ -12,6 +13,8 @@ const UserSettingsPage = () => {
   const [successMessage, setSuccessMessage] = useState(""); // mensaje con el OK actualización de campos
   const [error, setError] = useState(null); //mensaje de error
   const [user] = useUser("");
+
+ const { isDarkMode } = useTheme();
 
   const handleSubmit = async (event) => {
     event.preventDefault(); // Evita el envío automático del formulario
@@ -31,7 +34,7 @@ const UserSettingsPage = () => {
   };
 
   return (
-    <div className="caja-ajustes-usuario">
+    <div className={`caja-ajustes-usuario ${isDarkMode ? "dark" : "light"}`}>
       <form className="formulario-ajustes-usuario" onSubmit={handleSubmit}>
         {error && <p className="error-message">{error}</p>}{/* Mostrar mensaje de error */}
         {successMessage && <p className="success-message">{successMessage}</p>} {/* Mostrar mensaje de éxito */}
