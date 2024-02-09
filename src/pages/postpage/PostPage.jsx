@@ -60,11 +60,14 @@ const PostPage = () => {
 
   return (
     <section className={`post-page-container ${isDarkMode ? "dark" : "light"}`}>
-      {/* Verificar si el post existe antes de renderizar el componente PostItem */}
-      {post && <PostItem post={post} user={user} showLink={true}/>}
-
-      {/* Renderizar el componente Comments con la lista de comentarios y la función onDeleteComment */}
-      <Comments comments={comments} onDeleteComment={handleDeleteComment} />
+      <div className="post-content-container">
+        {/* Verificar si el post existe antes de renderizar el componente PostItem */}
+        {post && <PostItem post={post} user={user} showLink={true}/>}
+      </div>
+      <div className="commetsPostpage">
+        {/* Renderizar el componente Comments con la lista de comentarios y la función onDeleteComment */}
+        <Comments comments={comments} onDeleteComment={handleDeleteComment} />
+      </div>
     </section>
   );
 };

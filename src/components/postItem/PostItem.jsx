@@ -311,10 +311,11 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
                 {post.title}
               </Link>
             </h2>
+            <p className="descripcion-post-home">{post.description}</p>
             {/* Muestra el enlace si existe y showLink es true */}
             {showLink && post.url && (
               <a
-                className="link-url-post"
+                className="link-url-post estilo-unico"
                 href={post.url}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -322,7 +323,7 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
                 {post.url}
               </a>
             )}
-            <p className="descripcion-post-home">{post.description}</p>
+            
           </div>
           {/* Botón de editar post */}
           {user && post.userId === user.userId && (

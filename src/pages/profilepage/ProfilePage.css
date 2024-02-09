@@ -1,13 +1,44 @@
-.profile-container {
+.zonas-container {
   display: flex;
   font-family: "jost", sans-serif;
-  margin-top: 10%;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+.boton-delete {
+  padding: 10px 20px;
+  background-color: rgb(119, 16, 16);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-family: "jost", sans-serif;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
+  margin-top: 15px;
+  transition: background-color 0.3s; /* Agrega una transición para suavizar el cambio de color */
+}
+
+.boton-delete:hover {
+  background-color: transparent;
+  border: 1px solid rgb(119, 16, 16);
+  color: rgb(241, 1, 1);
+}
+
+.botones-navegacion-perfil,
+.botones-navegacion-post {
+  display: flex;
+  justify-content: space-between; /* Espaciado entre los botones */
+  width: 100%;
+  margin-top: auto;
 }
 
 .a,
-.boton-ajustes {
+.boton-ajustes,
+.boton-guardados {
   padding: 10px 20px;
   background-color: #008080;
   color: white;
@@ -18,49 +49,36 @@
   font-size: 14px;
   text-decoration: none;
   margin-top: 15px;
+  transition: background-color 0.3s; /* Agrega una transición para suavizar el cambio de color */
 }
 
 .a,
-.boton-ajustes:hover {
+.boton-ajustes:hover,
+.boton-guardados:hover {
   background-color: transparent;
   border: 1px solid #008080;
   color: #008080;
 }
 
-.a,
-.boton-delete {
-  padding: 10px 20px;
-  background-color: red;
-  color: white;
-  border: none;
-  border-radius: 50px;
-  font-family: "jost", sans-serif;
-  cursor: pointer;
-  font-size: 14px;
-  text-decoration: none;
-  margin-top: 15px;
+/* Agrega la clase ml-auto para alinear a la derecha */
+.boton-ajustes,
+.boton-guardados {
+  margin-left: auto;
 }
 
-.a,
-.boton-delete:hover {
-  background-color: transparent;
-  border: 1px solid red;
-  color: red;
+.boton-ajustes {
+  margin-right: 10px;
 }
 
-.botones-navegacion-perfil,
-.botones-navegacion-post {
-  margin-top: auto;
-}
-
-.h1 .perfil-usuario-titulo,
-h2 {
-  margin-bottom: 10px;
+/* Establece el color del título h1 y h2 en azul verdoso */
+.perfil-usuario-titulo,
+.mis-post-titulo {
+  color: #008080;
 }
 
 .user-info,
 .user-posts {
-  width: 50%;
+  width: 40%; /* Ajusta el ancho según tus preferencias */
   display: flex;
   align-items: flex-start;
   flex-direction: column;
@@ -78,6 +96,7 @@ h2 {
 .user-posts ul {
   list-style: none;
   padding: 0;
+  margin-top: 19px;
   column-count: 1;
   column-gap: 20px;
 }

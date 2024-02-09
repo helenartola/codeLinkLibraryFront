@@ -1,14 +1,20 @@
+/* PostPage.css */
 .post-page-container {
   margin-top: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra el contenido verticalmente */
 }
+
 .dark .post-item-container {
   margin: 20px 5% 20px 5%;
   padding: 15px;
   background-color: #47474778;
   border-radius: 16px;
   border: none;
-  max-width: 600px;
+  max-width: 800px;
 }
+
 .light .post-item-container {
   margin: 20px 5% 20px 5%;
   padding: 15px;
@@ -35,12 +41,14 @@
 .post-page-container .icono-comentario {
   width: 22px;
 }
+
 .post-page-container .dark .comment-input {
   border: 1px solid #dddddd76; /* Borde para la caja de comentarios */
   border-radius: 5px; /* Esquinas redondeadas */
   padding: 10px; /* Espaciado interno */
   margin: 5px 0; /* Margen superior e inferior */
 }
+
 .post-page-container .light .comment-input {
   border: 1px solid #303030; /* Borde para la caja de comentarios */
   border-radius: 5px; /* Esquinas redondeadas */
@@ -106,4 +114,21 @@
 
 .post-page-container .nombre-usuario {
   font-family: jost, sans-serif;
+}
+
+.post-page-container .link-url-post.estilo-unico {
+  /* Estilos específicos para este enlace */
+  display: inline-block;
+  background-color: transparent; /* Fondo transparente */
+  color: rgb(3, 204, 204); /* Color del texto */
+  text-decoration: none;
+  border: 2px solid #008080; /* Borde de 2px con el color especificado */
+  border-radius: 8px;
+  margin-top: 10px;
+  padding: 15px; 
+}
+
+.post-item-container {
+  /* Puedes agregar estilos específicos para el contenedor del PostItem aquí */
+  max-width: 600px;
 }
