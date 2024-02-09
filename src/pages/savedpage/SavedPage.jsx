@@ -1,17 +1,16 @@
 
 
-import { useEffect, useState } from 'react';
-import { getSavedPosts } from '../api'; // Reemplaza 'getSavedPosts' con la función real para obtener posts guardados
+//import { useEffect, useState } from 'react';
+//import { getSavedPosts } 
+/*const SavedPostsPage = () => {
+  //const [savedPosts, setSavedPosts] = useState([]);
 
-const SavedPostsPage = () => {
-  const [savedPosts, setSavedPosts] = useState([]);
-
-  useEffect(() => {
+  //useEffect(() => {
     // Llama a la función para obtener posts guardados al cargar la página
     const fetchSavedPosts = async () => {
       try {
-        const response = await getSavedPosts(); // Reemplaza con la función real
-        setSavedPosts(response.data); // Asume que la respuesta contiene la lista de posts guardados
+        //const response = await getSavedPosts(); // Reemplaza con la función real
+        //setSavedPosts(response.data); // Asume que la respuesta contiene la lista de posts guardados
       } catch (error) {
         console.error('Error fetching saved posts:', error);
       }
@@ -34,4 +33,4 @@ const SavedPostsPage = () => {
   );
 };
 
-export default SavedPostsPage;
+export default SavedPostsPage;*/
