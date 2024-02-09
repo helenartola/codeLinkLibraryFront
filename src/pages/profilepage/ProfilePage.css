@@ -9,25 +9,14 @@
 }
 
 .boton-delete {
-  padding: 10px 20px;
-  background-color: rgb(119, 16, 16);
-  color: white;
+  background-color: transparent;
   border: none;
-  border-radius: 50px;
-  font-family: "jost", sans-serif;
-  cursor: pointer;
-  font-size: 14px;
-  text-decoration: none;
   margin-top: 15px;
   transition: background-color 0.3s; /* Agrega una transición para suavizar el cambio de color */
 }
-
-.boton-delete:hover {
-  background-color: transparent;
-  border: 1px solid rgb(119, 16, 16);
-  color: rgb(241, 1, 1);
+.icono-boton-delete {
+  width: 32px;
 }
-
 .botones-navegacion-perfil,
 .botones-navegacion-post {
   display: flex;
