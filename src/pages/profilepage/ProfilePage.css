@@ -8,6 +8,16 @@
   margin-bottom: 10%;
 }
 
+.boton-ajustes {
+  background-color: transparent;
+  border: none;
+  margin-top: 15px;
+  transition: background-color 0.3s;
+}
+.icono-boton-ajustes {
+  width: 32px;
+}
+
 .boton-delete {
   background-color: transparent;
   border: none;
@@ -17,6 +27,7 @@
 .icono-boton-delete {
   width: 32px;
 }
+
 .botones-navegacion-perfil,
 .botones-navegacion-post {
   display: flex;
@@ -26,7 +37,6 @@
 }
 
 .a,
-.boton-ajustes,
 .boton-guardados {
   padding: 10px 20px;
   background-color: #008080;
@@ -99,4 +109,19 @@
   color: #008080;
   font-size: 16px;
   margin-right: 7px;
+}
+
+.boton-cancelar-eliminacion,
+.boton-confirmar-eliminacion {
+  padding: 10px 20px;
+  background-color: #008080;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-family: "jost", sans-serif;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
+  margin-top: 15px;
+  transition: background-color 0.3s; /* Agrega una transición para suavizar el cambio de color */
 }
