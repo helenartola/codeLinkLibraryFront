@@ -101,7 +101,7 @@ const Buscador = () => {
             onClick={handleSearchClick}
           >
             <img
-              src={isDarkMode ? "lupa-blanca.png" : "lupa.png"}
+              src={isDarkMode ? "lupa-blanca.png" : "lupa-gris.png"}
               alt="Search Icon"
             />
           </button>
