@@ -92,7 +92,7 @@
   flex-direction: column;
   width: 300px;
   height: 500px;
-  background-color: teal;
+  background-image: linear-gradient(to bottom, #008080, rgb(93, 216, 200));
   color: white;
   margin: 20px;
   border-radius: 20px;
