@@ -351,7 +351,7 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
               >
                 <img
                   className="icono-eliminar"
-                  src="/eliminar.png"
+                  src="/basura-roja.png"
                   alt="Eliminar"
                 />
               </button>
@@ -398,7 +398,7 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
             >
               <img
                 className="icono-comentario"
-                src="/comentario.png"
+                src="/escribir-comentario.png"
                 alt="Escribir comentario"
               />
             </button>
