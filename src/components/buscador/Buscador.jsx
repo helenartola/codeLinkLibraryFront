@@ -115,7 +115,7 @@ const Buscador = () => {
           <ul className="lista-enlaces-buscador">
             {/* Mapear los resultados y generar enlaces */}
             {searchResults.map((result) => (
-              <li key={result.postId}>
+              <li className="busqueda" key={result.postId}>
                 {/* Enlace a la página del post utilizando Link */}
                 <Link to={`/post/${result.postId}`} onClick={clearSearchTerm}>
                   {/* Mostrar la información del post */}
