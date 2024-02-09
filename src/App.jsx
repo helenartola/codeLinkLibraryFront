@@ -9,7 +9,7 @@ import ProfilePage from "./pages/profilepage/ProfilePage";
 import PaginaRegistro from "./pages/paginaregistro/PaginaRegistro";
 import UserSettingsPage from "./pages/settingspage/UserSettingsPage";
 import SearchPage from "./pages/searchpage/searchPage";
-import SavedPage from "./pages/savedpage/SavedPage"
+//import SavedPage from "./pages/savedpage/SavedPage"
 
 function App() {
   const location = useLocation();
@@ -37,7 +37,7 @@ function App() {
           <Route path="/search" element={<SearchPage />} />
 
           {/* Nueva ruta para mostrar los posts guardados */}
-          <Route path="/saved" element={<SavedPosts />} />
+         
 
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
@@ -47,4 +47,5 @@ function App() {
   );
 }
 
+// <Route path="/saved" element={<SavedPosts />} />
 export default App;
