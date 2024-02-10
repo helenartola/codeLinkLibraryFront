@@ -29,7 +29,7 @@
   border: none;
 }
 .icono-comentario {
-  width: 42px;
+  width: 32px;
 }
 .dark .boton-cancelar-edicion {
   border: none;
@@ -301,6 +301,7 @@
     border-bottom: solid 1px teal;
     padding: 20px 0;
   }
+
   .edita-tu-post-titulo {
     margin-bottom: 5px;
   }
