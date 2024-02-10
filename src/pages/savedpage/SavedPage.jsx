@@ -61,9 +61,9 @@ function SavedPage() {
       {/* Imprimir error si hay alguno */}
       {error && <p>Error: {error}</p>}
       {/* Verifica si no hay posts guardados */}
-      {savedPosts.length === 0 && !error && <p>No hay posts guardados</p>}
+      {savedPosts && savedPosts.length === 0 && !error && <p>No hay posts guardados</p>}
       {/* Mapear sobre la lista de posts guardados y renderizar cada uno */}
-      {savedPosts.map((post) => (
+      {savedPosts && savedPosts.map((post) => (
         <PostItem key={post.postId} post={post} />
       ))}
     </div>
@@ -71,3 +71,4 @@ function SavedPage() {
 }
 
 export default SavedPage;
+
