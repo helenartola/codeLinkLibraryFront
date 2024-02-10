@@ -87,15 +87,29 @@ const ProfilePage = () => {
       <section className="user-info">
         <h1 className="perfil-usuario-titulo"> Mi Perfil de Usuario</h1>
         {userData ? (
-          <>
-            <p>Nombre de usuario: {userData.userName}</p>
-            <p>Email: {userData.email}</p>
-            <p>Nombre: {userData.name}</p>
-            <p>Apellidos: {userData.lastName}</p>
-            <p>
-            <p>Fecha de nacimiento: {userData.birthDate ? new Date(userData.birthDate).toLocaleDateString() : ''}</p> {/* no devuelve fecha predeterminada */}
-            </p>
-            <p>Biografía: {userData.bio}</p>
+            <>
+            <div className="user-details">
+              <p>Nombre de usuario: {userData.userName}</p>
+              <p>Email: {userData.email}</p>
+              <p>Nombre: {userData.name}</p>
+              <p>Apellidos: {userData.lastName}</p>
+              <p>
+                Fecha de nacimiento:{" "}
+                {userData.birthDate
+                  ? new Date(userData.birthDate).toLocaleDateString()
+                  : ""}
+              </p>
+              <p>Biografía: {userData.bio}</p>
+            </div>
+            <div className="avatar-container">
+              <Link to="/avatar-page" className="boton-avatar-base">
+                <img
+                  src="/AvatarBase.png"
+                  alt="Avatar"
+                  className="imagen-boton-avatar"
+                />
+              </Link>
+            </div>
           </>
         ) : (
           <p>Inicia sesión para ver el perfil.</p>
