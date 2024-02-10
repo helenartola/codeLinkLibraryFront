@@ -92,8 +92,9 @@
   .texto-comentario-editado {
     margin-bottom: 20px;
   }
-  .link-url-post {
+  .titulo-post-home {
     font-family: jost, sans-serif;
+    width: 300px;
   }
   .descripcion-post-home {
     font-family: jost, sans-serif;
