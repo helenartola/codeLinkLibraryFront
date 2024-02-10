@@ -93,8 +93,7 @@ const ProfilePage = () => {
             <p>Nombre: {userData.name}</p>
             <p>Apellidos: {userData.lastName}</p>
             <p>
-              Fecha de nacimiento:{" "}
-              {new Date(userData.birthDate).toLocaleDateString()}
+            <p>Fecha de nacimiento: {userData.birthDate ? new Date(userData.birthDate).toLocaleDateString() : ''}</p> {/* no devuelve fecha predeterminada */}
             </p>
             <p>Biografía: {userData.bio}</p>
           </>
