@@ -1,4 +1,3 @@
-/* Estilos base para dispositivos móviles */
 .dark-mode {
   --background: var(--background-dark);
   --text: var(--text-dark);
@@ -11,8 +10,8 @@
 .header {
   padding: 10px;
   border-bottom: 1px solid #008080;
-  position: fixed; /* Fija el header en la parte superior de la ventana */
-  top: 0; /* Asegura que el header esté pegado a la parte superior */
+  position: fixed;
+  top: 0;
   width: 100%;
   z-index: 1000;
   height: 250px;
@@ -57,8 +56,8 @@
   .header {
     padding: 10px;
     border-bottom: 1px solid #008080;
-    position: fixed; /* Fija el header en la parte superior de la ventana */
-    top: 0; /* Asegura que el header esté pegado a la parte superior */
+    position: fixed;
+    top: 0;
     width: 100%;
     z-index: 1000;
     height: 80px;
@@ -66,18 +65,18 @@
   .navbar {
     display: flex;
     flex-direction: row;
-    justify-content: space-between; /* Alinear los elementos al inicio, al final y distribuir el espacio restante entre ellos */
+    justify-content: space-between;
     align-items: center;
   }
 
   .logo {
-    flex: 1; /* Hacer que el logo ocupe todo el espacio disponible */
-    max-width: 200px; /* Anular el máximo ancho establecido */
+    flex: 1;
+    max-width: 200px;
   }
 
   .buscador {
-    flex: 3; /* Hacer que el buscador ocupe la mayor parte del espacio disponible */
-    max-width: none; /* Anular el máximo ancho establecido */
+    flex: 3;
+    max-width: none;
     display: flex;
     align-items: center;
     justify-content: center;
