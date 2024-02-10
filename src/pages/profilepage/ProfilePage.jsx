@@ -78,7 +78,7 @@ const ProfilePage = () => {
             <p>Email: {userData.email}</p>
             <p>Nombre: {userData.name}</p>
             <p>Apellidos: {userData.lastName}</p>
-            <p>Fecha de nacimiento: {userData.birthDate}</p>
+            <p>Fecha de nacimiento: {new Date(userData.birthDate).toLocaleDateString()}</p>
             <p>Biografía: {userData.bio}</p>
           </>
         ) : (
