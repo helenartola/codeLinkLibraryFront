@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
+import { useUser } from '../../context/UserContext';
 
 function SavedPost() {
+  const [user] = useUser();
   const [savedPosts, setSavedPosts] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -8,12 +10,12 @@ function SavedPost() {
   useEffect(() => {
     const fetchSavedPosts = async () => {
       try {
-        // Obtener el token de autenticación de donde lo tengas almacenado (por ejemplo, localStorage)
-        const token = localStorage.getItem('token');
+        // Obtener el token de autenticación 
+        const token = user ? user.token : null;
 
         // Realizar una solicitud GET a la API para obtener los posts guardados
         const response = await fetch(
-          `${import.meta.env.VITE_BACKEND}/posts`,
+          `${import.meta.env.VITE_BACKEND}/saved`,
           {
             method: 'GET',
             headers: {
@@ -27,6 +29,9 @@ function SavedPost() {
         if (response.ok) {
           // Obtener los datos de la respuesta
           const data = await response.json();
+  // Imprimir los datos en la consola
+  console.log("Data:", data.data);
+       
           // Actualizar el estado con los posts guardados obtenidos de la respuesta
           setSavedPosts(data.data);
         } else {

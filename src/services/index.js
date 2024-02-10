@@ -552,3 +552,30 @@ export const deleteUserByIdService = async (userId, token) => {
     throw new Error("Error al eliminar el usuario");
   }
 };
+
+// Obtener todos los posts guardados
+export const getSavedPostsService = async (token) => {
+  try {
+    const response = await fetch(
+      `${import.meta.env.VITE_BACKEND}/saved`,
+      {
+        method: "GET",
+        headers: {
+          "Authorization": token,
+        },
+      }
+    );
+    const json = await response.json();
+
+    if (!response.ok) {
+      throw new Error(json.message);
+    }
+
+    // Devolver la lista de posts guardados
+    return json.data;
+  } catch (error) {
+    console.error("Error al obtener los posts guardados:", error);
+    throw new Error("Error al obtener los posts guardados");
+  }
+};
+
