@@ -158,6 +158,7 @@ homepage css .inicio {
 
 .lista-posts-trending a {
   color: white;
+  font-family: jost, sans-serif;
   text-decoration: none;
 }
 

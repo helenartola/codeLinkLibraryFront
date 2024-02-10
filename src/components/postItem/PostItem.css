@@ -5,6 +5,7 @@
   border-radius: 16px;
   border: none;
   max-width: 600px;
+  font-family: jost, sans-serif;
 }
 .light .post-item-container {
   margin: 20px 5% 20px 5%;
@@ -13,6 +14,7 @@
   border-radius: 16px;
   border: none;
   max-width: 600px;
+  font-family: jost, sans-serif;
 }
 .post-item-container:not(:last-child) {
   margin: 20px 5% 20px 5%;
