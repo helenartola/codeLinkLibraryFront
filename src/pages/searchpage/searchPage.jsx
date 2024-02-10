@@ -43,7 +43,7 @@ const SearchPage = () => {
           ))}
         </ul>
       ) : (
-        <p>No results found</p>
+        <p className="no-resultados">No hemos encontrado resultados.</p>
       )}
     </div>
   );
