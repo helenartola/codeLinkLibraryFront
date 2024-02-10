@@ -206,7 +206,7 @@
 }
 
 .boton-confirmar-eliminacion {
-  background-color: red;
+  background-color: rgb(255, 4, 4);
   color: white;
 }
 /* Estilos para dispositivos con un ancho mínimo de 768px */
@@ -262,7 +262,34 @@
   }
 
   .boton-confirmar-eliminacion {
-    background-color: red;
+    background-color: rgb(255, 0, 0);
     color: white;
   }
+}
+
+.avatar-container {
+  margin-left: auto;
+  display: flex;
+  align-items: flex-start; /* Cambiado de 'center' a 'flex-start' */
+}
+
+.imagen-boton-avatar {
+  max-width: 180px;
+  max-height: 180px;
+  margin-right: 45px;
+  margin-top: -500px; /* Ajusta este valor para cambiar la posición vertical de la imagen */
+  border-radius: 50%; /* Agregado para redondear la imagen */
+  border: 15px solid #008080; /* Agregado para el borde azulverdoso */
+  transition: transform 0.3s ease;
+}
+
+.imagen-boton-avatar:hover {
+  transform: scale(1.1); /* Ajusta el valor según tus preferencias para el zoom */
+  filter: brightness(1.1); /* Ajusta el valor según tus preferencias para el aclarado */
+  border-color: #016b6b;; 
+}
+/* Agrega reglas de estilo para el enlace de avatar */
+.boton-avatar-base {
+  text-decoration: none;
+  color: inherit;
 }
