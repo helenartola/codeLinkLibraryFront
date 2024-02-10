@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import { useUser } from "../../context/UserContext";
 import PostItem from "../../components/postItem/PostItem";
+import { useTheme } from "../../context/ThemeContext";
+
 import "./SavedPage.css";
 
 function SavedPage() {
+  const { isDarkMode } = useTheme();
   const [user] = useUser();
   const [savedPosts, setSavedPosts] = useState([]);
   const [error, setError] = useState(null);
@@ -59,7 +62,7 @@ function SavedPage() {
   }
 
   return (
-    <div className="caja-posts-guardados">
+    <div className={`caja-posts-guardados ${isDarkMode ? "dark" : "light"}`}>
       <h1 className="titulo-post-guardados">Tus Posts Guardados</h1>
       {/* Imprimir error si hay alguno */}
       {error && <p>Error: {error}</p>}
@@ -68,8 +71,11 @@ function SavedPage() {
         <p className="no-hay-posts-guardados">No hay posts guardados</p>
       )}
       {/* Mapear sobre la lista de posts guardados y renderizar cada uno */}
-      {savedPosts &&
-        savedPosts.map((post) => <PostItem key={post.postId} post={post} />)}
+
+      <div className="posts-container">
+        {savedPosts &&
+          savedPosts.map((post) => <PostItem key={post.postId} post={post} />)}
+      </div>
     </div>
   );
 }
