@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useUser } from '../../context/UserContext';
+import PostItem from '../../components/postItem/PostItem'; 
 
-function SavedPost() {
+function SavedPage() {
   const [user] = useUser();
   const [savedPosts, setSavedPosts] = useState([]);
   const [error, setError] = useState(null);
@@ -24,14 +25,13 @@ function SavedPost() {
             },
           }
         );
+        console.log("Posts guardados:", savedPosts);
+
 
         // Verificar si la solicitud fue exitosa
         if (response.ok) {
           // Obtener los datos de la respuesta
           const data = await response.json();
-  // Imprimir los datos en la consola
-  console.log("Data:", data.data);
-       
           // Actualizar el estado con los posts guardados obtenidos de la respuesta
           setSavedPosts(data.data);
         } else {
@@ -50,7 +50,7 @@ function SavedPost() {
 
     // Llamar a la función para obtener los posts guardados cuando el componente se monta
     fetchSavedPosts();
-  }, []); // El segundo parámetro del useEffect es un array vacío para asegurarse de que solo se ejecute una vez
+  }, [user]);
 
   // Si todavía se están cargando los datos, muestra un indicador de carga
   if (loading) {
@@ -59,23 +59,17 @@ function SavedPost() {
 
   return (
     <div>
-      <h1>Posts Guardados</h1>
+      <h1>Tus Posts Guardados</h1>
       {/* Imprimir error si hay alguno */}
       {error && <p>Error: {error}</p>}
       {/* Verifica si no hay posts guardados */}
       {savedPosts.length === 0 && !error && <p>No hay posts guardados</p>}
       {/* Mapear sobre la lista de posts guardados y renderizar cada uno */}
       {savedPosts.map((post) => (
-        <div key={post.postId}>
-          <h2>{post.title}</h2>
-          <p>{post.description}</p>
-          <a href={post.url} target="_blank" rel="noopener noreferrer">
-            Ver más
-          </a>
-        </div>
+        <PostItem key={post.postId} post={post} />
       ))}
     </div>
   );
 }
 
-export default SavedPost;
+export default SavedPage;
