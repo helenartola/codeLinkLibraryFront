@@ -502,11 +502,7 @@
   .light .nombre-usuario {
     color: #303030;
   }
-  /*  .caja-iconitos-post {
-    display: flex;
-    align-items: center;
-    border-radius: none;
-  } */
+
   .caja-comentarios-dentro-post {
     padding: 10px;
     border-top: 1px solid teal;
@@ -527,7 +523,9 @@
   .post-content {
     position: relative;
   }
-
+  .post-info {
+    width: 500px;
+  }
   .editar-post-container {
     position: absolute;
     top: -20px;
