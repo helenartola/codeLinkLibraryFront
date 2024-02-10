@@ -47,14 +47,18 @@ export const createPostService = async (postData, token) => {
 };
 
 // Obtener un post por su ID
-export const getPostByIdService = async (postId) => {
+export const getPostByIdService = async (postId, userId = 0) => {
   try {
     const response = await fetch(
       `${import.meta.env.VITE_BACKEND}/posts/${postId}`,
       {
         method: "GET",
+        headers: {
+          userId: userId 
+        }
       }
     );
+
     const json = await response.json();
 
     if (!response.ok) {
@@ -68,6 +72,7 @@ export const getPostByIdService = async (postId) => {
     throw new Error(`Error al obtener el post con ID ${postId}`);
   }
 };
+
 
 // Obtener los comentarios de un post por su ID
 export const getCommentsService = async (postId) => {

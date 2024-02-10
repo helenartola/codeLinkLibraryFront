@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { searchService } from "../../services";
 import { useTheme } from "../../context/ThemeContext";
-import PostItem from "../../components/postItem/PostItem.jsx"; // Ajusta la ruta según la ubicación real
-import "./SearchPage.css";
+import PostItem from "../../components/postItem/PostItem.jsx"; 
 
 const SearchPage = () => {
   const { isDarkMode } = useTheme();
