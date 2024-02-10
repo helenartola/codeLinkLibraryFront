@@ -1,0 +1,24 @@
+
+
+div {
+    margin: 20px;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    margin-bottom: 8px;
+    font-size: 1.2rem;
+    color: #555;
+  }
+  
+
+  
