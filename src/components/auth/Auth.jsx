@@ -4,6 +4,12 @@ import { Link } from "react-router-dom";
 
 const Auth = () => {
   const [user, betterSetUser] = useUser();
+
+  const handleLogout = () => {//nos redirije a la página de inicio una vez hacemos logout
+    betterSetUser(null);
+    window.location.href = "/login";
+  };
+
   return (
     <section className="seccion-botones-acceso">
       {user ? (
@@ -15,10 +21,7 @@ const Auth = () => {
           <a
             className="logout-boton"
             href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              betterSetUser(null);
-            }}
+            onClick={handleLogout} // Utilizamos la función handleLogout para manejar el logout
           >
             <img className="icono-logout" src="/Logout.png" alt="Log out" />
           </a>

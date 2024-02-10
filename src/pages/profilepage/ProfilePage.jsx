@@ -55,6 +55,7 @@ const ProfilePage = () => {
         const token = user ? user.token : null;
         await deleteUserByIdService(user.userId, token);
         console.log("Usuario eliminado correctamente");
+        window.location.href = "/registro";// Redireccionar a la página de registro después de eliminar el usuario
       } catch (error) {
         console.error("Error al eliminar usuario:", error);
       } finally {
