@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react";
 import { useUser } from "../../context/UserContext";
 import "./ProfilePage.css";
-import { getInfoUserService, getUserPostsService, deleteUserByIdService } from "../../services";
+import {
+  getInfoUserService,
+  getUserPostsService,
+  deleteUserByIdService,
+} from "../../services";
 import { Link } from "react-router-dom";
 
 const ProfilePage = () => {
@@ -9,7 +13,7 @@ const ProfilePage = () => {
   const [userData, setUserData] = useState(null);
   const [userPosts, setUserPosts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [showConfirmationDialog, setShowConfirmationDialog] = useState(false);//maneja el pop up de confirmación de eliminación
+  const [showConfirmationDialog, setShowConfirmationDialog] = useState(false); //maneja el pop up de confirmación de eliminación
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,21 +38,23 @@ const ProfilePage = () => {
     fetchData();
   }, [user]);
 
-  const handleDeleteUser = () => {//handle para eliminación de usuario
+  const handleDeleteUser = () => {
+    //handle para eliminación de usuario
     setShowConfirmationDialog(true);
   };
 
-  const ConfirmationDialog = () => {//cuadro de dialogo para confirmación de eliminación de usuario
+  const ConfirmationDialog = () => {
+    //cuadro de dialogo para confirmación de eliminación de usuario
     const handleCancel = () => {
       setShowConfirmationDialog(false);
     };
 
-    const handleConfirm = async () => {///handle confirmación de eliminación de usuario
+    const handleConfirm = async () => {
+      ///handle confirmación de eliminación de usuario
       try {
         const token = user ? user.token : null;
         await deleteUserByIdService(user.userId, token);
         console.log("Usuario eliminado correctamente");
-
       } catch (error) {
         console.error("Error al eliminar usuario:", error);
       } finally {
@@ -57,11 +63,18 @@ const ProfilePage = () => {
     };
 
     return (
-      <div className="confirmation-dialog">
+      <div className="caja-mensaje-eliminar-cuenta">
         <p>¿Estás seguro de que quieres eliminar tu cuenta?</p>
         <div>
-          <button className="boton-cancelar-eliminacion" onClick={handleCancel}>Cancelar</button>
-          <button className="boton-confirmar-eliminacion" onClick={handleConfirm}>Eliminar</button>
+          <button className="boton-cancelar-eliminacion" onClick={handleCancel}>
+            Cancelar
+          </button>
+          <button
+            className="boton-confirmar-eliminacion"
+            onClick={handleConfirm}
+          >
+            Eliminar
+          </button>
         </div>
       </div>
     );
@@ -78,17 +91,18 @@ const ProfilePage = () => {
             <p>Email: {userData.email}</p>
             <p>Nombre: {userData.name}</p>
             <p>Apellidos: {userData.lastName}</p>
-            <p>Fecha de nacimiento: {new Date(userData.birthDate).toLocaleDateString()}</p>
+            <p>
+              Fecha de nacimiento:{" "}
+              {new Date(userData.birthDate).toLocaleDateString()}
+            </p>
             <p>Biografía: {userData.bio}</p>
           </>
         ) : (
           <p>Inicia sesión para ver el perfil.</p>
         )}
         <nav className="botones-navegacion-perfil">
-          <Link to="/settings" className="boton-ajustes">
-          </Link>
-          <button className="boton-delete" onClick={handleDeleteUser}>
-          </button>
+          <Link to="/settings" className="boton-ajustes"></Link>
+          <button className="boton-delete" onClick={handleDeleteUser}></button>
         </nav>
       </section>
 
@@ -109,10 +123,10 @@ const ProfilePage = () => {
               ))}
             </ul>
             <nav className="botones-navegacion-post">
-          <Link to="/saved-page" className="boton-guardados">
-            Mis post Guardados
-          </Link>
-        </nav>
+              <Link to="/saved-page" className="boton-guardados">
+                Mis post Guardados
+              </Link>
+            </nav>
           </div>
         </>
       )}
@@ -121,4 +135,3 @@ const ProfilePage = () => {
 };
 
 export default ProfilePage;
-
