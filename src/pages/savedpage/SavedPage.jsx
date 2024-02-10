@@ -25,9 +25,7 @@ function SavedPage() {
             },
           }
         );
-        console.log("Posts guardados:", savedPosts);
-
-
+       
         // Verificar si la solicitud fue exitosa
         if (response.ok) {
           // Obtener los datos de la respuesta
