@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import './Pagination.css';
 
 const Pagination = ({ totalPosts, totalPages, currentPage, onPageChange }) => {
@@ -20,7 +19,7 @@ const Pagination = ({ totalPosts, totalPages, currentPage, onPageChange }) => {
         onClick={() => handlePageChange(currentPage - 1)}
         disabled={currentPage === 1} // Desactiva el botón si estamos en la primera página
       >
-        &laquo; Anterior
+        &laquo;
       </button>
 
       {/* Muestra la página actual y el total de páginas */}
@@ -34,7 +33,7 @@ const Pagination = ({ totalPosts, totalPages, currentPage, onPageChange }) => {
         onClick={() => handlePageChange(currentPage + 1)}
         disabled={currentPage === totalPages} // Desactiva el botón si estamos en la última página
       >
-        Siguiente &raquo;
+        &raquo;
       </button>
 
       {/* Muestra el total de resultados */}
@@ -43,14 +42,6 @@ const Pagination = ({ totalPosts, totalPages, currentPage, onPageChange }) => {
       </div>
     </nav>
   );
-};
-
-// Especifica los tipos de las props esperadas
-Pagination.propTypes = {
-  totalPosts: PropTypes.number.isRequired,
-  totalPages: PropTypes.number.isRequired,
-  currentPage: PropTypes.number.isRequired,
-  onPageChange: PropTypes.func.isRequired,
 };
 
 export default Pagination;
