@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import usePosts from "../../hooks/usePosts";
 import ListaDePosts from "../../components/listaPosts/ListaDePosts";
 import NewPost from "../../components/newpost/NewPost";
-import Pagination from "../../components/pagination/Pagination"; // Importa el componente de paginación
+import Pagination from "../../components/pagination/Pagination"; 
 import "./HomePage.css";
 import { useTheme } from "../../context/ThemeContext";
 import { fetchTopLikedPosts } from "../../services";

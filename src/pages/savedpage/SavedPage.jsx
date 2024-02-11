@@ -1,16 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"; 
 import { useUser } from "../../context/UserContext";
-import PostItem from "../../components/postItem/PostItem";
-import { useTheme } from "../../context/ThemeContext";
-
-import "./SavedPage.css";
+import PostItem from "../../components/postItem/PostItem"; 
+import { useTheme } from "../../context/ThemeContext"; 
+import "./SavedPage.css"; 
 
 function SavedPage() {
-  const { isDarkMode } = useTheme();
-  const [user] = useUser();
-  const [savedPosts, setSavedPosts] = useState([]);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const { isDarkMode } = useTheme(); // Obtenemos el estado del modo oscuro del contexto de tema
+  const [user] = useUser(); // Obtenemos el usuario del contexto de usuario
+  const [savedPosts, setSavedPosts] = useState([]); // Estado para almacenar los posts guardados
+  const [error, setError] = useState(null); // Estado para manejar errores
+  const [loading, setLoading] = useState(true); // Estado para manejar la carga de datos
 
   useEffect(() => {
     const fetchSavedPosts = async () => {
@@ -48,30 +47,30 @@ function SavedPage() {
         setError(`Error al obtener los posts guardados: ${error.message}`);
         console.error("Error al obtener los posts guardados:", error.message);
       } finally {
-        setLoading(false);
+        setLoading(false); // Cambiar el estado de carga a falso cuando se completa la solicitud
       }
     };
 
     // Llamar a la función para obtener los posts guardados cuando el componente se monta
     fetchSavedPosts();
-  }, [user]);
+  }, [user]); // Ejecutar el efecto cuando cambie el usuario
 
   // Si todavía se están cargando los datos, muestra un indicador de carga
   if (loading) {
     return <p>Cargando...</p>;
   }
 
+  // Renderizar el componente SavedPage
   return (
     <div className={`caja-posts-guardados ${isDarkMode ? "dark" : "light"}`}>
       <h1 className="titulo-post-guardados">Tus Posts Guardados</h1>
       {/* Imprimir error si hay alguno */}
       {error && <p>Error: {error}</p>}
-      {/* Verifica si no hay posts guardados */}
+      {/* Verificar si no hay posts guardados */}
       {savedPosts && savedPosts.length === 0 && !error && (
         <p className="no-hay-posts-guardados">No hay posts guardados</p>
       )}
       {/* Mapear sobre la lista de posts guardados y renderizar cada uno */}
-
       <div className="posts-container">
         {savedPosts &&
           savedPosts.map((post) => <PostItem key={post.postId} post={post} />)}
@@ -80,4 +79,4 @@ function SavedPage() {
   );
 }
 
-export default SavedPage;
+export default SavedPage; 

@@ -2,9 +2,13 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const AvatarPage = () => {
+  // Obtenemos el avatar seleccionado almacenado en el localStorage
   const storedAvatar = localStorage.getItem('selectedAvatar');
+
+  // Definimos el estado para almacenar el avatar seleccionado
   const [selectedAvatar, setSelectedAvatar] = useState(storedAvatar || '/AvatarBase.png');
 
+  // Lista de avatares disponibles
   const avatars = [
     '/Avatar1.png',
     '/Avatar2.png',
@@ -17,19 +21,20 @@ const AvatarPage = () => {
     '/Avatar9.png',
   ];
 
+  // Función para manejar el clic en un avatar
   const handleAvatarClick = (avatar) => {
-    setSelectedAvatar(avatar);
-    localStorage.setItem('selectedAvatar', avatar);
-    // Puedes agregar más lógica aquí, si es necesario.
+    setSelectedAvatar(avatar); // Actualizamos el avatar seleccionado en el estado
+    localStorage.setItem('selectedAvatar', avatar); // Guardamos el avatar seleccionado en el localStorage
   };
 
   useEffect(() => {
-    // Puedes realizar acciones adicionales al cargar el componente, si es necesario.
+  
   }, []);
 
   return (
     <div style={{ textAlign: 'center', marginTop: '50px' }}>
       <h1>Selecciona tu Avatar</h1>
+      {/* Renderizamos la lista de avatares */}
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '10px', marginTop: '20px' }}>
         {avatars.map((avatar, index) => (
           <button
@@ -42,8 +47,9 @@ const AvatarPage = () => {
               transition: 'transform 0.2s ease-in-out',
               padding: '5px',
             }}
+            // Aplicamos la clase "selected" si el avatar actual es el seleccionado
             className={`avatar-button ${avatar === selectedAvatar ? 'selected' : ''}`}
-            onClick={() => handleAvatarClick(avatar)}
+            onClick={() => handleAvatarClick(avatar)} // Manejamos el clic en el avatar
           >
             <img
               src={avatar}
@@ -53,7 +59,7 @@ const AvatarPage = () => {
           </button>
         ))}
       </div>
-      {/* Mostrar la imagen seleccionada */}
+      {/* Mostramos la imagen del avatar seleccionado */}
       <div>
         <p>Avatar Seleccionado:</p>
         <img src={selectedAvatar} alt="Avatar Seleccionado" style={{ maxWidth: '880px', maxHeight: '80px' }} />
