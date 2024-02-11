@@ -84,6 +84,7 @@ const UserSettingsPage = () => {
           Apellido:
         </label>
         <input
+          className="input-form-ajustes"
           type="text"
           id="lastName"
           value={lastName}
@@ -94,6 +95,7 @@ const UserSettingsPage = () => {
           Fecha de nacimiento:
         </label>
         <input
+          className="input-form-ajustes"
           type="date"
           id="birthDate"
           value={birthDate}
@@ -104,6 +106,7 @@ const UserSettingsPage = () => {
           Bio:
         </label>
         <textarea
+          className="input-form-ajustes"
           id="bio"
           value={bio}
           onChange={(e) => setBio(e.target.value)}
@@ -113,6 +116,7 @@ const UserSettingsPage = () => {
           Nueva Contraseña:
         </label>
         <input
+          className="input-form-ajustes"
           type="password"
           id="password"
           value={password}
@@ -123,6 +127,7 @@ const UserSettingsPage = () => {
           Confirmar Contraseña:
         </label>
         <input
+          className="input-form-ajustes"
           type="password"
           id="confirmPassword"
           value={confirmPassword}

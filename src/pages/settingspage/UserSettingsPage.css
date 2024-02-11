@@ -16,13 +16,13 @@
   font-size: 11px;
   letter-spacing: 0.2em;
   text-align: center;
-  background-color: teal;
   padding: 5px;
   width: 100%;
 }
 .input-form-ajustes {
   border: none;
-  border-bottom: 1px solid red;
-  background-color: violet;
-  border-radius: none;
+  border-bottom: 1px solid teal;
+  background-color: transparent;
+  border-radius: 0;
+  color: white;
 }
