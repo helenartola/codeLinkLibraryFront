@@ -26,7 +26,7 @@ const AvatarPage = () => {
     setSelectedAvatar(avatar); // Actualizamos el avatar seleccionado en el estado
     localStorage.setItem('selectedAvatar', avatar); // Guardamos el avatar seleccionado en el localStorage
   };
-
+  
   useEffect(() => {
   
   }, []);

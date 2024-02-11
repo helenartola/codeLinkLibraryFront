@@ -223,6 +223,11 @@
   border-radius: 50%; /* Agregado para redondear la imagen */
   border: 5px solid #008080; /* Agregado para el borde azulverdoso */
   transition: transform 0.3s ease;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%; /* Agregado para redondear la imagen */
+  border: 5px solid #008080; /* Agregado para el borde azulverdoso */
+  transition: transform 0.3s ease;
 }
 
 .imagen-boton-avatar:hover {
@@ -242,23 +247,6 @@
   margin-right: 20px;
 }
 
-.imagen-boton-avatar {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%; /* Agregado para redondear la imagen */
-  border: 5px solid #008080; /* Agregado para el borde azulverdoso */
-  transition: transform 0.3s ease;
-}
-
-.imagen-boton-avatar:hover {
-  transform: scale(
-    1.1
-  ); /* Ajusta el valor según tus preferencias para el zoom */
-  filter: brightness(
-    1.1
-  ); /* Ajusta el valor según tus preferencias para el aclarado */
-  border-color: #016b6b;
-}
 /* Agrega reglas de estilo para el enlace de avatar */
 .boton-avatar-base {
   text-decoration: none;
