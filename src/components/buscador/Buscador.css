@@ -22,8 +22,8 @@
   cursor: pointer;
   border-radius: 0;
   padding: 8px;
-  width: 39px;
-  height: 39px;
+  width: 39.5px;
+  height: 39.5px;
 }
 .boton-lupa:hover {
   background-color: #008080;
@@ -162,8 +162,8 @@
     border-left: none;
     cursor: pointer;
     padding: 8px;
-    width: 39px;
-    height: 39px;
+    width: 39.5px;
+    height: 39.5px;
   }
   .boton-lupa:hover {
     background-color: #008080;

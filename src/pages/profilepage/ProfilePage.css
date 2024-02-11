@@ -4,8 +4,8 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 10%;
-  margin-bottom: 10%;
+  margin-top: 280px;
+  margin-bottom: 80px;
 }
 
 .boton-ajustes {
@@ -94,7 +94,7 @@
   font-size: 14px;
   text-decoration: none;
   margin-top: 15px;
-  transition: background-color 0.3s; /* Agrega una transición para suavizar el cambio de color */
+  transition: background-color 0.3s;
 }
 
 .boton-confirmar-eliminacion {
@@ -109,7 +109,7 @@
   font-size: 14px;
   text-decoration: none;
   margin-top: 15px;
-  transition: background-color 0.3s; /* Agrega una transición para suavizar el cambio de color */
+  transition: background-color 0.3s;
 }
 
 .boton-cancelar-eliminacion:hover {
@@ -129,7 +129,7 @@
   color: #008080;
 }
 .user-info {
-  margin-top: 250px;
+  margin-top: 20px;
   width: 80%;
   display: flex;
   align-items: flex-start;
@@ -151,7 +151,6 @@
   margin-top: 20px;
   padding: 20px;
 }
-
 .user-info p {
   margin-bottom: 10px;
 }
@@ -209,6 +208,63 @@
   background-color: rgb(255, 4, 4);
   color: white;
 }
+
+.avatar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 330px;
+  margin-right: 20px;
+}
+
+.imagen-boton-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%; /* Agregado para redondear la imagen */
+  border: 5px solid #008080; /* Agregado para el borde azulverdoso */
+  transition: transform 0.3s ease;
+}
+
+.imagen-boton-avatar:hover {
+  transform: scale(
+    1.1
+  ); /* Ajusta el valor según tus preferencias para el zoom */
+  filter: brightness(
+    1.1
+  ); /* Ajusta el valor según tus preferencias para el aclarado */
+  border-color: #016b6b;
+}
+
+.avatar-container {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 30px;
+  margin-right: 20px;
+}
+
+.imagen-boton-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%; /* Agregado para redondear la imagen */
+  border: 5px solid #008080; /* Agregado para el borde azulverdoso */
+  transition: transform 0.3s ease;
+}
+
+.imagen-boton-avatar:hover {
+  transform: scale(
+    1.1
+  ); /* Ajusta el valor según tus preferencias para el zoom */
+  filter: brightness(
+    1.1
+  ); /* Ajusta el valor según tus preferencias para el aclarado */
+  border-color: #016b6b;
+}
+/* Agrega reglas de estilo para el enlace de avatar */
+.boton-avatar-base {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* Estilos para dispositivos con un ancho mínimo de 768px */
 @media only screen and (min-width: 768px) {
   .zonas-container {
@@ -220,10 +276,15 @@
     margin-top: 10%;
     margin-bottom: 10%;
   }
+  .user-info {
+    width: 30%;
+  }
+  .user-posts {
+    width: 40%;
+  }
   .user-info,
   .user-posts {
-    margin: 30px;
-    width: 30%;
+    margin: 10px;
     display: flex;
     align-items: flex-start;
     border: 2px solid #008080;
@@ -265,31 +326,4 @@
     background-color: rgb(255, 0, 0);
     color: white;
   }
-}
-
-.avatar-container {
-  margin-left: auto;
-  display: flex;
-  align-items: flex-start; /* Cambiado de 'center' a 'flex-start' */
-}
-
-.imagen-boton-avatar {
-  max-width: 180px;
-  max-height: 180px;
-  margin-right: 45px;
-  margin-top: -500px; /* Ajusta este valor para cambiar la posición vertical de la imagen */
-  border-radius: 50%; /* Agregado para redondear la imagen */
-  border: 15px solid #008080; /* Agregado para el borde azulverdoso */
-  transition: transform 0.3s ease;
-}
-
-.imagen-boton-avatar:hover {
-  transform: scale(1.1); /* Ajusta el valor según tus preferencias para el zoom */
-  filter: brightness(1.1); /* Ajusta el valor según tus preferencias para el aclarado */
-  border-color: #016b6b;; 
-}
-/* Agrega reglas de estilo para el enlace de avatar */
-.boton-avatar-base {
-  text-decoration: none;
-  color: inherit;
 }

@@ -1,12 +1,12 @@
-import { useState, useEffect } from "react"; 
-import { useUser } from "../../context/UserContext"; 
-import "./ProfilePage.css"; 
+import { useState, useEffect } from "react";
+import { useUser } from "../../context/UserContext";
+import "./ProfilePage.css";
 import {
   getInfoUserService,
   getUserPostsService,
   deleteUserByIdService,
-} from "../../services"; 
-import { Link } from "react-router-dom"; 
+} from "../../services";
+import { Link } from "react-router-dom";
 
 // Componente de la página de perfil del usuario
 const ProfilePage = () => {
@@ -90,6 +90,16 @@ const ProfilePage = () => {
   // Renderizar el componente ProfilePage
   return (
     <div className="zonas-container">
+      {/* Contenedor del avatar */}
+      <div className="avatar-container">
+        <Link to="/avatar-page" className="boton-avatar-base">
+          <img
+            src="/AvatarBase.png"
+            alt="Avatar"
+            className="imagen-boton-avatar"
+          />
+        </Link>
+      </div>
       {/* Información del perfil */}
       <section className="user-info">
         <h1 className="perfil-usuario-titulo"> Mi Perfil de Usuario</h1>
@@ -109,16 +119,6 @@ const ProfilePage = () => {
                   : ""}
               </p>
               <p>Biografía: {userData.bio}</p>
-            </div>
-            {/* Contenedor del avatar */}
-            <div className="avatar-container">
-              <Link to="/avatar-page" className="boton-avatar-base">
-                <img
-                  src="/AvatarBase.png"
-                  alt="Avatar"
-                  className="imagen-boton-avatar"
-                />
-              </Link>
             </div>
           </>
         ) : (
@@ -164,5 +164,4 @@ const ProfilePage = () => {
   );
 };
 
-export default ProfilePage; 
-
+export default ProfilePage;
