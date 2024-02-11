@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react"; 
+import { useState, useEffect } from "react";
 import { useUser } from "../../context/UserContext";
-import PostItem from "../../components/postItem/PostItem"; 
-import { useTheme } from "../../context/ThemeContext"; 
-import "./SavedPage.css"; 
+import PostItem from "../../components/postItem/PostItem";
+import { useTheme } from "../../context/ThemeContext";
+import "./SavedPage.css";
+import "../../components/postItem/PostItem.css";
 
 function SavedPage() {
   const { isDarkMode } = useTheme(); // Obtenemos el estado del modo oscuro del contexto de tema
@@ -79,4 +80,4 @@ function SavedPage() {
   );
 }
 
-export default SavedPage; 
+export default SavedPage;

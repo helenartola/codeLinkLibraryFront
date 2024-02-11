@@ -131,7 +131,10 @@
   border: none;
   background-color: transparent;
 }
-
+.boton-guardar-edicion-comentario {
+  border: none;
+  background-color: transparent;
+}
 .icono-guardar-edicion-post {
   width: 27px;
 }
@@ -146,8 +149,16 @@
 .icono-eliminar {
   width: 25px;
 }
+.icono-eliminar-comentario {
+  width: 25px;
+  background-color: transparent;
+}
 .icono-editar-post {
-  width: 32px;
+  width: 25px;
+}
+.icono-editar-comentario {
+  background-color: transparent;
+  width: 25px;
 }
 .lista-comentarios {
   margin-top: 5px;
@@ -300,6 +311,34 @@
 .edita-tu-post-titulo {
   margin-bottom: 5px;
 }
+.boton-editar-comentario {
+  background-color: transparent;
+  border: none;
+}
+.icono-guardar-edicion-comentario {
+  width: 27px;
+}
+.nombre-usuario-comentario {
+  font-size: 12px;
+  color: teal;
+  margin-bottom: 10px;
+}
+.dark .dijo {
+  color: white;
+  font-size: 12px;
+}
+.light .dijo {
+  color: #303030;
+  font-size: 12px;
+}
+.fecha-comentario {
+  font-size: 12px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.texto-comentario {
+  margin-bottom: 5px;
+}
 @media only screen and (min-width: 768px) {
   .dark .post-item-container {
     margin: 20px 5% 20px 5%;
@@ -332,6 +371,19 @@
   .datos-publicacion {
     display: flex;
   }
+  .nombre-usuario-comentario {
+    font-size: 12px;
+    color: teal;
+    margin-bottom: 10px;
+  }
+  .dark .dijo {
+    color: white;
+    font-size: 12px;
+  }
+  .light .dijo {
+    color: #303030;
+    font-size: 12px;
+  }
   .boton-comentar {
     background-color: transparent;
     color: white;
@@ -341,7 +393,11 @@
     border: none;
   }
   .icono-comentario {
-    width: 32px;
+    width: 25px;
+  }
+  .icono-editar-comentario {
+    background-color: transparent;
+    width: 25px;
   }
   .dark .comment-input {
     border: 1px solid teal;
@@ -428,6 +484,10 @@
     border-radius: 50px;
     padding: 5px;
   }
+  .boton-guardar-edicion-comentario {
+    border: none;
+    background-color: transparent;
+  }
   .light .boton-eliminar-comentario {
     border: none;
     background-color: transparent;
@@ -458,6 +518,9 @@
   .icono-guardar-edicion-post {
     width: 32px;
   }
+  .icono-guardar-edicion-comentario {
+    width: 32px;
+  }
   .boton-icono-like img {
     width: 22px;
   }
@@ -474,7 +537,10 @@
     align-items: center;
     gap: 10px;
   }
-
+  .boton-editar-comentario {
+    background-color: transparent;
+    border: none;
+  }
   .botones-guardar img {
     width: 22px;
   }
@@ -535,6 +601,9 @@
   .light .texto-comentario-editado {
     color: #008080;
   }
+  .texto-comentario {
+    margin-bottom: 5px;
+  }
 
   .dark .nombre-usuario {
     color: white;
@@ -579,7 +648,4 @@
   .link-titulo-post:visited {
     color: #9d9d9d;
   }
-}
-.link-titulo-post {
-  color: rgb(0, 170, 170);
 }

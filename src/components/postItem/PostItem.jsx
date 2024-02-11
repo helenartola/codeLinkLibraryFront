@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react"; 
-import { Link } from "react-router-dom"; 
-import "./PostItem.css"; 
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import "./PostItem.css";
 import { useUser } from "../../context/UserContext";
 import {
   getCommentsService,
@@ -12,10 +12,9 @@ import {
   deleteCommentService,
   editCommentService,
   editPostService,
-} from "../../services/index"; 
+} from "../../services/index";
 
 const PostItem = ({ post, posts, setPosts, showLink = false }) => {
-
   // Estados para el manejo de comentarios
   const [comentario, setComentario] = useState(""); // Estado para el texto del comentario
   const [comments, setComments] = useState([]); // Estado para almacenar los comentarios
@@ -40,7 +39,9 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
   const [editedTitle, setEditedTitle] = useState(post.title); // Estado para el título editado del post
   const [editedDescription, setEditedDescription] = useState(post.description); // Estado para la descripción editada del post
   const [editedURL, setEditedURL] = useState(post.url); // Estado para la URL editada del post
-  const [lastPostEditTime, setLastPostEditTime] = useState(post.lastEditTime || null); // Estado para almacenar la fecha de la última edición del post
+  const [lastPostEditTime, setLastPostEditTime] = useState(
+    post.lastEditTime || null
+  ); // Estado para almacenar la fecha de la última edición del post
 
   // Efecto para obtener los comentarios del post
   useEffect(() => {
@@ -472,7 +473,11 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
                   <div className="comentario-contenedor">
                     {/* Muestra el nombre de usuario */}
                     <p className="nombre-usuario-comentario">
-                      {comment.userName} dijo:
+                      {comment.userName} <span className="dijo">dijo:</span>
+                    </p>
+                    {/* Muestra la fecha de creación del comentario */}
+                    <p className="fecha-comentario">
+                      {new Date(comment.createdAt).toLocaleString()}
                     </p>
                     {/* Muestra el texto del comentario */}
                     {editingComment &&
@@ -488,15 +493,10 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
                     )}
                   </div>
 
-                  {/* Muestra la fecha de creación del comentario */}
-                  <p className="fecha-comentario">
-                    {new Date(comment.createdAt).toLocaleString()}
-                  </p>
                   {/* Muestra la fecha de la última edición del comentario */}
                   {lastCommentEditTime[comment.commentId] && (
                     <p className="fecha-comentario">
-                      Última edición:{" "}
-                      {lastCommentEditTime[comment.commentId]}
+                      Última edición: {lastCommentEditTime[comment.commentId]}
                     </p>
                   )}
                   {/* Botón para editar comentario */}
@@ -507,7 +507,7 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
                     >
                       <img
                         className="icono-editar-comentario"
-                        src="/lapiz.png"
+                        src="/edit.png"
                         alt="Editar comentario"
                       />
                     </button>
@@ -520,7 +520,7 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
                     >
                       <img
                         className="icono-eliminar-comentario"
-                        src="/basura.png"
+                        src="/basura-roja.png"
                         alt="Eliminar comentario"
                       />
                     </button>
