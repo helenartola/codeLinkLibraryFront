@@ -10,7 +10,7 @@ import PaginaRegistro from "./pages/paginaregistro/PaginaRegistro";
 import UserSettingsPage from "./pages/settingspage/UserSettingsPage";
 import SearchPage from "./pages/searchpage/searchPage";
 import SavedPage from "./pages/savedpage/SavedPage";
-//import AvatarPage from "./pages/avatarpage/avatarPage";
+import AvatarPage from "./pages/avatarpage/AvatarPage";
 
 function App() {
   const location = useLocation();
@@ -40,7 +40,7 @@ function App() {
           {/* Nueva ruta para mostrar los posts guardados */}
           <Route path="/saved-page" element={<SavedPage />} />
 
-          {/*<Route path="/avatar-page" element={<AvatarPage />} />*/}
+          <Route path="/avatar-page" element={<AvatarPage />} />
 
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
