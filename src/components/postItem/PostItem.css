@@ -399,6 +399,16 @@
     background-color: transparent;
     width: 25px;
   }
+  .light .editar-comentario-input {
+    background-color: transparent;
+    color: #303030;
+    border: 1px solid teal;
+  }
+  .dark .editar-comentario-input {
+    background-color: transparent;
+    color: white;
+    border: 1px solid teal;
+  }
   .dark .comment-input {
     border: 1px solid teal;
     color: white;
@@ -519,7 +529,7 @@
     width: 32px;
   }
   .icono-guardar-edicion-comentario {
-    width: 32px;
+    width: 25px;
   }
   .boton-icono-like img {
     width: 22px;
