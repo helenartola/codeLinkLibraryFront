@@ -2,9 +2,17 @@
 
 ## DESCRIPCIÓN DEL PROYECTO:
 
-    El equipo D conformado por Ana, Tony, Helena y Cristina hemos desarrollado una plataforma para compartir y guardar enlaces de desarrollo web. 
-    En este repositorio hemos desarrollado la parte del front-end de nuestra APP. 
-    Trabajaremos junto con el repositorio de back-end para llegar al resultado final.
+    El equipo D conformado por Ana, Toni, Helena y Cristina hemos desarrollado una plataforma para compartir y guardar enlaces de desarrollo web.
+
+    En este repositorio hemos desarrollado la parte del "front-end" de nuestra APP.
+
+    En esta aplicación web podremos crear un usuario introduciendo algunos campos obligatorios que luego podremos actualizar e incluso ampliar o cambiar la contraseña actual. Una vez registrado el usuario nos aparecerá la página de "Log In" donde introduciremos las credenciales que nos indican.
+
+    Una vez dentro de la aplicación nos aparecerán los "posts" ya existentes, los cuales podremos comentar, dar "like" o guardar para nuestra biblioteca que tendremos en la página de usuario. Esta página principal también incluye una columna de "Trending Topics" con los post con más "likes" de la web y nuestro "avatar" justo encima de la opción de crear nuevo "post".
+
+    Haciendo referencia al "header", tendremos acceso a la barra de búsqueda, donde a medida que escribimos aparecerán los posts existentes en la web y los botones de "Página de perfil", "Log Out" y la posibilidad de cambiar la apariencia de la web "Light Mode / Dark Mode".
+
+    Por último, podremos acceder a nuestra página de perfil donde podremos cambiar nuestro avatar dentro de una selección, acceder a nuestra biblioteca de "posts" guardados, acceder a la página de ajustes (donde podremos añadir información de usuario o cambiar contraseña), eliminar usuario con doble confirmación y un historial de nuestros "posts" publicados.
 
 
 ## CARACTERÍSTICAS:
@@ -13,77 +21,19 @@
     - Registro, login, ajustes y eliminación de usuario.
     - Avatares de usuario.
     - Creación y eliminación de post.
-    - Posibilidad de dar like a post.
+    - Posibilidad de dar like a post de otros usuarios.
     - Posibilidad de comentar post.
-    - visibilización de post general.
-    - Visibilización de post concreto.
-    - Visibilización de post con resultados de busqueda.
-    - Visibilización de posts de cada usuario.
+    - Posibilidad de guardar post de otros usuarios.
+    - Visualización de post general.
+    - Visualización de post concreto.
+    - Visualización de post con resultados de búsqueda.
+    - Visualización de posts de cada usuario.
 
 
-## CONFIGURACIÓN INICIAL DEL PROYECTO: 🔴
+## FUTURAS IMPLEMENTACIONES
 
-1. Decidimos en común un primer diseño y estructura de nuestra APP(dejamos decisiones de mejora durante el desarrollo). 
-
-2. Creamos repositorio en github.
-
-3. Clonamos repositorio de github en una carpeta nueva en el pc (code-link-library-front, ejemplo) con el comando `git clone` + `url de repositorio en github`.
-
-4. Iniciamos proyecto con el comando `npm init -y`. ❓
-
-5. Instalamos dependencias con `npm install` o `npm i` (+ `react, react-dom, react-router-dom` y `dependencias de derarrollo`).
-
-6. Modificamos el módulo `package.json` (`"type":"module"`), modificamos values de (`"name"`). ❓
-
-7. Utilizamos el comando `npm run dev`.
-
-8. Creamos módulo README.md con `touch README.md` (Descripción app).
-
-9. Creamos estructura básica de carpetas(`src` y sus subcarpetas: `assets`,`components`, `context`, `hooks`, `pages` y `services`).
-
-10. Creamos módulo en la carpeta raiz `index.html`. ❓
-
-11. Creamos módulo ocultación archivos con `touch .gitignore`.
-
-12. Configuramos variables de entorno en un archivo `.env`. (incluimos en `.gitignore`)
-
-13. Creamos módulo de referencia `.env.example`. (dejamos solo datos de muestra)
-
-14. Desarrollamos módulo principal `App.jsx` y `App.css`. 
-
-15. Desarrollamos módulo `index.css` (con margin y padding 0, para dar total control de css a los demás módulos).
-
-16. Desarrollamos módulo `main.jsx`. ❓
-
-17. Desarrollamos módulo `homepage.jsx` y `homepage.css` como pagina principal de la app.
-
-18. Desarrollamos componente `ThemeSwitcher.jsx` y `ThemeSwitcher.css` como temas de la app y `ThemeContext.jsx`.
-
-18. Desarrollamos componente `header.jsx`.
-
-19. Desarrollamos componente `footer.jsx`.
-
-20. Desarrollamos módulo `PaginaRegistro.jsx` y componente `FormularioRegistro.jsx` (módulos de css incluidos).
-
-21. Desarrollamos módulo `LoginPage.jsx` y componente `LogIn.jsx` (módulos de css incluidos).
-
-22. Desarrollamos módulo `NotFoundPage.jsx` y `NotFoundPage.css`.
-
-23. Desarrollamos módulo `ProfilePage.jsx` y `ProfilePage.css`.
-
-24. Desarrollamos módulo `UserSettingsPage.jsx` y `UserSettingsPage.css` (junto con su componente `UserSettings.jsx`).
-
-25. Desarrollamos hooks.
-
-26. Desarrollamos `UserContext.jsx`.
-
-27. Desarrollamos componente `Buscador.jsx` y `Buscador.css`.
-
-28. Desarrollamos 
-
-.......................❓
-
-27. Realizamos pruebas de funcionamiento (una vez tenemos el mensaje de confirmación `Servidor corriendo en el puerto ❓`).
+    - Categorias: Añadir "tags" de categoria al crear el post.
+    - Buscador: Búsqueda por categorias.
 
 
 ## DEPENDENCIAS:
@@ -93,6 +43,7 @@
     - react                 (Biblioteca principal: para construir interfaces de usuario)
     - react-dom             (Métodos específicos del DOM: para interactuar con React)
     - react-router-dom      (Biblioteca de navegación gestión de rutas en apps React)
+
 
 ### Dependencias de Desarrollo:
     - types/react                       (Tipos TypeScript para React)
@@ -107,13 +58,13 @@
 
 ## Uso
 
-    Para ejecutar el proyecto:
+Para ejecutar el proyecto:
 
 - En la terminal / bash usar comando `npm run dev`.
+
 
 # Comandos útiles
 
 - Para revisar dependencias instaladas `npm list`.
 - Para revisar dependencias instaladas de primer nivel `npm list --depth=0`.
 - Para revisar dependencias en busca de vulnerabilidades conocidas utiliza `npm audit`.
-
