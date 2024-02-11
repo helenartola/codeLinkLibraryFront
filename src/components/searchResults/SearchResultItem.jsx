@@ -1,3 +1,4 @@
+// Componente para mostrar un elemento de resultado de búsqueda
 const SearchResultItem = ({ result }) => {
     return (
       <div className="search-result-item">

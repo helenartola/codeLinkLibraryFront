@@ -1,5 +1,6 @@
 import './Pagination.css';
 
+// Componente de paginación
 const Pagination = ({ totalPosts, totalPages, currentPage, onPageChange }) => {
 
   // Función para manejar el cambio de página

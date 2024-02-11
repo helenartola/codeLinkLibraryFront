@@ -8,8 +8,8 @@ import { useNavigate } from "react-router-dom";
 import LogoCodeLinkLibrary from "../logo/logoCodeLinkLibrary";
 
 export const FormularioRegistro = () => {
-  //hacemos que todos los campos esten controlados por un estado
-  //creamos un estado para cada uno de los campos del formulario
+  //Hacemos que todos los campos esten controlados por un estado
+  //Creamos un estado para cada uno de los campos del formulario
   const [userName, setName] = useState("");
   const [email, setEmail] = useState("");
   const [pass1, setPass1] = useState("");
@@ -20,10 +20,10 @@ export const FormularioRegistro = () => {
   const { isDarkMode } = useTheme();
 
   const handleForm = async (e) => {
-    //cancelamos el evento de envio con preventDefault
+    //Cancelamos el evento de envio con preventDefault
     e.preventDefault();
     setError("");
-    //comprobamos que las password sean iguales
+    //Comprobamos que las password sean iguales
     if (pass1 !== pass2) {
       setError("Las contraseñas no coinciden");
       return;

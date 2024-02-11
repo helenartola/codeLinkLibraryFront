@@ -1,50 +1,52 @@
-import "./LogIn.css";
-import { useState } from "react";
-import { useTheme } from "../../context/ThemeContext";
-import { loginUsuarioService } from "../../services";
-import { Link } from "react-router-dom";
-import LogoCodeLinkLibrary from "../logo/logoCodeLinkLibrary";
-import { useNavigate } from "react-router-dom";
-import { useUser } from "../../context/UserContext";
+import "./LogIn.css"; 
+import { useState } from "react"; 
+import { useTheme } from "../../context/ThemeContext"; 
+import { loginUsuarioService } from "../../services"; 
+import { Link } from "react-router-dom"; 
+import LogoCodeLinkLibrary from "../logo/logoCodeLinkLibrary"; 
+import { useNavigate } from "react-router-dom"; 
+import { useUser } from "../../context/UserContext"; 
 
+// Componente FormularioLogin
 export const FormularioLogin = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const { isDarkMode } = useTheme();
-  const navigate = useNavigate();
-  const [, betterSetUser] = useUser();
+  // Estados locales
+  const [email, setEmail] = useState(""); // Estado para el email
+  const [password, setPassword] = useState(""); // Estado para la contraseña
+  const [error, setError] = useState(""); // Estado para los errores
+  const { isDarkMode } = useTheme(); // Estado del modo oscuro desde el contexto de tema
+  const navigate = useNavigate(); // Función de navegación desde react-router-dom
+  const [, betterSetUser] = useUser(); // Función de establecimiento de usuario desde el contexto de usuario
 
+  // Función para manejar el inicio de sesión
   const handleLogin = async (e) => {
-    e.preventDefault();
-    setError("");
+    e.preventDefault(); // Evitar comportamiento predeterminado del formulario
+    setError(""); // Limpiar el estado de error
 
     try {
+      // Intentar iniciar sesión con el servicio de inicio de sesión
       const userData = await loginUsuarioService({ email, password });
 
       if (userData.token) {
-        // Almacenar el token en localStorage
-        //localStorage.setItem("token", token);
-        betterSetUser(userData);
-        navigate("/");
+        // Si se obtiene un token válido
+        betterSetUser(userData); // Establecer el usuario en el contexto
+        navigate("/"); // Redirigir a la página principal
       } else {
-        setError("Error al obtener el token");
+        setError("Error al obtener el token"); 
       }
     } catch (error) {
       setError(error.message);
     }
   };
 
+  // Estructura del componente de inicio de sesión
   return (
     <div className="login-container">
-      <LogoCodeLinkLibrary />
-      <section
-        className={`cajaFormularioLogin ${isDarkMode ? "dark" : "light"}`}
-      >
-        <h1>INICIO DE SESIÓN</h1>
-        <form onSubmit={handleLogin}>
+      <LogoCodeLinkLibrary /> {/* Logo de la aplicación */}
+      <section className={`cajaFormularioLogin ${isDarkMode ? "dark" : "light"}`}> {/* Contenedor del formulario con clases condicionales para el modo oscuro */}
+        <h1>INICIO DE SESIÓN</h1> {/* Título del formulario */}
+        <form onSubmit={handleLogin}> {/* Formulario de inicio de sesión */}
           <fieldset>
-            <label htmlFor="email">MAIL</label>
+            <label htmlFor="email">MAIL</label> {/* Campo de entrada para el email */}
             <input
               value={email}
               type="text"
@@ -56,7 +58,7 @@ export const FormularioLogin = () => {
           </fieldset>
 
           <fieldset>
-            <label htmlFor="password">CONTRASEÑA</label>
+            <label htmlFor="password">CONTRASEÑA</label> {/* Campo de entrada para la contraseña */}
             <input
               value={password}
               type="password"
@@ -67,12 +69,12 @@ export const FormularioLogin = () => {
             />
           </fieldset>
 
-          <button className="botonLogin">INICIAR SESIÓN</button>
-          {error && <p className="errorMensaje">{error}</p>}
+          <button className="botonLogin">INICIAR SESIÓN</button> {/* Botón para enviar el formulario de inicio de sesión */}
+          {error && <p className="errorMensaje">{error}</p>} {/* Mostrar mensaje de error si existe */}
           <div className="yaTienesCuenta">
-            <p>¿Aún no tienes tu cuenta?</p>
-            <Link to="/registro">
-              <button className="accede-button">Regístrate</button>
+            <p>¿Aún no tienes tu cuenta?</p> {/* Mensaje para registrarse si no tiene una cuenta */}
+            <Link to="/registro"> {/* Enlace para ir a la página de registro */}
+              <button className="accede-button">Regístrate</button> {/* Botón para redirigir a la página de registro */}
             </Link>
           </div>
         </form>
@@ -81,4 +83,4 @@ export const FormularioLogin = () => {
   );
 };
 
-export default FormularioLogin;
+export default FormularioLogin; 

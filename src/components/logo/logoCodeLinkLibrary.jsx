@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 
+// Componente LogoCodeLinkLibrary para el logo de la aplicación
 const LogoCodeLinkLibrary = () => {
   return (
     <section className="logoCodeLinkLibrary">

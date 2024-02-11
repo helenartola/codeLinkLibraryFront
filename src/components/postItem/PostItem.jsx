@@ -117,10 +117,7 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
     try {
       // Llama al servicio para eliminar el post
       await deletePostService(post.postId, token);
-      // Actualiza la lista de posts para que el post eliminado ya no se muestre
-      // Esto podría implicar recargar la página o actualizar el estado del componente
-      // dependiendo de cómo esté estructurada tu aplicación
-
+      
       setPosts(posts.filter((postItem) => postItem.postId !== post.postId));
       alert("El post ha sido eliminado con éxito.");
     } catch (error) {
