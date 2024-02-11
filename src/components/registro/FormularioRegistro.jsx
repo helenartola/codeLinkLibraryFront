@@ -2,7 +2,7 @@ import "./FormularioRegistro.css";
 import { useState } from "react";
 import { registroUsuarioService } from "../../services";
 import { Link } from "react-router-dom";
-import { useTheme } from "../hooks/useTheme";
+import { useTheme } from "../../context/ThemeContext";
 import { useNavigate } from "react-router-dom";
 
 import LogoCodeLinkLibrary from "../logo/logoCodeLinkLibrary";

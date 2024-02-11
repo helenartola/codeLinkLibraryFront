@@ -4,7 +4,7 @@ import { getPostByIdService } from "../../services";
 import "./PostPage.css";
 import PostItem from "../../components/postItem/PostItem.jsx"; 
 import { useUser } from "../../context/UserContext";
-import { useTheme } from "../hooks/useTheme";
+import { useTheme } from "../../context/ThemeContext"; 
 
 const PostPage = () => {
   const { isDarkMode } = useTheme();

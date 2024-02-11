@@ -1,4 +1,4 @@
-import { useTheme } from "../hooks/useTheme";
+import { useTheme } from "../../context/ThemeContext";
 import { useEffect } from "react";
 import "./ThemeSwitcher.css";
 

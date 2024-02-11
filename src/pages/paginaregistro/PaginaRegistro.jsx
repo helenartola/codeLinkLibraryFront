@@ -1,6 +1,6 @@
 import "./PaginaRegistro.css";
 import FormularioRegistro from "../../components/registro/FormularioRegistro";
-import { useTheme } from "../hooks/useTheme";
+import { useTheme } from "../../context/ThemeContext";
 
 const PaginaRegistro = () => {
   const { isDarkMode } = useTheme();

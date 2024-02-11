@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import "./Header.css"; 
 import ThemeSwitcher from "../temaclaroscuro/ThemeSwitcher"; 
 import Buscador from "../buscador/Buscador"; 
-import { useTheme } from "../hooks/useTheme";
-
+import { useTheme } from "../../context/ThemeContext"; 
 
 // Componente Header que representa el encabezado de la página
 const Header = () => {

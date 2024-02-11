@@ -1,4 +1,4 @@
-import { useTheme } from "../hooks/useTheme";
+import { useTheme } from "../../context/ThemeContext"; 
 import "./Footer.css"; 
 
 // Componente Footer que muestra el pie de página

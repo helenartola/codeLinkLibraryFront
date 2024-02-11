@@ -1,6 +1,6 @@
 import "./LogIn.css";
 import { useState } from "react";
-import { useTheme } from "../hooks/useTheme";
+import { useTheme } from "../../context/ThemeContext";
 import { loginUsuarioService } from "../../services";
 import { Link } from "react-router-dom";
 import LogoCodeLinkLibrary from "../logo/logoCodeLinkLibrary";

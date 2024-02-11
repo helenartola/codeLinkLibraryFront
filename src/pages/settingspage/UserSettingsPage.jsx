@@ -3,7 +3,7 @@ import "./UserSettingsPage.css";
 import { userSettingsService } from "../../services";
 import { Link } from "react-router-dom";
 import { useUser } from "../../context/UserContext";
-import { useTheme } from "../hooks/useTheme";
+import { useTheme } from "../../context/ThemeContext";
 
 const UserSettingsPage = () => {
   const [name, setName] = useState("");
