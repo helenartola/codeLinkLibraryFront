@@ -1,0 +1,87 @@
+.avatar-page-container {
+  text-align: center;
+  margin-top: 150px;
+}
+
+.avatar-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+.avatar-seleccionado-texto {
+  font-family: jost, sans-serif;
+}
+.avatar-button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.2s ease-in-out;
+  padding: 5px;
+}
+
+.avatar-button.selected {
+  transform: scale(1.1);
+}
+
+.avatar-image {
+  max-width: 80px;
+  max-height: 80px;
+  margin-top: 10px;
+}
+
+.selected-avatar-container {
+  margin-top: 20px;
+}
+
+.selected-avatar {
+  max-width: 880px;
+  max-height: 80px;
+}
+
+.back-to-profile {
+  margin-top: 20px;
+}
+
+.dark .volver-a-perfil-usuario {
+  border: 1px solid teal;
+  background-color: teal;
+  color: white;
+  border-radius: 30px;
+  padding: 15px;
+  font-size: 16px;
+  font-family: jost, sans-serif;
+  cursor: pointer;
+}
+.dark .volver-a-perfil-usuario:hover {
+  border: 1px solid teal;
+  background-color: transparent;
+  color: white;
+  border-radius: 30px;
+  padding: 15px;
+  font-size: 16px;
+  font-family: jost, sans-serif;
+  cursor: pointer;
+}
+.light .volver-a-perfil-usuario {
+  border: 1px solid teal;
+  background-color: teal;
+  color: white;
+  border-radius: 30px;
+  padding: 15px;
+  font-size: 16px;
+  font-family: jost, sans-serif;
+  cursor: pointer;
+}
+.light .volver-a-perfil-usuario:hover {
+  border: 1px solid teal;
+  background-color: transparent;
+  color: #303030;
+  border-radius: 30px;
+  padding: 15px;
+  font-size: 16px;
+  font-family: jost, sans-serif;
+  cursor: pointer;
+}

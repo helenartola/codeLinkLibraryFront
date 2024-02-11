@@ -1,75 +1,72 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import "./AvatarPage.css";
+import { useTheme } from "../../context/ThemeContext";
 
 const AvatarPage = () => {
-  // Obtenemos el avatar seleccionado almacenado en el localStorage
-  const storedAvatar = localStorage.getItem('selectedAvatar');
+  const storedAvatar = localStorage.getItem("selectedAvatar");
+  const { isDarkMode } = useTheme();
 
-  // Definimos el estado para almacenar el avatar seleccionado
-  const [selectedAvatar, setSelectedAvatar] = useState(storedAvatar || '/AvatarBase.png');
+  const [selectedAvatar, setSelectedAvatar] = useState(
+    storedAvatar || "/AvatarBase.png"
+  );
 
-  // Lista de avatares disponibles
   const avatars = [
-    '/Avatar1.png',
-    '/Avatar2.png',
-    '/Avatar3.png',
-    '/Avatar4.png',
-    '/Avatar5.png',
-    '/Avatar6.png',
-    '/Avatar7.png',
-    '/Avatar8.png',
-    '/Avatar9.png',
+    "/Avatar1.png",
+    "/Avatar2.png",
+    "/Avatar3.png",
+    "/Avatar4.png",
+    "/Avatar5.png",
+    "/Avatar6.png",
+    "/Avatar7.png",
+    "/Avatar8.png",
+    "/Avatar9.png",
   ];
 
-  // Función para manejar el clic en un avatar
   const handleAvatarClick = (avatar) => {
     setSelectedAvatar(avatar); // Actualizamos el avatar seleccionado en el estado
-    localStorage.setItem('selectedAvatar', avatar); // Guardamos el avatar seleccionado en el localStorage
+    localStorage.setItem("selectedAvatar", avatar); // Guardamos el avatar seleccionado en el localStorage
   };
-  
-  useEffect(() => {
-  
-  }, []);
+
+  useEffect(() => {}, []);
 
   return (
-    <div style={{ textAlign: 'center', marginTop: '50px' }}>
+    <div className={`avatar-page-container ${isDarkMode ? "dark" : "light"}`}>
       <h1>Selecciona tu Avatar</h1>
-      {/* Renderizamos la lista de avatares */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '10px', marginTop: '20px' }}>
+      <div className="avatar-list">
         {avatars.map((avatar, index) => (
           <button
             key={index}
-            style={{
-              border: 'none',
-              backgroundColor: 'transparent',
-              cursor: 'pointer',
-              outline: 'none',
-              transition: 'transform 0.2s ease-in-out',
-              padding: '5px',
-            }}
-            // Aplicamos la clase "selected" si el avatar actual es el seleccionado
-            className={`avatar-button ${avatar === selectedAvatar ? 'selected' : ''}`}
-            onClick={() => handleAvatarClick(avatar)} // Manejamos el clic en el avatar
+            className={`avatar-button ${
+              avatar === selectedAvatar ? "selected" : ""
+            }`}
+            onClick={() => handleAvatarClick(avatar)}
           >
             <img
               src={avatar}
               alt={`Avatar ${index + 1}`}
-              style={{ maxWidth: '80px', maxHeight: '80px', marginTop: '10px' }}
+              className="avatar-image"
             />
           </button>
         ))}
       </div>
       {/* Mostramos la imagen del avatar seleccionado */}
-      <div>
-        <p>Avatar Seleccionado:</p>
-        <img src={selectedAvatar} alt="Avatar Seleccionado" style={{ maxWidth: '880px', maxHeight: '80px' }} />
+      <div className="selected-avatar-container">
+        {/* Aplica la clase del contenedor de avatar seleccionado del CSS */}
+        <p className="avatar-seleccionado-texto">Avatar Seleccionado:</p>
+        <img
+          src={selectedAvatar}
+          alt="Avatar Seleccionado"
+          className="selected-avatar"
+        />
+        {/* Aplica la clase del avatar seleccionado del CSS */}
       </div>
       {/* Botón para volver a ProfilePage */}
-      <div style={{ marginTop: '20px' }}>
+      <div className="back-to-profile">
+        {/* Aplica la clase del botón de regreso del CSS */}
         <Link to="/profile">
-          <button style={{ padding: '10px', fontSize: '16px' }}>
-            Volver a ProfilePage
-          </button>
+          <button className="volver-a-perfil-usuario">Volver</button>{" "}
+          {/* Aplica la clase del botón de regreso del CSS */}
         </Link>
       </div>
     </div>
