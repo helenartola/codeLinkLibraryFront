@@ -1,70 +1,60 @@
 /* Estilos para la sección contenedora de botones de acceso */
 .seccion-botones-acceso {
-  display: flex; 
-  justify-content: center; 
-  align-items: center; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Estilos para los botones de autenticación */
 .auth-button {
-  border: 1px solid #008080; 
-  padding: 10px 30px 10px 30px; 
-  border-radius: 50px; 
-  background-color: #008080; 
-  color: white; 
-  margin: 5px; 
-  font-family: jost, sans-serif; 
+  border: 1px solid #008080;
+  padding: 10px 30px 10px 30px;
+  border-radius: 50px;
+  background-color: #008080;
+  color: white;
+  margin: 5px;
+  font-family: jost, sans-serif;
 }
 
 /* Estilos al pasar el cursor sobre los botones de autenticación */
 .auth-button:hover {
-  border: 1px solid #008080; 
-  background-color: transparent; 
+  border: 1px solid #008080;
+  background-color: transparent;
 }
 
 /* Estilos para el nombre de usuario */
 .usuario {
-  font-family: jost, sans-serif; 
-  letter-spacing: 0.1em; 
-  margin-right: 1em; 
+  font-family: jost, sans-serif;
+  letter-spacing: 0.1em;
+  margin-right: 1em;
 }
 
 /* Estilos para el icono de logout en modo claro */
 .light .icono-logout {
-  font-family: jost, sans-serif; 
-  width: 32px; 
+  font-family: jost, sans-serif;
+  width: 32px;
 }
 
 /* Estilos para el icono de logout en modo oscuro */
 .dark .icono-logout {
-  font-family: jost, sans-serif; 
-  width: 32px; 
+  font-family: jost, sans-serif;
+  width: 32px;
 }
 
-/* Estilos para el botón de perfil */
-.profile-button {
-  border: 1px solid #008080; 
-  padding: 10px 30px 10px 30px; 
-  border-radius: 50px; 
-  margin: 5px; 
-  background-color: #008080;
-  background-size: 30%; 
-  background-position: center;
-  background-repeat: no-repeat; 
-  background-image: url(/profileicon-blanco.png); 
-  height: 40px; 
+.link-profile {
+  display: inline-block;
+}
+.icono-perfil {
+  width: 32px; /* Ajusta el tamaño según sea necesario */
+  transition: transform 0.3s ease; /* Agrega una transición suave */
 }
 
-/* Estilos al pasar el cursor sobre el botón de perfil */
-.profile-button:hover {
-  border: 1px solid #008080; 
-  background-color: transparent;
-  background-image: url(/profileIcon.png); 
+/* Cambia la imagen al pasar el cursor sobre el enlace */
+.icono-perfil:hover {
+  transform: scale(1.2); /* Opcional: Aumenta ligeramente el tamaño al hover */
 }
-
 /* Estilos para el botón de perfil en modo claro */
 .light .profile-button:hover {
-  color: #303030; 
-  border-bottom: 1px solid #008080; 
+  color: #303030;
+  border-bottom: 1px solid #008080;
 }
-
