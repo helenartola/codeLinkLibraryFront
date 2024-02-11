@@ -25,14 +25,15 @@
 
 .boton-delete {
   padding: 5px 30px 10px 30px;
-  margin-left: -20px;
+  margin-left: -40px;
   border: none;
   background-size: 40%;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url(/eliminar-usuario.png);
+  background-image: url(/eliminar-usuario-verde.png);
   background-color: transparent;
-  height: 40px;
+  height: 90px;
+  width: 90px;
 }
 
 .boton-delete:hover {

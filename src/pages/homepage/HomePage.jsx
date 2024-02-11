@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import usePosts from "../../hooks/usePosts";
 import ListaDePosts from "../../components/listaPosts/ListaDePosts";
 import NewPost from "../../components/newpost/NewPost";
-import Pagination from "../../components/pagination/Pagination"; 
+import Pagination from "../../components/pagination/Pagination";
 import "./HomePage.css";
 import { useTheme } from "../../context/ThemeContext";
 import { fetchTopLikedPosts } from "../../services";
@@ -56,7 +56,7 @@ const HomePage = () => {
 
   // Si se está cargando, muestra un mensaje de carga
   if (loading) return <p className="texto-cargando-posts">Cargando posts...</p>;
-  
+
   // Si hay un error, muestra el mensaje de error
   if (error) return <p>{error}</p>;
 

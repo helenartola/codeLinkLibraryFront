@@ -65,6 +65,7 @@ const UserSettingsPage = () => {
 
   return (
     <div className={`caja-ajustes-usuario ${isDarkMode ? "dark" : "light"}`}>
+      <h1>Ajustes</h1>
       <form className="formulario-ajustes-usuario" onSubmit={handleSubmit}>
         {error && <p className="error-message">{error}</p>}
         {successMessage && <p className="success-message">{successMessage}</p>}
@@ -134,7 +135,9 @@ const UserSettingsPage = () => {
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
 
-        <button className="submit-form-settings" type="submit">Aceptar</button>
+        <button className="submit-form-settings" type="submit">
+          Aceptar
+        </button>
 
         <Link to="/profile">
           <button className="return-profile">Volver</button>
