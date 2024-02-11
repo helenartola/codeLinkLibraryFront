@@ -19,10 +19,33 @@
   padding: 5px;
   width: 100%;
 }
+
 .input-form-ajustes {
   border: none;
   border-bottom: 1px solid teal;
   background-color: transparent;
   border-radius: 0;
+}
+
+.submit-form-settings,
+.return-profile {
+  padding: 10px 20px;
+  margin-right: 30px;
+  background-color: #008080;
   color: white;
+  border: none;
+  border-radius: 50px;
+  font-family: "jost", sans-serif;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
+  margin-top: 15px;
+  transition: background-color 0.3s;
+}
+
+.submit-form-settings:hover,
+.return-profile:hover {
+background-color: transparent;
+border: 1px solid #008080;
+color: #008080;
 }

@@ -134,10 +134,10 @@ const UserSettingsPage = () => {
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
 
-        <button type="submit">Aceptar</button>
+        <button className="submit-form-settings" type="submit">Aceptar</button>
 
         <Link to="/profile">
-          <button className="return">Volver</button>
+          <button className="return-profile">Volver</button>
         </Link>
       </form>
     </div>
