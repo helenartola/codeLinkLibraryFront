@@ -136,33 +136,41 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
   };
 
   // Función para manejar el clic en el botón de guardar/eliminar post
-  const handleSavePost = async () => {
-    try {
-      // Verifica si el post pertenece al propio usuario
-      if (user && post.userId === user.userId) {
-        setErrorMessage("No puedes guardar tus propios posts.");
-        return;
-      }
-
-      // Llama al servicio para guardar o eliminar el post según su estado actual
-      if (isSaved) {
-        // Si está guardado, entonces llamamos al servicio para desguardar
-        await unsavePostService(post.postId, token);
-        // Actualiza el estado con el nuevo estado de guardado
-        setIsSaved(false);
-      } else {
-        // Si no está guardado, llamamos al servicio para guardar
-        await savePostService(post.postId, token);
-        // Actualiza el estado con el nuevo estado de guardado
-        setIsSaved(true);
-      }
-    } catch (error) {
-      console.error("Error al guardar/eliminar post:", error);
-      setErrorMessage(
-        "Error al guardar/eliminar post. Por favor, inténtalo de nuevo."
-      );
+const handleSavePost = async () => {
+  try {
+    // Verifica si el post pertenece al propio usuario
+    if (user && post.userId === user.userId) {
+      setErrorMessage("No puedes guardar tus propios posts.");
+      return;
     }
-  };
+
+    // Llama al servicio para guardar o eliminar el post según su estado actual
+    if (isSaved) {
+      // Si está guardado, entonces llamamos al servicio para desguardar
+      await unsavePostService(post.postId, token);
+      // Actualiza el estado con el nuevo estado de guardado
+      setIsSaved(false);
+      setMessage("El post ha sido eliminado de tus guardados con éxito.");
+    } else {
+      // Si no está guardado, llamamos al servicio para guardar
+      await savePostService(post.postId, token);
+      // Actualiza el estado con el nuevo estado de guardado
+      setIsSaved(true);
+      setMessage("El post ha sido guardado con éxito.");
+    }
+
+    // Limpiar el mensaje después de 3 segundos (3000 milisegundos)
+    setTimeout(() => {
+      setMessage("");
+    }, 3000);
+  } catch (error) {
+    console.error("Error al guardar/eliminar post:", error);
+    setErrorMessage(
+      "Error al guardar/eliminar post. Por favor, inténtalo de nuevo."
+    );
+  }
+};
+
 
   // Función para manejar el clic en el botón de eliminar comentario
   const handleDeleteComment = async (commentId) => {
