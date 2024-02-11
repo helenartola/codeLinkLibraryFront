@@ -21,6 +21,9 @@ const HomePage = () => {
   // Estado para almacenar los posts más votados
   const [topLikedPosts, setTopLikedPosts] = useState([]);
 
+  // Estado para almacenar el avatar seleccionado
+  const [selectedAvatar, setSelectedAvatar] = useState(null);
+
   // Estado para controlar la página actual de la paginación
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -34,6 +37,11 @@ const HomePage = () => {
 
   // Calcula el número total de páginas
   const totalPages = Math.ceil(posts.length / resultsPerPage);
+
+  useEffect(() => {
+    const storedAvatar = localStorage.getItem("selectedAvatar");
+    setSelectedAvatar(storedAvatar);
+  }, []);
 
   // Efecto para cargar los posts más votados cuando el componente se monta
   useEffect(() => {
@@ -65,6 +73,13 @@ const HomePage = () => {
     <section className={`inicio ${isDarkMode ? "dark" : "light"}`}>
       <div className="main-content">
         <div className="sidebar-izq">
+          <div className="avatar-container-home">
+            <img
+              src={selectedAvatar}
+              alt="Avatar"
+              className="imagen-boton-avatar-home"
+            />
+          </div>
           <div className="contenedor-crear-post">
             {/* Botón para mostrar/ocultar el formulario del nuevo post */}
             <button
