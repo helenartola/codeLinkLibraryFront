@@ -20,14 +20,15 @@
     - Desarrollo de la parte visual de la app (funcionalidad y apariencia).
     - Registro, login, ajustes y eliminación de usuario.
     - Avatares de usuario.
-    - Creación y eliminación de post.
+    - Creación, edición y eliminación de post.
     - Posibilidad de dar like a post de otros usuarios.
-    - Posibilidad de comentar post.
+    - Posibilidad de comentar post, editar y borrar el comentario.
     - Posibilidad de guardar post de otros usuarios.
     - Visualización de post general.
     - Visualización de post concreto.
     - Visualización de post con resultados de búsqueda.
     - Visualización de posts de cada usuario.
+    - Buscador.
 
 
 ## FUTURAS IMPLEMENTACIONES
