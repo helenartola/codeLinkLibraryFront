@@ -356,6 +356,22 @@
     border: none;
     max-width: 600px;
   }
+
+  .mensajes-de-error-caja,
+  .mensajes-de-exito-caja {
+  }
+  .mensajes-de-exito-caja p {
+    color: white;
+    background-color: teal;
+    padding: 20px;
+    margin-bottom: 10px;
+  }
+  .mensajes-de-error-caja p {
+    color: red;
+    background-color: #303030;
+    padding: 20px;
+    margin-bottom: 10px;
+  }
   .caja-editar-post {
     border-top: solid 1px teal;
     border-bottom: solid 1px teal;

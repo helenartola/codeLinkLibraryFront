@@ -31,6 +31,9 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
   const [editingComment, setEditingComment] = useState(null); // Estado para el comentario en edición
   const [lastCommentEditTime, setLastCommentEditTime] = useState({}); // Estado para almacenar la hora de la última edición de cada comentario
 
+  const [errorMessage, setErrorMessage] = useState("");
+  const [message, setMessage] = useState("");
+
   const [user] = useUser(); // Extrae el usuario del contexto
   const token = user ? user.token : null; // Obtiene el token del usuario, si existe
 
@@ -62,7 +65,7 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
   const handleAgregarComentario = async () => {
     try {
       if (!comentario) {
-        alert("Por favor, ingresa un comentario.");
+        setMessage("Por favor, ingresa un comentario.");
         return;
       }
 
@@ -95,7 +98,9 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
       setShowCommentForm(false);
     } catch (error) {
       console.error("Error al agregar el comentario:", error);
-      alert("Error al agregar el comentario. Por favor, inténtalo de nuevo.");
+      setErrorMessage(
+        "Error al agregar el comentario. Por favor, inténtalo de nuevo."
+      );
     }
   };
 
@@ -109,7 +114,9 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
       setIsLiked(likeResponse.isLiked);
     } catch (error) {
       console.error("Error al dar/quitar like:", error);
-      alert("Error al dar/quitar like. Por favor, inténtalo de nuevo.");
+      setErrorMessage(
+        "Error al dar/quitar like. Por favor, inténtalo de nuevo."
+      );
     }
   };
 
@@ -121,10 +128,10 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
 
       // Filtra los posts para excluir el post eliminado
       setPosts(posts.filter((postItem) => postItem.postId !== post.postId));
-      alert("El post ha sido eliminado con éxito.");
+      setMessage("El post ha sido eliminado con éxito.");
     } catch (error) {
       console.error("Error al eliminar post:", error);
-      alert("Error al eliminar post. Por favor, inténtalo de nuevo.");
+      setErrorMessage("Error al eliminar post. Por favor, inténtalo de nuevo.");
     }
   };
 
@@ -133,7 +140,7 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
     try {
       // Verifica si el post pertenece al propio usuario
       if (user && post.userId === user.userId) {
-        alert("No puedes guardar tus propios posts.");
+        setErrorMessage("No puedes guardar tus propios posts.");
         return;
       }
 
@@ -151,7 +158,9 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
       }
     } catch (error) {
       console.error("Error al guardar/eliminar post:", error);
-      alert("Error al guardar/eliminar post. Por favor, inténtalo de nuevo.");
+      setErrorMessage(
+        "Error al guardar/eliminar post. Por favor, inténtalo de nuevo."
+      );
     }
   };
 
@@ -168,10 +177,12 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
       setComments(updatedComments);
       // Decrementa el total de comentarios
       setTotalComments(totalComments - 1);
-      alert("El comentario ha sido eliminado con éxito.");
+      setMessage("El comentario ha sido eliminado con éxito.");
     } catch (error) {
       console.error("Error al eliminar comentario:", error);
-      alert("Error al eliminar comentario. Por favor, inténtalo de nuevo.");
+      setErrorMessage(
+        "Error al eliminar comentario. Por favor, inténtalo de nuevo."
+      );
     }
   };
 
@@ -212,10 +223,12 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
         ...lastCommentEditTime,
         [editingComment.commentId]: new Date().toLocaleString(),
       });
-      alert("El comentario ha sido editado con éxito.");
+      setMessage("El comentario ha sido editado con éxito.");
     } catch (error) {
       console.error("Error al editar comentario:", error);
-      alert("Error al editar comentario. Por favor, inténtalo de nuevo.");
+      setErrorMessage(
+        "Error al editar comentario. Por favor, inténtalo de nuevo."
+      );
     }
   };
 
@@ -247,12 +260,20 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
       setEditingPost(false);
     } catch (error) {
       console.error("Error al editar el post:", error);
-      alert("Error al editar el post. Por favor, inténtalo de nuevo.");
+      setErrorMessage(
+        "Error al editar el post. Por favor, inténtalo de nuevo."
+      );
     }
   };
 
   return (
     <div className="post-item-container">
+      <div className="mensajes-de-error-caja">
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+      </div>
+      <div className="mensajes-de-exito-caja">
+        {message && <p className="success-message">{message}</p>}
+      </div>
       {/* Contenido de los datos de publicación */}
       <div className="datos-publicacion">
         <p className="post-publicado-por">
