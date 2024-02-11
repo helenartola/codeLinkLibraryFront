@@ -439,7 +439,7 @@ export const editCommentService = async (commentId, editedComment, token) => {
 };
 
 // Ajustes de usuario
-export const userSettingsService = async (name, lastName, birthDate, bio, token) => {
+export const userSettingsService = async (name, lastName, birthDate, bio, password, token) => {
   try {
     const response = await fetch(
       `${import.meta.env.VITE_BACKEND}/settings`,
@@ -454,6 +454,7 @@ export const userSettingsService = async (name, lastName, birthDate, bio, token)
           lastName,
           birthDate,
           bio,
+          password,
         }),
       }
     );

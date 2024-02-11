@@ -10,34 +10,61 @@ const UserSettingsPage = () => {
   const [lastName, setLastName] = useState("");
   const [birthDate, setBirthDate] = useState("");
   const [bio, setBio] = useState("");
-  const [successMessage, setSuccessMessage] = useState(""); // mensaje con el OK actualización de campos
-  const [error, setError] = useState(null); //mensaje de error
+  const [password, setPassword] = useState("");//actualizar contraseña
+  const [confirmPassword, setConfirmPassword] = useState(""); // confirmar actualización de contraseña
+  const [successMessage, setSuccessMessage] = useState(""); 
+  const [error, setError] = useState(null); 
   const [user] = useUser("");
 
- const { isDarkMode } = useTheme();
+  const { isDarkMode } = useTheme();
 
   const handleSubmit = async (event) => {
-    event.preventDefault(); // Evita el envío automático del formulario
+    event.preventDefault();
 
     try {
-      const token = user ? user.token : null;//revisa token
+      const token = user ? user.token : null;
 
-      const userData = await userSettingsService(name, lastName, birthDate, bio, token);
-      setSuccessMessage("¡Los campos de han actualizado correctamente!");//mensaje de OK
-      setError(null); // Limpiar cualquier error previo
-      console.log('Datos del usuario actualizados:', userData);
+      // Verificar si las contraseñas coinciden
+      if (password !== confirmPassword) {
+        setError("Las contraseñas no coinciden");
+        return;
+      }
 
+      let userData;
+      if (birthDate) {
+        userData = await userSettingsService(
+          name,
+          lastName,
+          birthDate,
+          bio,
+          password,
+          token
+        );
+      } else {
+        userData = await userSettingsService(
+          name,
+          lastName,
+          null,//poder enviar formulario sin fecha (daba error)
+          bio,
+          password,
+          token
+        );
+      }
+
+      setSuccessMessage("¡Los campos se han actualizado correctamente!");
+      setError(null);
+      console.log("Datos del usuario actualizados:", userData);
     } catch (error) {
-      setError("Error al actualizar los ajustes del usuario");//mensaje de error
-      console.error('Error al actualizar los ajustes del usuario:', error.message);
+      setError("Error al actualizar los ajustes del usuario");
+      console.error("Error al actualizar los ajustes del usuario:", error.message);
     }
   };
 
   return (
     <div className={`caja-ajustes-usuario ${isDarkMode ? "dark" : "light"}`}>
       <form className="formulario-ajustes-usuario" onSubmit={handleSubmit}>
-        {error && <p className="error-message">{error}</p>}{/* Mostrar mensaje de error */}
-        {successMessage && <p className="success-message">{successMessage}</p>} {/* Mostrar mensaje de éxito */}
+        {error && <p className="error-message">{error}</p>}
+        {successMessage && <p className="success-message">{successMessage}</p>}
 
         <label htmlFor="name">Nombre:</label>
         <input
@@ -45,7 +72,6 @@ const UserSettingsPage = () => {
           id="name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          required
         />
 
         <label htmlFor="lastName">Apellido:</label>
@@ -54,7 +80,6 @@ const UserSettingsPage = () => {
           id="lastName"
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
-          required
         />
 
         <label htmlFor="birthDate">Fecha de nacimiento:</label>
@@ -71,8 +96,25 @@ const UserSettingsPage = () => {
           value={bio}
           onChange={(e) => setBio(e.target.value)}
         />
+
+        <label htmlFor="password">Nueva Contraseña:</label>
+        <input
+          type="password"
+          id="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+
+        <label htmlFor="confirmPassword">Confirmar Contraseña:</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+        />
+
         <button type="submit">Aceptar</button>
-        
+
         <Link to="/profile">
           <button className="return">Volver</button>
         </Link>
