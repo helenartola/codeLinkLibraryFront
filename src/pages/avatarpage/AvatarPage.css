@@ -14,7 +14,7 @@
   font-family: jost, sans-serif;
 }
 .avatar-button {
-  border: none;
+  border: 10px solid teal;
   background-color: transparent;
   cursor: pointer;
   outline: none;
@@ -37,7 +37,8 @@
 }
 
 .selected-avatar {
-  max-height: 80px;
+  width: auto;
+  height: 250px; 
   margin-top: 20px;
 }
 
@@ -173,4 +174,9 @@
     font-family: jost, sans-serif;
     cursor: pointer;
   }
+}
+
+.avatar-button:hover {
+  transform: scale(1.2);
+  border-color: teal;
 }
