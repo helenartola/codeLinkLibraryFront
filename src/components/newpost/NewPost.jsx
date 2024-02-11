@@ -19,37 +19,49 @@ const NewPost = ({ isFormOpen, setIsFormOpen, onAddPost }) => {
   const handleAddPost = async () => {
     try {
       const token = user ? user.token : null;
-
+  
       // Verifica si el usuario está autenticado
       if (!token) {
         setErrorMessage(
           "No estás autenticado. Inicia sesión para crear un nuevo post."
         );
+  
+        // Limpiar el mensaje de error después de 3 segundos (3000 milisegundos)
+        setTimeout(() => {
+          setErrorMessage("");
+        }, 3000);
+  
         return;
       }
-
+  
       // Verifica si se han completado todos los campos del formulario
       if (!title || !description || !url) {
         setErrorMessage("Por favor, completa todos los campos.");
+  
+        // Limpiar el mensaje de error después de 3 segundos (3000 milisegundos)
+        setTimeout(() => {
+          setErrorMessage("");
+        }, 3000);
+  
         return;
       }
-
+  
       const postData = { title, description, url };
-
+  
       // Llama a la función para crear un nuevo post en el servicio
       const newPost = await createPostService(postData, token);
-
+  
       // Si se proporciona la función onAddPost, llámala para actualizar la lista de posts
       if (onAddPost) {
         onAddPost(newPost);
       }
-
+  
       // Limpia los campos del formulario y cierra el formulario después de agregar el post
       setTitle("");
       setDescription("");
       setUrl("");
       setIsFormOpen(false);
-
+  
       setMessage("Nuevo post agregado con éxito!");
       setErrorMessage("");
     } catch (error) {
@@ -58,8 +70,14 @@ const NewPost = ({ isFormOpen, setIsFormOpen, onAddPost }) => {
       setErrorMessage(
         "Error al agregar el nuevo post. Por favor, inténtalo de nuevo."
       );
+  
+      // Limpiar el mensaje de error después de 3 segundos (3000 milisegundos)
+      setTimeout(() => {
+        setErrorMessage("");
+      }, 3000);
     }
   };
+  
 
   // Función para cerrar el formulario sin agregar un post
   const handleCloseForm = () => {
