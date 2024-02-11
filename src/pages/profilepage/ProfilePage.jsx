@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react";
 import { useUser } from "../../context/UserContext";
 import "./ProfilePage.css";
-import { getInfoUserService, getUserPostsService, deleteUserByIdService } from "../../services";
+import {
+  getInfoUserService,
+  getUserPostsService,
+  deleteUserByIdService,
+} from "../../services";
 import { Link } from "react-router-dom";
 
 // Componente de la página de perfil del usuario
@@ -35,7 +39,7 @@ const ProfilePage = () => {
   }, [user]);
 
   useEffect(() => {
-    const storedAvatar = localStorage.getItem('selectedAvatar');
+    const storedAvatar = localStorage.getItem("selectedAvatar");
     setSelectedAvatar(storedAvatar);
   }, []);
 
@@ -83,8 +87,19 @@ const ProfilePage = () => {
     <div className="zonas-container">
       <div className="avatar-container">
         {/* Mostrar el avatar seleccionado */}
+        <p className="texto-escoje-avatar">Escoje tu avatar:</p>
         <Link to="/avatar-page" className="boton-avatar-base">
-        <img src={selectedAvatar} alt="Avatar" className="imagen-boton-avatar" /></Link>
+          <img
+            src={selectedAvatar}
+            alt="Avatar"
+            className="imagen-boton-avatar"
+          />
+        </Link>
+        <nav className="botones-navegacion-post">
+          <Link to="/saved-page" className="boton-guardados">
+            Mis post Guardados
+          </Link>
+        </nav>
         {/* Enlace para ir a la página de selección de avatar */}
       </div>
       <section className="user-info">
@@ -125,11 +140,6 @@ const ProfilePage = () => {
                 <li key={post.postId}>{post.title}</li>
               ))}
             </ul>
-            <nav className="botones-navegacion-post">
-              <Link to="/saved-page" className="boton-guardados">
-                Mis post Guardados
-              </Link>
-            </nav>
           </div>
         </>
       )}

@@ -242,7 +242,8 @@
 
 .avatar-container {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
   margin-top: 30px;
   margin-right: 20px;
 }
@@ -263,6 +264,18 @@
     font-family: "jost", sans-serif;
     margin-top: 10%;
     margin-bottom: 10%;
+  }
+  .avatar-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    margin-right: 20px;
+  }
+  .texto-escoje-avatar {
+    font-family: 14px;
+    margin-bottom: 10px;
   }
   .user-info {
     width: 30%;
