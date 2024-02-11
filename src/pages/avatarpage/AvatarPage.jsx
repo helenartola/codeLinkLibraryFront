@@ -29,6 +29,13 @@ const AvatarPage = () => {
     "/006-robot.png",
     "/007-robot.png",
     "/008-robot.png",
+    "/avatar-02.png",
+    "/avatar-03.png",
+    "/avatar-04.png",
+    "/avatar-05.png",
+    "/avatar-06.png",
+    "/avatar-07.png",
+    "/avatar-08.png",
   ];
 
   const handleAvatarClick = (avatar) => {
@@ -73,7 +80,7 @@ const AvatarPage = () => {
       <div className="back-to-profile">
         {/* Aplica la clase del botón de regreso del CSS */}
         <Link to="/profile">
-          <button className="volver-a-perfil-usuario">Volver</button>{" "}
+          <button className="volver-a-perfil-usuario"> Volver</button>{" "}
           {/* Aplica la clase del botón de regreso del CSS */}
         </Link>
       </div>

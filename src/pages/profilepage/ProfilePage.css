@@ -218,14 +218,15 @@
 }
 
 .imagen-boton-avatar {
-  border-radius: 50%; /* Agregado para redondear la imagen */
-  border: 5px solid #008080; /* Agregado para el borde azulverdoso */
+  border-radius: 50%;
+  border: 5px solid #008080;
+  background-color: white;
   transition: transform 0.3s ease;
   width: 80px;
   height: 80px;
   padding: 10px;
-  border-radius: 50%; /* Agregado para redondear la imagen */
-  border: 5px solid #008080; /* Agregado para el borde azulverdoso */
+  border-radius: 50%;
+  border: 5px solid #008080;
   transition: transform 0.3s ease;
 }
 
