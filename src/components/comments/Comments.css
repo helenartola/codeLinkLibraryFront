@@ -1,59 +1,64 @@
-/* Comments.css */
-
+/* Estilos para la sección de comentarios */
 .comments-section {
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 800px;
-  }
-  
-  .comment-item {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #008080;
-    border-radius: 8px;
-    padding: 10px;
-    margin-bottom: 10px;
-    font-family: jost, sans-serif;
-    position: relative; /* Añade posición relativa al contenedor */
-  }
-  
-  .comment-item .comment-text {
-    font-size: 16px;
-    margin-bottom: 5px;
-  }
-  
-  .comment-item .comment-header {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .comment-item .comment-user {
-    font-weight: bold;
-  }
-  
-  .comment-item .comment-date {
-    color: #008080;
-    font-size: 12px;
-  }
-  
-  .comment-item .delete-comment-button {
-    background-color: #008080;
-    color: #fff;
-    border: none;
-    padding: 8px 12px;
-    cursor: pointer;
-    border-radius: 4px;
-    margin-top: 10px;
-    align-self: flex-end; /* Alinea el botón al final del contenedor (a la derecha) */
-    position: absolute; /* Añade posición absoluta para posicionar en la esquina inferior derecha */
-    bottom: 0; /* Sitúa el botón en la parte inferior del contenedor */
-    right: 1; /* Sitúa el botón en la parte derecha del contenedor */
-  }
-  
-  .comments-section h3 {
-    font-size: 24px;
-    color: #008080;
-    margin-bottom: 10px;
-  }
-  
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 800px;
+}
+
+/* Estilos para cada comentario individual */
+.comment-item {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #008080;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-family: jost, sans-serif;
+  position: relative;
+}
+
+/* Estilos para el texto del comentario */
+.comment-item .comment-text {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+/* Estilos para el encabezado del comentario */
+.comment-item .comment-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Estilos para el nombre de usuario del comentario */
+.comment-item .comment-user {
+  font-weight: bold;
+}
+
+/* Estilos para la fecha del comentario */
+.comment-item .comment-date {
+  color: #008080;
+  font-size: 12px;
+}
+
+/* Estilos para el botón de eliminar comentario */
+.comment-item .delete-comment-button {
+  background-color: #008080;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 10px;
+  align-self: flex-end;
+  position: absolute;
+  bottom: 0;
+  right: 1;
+}
+
+/* Estilos para el título de la sección de comentarios */
+.comments-section h3 {
+  font-size: 24px;
+  color: #008080;
+  margin-bottom: 10px;
+}

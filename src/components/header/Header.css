@@ -1,88 +1,105 @@
+/* Estilos para el modo oscuro */
 .dark-mode {
-  --background: var(--background-dark);
+  --background: var(--background-dark); 
   --text: var(--text-dark);
 }
 
+/* Estilos para el modo claro */
 .light-mode {
-  --background: var(--background-light);
-  --text: var(--text-light);
+  --background: var(--background-light); 
+  --text: var(--text-light); 
 }
+
+/* Estilos para el encabezado */
 .header {
-  padding: 10px;
-  border-bottom: 1px solid #008080;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  height: 250px;
+  padding: 10px; 
+  border-bottom: 1px solid #008080; 
+  position: fixed; 
+  top: 0; 
+  width: 100%; 
+  z-index: 1000; 
+  height: 250px; 
 }
 
+/* Contenedor del interruptor de tema */
 .theme-switcher-container {
-  margin-top: 10px;
+  margin-top: 10px; 
 }
 
+/* Estilos para la barra de navegación */
 .navbar {
-  overflow: hidden;
-  padding: 10px;
-  display: flex;
+  overflow: hidden; 
+  padding: 10px; 
+  display: flex; 
   flex-direction: column;
-  align-items: center;
-  gap: 15px;
-  margin-right: 20px;
+  align-items: center; 
+  gap: 15px; 
+  margin-right: 20px; 
 }
 
+/* Contenedor del buscador */
 .buscador {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
 }
 
+/* Logo */
 .logo {
-  width: 100%;
-  max-width: 300px;
+  width: 100%; 
+  max-width: 300px; 
 }
 
+/* Estilos para la barra de navegación en modo claro */
 .light .navbar {
-  background-color: var(--background-light);
-  color: var(--text-light);
+  background-color: var(--background-light); 
+  color: var(--text-light); 
 }
 
+/* Estilos para la barra de navegación en modo oscuro */
 .dark .navbar {
-  background-color: var(--background-dark);
-  color: var(--text-dark);
+  background-color: var(--background-dark); 
+  color: var(--text-dark); 
 }
 
+/* Estilos para pantallas más grandes (mínimo 768px de ancho) */
 @media screen and (min-width: 768px) {
   .header {
-    padding: 10px;
-    border-bottom: 1px solid #008080;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    height: 80px;
+    padding: 10px; 
+    border-bottom: 1px solid #008080; 
+    position: fixed; 
+    top: 0; 
+    width: 100%; 
+    z-index: 1000; 
+    height: 80px; 
   }
+
+  /* Estilos para la barra de navegación en pantallas más grandes */
   .navbar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between; 
+    align-items: center; 
   }
 
+  /* Estilos para el logo en pantallas más grandes */
   .logo {
-    flex: 1;
-    max-width: 200px;
+    flex: 1; 
+    max-width: 200px; 
   }
 
+  /* Estilos para el contenedor del buscador en pantallas más grandes */
   .buscador {
-    flex: 3;
-    max-width: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    flex: 3; 
+    max-width: none; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
   }
 
+  /* Ajuste del margen superior del contenedor del interruptor de tema en pantallas más grandes */
   .theme-switcher-container {
-    margin-top: 0;
+    margin-top: 0; 
   }
 }
+

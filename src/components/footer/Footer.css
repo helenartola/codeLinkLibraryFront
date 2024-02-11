@@ -1,3 +1,4 @@
+/* Estilos para el pie de página */
 .footer {
   position: fixed;
   bottom: 0;
@@ -10,23 +11,28 @@
   letter-spacing: 0.1em;
   z-index: 1000;
 }
+/* Estilos para el modo claro */
 .light-mode {
   background-color: var(--background-light);
   color: var(--text-light);
   --border-color: var(--border-color-light);
 }
 
+/* Estilos para el modo oscuro */
 .dark-mode {
   background-color: var(--background-dark);
   color: var(--text-dark);
   --border-color: var(--border-color-light);
 }
+
+/* Estilos para el pie de página en modo claro */
 .light .footer {
   background-color: var(--background-light);
   color: var(--text-light);
   --border-color: #cbc9c9;
 }
 
+/* Estilos para el pie de página en modo oscuro */
 .dark .footer {
   background-color: var(--background-dark);
   color: var(--text-dark);
