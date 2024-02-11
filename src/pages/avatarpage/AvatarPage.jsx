@@ -47,7 +47,7 @@ const AvatarPage = () => {
 
   return (
     <div className={`avatar-page-container ${isDarkMode ? "dark" : "light"}`}>
-      <h1>Selecciona tu Avatar</h1>
+      <h1>Selecciona tu avatar</h1>
       <div className="avatar-list">
         {avatars.map((avatar, index) => (
           <button
@@ -68,7 +68,7 @@ const AvatarPage = () => {
       {/* Mostramos la imagen del avatar seleccionado */}
       <div className="selected-avatar-container">
         {/* Aplica la clase del contenedor de avatar seleccionado del CSS */}
-        <p className="avatar-seleccionado-texto">Avatar Seleccionado:</p>
+        <p className="avatar-seleccionado-texto">Avatar seleccionado:</p>
         <img
           src={selectedAvatar}
           alt="Avatar Seleccionado"
