@@ -22,7 +22,7 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
   const [showComments, setShowComments] = useState(false);
   const [totalComments, setTotalComments] = useState(0);
 
-    // Estados para el manejo de likes y guardado
+  // Estados para el manejo de likes y guardado
   const [numLikes, setNumLikes] = useState(post.numLikes);
   const [isLiked, setIsLiked] = useState(post.isLiked);
   const [isSaved, setIsSaved] = useState(post.isSaved);
@@ -98,26 +98,26 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
     }
   };
 
-      // Función para manejar el clic en el botón de like
-    const handleLikePost = async () => {
-      try {
-        // Llama al servicio para dar/quitar like
-        const likeResponse = await likePostService(post.postId, token);
-        // Actualiza el estado con la nueva información de likes
-        setNumLikes(likeResponse.numLikes);
-        setIsLiked(likeResponse.isLiked);
-      } catch (error) {
-        console.error("Error al dar/quitar like:", error);
-        alert("Error al dar/quitar like. Por favor, inténtalo de nuevo.");
-      }
-    };
+  // Función para manejar el clic en el botón de like
+  const handleLikePost = async () => {
+    try {
+      // Llama al servicio para dar/quitar like
+      const likeResponse = await likePostService(post.postId, token);
+      // Actualiza el estado con la nueva información de likes
+      setNumLikes(likeResponse.numLikes);
+      setIsLiked(likeResponse.isLiked);
+    } catch (error) {
+      console.error("Error al dar/quitar like:", error);
+      alert("Error al dar/quitar like. Por favor, inténtalo de nuevo.");
+    }
+  };
 
   // Función para manejar el clic en el botón de eliminar post
   const handleDeletePost = async () => {
     try {
       // Llama al servicio para eliminar el post
       await deletePostService(post.postId, token);
-      
+
       setPosts(posts.filter((postItem) => postItem.postId !== post.postId));
       alert("El post ha sido eliminado con éxito.");
     } catch (error) {
@@ -126,32 +126,32 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
     }
   };
 
-        // Función para manejar el clic en el botón de guardar/eliminar post
-    const handleSavePost = async () => {
-      try {
-        // Verifica si el post pertenece al propio usuario
-        if (user && post.userId === user.userId) {
-          alert("No puedes guardar tus propios posts.");
-          return;
-        }
-
-        // Llama al servicio para guardar o eliminar el post según su estado actual
-        if (isSaved) {
-          // Si está guardado, entonces llamamos al servicio para desguardar
-          await unsavePostService(post.postId, token);
-          // Actualiza el estado con el nuevo estado de guardado
-          setIsSaved(false);
-        } else {
-          // Si no está guardado, llamamos al servicio para guardar
-          await savePostService(post.postId, token);
-          // Actualiza el estado con el nuevo estado de guardado
-          setIsSaved(true);
-        }
-      } catch (error) {
-        console.error("Error al guardar/eliminar post:", error);
-        alert("Error al guardar/eliminar post. Por favor, inténtalo de nuevo.");
+  // Función para manejar el clic en el botón de guardar/eliminar post
+  const handleSavePost = async () => {
+    try {
+      // Verifica si el post pertenece al propio usuario
+      if (user && post.userId === user.userId) {
+        alert("No puedes guardar tus propios posts.");
+        return;
       }
-    };
+
+      // Llama al servicio para guardar o eliminar el post según su estado actual
+      if (isSaved) {
+        // Si está guardado, entonces llamamos al servicio para desguardar
+        await unsavePostService(post.postId, token);
+        // Actualiza el estado con el nuevo estado de guardado
+        setIsSaved(false);
+      } else {
+        // Si no está guardado, llamamos al servicio para guardar
+        await savePostService(post.postId, token);
+        // Actualiza el estado con el nuevo estado de guardado
+        setIsSaved(true);
+      }
+    } catch (error) {
+      console.error("Error al guardar/eliminar post:", error);
+      alert("Error al guardar/eliminar post. Por favor, inténtalo de nuevo.");
+    }
+  };
 
   // Función para manejar el clic en el botón de eliminar comentario
   const handleDeleteComment = async (commentId) => {
@@ -369,7 +369,7 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
       <div className="caja-iconitos-post">
         {/* CAJA QUE CONTIENE CORAZÓN, GUARDAR, COMENTARIO, NÚMERO DE COMENTARIO */}
         <div className="botones-post-complementos">
-              {user && (
+          {user && (
             <button
               className="boton-icono-like"
               onClick={handleLikePost}
@@ -418,7 +418,7 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
               />
             </label>
             <button
-              className="boton-comentar"
+              className="boton-agregar-comentario"
               onClick={handleAgregarComentario}
             >
               Agregar Comentario
