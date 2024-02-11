@@ -49,6 +49,8 @@ export const createPostService = async (postData, token) => {
 // Obtener un post por su ID
 export const getPostByIdService = async (postId, userId = 0) => {
   try {
+       // Console.log para mostrar el userId
+       console.log("UserId:", userId);
     const response = await fetch(
       `${import.meta.env.VITE_BACKEND}/posts/${postId}`,
       {

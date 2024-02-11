@@ -26,7 +26,8 @@ const PostPage = () => {
     const fetchPostDetails = async () => {
       try {
         // Llamar al servicio para obtener los detalles del post
-        const postDetails = await getPostByIdService(postId);
+        const postDetails = await getPostByIdService(postId, user ? user.userId : 0);
+        console.log("Usuario:", user);
 
         // Actualizar el estado con los detalles del post
         setPost(postDetails);
@@ -42,7 +43,7 @@ const PostPage = () => {
 
     // Llamar a la función para cargar los detalles del post
     fetchPostDetails();
-  }, [postId]);
+  }, [postId, user]);
 
   
   const handleDeleteComment = async (commentId) => {
@@ -63,6 +64,7 @@ const PostPage = () => {
       <div className="post-content-container">
         {/* Verificar si el post existe antes de renderizar el componente PostItem */}
         {post && <PostItem post={post} user={user} showLink={true}/>}
+          {console.log("Post:", post)}
       </div>
       <div className="commetsPostpage">
         {/* Renderizar el componente Comments con la lista de comentarios y la función onDeleteComment */}
