@@ -1,4 +1,4 @@
-homepage css .inicio {
+.inicio {
   display: flex;
   align-items: flex-start;
   font-family: Jost, sans-serif;
@@ -9,6 +9,7 @@ homepage css .inicio {
   width: 100%;
   display: flex;
   margin-top: 90px;
+  justify-content: space-between;
 }
 
 .texto-cargando-posts {
@@ -55,7 +56,6 @@ homepage css .inicio {
 .light .columna-centro {
   flex: 2;
   margin-left: 18%;
-  margin-right: 5%;
   margin-bottom: 50px;
   margin-top: 20px;
 }
@@ -63,11 +63,12 @@ homepage css .inicio {
 .dark .columna-centro {
   flex: 2;
   margin-left: 18%;
-  margin-right: 5%;
   margin-bottom: 50px;
   margin-top: 20px;
 }
-
+.lista-posts {
+  width: 100%;
+}
 .light .boton-crear-post,
 .dark .boton-crear-post {
   display: flex;
@@ -102,7 +103,8 @@ homepage css .inicio {
 
 .sidebar-derecha {
   flex: 1;
-  width: 30%;
+  width: 10%;
+  position: relative;
 }
 
 .caja-trending {
@@ -110,15 +112,15 @@ homepage css .inicio {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  top: 90px;
+  right: 15px;
   width: 300px;
-  height: 500px;
+  max-width: 100%;
   background-image: linear-gradient(to bottom, #008080, rgb(93, 216, 200));
   color: white;
-  margin: 20px;
   border-radius: 20px;
+  height: 70vh;
   position: fixed;
-  top: 90px;
-  right: 5px;
   margin-top: 40px;
 }
 
