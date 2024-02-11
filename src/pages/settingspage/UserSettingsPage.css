@@ -1,6 +1,28 @@
 .caja-ajustes-usuario {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-top: 10%;
+  margin-bottom: 10%;
+  overflow-y: auto;
 }
 .formulario-ajustes-usuario {
   font-family: jost, sans-serif;
+  padding: 20px;
+  width: 50%;
+}
+.label-form-ajustes {
+  margin-bottom: 5px;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-align: center;
+  background-color: teal;
+  padding: 5px;
+  width: 100%;
+}
+.input-form-ajustes {
+  border: none;
+  border-bottom: 1px solid red;
+  background-color: violet;
+  border-radius: none;
 }

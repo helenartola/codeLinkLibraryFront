@@ -50,6 +50,7 @@ export const FormularioRegistro = () => {
             <label htmlFor="Nombre de usuario">NOMBRE DE USUARIO</label>
             {/* Creamos un evento dentro de cada uno de los inputs para que cuando se actualicen los campos, actualice el estado */}
             <input
+              className="input-register-form"
               value={userName}
               onChange={(e) => setName(e.target.value)}
               type="text"
@@ -60,6 +61,7 @@ export const FormularioRegistro = () => {
           <fieldset>
             <label htmlFor="email">MAIL</label>
             <input
+              className="input-register-form"
               value={email}
               type="email"
               id="email"
@@ -72,6 +74,7 @@ export const FormularioRegistro = () => {
           <fieldset>
             <label htmlFor="pass1">CONTRASEÑA</label>
             <input
+              className="input-register-form"
               value={pass1}
               type="password"
               id="pass1"
@@ -84,6 +87,7 @@ export const FormularioRegistro = () => {
           <fieldset>
             <label htmlFor="pass2">REPITE LA CONTRASEÑA</label>
             <input
+              className="input-register-form"
               value={pass2}
               type="password"
               id="pass2"

@@ -14,14 +14,38 @@ fieldset {
   color: var(--text-dark);
 }
 
-.light input {
+.light .input-login-form {
   color: #303030;
   border-bottom: 1px solid #303030;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 300px;
+  font-family: jost, sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  background-color: transparent;
+  outline: none;
 }
 
-.dark input {
+.dark .input-login-form {
   color: white;
   border-bottom: 1px solid white;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 300px;
+  font-family: jost, sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  background-color: transparent;
+  outline: none;
 }
 
 .login-container {
@@ -53,22 +77,6 @@ label {
   margin-bottom: 5px;
   font-size: 11px;
   letter-spacing: 0.2em;
-}
-
-input {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  max-width: 300px;
-  font-family: jost, sans-serif;
-  font-weight: 300;
-  font-size: 13px;
-  letter-spacing: 0.1em;
-  border: none;
-  border-bottom: 1px solid white;
-  background-color: transparent;
-  outline: none;
 }
 
 .botonLogin {
@@ -146,14 +154,38 @@ input {
     color: var(--text-dark);
   }
 
-  .light input {
+  .light .input-login-form {
     color: #303030;
     border-bottom: 1px solid #303030;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 300px;
+    font-family: jost, sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    background-color: transparent;
+    outline: none;
   }
 
-  .dark input {
+  .dark .input-login-form {
     color: white;
     border-bottom: 1px solid white;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 300px;
+    font-family: jost, sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    background-color: transparent;
+    outline: none;
   }
 
   .cajaFormularioLogin {
@@ -178,20 +210,6 @@ input {
     margin-bottom: 5px;
     font-size: 11px;
     letter-spacing: 0.2em;
-  }
-
-  input {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-    font-family: jost, sans-serif;
-    font-weight: 300;
-    font-size: 13px;
-    letter-spacing: 0.1em;
-    border: none;
-    border-bottom: 1px solid white;
-    background-color: transparent;
-    outline: none;
   }
 
   .botonLogin {
