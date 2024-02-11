@@ -4,7 +4,7 @@ import ListaDePosts from "../../components/listaPosts/ListaDePosts";
 import NewPost from "../../components/newpost/NewPost";
 import Pagination from "../../components/pagination/Pagination"; // Importa el componente de paginación
 import "./HomePage.css";
-import { useTheme } from "../../context/ThemeContext";
+import { useTheme } from "../hooks/useTheme";
 import { fetchTopLikedPosts } from "../../services";
 import { Link } from "react-router-dom";
 

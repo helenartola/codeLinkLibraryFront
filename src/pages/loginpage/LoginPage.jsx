@@ -1,6 +1,6 @@
 import "./LoginPage.css";
 import FormularioLogin from "../../components/login/LogIn";
-import { useTheme } from "../../context/ThemeContext";
+import { useTheme } from "../hooks/useTheme";
 
 const PaginaLogin = () => {
   const { isDarkMode } = useTheme();

@@ -3,7 +3,8 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { searchService } from "../../services";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { useTheme } from "../../context/ThemeContext";
+import { useTheme } from "../hooks/useTheme";
+
 
 // Define el componente Buscador
 const Buscador = () => {

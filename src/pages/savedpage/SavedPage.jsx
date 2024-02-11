@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useUser } from "../../context/UserContext";
 import PostItem from "../../components/postItem/PostItem";
-import { useTheme } from "../../context/ThemeContext";
+import { useTheme } from "../hooks/useTheme";
 
 import "./SavedPage.css";
 

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { searchService } from "../../services";
-import { useTheme } from "../../context/ThemeContext";
+import { useTheme } from "../hooks/useTheme";
 import PostItem from "../../components/postItem/PostItem.jsx"; 
 
 const SearchPage = () => {

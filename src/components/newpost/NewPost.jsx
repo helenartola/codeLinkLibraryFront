@@ -2,7 +2,7 @@ import { useState } from "react";
 import { createPostService } from "../../services";
 import { useUser } from "../../context/UserContext";
 import "./NewPost.css";
-import { useTheme } from "../../context/ThemeContext";
+import { useTheme } from "../hooks/useTheme";
 
 const NewPost = ({ isFormOpen, setIsFormOpen, onAddPost }) => {
   // Estados para los campos del formulario
