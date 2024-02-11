@@ -191,15 +191,15 @@ export const searchService = async (term) => {
     console.error("Error al buscar:", error);
   }
 };
-
+//Obtener datos de perfil de usuario.
 export const getInfoUserService = async (user) => {
   try {
     const response = await fetch(
-      `${import.meta.env.VITE_BACKEND}/user/${user.userId}`, // Endpoint para obtener la información del usuario
+      `${import.meta.env.VITE_BACKEND}/user/${user.userId}`, 
       {
         method: "GET",
         headers: {
-          Authorization: user.token, // Agrega el token de autenticación
+          "Authorization": user.token, 
         },
       }
     );
@@ -239,7 +239,7 @@ export const getUserPostsService = async (userId) => {
     throw new Error("Error al obtener los posts del usuario");
   }
 };
-
+//Dar like a un post.
 export const likePostService = async (postId, token) => {
   try {
     // Verifica que el token esté presente antes de la solicitud
@@ -273,7 +273,7 @@ export const likePostService = async (postId, token) => {
     throw new Error("Error al dar/quitar like");
   }
 };
-
+//Crear un comentario en un post.
 export const createCommentService = async ({ postId, comentario }, token) => {
   try {
     const response = await fetch(
@@ -383,7 +383,7 @@ export const deletePostService = async (postId, token) => {
     throw new Error("Error al eliminar el post");
   }
 };
-
+//Borrar un comentario en un post.
 export const deleteCommentService = async (postId, commentId, token) => {
   try {
     const response = await fetch(
@@ -409,7 +409,7 @@ export const deleteCommentService = async (postId, commentId, token) => {
     throw new Error("Error al eliminar el comentario");
   }
 };
-
+//Editar un comentario en un post.
 export const editCommentService = async (commentId, editedComment, token) => {
   try {
     const response = await fetch(
