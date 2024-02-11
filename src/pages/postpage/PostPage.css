@@ -1,13 +1,16 @@
 /* PostPage.css */
+
 .post-page-container {
   margin-top: 150px;
   display: flex;
   align-items: center;
+  justify-content: center; /* Añadido para centrar horizontalmente */
   overflow-y: auto;
 }
 
 .post-content-container {
   margin-bottom: 20px;
+  width: 100%;
 }
 
 .dark .post-content-container {
@@ -27,11 +30,7 @@
   max-width: 800px;
 }
 
-.dark .boton-eliminar-comentario {
-  border: none;
-  background-color: transparent;
-}
-
+.dark .boton-eliminar-comentario,
 .light .boton-eliminar-comentario {
   border: none;
   background-color: transparent;
@@ -146,8 +145,40 @@
 .post-page-container .link-url-post.estilo-unico {
   display: inline-block;
   font-family: jost, sans-serif;
-  background-color: transparent;
-  color: teal;
+  background-color: teal;
+  color: #ffffff;
   text-decoration: none;
+  margin-top: 20px;
   margin-bottom: 20px;
+  padding: 10px; /* Añadido para rodear el enlace con una caja */
+  border: 1px solid teal; /* Añadido para añadir un borde */
+  border-radius: 8px; /* Añadido para redondear las esquinas */
+  font-size: 18px; /* Ajusta el tamaño de la fuente del enlace según tus necesidades */
+  margin-left: 36px;
+  margin-right: auto;
+  max-width: 500px; /* Establece el ancho máximo del enlace */
+  white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+  overflow: hidden; /* Oculta el texto que sobresale del contenedor */
+  text-overflow: ellipsis; /* Agrega puntos suspensivos (...) para indicar texto truncado */
+  transition: all 0.3s ease; /* Añadido para suavizar la transición */
+}
+
+
+@media only screen and (max-width: 768px) {
+  .post-page-container .link-url-post.estilo-unico {
+    max-width: 150px; /* Ajusta el ancho máximo para pantallas más pequeñas */
+  }
+
+
+  .post-page-container .link-url-post.estilo-unico:hover {
+    transform: scale(1.1);
+    background-color: #02a1a1;
+    text-decoration: underline;
+  }
+}
+
+.post-page-container .link-url-post.estilo-unico:hover {
+  transform: scale(1.1); /* Añadido para hacer ligeramente más grande en hover */
+  background-color: #02a1a1; /* Cambia el color de fondo en hover */
+  text-decoration: underline;
 }
