@@ -158,7 +158,7 @@
   }
   .boton-lupa {
     background-color: transparent;
-    border: 2px solid #008080;
+    border: 0px solid #008080;
     border-left: none;
     cursor: pointer;
     padding: 8px;
@@ -172,7 +172,7 @@
     width: 15px;
   }
   .light .search-bar .input-buscador {
-    border: 2px solid #008080; /* Borde del campo de entrada en modo oscuro */
+    border: 0px solid #008080; /* Borde del campo de entrada en modo oscuro */
     border-right: none;
     border-radius: none;
     background-color: transparent; /* Fondo transparente del campo de entrada en modo oscuro */
@@ -182,7 +182,7 @@
   }
   /* Estilos para el campo de entrada en modo oscuro */
   .dark .search-bar .input-buscador {
-    border: 2px solid #008080; /* Borde del campo de entrada en modo oscuro */
+    border: 0px solid #008080; /* Borde del campo de entrada en modo oscuro */
     border-right: none;
     color: white;
     background-color: transparent; /* Fondo transparente del campo de entrada en modo oscuro */
