@@ -38,7 +38,7 @@ const Pagination = ({ totalPosts, totalPages, currentPage, onPageChange }) => {
 
       {/* Muestra el total de resultados */}
       <div className="total-posts">
-        Total: {totalPosts}
+        Post Encontrados {totalPosts} 
       </div>
     </nav>
   );

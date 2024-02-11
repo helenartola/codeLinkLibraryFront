@@ -1,3 +1,5 @@
+/* Pagination.css */
+
 .pagination {
   display: flex;
   align-items: center;
@@ -6,17 +8,20 @@
 
 .current-page-box {
   margin: 0 10px;
-  padding: 5px 10px;
+  padding: 5px 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  font-family: "Jost", sans-serif;
 }
 
 .boton-pagination {
-  padding: 5px 10px;
-  border: 1px solid #ccc;
-  background-color: #f0f0f0;
+  padding: 5px 20px;
+  border: 2px solid rgb(5, 102, 109);
+  background-color: #008080;
   border-radius: 5px;
   cursor: pointer;
+  font-family: "Jost", sans-serif;
+  color: #fff; /* Texto blanco */
 }
 
 .boton-pagination:disabled {
@@ -25,6 +30,11 @@
 }
 
 /* Estilo de flechas */
+.current-page-box::before,
+.current-page-box::after {
+  font-family: "Jost", sans-serif;
+}
+
 .current-page-box::before {
   content: "‹";
   margin-right: 5px;
@@ -33,4 +43,19 @@
 .current-page-box::after {
   content: "›";
   margin-left: 5px;
+}
+
+.boton-pagination:hover {
+  transform: scale(1.1); 
+}
+
+.current-page {
+  margin: 0 10px;
+  font-family: "Jost", sans-serif;
+}
+
+.total-posts {
+  color: #009191; 
+  margin-left: 10px;
+  font-family: "Jost", sans-serif;
 }

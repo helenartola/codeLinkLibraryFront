@@ -56,12 +56,16 @@ homepage css .inicio {
   flex: 2;
   margin-left: 18%;
   margin-right: 5%;
+  margin-bottom: 50px;
+  margin-top: 20px;
 }
 
 .dark .columna-centro {
   flex: 2;
   margin-left: 18%;
   margin-right: 5%;
+  margin-bottom: 50px;
+  margin-top: 20px;
 }
 
 .light .boton-crear-post,
@@ -115,6 +119,7 @@ homepage css .inicio {
   position: fixed;
   top: 90px;
   right: 5px;
+  margin-top: 40px;
 }
 
 .trending-topics-titulo {
