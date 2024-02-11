@@ -218,13 +218,12 @@
 }
 
 .imagen-boton-avatar {
-  width: 80px;
-  height: 80px;
   border-radius: 50%; /* Agregado para redondear la imagen */
   border: 5px solid #008080; /* Agregado para el borde azulverdoso */
   transition: transform 0.3s ease;
   width: 80px;
   height: 80px;
+  padding: 10px;
   border-radius: 50%; /* Agregado para redondear la imagen */
   border: 5px solid #008080; /* Agregado para el borde azulverdoso */
   transition: transform 0.3s ease;
@@ -313,5 +312,16 @@
   .boton-confirmar-eliminacion {
     background-color: rgb(255, 0, 0);
     color: white;
+  }
+  .imagen-boton-avatar {
+    border-radius: 50%; /* Agregado para redondear la imagen */
+    border: 5px solid #008080; /* Agregado para el borde azulverdoso */
+    transition: transform 0.3s ease;
+    width: 80px;
+    height: 80px;
+    padding: 10px;
+    border-radius: 50%; /* Agregado para redondear la imagen */
+    border: 5px solid #008080; /* Agregado para el borde azulverdoso */
+    transition: transform 0.3s ease;
   }
 }

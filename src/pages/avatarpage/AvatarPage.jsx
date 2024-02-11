@@ -21,6 +21,14 @@ const AvatarPage = () => {
     "/Avatar7.png",
     "/Avatar8.png",
     "/Avatar9.png",
+    "/001-robot.png",
+    "/002-robot.png",
+    "/003-robot.png",
+    "/004-robot.png",
+    "/005-robot.png",
+    "/006-robot.png",
+    "/007-robot.png",
+    "/008-robot.png",
   ];
 
   const handleAvatarClick = (avatar) => {
