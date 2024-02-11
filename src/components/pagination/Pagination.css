@@ -46,7 +46,7 @@
 }
 
 .boton-pagination:hover {
-  transform: scale(1.1); 
+  transform: scale(1.1);
 }
 
 .current-page {
@@ -55,7 +55,10 @@
 }
 
 .total-posts {
-  color: #009191; 
-  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #009191;
+  margin-top: 20px;
   font-family: "Jost", sans-serif;
 }
