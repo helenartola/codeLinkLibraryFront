@@ -46,6 +46,7 @@
 }
 .dark .comment-input {
   border: 1px solid teal;
+  color: white;
   background-color: transparent;
   border-radius: 0;
   padding: 10px;
@@ -53,6 +54,7 @@
 }
 .light .comment-input {
   border: 1px solid teal;
+  color: #303030;
   background-color: transparent;
   border-radius: 0;
   padding: 10px;
@@ -343,6 +345,7 @@
   }
   .dark .comment-input {
     border: 1px solid teal;
+    color: white;
     background-color: transparent;
     border-radius: 0;
     padding: 10px;
@@ -359,6 +362,7 @@
   }
   .light .comment-input {
     border: 1px solid teal;
+    color: #303030;
     background-color: transparent;
     border-radius: 0;
     padding: 10px;

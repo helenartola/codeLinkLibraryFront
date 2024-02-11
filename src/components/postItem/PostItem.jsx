@@ -485,6 +485,7 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
                   {comment.commentId === editingComment?.commentId ? (
                     <div className="caja-editar-comentario">
                       <input
+                        className="comment-input"
                         type="text"
                         value={comentario}
                         onChange={(e) => setComentario(e.target.value)}
