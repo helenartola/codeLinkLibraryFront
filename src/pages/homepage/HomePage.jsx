@@ -9,32 +9,21 @@ import { fetchTopLikedPosts } from "../../services";
 import { Link } from "react-router-dom";
 
 const HomePage = () => {
+  // Obtiene el estado del tema
   const { isDarkMode } = useTheme();
+
+  // Obtiene la lista de posts, estado de carga, error y función de actualización
   const { posts, setPosts, loading, error, refresh } = usePosts();
+
+  // Estado para controlar la apertura del formulario de nuevo post
   const [isFormOpen, setIsFormOpen] = useState(false);
 
   // Estado para almacenar los posts más votados
   const [topLikedPosts, setTopLikedPosts] = useState([]);
 
-  // Efecto para cargar los posts más votados cuando el componente se monta
-  useEffect(() => {
-    // Función para obtener los diez posts más votados
-    const loadTopLikedPosts = async () => {
-      try {
-        const data = await fetchTopLikedPosts();
-        // Actualiza el estado con los diez posts más votados
-        setTopLikedPosts(data);
-      } catch (error) {
-        // Maneja el error aquí si es necesario
-      }
-    };
-
-    // Llama a la función para obtener los diez posts más votados cuando el componente se monta
-    loadTopLikedPosts();
-  }, []);
-
-  // Estado para controlar la página actual
+  // Estado para controlar la página actual de la paginación
   const [currentPage, setCurrentPage] = useState(1);
+
   // Número máximo de resultados por página
   const resultsPerPage = 5;
 
@@ -46,6 +35,20 @@ const HomePage = () => {
   // Calcula el número total de páginas
   const totalPages = Math.ceil(posts.length / resultsPerPage);
 
+  // Efecto para cargar los posts más votados cuando el componente se monta
+  useEffect(() => {
+    const loadTopLikedPosts = async () => {
+      try {
+        const data = await fetchTopLikedPosts();
+        setTopLikedPosts(data);
+      } catch (error) {
+        // Maneja el error aquí si es necesario
+      }
+    };
+
+    loadTopLikedPosts();
+  }, []);
+
   // Función para manejar el cambio de página
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -53,9 +56,11 @@ const HomePage = () => {
 
   // Si se está cargando, muestra un mensaje de carga
   if (loading) return <p className="texto-cargando-posts">Cargando posts...</p>;
+  
   // Si hay un error, muestra el mensaje de error
   if (error) return <p>{error}</p>;
 
+  // Renderiza el componente
   return (
     <section className={`inicio ${isDarkMode ? "dark" : "light"}`}>
       <div className="main-content">
@@ -95,6 +100,7 @@ const HomePage = () => {
           />
           {/* Componente de paginación */}
           <Pagination
+            totalPosts={posts.length} // Pasa el número total de posts como prop
             totalPages={totalPages}
             currentPage={currentPage}
             onPageChange={handlePageChange}
@@ -112,6 +118,7 @@ const HomePage = () => {
               />
             </h1>
             <ul className="lista-trending-topics">
+              {/* Mapea y muestra los posts más votados */}
               {topLikedPosts.map((post) => (
                 <li className="lista-posts-trending" key={post.postId}>
                   <Link to={`/post/${post.postId}`}>{post.title}</Link>

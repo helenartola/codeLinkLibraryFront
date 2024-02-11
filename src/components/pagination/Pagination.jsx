@@ -1,59 +1,57 @@
-import { useState } from 'react';
-import "./Pagination.css";
+import PropTypes from 'prop-types';
+import './Pagination.css';
 
 const Pagination = ({ totalPosts, totalPages, currentPage, onPageChange }) => {
-  // Estado para controlar el número de página editable
-  const [editablePage, setEditablePage] = useState(currentPage);
 
   // Función para manejar el cambio de página
-  const handlePageChange = (event) => {
-    // Obtener el nuevo número de página ingresado por el usuario
-    const newPage = parseInt(event.target.value);
-    // Verificar si el número es válido y está dentro del rango de páginas
-    if (!isNaN(newPage) && newPage >= 1 && newPage <= totalPages) {
-      // Si es válido, llama a la función onPageChange para actualizar la página actual
+  const handlePageChange = (newPage) => {
+    // Verificar si el nuevo número de página está dentro del rango válido
+    if (newPage >= 1 && newPage <= totalPages) {
+      // Llama a la función onPageChange para actualizar la página actual
       onPageChange(newPage);
-    } else {
-      // Si el número no es válido, restablece el contenido del input al valor original de currentPage
-      setEditablePage(currentPage);
     }
   };
 
   return (
     <nav aria-label="Paginación" className="pagination">
-      {/* Flecha para ir a la página anterior */}
+      {/* Botón para ir a la página anterior */}
       <button
         className="boton-pagination"
-        onClick={() => onPageChange(currentPage - 1)}
-        disabled={currentPage === 1}
+        onClick={() => handlePageChange(currentPage - 1)}
+        disabled={currentPage === 1} // Desactiva el botón si estamos en la primera página
       >
-        &laquo;
+        &laquo; Anterior
       </button>
 
-      {/* Input para editar el número de página */}
-      <input
-        type="number"
-        className="current-page-box"
-        value={editablePage}
-        onChange={(event) => setEditablePage(event.target.value)}
-        onBlur={handlePageChange}
-        min="1"
-        max={totalPages}
-      />
+      {/* Muestra la página actual y el total de páginas */}
+      <div className="current-page">
+        Página {currentPage} de {totalPages}
+      </div>
 
-      {/* Flecha para ir a la página siguiente */}
+      {/* Botón para ir a la página siguiente */}
       <button
         className="boton-pagination"
-        onClick={() => onPageChange(currentPage + 1)}
-        disabled={currentPage === totalPages}
+        onClick={() => handlePageChange(currentPage + 1)}
+        disabled={currentPage === totalPages} // Desactiva el botón si estamos en la última página
       >
-        &raquo;
+        Siguiente &raquo;
       </button>
 
       {/* Muestra el total de resultados */}
-      <div className="total-posts">{totalPosts}</div>
+      <div className="total-posts">
+        Total: {totalPosts}
+      </div>
     </nav>
   );
 };
 
+// Especifica los tipos de las props esperadas
+Pagination.propTypes = {
+  totalPosts: PropTypes.number.isRequired,
+  totalPages: PropTypes.number.isRequired,
+  currentPage: PropTypes.number.isRequired,
+  onPageChange: PropTypes.func.isRequired,
+};
+
 export default Pagination;
+
