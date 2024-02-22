@@ -9,12 +9,21 @@
   margin-right: 15%;
   overflow-y: auto;
   margin-bottom: 60px;
+  background-color: transparent; 
 }
+
 .avatar-seleccionado-texto {
   font-family: jost, sans-serif;
 }
+
+.avatar-zone {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center; 
+}
+
 .avatar-button {
-  border: 10px solid teal;
+  border: 20px solid transparent;
   background-color: transparent;
   cursor: pointer;
   outline: none;
@@ -37,8 +46,11 @@
 }
 
 .selected-avatar {
-  width: auto;
-  height: 250px; 
+  width: 100%; 
+  height: auto; 
+  border: 2px solid teal;
+  border-radius: 15px;
+  padding: 20px;
   margin-top: 20px;
 }
 
@@ -52,6 +64,7 @@
   font-family: jost, sans-serif;
   cursor: pointer;
 }
+
 .dark .volver-a-perfil-usuario:hover {
   border: 1px solid teal;
   background-color: transparent;
@@ -62,6 +75,7 @@
   font-family: jost, sans-serif;
   cursor: pointer;
 }
+
 .light .volver-a-perfil-usuario {
   border: 1px solid teal;
   background-color: teal;
@@ -72,6 +86,7 @@
   font-family: jost, sans-serif;
   cursor: pointer;
 }
+
 .light .volver-a-perfil-usuario:hover {
   border: 1px solid teal;
   background-color: transparent;
@@ -82,6 +97,7 @@
   font-family: jost, sans-serif;
   cursor: pointer;
 }
+
 @media only screen and (min-width: 768px) {
   .avatar-page-container {
     text-align: center;
@@ -91,7 +107,6 @@
     overflow-y: auto;
     margin-bottom: 60px;
   }
-
   .avatar-list {
     display: flex;
     flex-wrap: wrap;
@@ -99,9 +114,11 @@
     gap: 10px;
     margin-top: 10px;
   }
+
   .avatar-seleccionado-texto {
     font-family: jost, sans-serif;
   }
+
   .avatar-button {
     border: none;
     background-color: transparent;
@@ -126,7 +143,8 @@
   }
 
   .selected-avatar {
-    max-height: 80px;
+    max-height: 800px;
+    max-width: 800px;
     margin-top: 20px;
   }
 
@@ -144,6 +162,7 @@
     font-family: jost, sans-serif;
     cursor: pointer;
   }
+
   .dark .volver-a-perfil-usuario:hover {
     border: 1px solid teal;
     background-color: transparent;
@@ -154,6 +173,7 @@
     font-family: jost, sans-serif;
     cursor: pointer;
   }
+
   .light .volver-a-perfil-usuario {
     border: 1px solid teal;
     background-color: teal;
@@ -164,6 +184,7 @@
     font-family: jost, sans-serif;
     cursor: pointer;
   }
+
   .light .volver-a-perfil-usuario:hover {
     border: 1px solid teal;
     background-color: transparent;
@@ -180,3 +201,24 @@
   transform: scale(1.2);
   border-color: teal;
 }
+
+.avatar-zone {
+  border: 2px solid teal;  
+  border-radius: 15px;
+  padding: 30px;  
+}
+
+.selected-avatar-container,
+.back-to-profile {
+  margin-top: 20px;
+}
+
+.selected-avatar {
+  width: 200px;  
+  height: 200px;  
+  border: 2px solid teal;  
+  border-radius: 15px; 
+  padding: 20px;
+  
+}
+

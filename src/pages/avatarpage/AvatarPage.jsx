@@ -39,8 +39,8 @@ const AvatarPage = () => {
   ];
 
   const handleAvatarClick = (avatar) => {
-    setSelectedAvatar(avatar); // Actualizamos el avatar seleccionado en el estado
-    localStorage.setItem("selectedAvatar", avatar); // Guardamos el avatar seleccionado en el localStorage
+    setSelectedAvatar(avatar);
+    localStorage.setItem("selectedAvatar", avatar);
   };
 
   useEffect(() => {}, []);
@@ -48,40 +48,55 @@ const AvatarPage = () => {
   return (
     <div className={`avatar-page-container ${isDarkMode ? "dark" : "light"}`}>
       <h1>Selecciona tu avatar</h1>
-      <div className="avatar-list">
-        {avatars.map((avatar, index) => (
-          <button
-            key={index}
-            className={`avatar-button ${
-              avatar === selectedAvatar ? "selected" : ""
-            }`}
-            onClick={() => handleAvatarClick(avatar)}
-          >
-            <img
-              src={avatar}
-              alt={`Avatar ${index + 1}`}
-              className="avatar-image"
-            />
-          </button>
-        ))}
+      <div className="avatar-zone">
+        {/* Primera fila */}
+        <div className="avatar-row">
+          {avatars.slice(0, 9).map((avatar, index) => (
+            <button
+              key={index}
+              className={`avatar-button ${
+                avatar === selectedAvatar ? "selected" : ""
+              }`}
+              onClick={() => handleAvatarClick(avatar)}
+            >
+              <img
+                src={avatar}
+                alt={`Avatar ${index + 1}`}
+                className="avatar-image"
+              />
+            </button>
+          ))}
+        </div>
+        {/* Segunda fila */}
+        <div className="avatar-row">
+          {avatars.slice(9).map((avatar, index) => (
+            <button
+              key={index + 9}
+              className={`avatar-button ${
+                avatar === selectedAvatar ? "selected" : ""
+              }`}
+              onClick={() => handleAvatarClick(avatar)}
+            >
+              <img
+                src={avatar}
+                alt={`Avatar ${index + 10}`}
+                className="avatar-image"
+              />
+            </button>
+          ))}
+        </div>
       </div>
-      {/* Mostramos la imagen del avatar seleccionado */}
       <div className="selected-avatar-container">
-        {/* Aplica la clase del contenedor de avatar seleccionado del CSS */}
         <p className="avatar-seleccionado-texto">Avatar seleccionado:</p>
         <img
           src={selectedAvatar}
           alt="Avatar Seleccionado"
           className="selected-avatar"
         />
-        {/* Aplica la clase del avatar seleccionado del CSS */}
       </div>
-      {/* Botón para volver a ProfilePage */}
       <div className="back-to-profile">
-        {/* Aplica la clase del botón de regreso del CSS */}
         <Link to="/profile">
           <button className="volver-a-perfil-usuario"> Volver</button>{" "}
-          {/* Aplica la clase del botón de regreso del CSS */}
         </Link>
       </div>
     </div>
