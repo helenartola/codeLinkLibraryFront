@@ -124,6 +124,7 @@
   font-size: 20px;
   font-family: jost, sans-serif;
   letter-spacing: 0.8px;
+  width: 330px;
 }
 
 .post-page-container .datos-publicacion {
@@ -163,12 +164,10 @@
   transition: all 0.3s ease; /* Añadido para suavizar la transición */
 }
 
-
 @media only screen and (max-width: 768px) {
   .post-page-container .link-url-post.estilo-unico {
     max-width: 150px; /* Ajusta el ancho máximo para pantallas más pequeñas */
   }
-
 
   .post-page-container .link-url-post.estilo-unico:hover {
     transform: scale(1.1);
@@ -178,7 +177,9 @@
 }
 
 .post-page-container .link-url-post.estilo-unico:hover {
-  transform: scale(1.1); /* Añadido para hacer ligeramente más grande en hover */
+  transform: scale(
+    1.1
+  ); /* Añadido para hacer ligeramente más grande en hover */
   background-color: #02a1a1; /* Cambia el color de fondo en hover */
   text-decoration: underline;
 }

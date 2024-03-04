@@ -222,6 +222,7 @@
   margin-bottom: 10px;
   font-size: 20px;
   letter-spacing: 0.8px;
+  width: 300px;
 }
 .datos-publicacion {
   margin-bottom: 10px;
@@ -580,6 +581,7 @@
     margin-bottom: 10px;
     font-size: 20px;
     letter-spacing: 0.8px;
+    width: 400px;
   }
   .datos-publicacion {
     margin-bottom: 10px;
