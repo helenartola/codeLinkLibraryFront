@@ -55,6 +55,7 @@ p.parrafoRegistro {
   .contenedorFormularioRegistro {
     display: flex;
     flex-direction: row;
+    min-height: 100vh;
   }
   .textoRegistro {
     box-sizing: border-box;
