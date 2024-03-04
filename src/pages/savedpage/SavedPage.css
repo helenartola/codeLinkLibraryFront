@@ -21,6 +21,7 @@
 .descripcion-post-home {
   font-family: jost, sans-serif;
   font-size: 12px;
+  width: 400px;
 }
 .pagina-resultados {
   margin-top: 300px;
@@ -113,6 +114,7 @@
   .descripcion-post-home {
     font-family: jost, sans-serif;
     font-size: 13px;
+    width: 400px;
   }
   .no-resultados {
     font-family: jost, sans-serif;
