@@ -55,7 +55,7 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
         setTotalComments(comentarios.length); // Actualiza el total de comentarios
       } catch (error) {
         console.error("Error al obtener comentarios:", error);
-         setTimeout(() => {
+        setTimeout(() => {
           setErrorMessage("");
         }, 3000);
       }
@@ -65,171 +65,171 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
   }, [post]); // Se ejecuta cuando cambia el post
 
   // Función para agregar un nuevo comentario
-const handleAgregarComentario = async () => {
-  try {
-    if (!comentario) {
-      setMessage("Por favor, ingresa un comentario.");
-      return;
+  const handleAgregarComentario = async () => {
+    try {
+      if (!comentario) {
+        setMessage("Por favor, ingresa un comentario.");
+        return;
+      }
+
+      // Crea un nuevo comentario utilizando el servicio
+      const newCommentId = await createCommentService(
+        {
+          postId: post.postId,
+          comentario,
+        },
+        token
+      );
+
+      // Actualiza la lista de comentarios con el nuevo comentario
+      setComments([
+        ...comments,
+        {
+          commentId: newCommentId,
+          text: comentario,
+          userId: user.userId,
+          userName: user.userName,
+          createdAt: new Date().toISOString(),
+        },
+      ]);
+
+      setMessage("El comentario ha sido agregado con éxito.");
+
+      // Limpiar el mensaje después de 3 segundos (3000 milisegundos)
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
+    } catch (error) {
+      console.error("Error al agregar comentario:", error);
+      setErrorMessage(
+        "Error al agregar comentario. Por favor, inténtalo de nuevo."
+      );
+
+      // Limpiar el mensaje de error después de 3 segundos (3000 milisegundos)
+      setTimeout(() => {
+        setErrorMessage("");
+      }, 3000);
     }
-
-    // Crea un nuevo comentario utilizando el servicio
-    const newCommentId = await createCommentService(
-      {
-        postId: post.postId,
-        comentario,
-      },
-      token
-    );
-
-    // Actualiza la lista de comentarios con el nuevo comentario
-    setComments([
-      ...comments,
-      {
-        commentId: newCommentId,
-        text: comentario,
-        userId: user.userId,
-        userName: user.userName,
-        createdAt: new Date().toISOString(),
-      },
-    ]);
-
-    setMessage("El comentario ha sido agregado con éxito.");
-
-    // Limpiar el mensaje después de 3 segundos (3000 milisegundos)
-    setTimeout(() => {
-      setMessage("");
-    }, 3000);
-  } catch (error) {
-    console.error("Error al agregar comentario:", error);
-    setErrorMessage(
-      "Error al agregar comentario. Por favor, inténtalo de nuevo."
-    );
-
-    // Limpiar el mensaje de error después de 3 segundos (3000 milisegundos)
-    setTimeout(() => {
-      setErrorMessage("");
-    }, 3000);
-  }
-};
+  };
 
   // Función para manejar el clic en el botón de like
-const handleLikePost = async () => {
-  try {
-    // Llama al servicio para dar/quitar like
-    const likeResponse = await likePostService(post.postId, token);
-    // Actualiza el estado con la nueva información de likes
-    setNumLikes(likeResponse.numLikes);
-    setIsLiked(likeResponse.isLiked);
-  } catch (error) {
-    console.error("Error al dar/quitar like:", error);
-    setErrorMessage(
-      "Error al dar/quitar like. Por favor, inténtalo de nuevo."
-    );
+  const handleLikePost = async () => {
+    try {
+      // Llama al servicio para dar/quitar like
+      const likeResponse = await likePostService(post.postId, token);
+      // Actualiza el estado con la nueva información de likes
+      setNumLikes(likeResponse.numLikes);
+      setIsLiked(likeResponse.isLiked);
+    } catch (error) {
+      console.error("Error al dar/quitar like:", error);
+      setErrorMessage(
+        "Error al dar/quitar like. Por favor, inténtalo de nuevo."
+      );
 
-    // Limpiar el mensaje de error después de 3 segundos (3000 milisegundos)
-    setTimeout(() => {
-      setErrorMessage("");
-    }, 3000);
-  }
-};
+      // Limpiar el mensaje de error después de 3 segundos (3000 milisegundos)
+      setTimeout(() => {
+        setErrorMessage("");
+      }, 3000);
+    }
+  };
 
   // Función para manejar el clic en el botón de eliminar post
-const handleDeletePost = async () => {
-  try {
-    // Llama al servicio para eliminar el post
-    await deletePostService(post.postId, token);
+  const handleDeletePost = async () => {
+    try {
+      // Llama al servicio para eliminar el post
+      await deletePostService(post.postId, token);
 
-    // Filtra los posts para excluir el post eliminado
-    setPosts(posts.filter((postItem) => postItem.postId !== post.postId));
-    setMessage("El post ha sido eliminado con éxito.");
+      // Filtra los posts para excluir el post eliminado
+      setPosts(posts.filter((postItem) => postItem.postId !== post.postId));
+      setMessage("El post ha sido eliminado con éxito.");
 
-    // Limpiar el mensaje después de 3 segundos (3000 milisegundos)
-    setTimeout(() => {
-      setMessage("");
-    }, 3000);
-  } catch (error) {
-    console.error("Error al eliminar post:", error);
-    setErrorMessage("Error al eliminar post. Por favor, inténtalo de nuevo.");
+      // Limpiar el mensaje después de 3 segundos (3000 milisegundos)
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
+    } catch (error) {
+      console.error("Error al eliminar post:", error);
+      setErrorMessage("Error al eliminar post. Por favor, inténtalo de nuevo.");
 
-    // Limpiar el mensaje de error después de 3 segundos (3000 milisegundos)
-    setTimeout(() => {
-      setErrorMessage("");
-    }, 3000);
-  }
-};
+      // Limpiar el mensaje de error después de 3 segundos (3000 milisegundos)
+      setTimeout(() => {
+        setErrorMessage("");
+      }, 3000);
+    }
+  };
 
   // Función para manejar el clic en el botón de guardar/eliminar post
-const handleSavePost = async () => {
-  try {
-    // Verifica si el post pertenece al propio usuario
-    if (user && post.userId === user.userId) {
-      setErrorMessage("No puedes guardar tus propios posts.");
-      return;
+  const handleSavePost = async () => {
+    try {
+      // Verifica si el post pertenece al propio usuario
+      if (user && post.userId === user.userId) {
+        setErrorMessage("No puedes guardar tus propios posts.");
+        return;
+      }
+
+      // Llama al servicio para guardar o eliminar el post según su estado actual
+      if (isSaved) {
+        // Si está guardado, entonces llamamos al servicio para desguardar
+        await unsavePostService(post.postId, token);
+        // Actualiza el estado con el nuevo estado de guardado
+        setIsSaved(false);
+        setMessage("El post ha sido eliminado de tus guardados con éxito.");
+      } else {
+        // Si no está guardado, llamamos al servicio para guardar
+        await savePostService(post.postId, token);
+        // Actualiza el estado con el nuevo estado de guardado
+        setIsSaved(true);
+        setMessage("El post ha sido guardado con éxito.");
+      }
+
+      // Limpiar el mensaje después de 3 segundos (3000 milisegundos)
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
+    } catch (error) {
+      console.error("Error al guardar/eliminar post:", error);
+      setErrorMessage(
+        "Error al guardar/eliminar post. Por favor, inténtalo de nuevo."
+      );
+
+      // Limpiar el mensaje de error después de 3 segundos (3000 milisegundos)
+      setTimeout(() => {
+        setErrorMessage("");
+      }, 3000);
     }
-
-    // Llama al servicio para guardar o eliminar el post según su estado actual
-    if (isSaved) {
-      // Si está guardado, entonces llamamos al servicio para desguardar
-      await unsavePostService(post.postId, token);
-      // Actualiza el estado con el nuevo estado de guardado
-      setIsSaved(false);
-      setMessage("El post ha sido eliminado de tus guardados con éxito.");
-    } else {
-      // Si no está guardado, llamamos al servicio para guardar
-      await savePostService(post.postId, token);
-      // Actualiza el estado con el nuevo estado de guardado
-      setIsSaved(true);
-      setMessage("El post ha sido guardado con éxito.");
-    }
-
-    // Limpiar el mensaje después de 3 segundos (3000 milisegundos)
-    setTimeout(() => {
-      setMessage("");
-    }, 3000);
-  } catch (error) {
-    console.error("Error al guardar/eliminar post:", error);
-    setErrorMessage(
-      "Error al guardar/eliminar post. Por favor, inténtalo de nuevo."
-    );
-
-    // Limpiar el mensaje de error después de 3 segundos (3000 milisegundos)
-    setTimeout(() => {
-      setErrorMessage("");
-    }, 3000);
-  }
-};
+  };
 
   // Función para manejar el clic en el botón de eliminar comentario
-const handleDeleteComment = async (commentId) => {
-  try {
-    // Llama al servicio para eliminar el comentario
-    await deleteCommentService(post.postId, commentId, token);
-    // Filtra los comentarios para excluir el comentario eliminado
-    const updatedComments = comments.filter(
-      (comment) => comment.commentId !== commentId
-    );
-    // Actualiza la lista de comentarios
-    setComments(updatedComments);
-    // Decrementa el total de comentarios
-    setTotalComments(totalComments - 1);
-    setMessage("El comentario ha sido eliminado con éxito.");
+  const handleDeleteComment = async (commentId) => {
+    try {
+      // Llama al servicio para eliminar el comentario
+      await deleteCommentService(post.postId, commentId, token);
+      // Filtra los comentarios para excluir el comentario eliminado
+      const updatedComments = comments.filter(
+        (comment) => comment.commentId !== commentId
+      );
+      // Actualiza la lista de comentarios
+      setComments(updatedComments);
+      // Decrementa el total de comentarios
+      setTotalComments(totalComments - 1);
+      setMessage("El comentario ha sido eliminado con éxito.");
 
-    // Limpiar el mensaje después de 3 segundos (3000 milisegundos)
-    setTimeout(() => {
-      setMessage("");
-    }, 3000);
-  } catch (error) {
-    console.error("Error al eliminar comentario:", error);
-    setErrorMessage(
-      "Error al eliminar comentario. Por favor, inténtalo de nuevo."
-    );
+      // Limpiar el mensaje después de 3 segundos (3000 milisegundos)
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
+    } catch (error) {
+      console.error("Error al eliminar comentario:", error);
+      setErrorMessage(
+        "Error al eliminar comentario. Por favor, inténtalo de nuevo."
+      );
 
-    // Limpiar el mensaje de error después de 3 segundos (3000 milisegundos)
-    setTimeout(() => {
-      setErrorMessage("");
-    }, 3000);
-  }
-};
+      // Limpiar el mensaje de error después de 3 segundos (3000 milisegundos)
+      setTimeout(() => {
+        setErrorMessage("");
+      }, 3000);
+    }
+  };
 
   // Función para manejar el clic en el botón de editar comentario
   const handleEditComment = (commentId) => {
@@ -243,95 +243,95 @@ const handleDeleteComment = async (commentId) => {
   };
 
   // Función para guardar la edición del comentario
-const handleSaveEdit = async () => {
-  try {
-    // Copia el comentario editado con el nuevo texto
-    const editedComment = { ...editingComment, text: comentario };
-    // Llama al servicio para editar el comentario
-    await editCommentService(editingComment.commentId, editedComment, token);
-    // Actualiza la lista de comentarios con el comentario editado
-    const updatedComments = comments.map((comment) => {
-      if (comment.commentId === editingComment.commentId) {
-        return {
-          ...comment,
-          text: comentario,
-        };
-      }
-      return comment;
-    });
+  const handleSaveEdit = async () => {
+    try {
+      // Copia el comentario editado con el nuevo texto
+      const editedComment = { ...editingComment, text: comentario };
+      // Llama al servicio para editar el comentario
+      await editCommentService(editingComment.commentId, editedComment, token);
+      // Actualiza la lista de comentarios con el comentario editado
+      const updatedComments = comments.map((comment) => {
+        if (comment.commentId === editingComment.commentId) {
+          return {
+            ...comment,
+            text: comentario,
+          };
+        }
+        return comment;
+      });
 
-    // Actualiza los comentarios, oculta el formulario de edición y restablece el estado de edición
-    setComments(updatedComments);
-    setEditingComment(null);
-    // Actualiza la hora de la última edición del comentario
-    setLastCommentEditTime({
-      ...lastCommentEditTime,
-      [editingComment.commentId]: new Date().toLocaleString(),
-    });
-    setMessage("El comentario ha sido editado con éxito.");
+      // Actualiza los comentarios, oculta el formulario de edición y restablece el estado de edición
+      setComments(updatedComments);
+      setEditingComment(null);
+      // Actualiza la hora de la última edición del comentario
+      setLastCommentEditTime({
+        ...lastCommentEditTime,
+        [editingComment.commentId]: new Date().toLocaleString(),
+      });
+      setMessage("El comentario ha sido editado con éxito.");
 
-    // Limpiar el mensaje después de 3 segundos (3000 milisegundos)
-    setTimeout(() => {
-      setMessage("");
-    }, 3000);
-  } catch (error) {
-    console.error("Error al editar comentario:", error);
-    setErrorMessage(
-      "Error al editar comentario. Por favor, inténtalo de nuevo."
-    );
+      // Limpiar el mensaje después de 3 segundos (3000 milisegundos)
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
+    } catch (error) {
+      console.error("Error al editar comentario:", error);
+      setErrorMessage(
+        "Error al editar comentario. Por favor, inténtalo de nuevo."
+      );
 
-    // Limpiar el mensaje de error después de 3 segundos (3000 milisegundos)
-    setTimeout(() => {
-      setErrorMessage("");
-    }, 3000);
-  }
-};
+      // Limpiar el mensaje de error después de 3 segundos (3000 milisegundos)
+      setTimeout(() => {
+        setErrorMessage("");
+      }, 3000);
+    }
+  };
 
   // Función para manejar la edición del post
-const handleEditPost = () => {
-  setEditingPost(true);
-};
+  const handleEditPost = () => {
+    setEditingPost(true);
+  };
 
-// Función para guardar la edición del post
-const handleSaveEditPost = async () => {
-  try {
-    const editedPostData = {
-      title: editedTitle,
-      description: editedDescription,
-      url: editedURL,
-    };
+  // Función para guardar la edición del post
+  const handleSaveEditPost = async () => {
+    try {
+      const editedPostData = {
+        title: editedTitle,
+        description: editedDescription,
+        url: editedURL,
+      };
 
-    await editPostService(post.postId, editedPostData, token);
+      await editPostService(post.postId, editedPostData, token);
 
-    // Actualiza el estado del post con los nuevos datos
-    post.title = editedTitle;
-    post.description = editedDescription;
-    post.url = editedURL;
+      // Actualiza el estado del post con los nuevos datos
+      post.title = editedTitle;
+      post.description = editedDescription;
+      post.url = editedURL;
 
-    // Guarda la fecha de la última edición
-    setLastPostEditTime(new Date().toLocaleString());
+      // Guarda la fecha de la última edición
+      setLastPostEditTime(new Date().toLocaleString());
 
-    // Finaliza la edición del post
-    setEditingPost(false);
+      // Finaliza la edición del post
+      setEditingPost(false);
 
-    setMessage("El post ha sido editado con éxito.");
+      setMessage("El post ha sido editado con éxito.");
 
-    // Limpiar el mensaje después de 3 segundos (3000 milisegundos)
-    setTimeout(() => {
-      setMessage("");
-    }, 3000);
-  } catch (error) {
-    console.error("Error al editar el post:", error);
-    setErrorMessage(
-      "Error al editar el post. Por favor, inténtalo de nuevo."
-    );
+      // Limpiar el mensaje después de 3 segundos (3000 milisegundos)
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
+    } catch (error) {
+      console.error("Error al editar el post:", error);
+      setErrorMessage(
+        "Error al editar el post. Por favor, inténtalo de nuevo."
+      );
 
-    // Limpiar el mensaje de error después de 3 segundos (3000 milisegundos)
-    setTimeout(() => {
-      setErrorMessage("");
-    }, 3000);
-  }
-};
+      // Limpiar el mensaje de error después de 3 segundos (3000 milisegundos)
+      setTimeout(() => {
+        setErrorMessage("");
+      }, 3000);
+    }
+  };
 
   return (
     <div className="post-item-container">
@@ -365,7 +365,7 @@ const handleSaveEditPost = async () => {
             value={editedTitle}
             onChange={(e) => setEditedTitle(e.target.value)}
           />
-          <input
+          <textarea
             className="input-edita-tu-post"
             type="text"
             value={editedDescription}

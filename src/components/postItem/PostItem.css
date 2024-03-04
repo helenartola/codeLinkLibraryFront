@@ -355,7 +355,7 @@
     border: none;
     max-width: 600px;
   }
- 
+
   .mensajes-de-exito-caja p {
     color: white;
     background-color: teal;
@@ -432,6 +432,8 @@
   .dark .input-edita-tu-post {
     border: none;
     border-radius: 0;
+    background-color: white;
+    color: #303030;
   }
   .light .input-edita-tu-post {
     border: none;
