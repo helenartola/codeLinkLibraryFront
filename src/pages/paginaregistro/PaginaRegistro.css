@@ -15,6 +15,7 @@
   margin-top: 0;
   margin-left: 0;
   padding-bottom: 25px;
+  min-height: 100vh;
 }
 
 div.textoRegistro {
@@ -32,6 +33,7 @@ div.textoRegistro {
   align-items: center;
   justify-content: center;
   margin-top: 40px;
+  margin-bottom: 40px;
 }
 .cajaFormulario {
   padding: 20px;
@@ -55,7 +57,7 @@ p.parrafoRegistro {
   .contenedorFormularioRegistro {
     display: flex;
     flex-direction: row;
-    min-height: 100vh;
+    min-height: 80vh;
   }
   .textoRegistro {
     box-sizing: border-box;

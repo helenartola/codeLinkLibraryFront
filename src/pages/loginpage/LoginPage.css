@@ -14,6 +14,9 @@
   padding-top: 5%;
   padding-bottom: 5%;
   background-color: #303030;
+  min-height: 100vh;
+  margin: 0;
+  width: 100%;
 }
 .cajaLogin {
   display: flex;
@@ -27,9 +30,8 @@
   .contenedorFormularioLogin {
     display: flex;
     flex-direction: row;
-    overflow-y: hidden;
     background-color: #303030;
-    min-height: 100vh;
+    min-height: 80vh;
   }
   .cajaLogin {
     display: flex;
