@@ -174,7 +174,6 @@
   .light .search-bar .input-buscador {
     border: 0px solid #008080; /* Borde del campo de entrada en modo oscuro */
     border-right: none;
-    border-radius: none;
     background-color: transparent; /* Fondo transparente del campo de entrada en modo oscuro */
     padding: 8px;
     font-family: jost, sans-serif;
