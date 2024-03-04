@@ -164,7 +164,7 @@
 
 .lista-posts-trending {
   padding: 15px 10px;
-  width: 80%;
+  width: 90%;
   border-radius: 15px;
   border: 1px solid white;
   background-color: rgba(255, 255, 255, 0.482);
@@ -173,7 +173,7 @@
 
 .lista-posts-trending:hover {
   padding: 15px 10px;
-  width: 90%;
+  width: 92%;
   border-radius: 15px;
   border: 1px solid white;
   background-color: teal;
@@ -185,6 +185,7 @@
   color: white;
   font-family: jost, sans-serif;
   text-decoration: none;
+  font-size: 14px;
 }
 
 .lista-posts-trending a:hover {
