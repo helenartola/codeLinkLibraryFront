@@ -13,6 +13,15 @@
   font-family: jost, sans-serif;
   text-align: center;
 }
+.titulo-post-home {
+  font-family: jost, sans-serif;
+  font-size: 16px;
+  width: 400px;
+}
+.descripcion-post-home {
+  font-family: jost, sans-serif;
+  font-size: 12px;
+}
 .pagina-resultados {
   margin-top: 300px;
   margin-left: 20px;
@@ -98,10 +107,12 @@
   }
   .titulo-post-home {
     font-family: jost, sans-serif;
-    width: 300px;
+    font-size: 23px;
+    width: 400px;
   }
   .descripcion-post-home {
     font-family: jost, sans-serif;
+    font-size: 13px;
   }
   .no-resultados {
     font-family: jost, sans-serif;
