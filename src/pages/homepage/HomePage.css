@@ -58,7 +58,6 @@
 .dark .contenedor-crear-post {
   border-top: 1px solid #ffffff32;
   border-bottom: 1px solid #ffffff32;
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -192,7 +191,9 @@
   color: white;
   text-decoration: none;
 }
-
+.columna-centro .contenedor-crear-post {
+  display: none;
+}
 @media only screen and (max-width: 767px) {
   .main-content {
     display: flex;
@@ -213,7 +214,11 @@
     align-items: center;
     justify-content: center;
   }
-
+  .columna-centro .contenedor-crear-post {
+    display: flex;
+    margin-bottom: 20px;
+    width: 300px;
+  }
   .light .columna-centro {
     margin-left: 0;
   }
@@ -225,8 +230,7 @@
   .sidebar-derecha {
     display: none;
   }
-
-  .contenedor-crear-post {
-    margin-bottom: 20px;
+  .escribe-tu-mejor-post {
+    text-align: center;
   }
 }

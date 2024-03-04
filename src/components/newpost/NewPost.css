@@ -92,3 +92,12 @@ textarea {
 .success-message {
   color: #008080;
 }
+@media only screen and (max-width: 767px) {
+  .dark .new-post-container {
+    background-color: #303030;
+    width: 270px;
+  }
+  .light .new-post-container {
+    width: 270px;
+  }
+}

@@ -106,6 +106,30 @@ const HomePage = () => {
           </div>
         </div>
         <div className="columna-centro">
+          <div className="contenedor-crear-post">
+            {/* Botón para mostrar/ocultar el formulario del nuevo post */}
+            <button
+              className="boton-crear-post"
+              onClick={() => setIsFormOpen(!isFormOpen)}
+            >
+              <img
+                className="icono-nuevo-post"
+                src="/edit.png"
+                alt="Crear Nuevo Post"
+              />
+              <span className="escribe-tu-mejor-post">
+                {isFormOpen ? "" : "Escribe tu mejor post!"}
+              </span>
+            </button>
+            {/* Condición para mostrar el formulario del nuevo post */}
+            {isFormOpen && (
+              <NewPost
+                isFormOpen={isFormOpen}
+                setIsFormOpen={setIsFormOpen}
+                onAddPost={refresh}
+              />
+            )}
+          </div>
           {/* Lista de posts correspondientes a la página actual */}
           <ListaDePosts
             currentPosts={currentPosts}
