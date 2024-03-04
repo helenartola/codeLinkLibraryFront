@@ -355,10 +355,7 @@
     border: none;
     max-width: 600px;
   }
-
-  .mensajes-de-error-caja,
-  .mensajes-de-exito-caja {
-  }
+ 
   .mensajes-de-exito-caja p {
     color: white;
     background-color: teal;
