@@ -478,7 +478,7 @@ const PostItem = ({ post, posts, setPosts, showLink = false }) => {
               )}
             </button>
           )}
-          <p className="likes-count">{numLikes}</p>
+          {user && <p className="likes-count">{numLikes}</p>}{" "}
           {user && post.userId !== user.userId && (
             // Botón de guardar/eliminar post
             <button className="botones-guardar" onClick={handleSavePost}>
