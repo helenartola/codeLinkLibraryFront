@@ -12,9 +12,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 0;
-  margin-left: 0;
-  padding-bottom: 25px;
   min-height: 100vh;
 }
 
@@ -57,7 +54,7 @@ p.parrafoRegistro {
   .contenedorFormularioRegistro {
     display: flex;
     flex-direction: row;
-    min-height: 80vh;
+    min-height: 100vh;
   }
   .textoRegistro {
     box-sizing: border-box;
